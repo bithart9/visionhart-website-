@@ -106,10 +106,18 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
+// Watch ALL elements that already have data-animate in HTML
+document.querySelectorAll('[data-animate]').forEach(el => {
+  observer.observe(el);
+});
+
+// Also add + watch legacy class elements
 document.querySelectorAll(
   '.pain-card, .service-card, .testimonial-card, .process-step, .faq-item, .result-number-item'
 ).forEach(el => {
-  el.setAttribute('data-animate', '');
+  if (!el.hasAttribute('data-animate')) {
+    el.setAttribute('data-animate', '');
+  }
   observer.observe(el);
 });
 
