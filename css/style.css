@@ -621,6 +621,7 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 .full-testimonial footer { display: flex; align-items: center; gap: 14px; justify-content: center; }
 .full-testimonial cite  { display: block; color: #fff; font-style: normal; font-size: .95rem; }
 .full-testimonial span  { font-size: .82rem; color: rgba(255,255,255,.55); }
+.avatar-photo { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid rgba(255,255,255,.3); }
 
 /* ══════════════════════════════════════════
    WHY US
