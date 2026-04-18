@@ -50,132 +50,151 @@ export default async function handler(req, res) {
 
   // ── Bevestigingsmail → klant ─────────────────────────────────────────
   const confirmHtml = `<!DOCTYPE html>
-<html lang="nl">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HartAI — Je aanvraag is ontvangen</title></head>
-<body style="margin:0;padding:0;background:#f0f4f8;font-family:Inter,Arial,sans-serif;">
-<table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f4f8;padding:40px 16px;">
-<tr><td align="center">
-<table width="100%" style="max-width:600px;" cellpadding="0" cellspacing="0">
+<html lang="nl" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>HartAI — Je aanvraag is ontvangen</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f0f4f8;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f0f4f8;">
+<tr><td align="center" style="padding:40px 16px;">
 
-  <!-- HEADER -->
-  <tr><td style="background:linear-gradient(135deg,#132847 0%,#1B365D 100%);border-radius:16px 16px 0 0;padding:40px 40px 32px;">
-    <table width="100%" cellpadding="0" cellspacing="0">
-      <tr>
-        <td style="vertical-align:middle;">
-          <div style="display:inline-flex;align-items:center;gap:10px;">
-            <div style="background:#4EC0C4;border-radius:10px;width:44px;height:44px;text-align:center;line-height:44px;font-size:1.3rem;font-weight:800;color:#fff;display:inline-block;">H</div>
-            <span style="color:#fff;font-size:1.3rem;font-weight:800;letter-spacing:-.02em;vertical-align:middle;margin-left:8px;">HartAI</span>
-          </div>
-        </td>
-        <td align="right">
-          <span style="background:rgba(78,192,196,.2);border:1px solid rgba(78,192,196,.4);color:#4EC0C4;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:100px;">Aanvraag ontvangen ✓</span>
-        </td>
-      </tr>
-    </table>
-    <h1 style="color:#fff;font-size:1.6rem;font-weight:800;margin:28px 0 10px;line-height:1.2;">${firstName}, je staat op<br>de lijst. 🎯</h1>
-    <p style="color:rgba(255,255,255,.7);margin:0;font-size:.95rem;line-height:1.6;">Terwijl je dit leest, behandelen wij jouw aanvraag als prioriteit. Meer dan 150 bedrijven gingen je voor — en zij zijn blij dat ze de stap hebben gezet.</p>
-  </td></tr>
+  <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;">
 
-  <!-- QUOTE -->
-  <tr><td style="background:#4EC0C4;padding:24px 40px;">
-    <p style="margin:0;color:#fff;font-size:.95rem;font-style:italic;line-height:1.7;">"De ROI was binnen 3 maanden positief. HartAI heeft ons 15+ uur per week teruggegeven — ik had dit 2 jaar eerder moeten doen."</p>
-    <p style="margin:10px 0 0;color:rgba(255,255,255,.8);font-size:.78rem;font-weight:600;">— Mark de Vries, CEO TechConsult Nederland</p>
-  </td></tr>
+    <!-- LOGO HERO -->
+    <tr><td align="center" style="background-color:#1B365D;border-radius:16px 16px 0 0;padding:48px 40px 40px;">
+      <img src="https://www.hartai.nl/images/android-chrome-192x192.png" alt="HartAI" width="80" height="80" style="display:block;border:0;border-radius:16px;margin:0 auto 20px;" />
+      <h1 style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:32px;font-weight:700;color:#ffffff;letter-spacing:-0.02em;line-height:1.1;">HartAI</h1>
+      <p style="margin:0 0 32px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,0.6);line-height:1.5;letter-spacing:0;">Business Transformation Partner</p>
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 28px;">
+        <tr><td style="background-color:rgba(78,192,196,0.2);border:1px solid rgba(78,192,196,0.5);border-radius:100px;padding:6px 16px;">
+          <span style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#4EC0C4;letter-spacing:0.1em;text-transform:uppercase;">✓ &nbsp;Aanvraag ontvangen</span>
+        </td></tr>
+      </table>
+      <h2 style="margin:0 0 14px;font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:700;color:#ffffff;line-height:1.2;letter-spacing:-0.01em;">${firstName}, je staat op de lijst. 🎯</h2>
+      <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;color:rgba(255,255,255,0.75);line-height:1.6;">Terwijl je dit leest behandelen wij jouw aanvraag als prioriteit.<br>150+ bedrijven gingen je voor — en zij zijn blij dat ze de stap hebben gezet.</p>
+    </td></tr>
 
-  <!-- BODY -->
-  <tr><td style="background:#fff;padding:36px 40px;">
+    <!-- QUOTE -->
+    <tr><td style="background-color:#4EC0C4;padding:28px 40px;">
+      <p style="margin:0 0 10px;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;color:#ffffff;line-height:1.7;font-style:italic;">"De ROI was binnen 3 maanden positief. HartAI heeft ons 15+ uur per week teruggegeven — ik had dit 2 jaar eerder moeten doen."</p>
+      <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);line-height:1.5;">— Mark de Vries, CEO TechConsult Nederland</p>
+    </td></tr>
 
-    <p style="color:#2D3748;font-size:.95rem;line-height:1.75;margin:0 0 24px;">Hoi ${firstName},</p>
-    <p style="color:#2D3748;font-size:.95rem;line-height:1.75;margin:0 0 28px;">Je hebt net de eerste stap gezet die elk jaar gemiddeld <strong style="color:#1B365D;">€42.000 bespaart</strong> voor onze klanten. We nemen <strong style="color:#1B365D;">binnen 24 uur</strong> contact met je op voor een gratis kennismakingsgesprek van 30 minuten.</p>
+    <!-- BODY -->
+    <tr><td style="background-color:#ffffff;padding:40px 40px 32px;">
+      <p style="margin:0 0 10px;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;color:#2D3748;line-height:1.6;">Hoi ${firstName},</p>
+      <p style="margin:0 0 32px;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;color:#2D3748;line-height:1.6;">Je hebt net de eerste stap gezet die elk jaar gemiddeld <strong style="color:#1B365D;">€42.000 bespaart</strong> voor onze klanten. We nemen <strong style="color:#1B365D;">binnen 24 uur</strong> contact met je op voor een gratis kennismakingsgesprek van 30 minuten.</p>
 
-    <!-- NEXT STEPS -->
-    <div style="background:#f8fafc;border-radius:12px;padding:24px 28px;margin-bottom:28px;">
-      <p style="color:#1B365D;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 20px;">Dit gaat er nu gebeuren</p>
-      <table width="100%" cellpadding="0" cellspacing="0">
+      <!-- NEXT STEPS -->
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f8fafc;border-radius:12px;margin-bottom:32px;">
+        <tr><td style="padding:24px 28px;">
+          <p style="margin:0 0 20px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;color:#1B365D;letter-spacing:0.1em;text-transform:uppercase;">Dit gaat er nu gebeuren</p>
+
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:16px;">
+            <tr>
+              <td width="36" valign="top">
+                <div style="width:28px;height:28px;background-color:#4EC0C4;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#ffffff;line-height:28px;">1</div>
+              </td>
+              <td valign="top" style="padding-left:12px;">
+                <p style="margin:0 0 4px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:#1B365D;line-height:1.3;">Binnen 24 uur — Persoonlijk contact</p>
+                <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:400;color:#687280;line-height:1.5;">Een van onze specialisten belt of mailt je voor een kennismaking.</p>
+              </td>
+            </tr>
+          </table>
+
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:16px;">
+            <tr>
+              <td width="36" valign="top">
+                <div style="width:28px;height:28px;background-color:#4EC0C4;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#ffffff;line-height:28px;">2</div>
+              </td>
+              <td valign="top" style="padding-left:12px;">
+                <p style="margin:0 0 4px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:#1B365D;line-height:1.3;">30 minuten — Gratis analyse</p>
+                <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:400;color:#687280;line-height:1.5;">We brengen jouw grootste kansen in kaart en rekenen live de ROI uit.</p>
+              </td>
+            </tr>
+          </table>
+
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td width="36" valign="top">
+                <div style="width:28px;height:28px;background-color:#4EC0C4;border-radius:50%;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#ffffff;line-height:28px;">3</div>
+              </td>
+              <td valign="top" style="padding-left:12px;">
+                <p style="margin:0 0 4px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:#1B365D;line-height:1.3;">Binnen 90 dagen — Meetbaar resultaat</p>
+                <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:400;color:#687280;line-height:1.5;">Gegarandeerd. Geen resultaat? Dan werken wij gratis door.</p>
+              </td>
+            </tr>
+          </table>
+        </td></tr>
+      </table>
+
+      <!-- STATS -->
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
         <tr>
-          <td style="vertical-align:top;padding-bottom:18px;">
-            <div style="display:inline-block;background:#4EC0C4;color:#fff;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;font-size:.8rem;font-weight:800;">1</div>
-            <span style="display:inline-block;vertical-align:top;margin-left:12px;margin-top:4px;">
-              <strong style="display:block;color:#1B365D;font-size:.88rem;">Binnen 24 uur — Persoonlijk contact</strong>
-              <span style="color:#687280;font-size:.82rem;">Een van onze specialisten belt of mailt je voor een kennismaking.</span>
-            </span>
+          <td width="32%" align="center" style="background-color:#f8fafc;border-radius:10px;padding:18px 8px;">
+            <p style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;color:#4EC0C4;line-height:1;">150+</p>
+            <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;color:#687280;line-height:1.4;">Bedrijven geholpen</p>
           </td>
-        </tr>
-        <tr>
-          <td style="vertical-align:top;padding-bottom:18px;">
-            <div style="display:inline-block;background:#4EC0C4;color:#fff;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;font-size:.8rem;font-weight:800;">2</div>
-            <span style="display:inline-block;vertical-align:top;margin-left:12px;margin-top:4px;">
-              <strong style="display:block;color:#1B365D;font-size:.88rem;">30 minuten — Gratis analyse</strong>
-              <span style="color:#687280;font-size:.82rem;">We brengen jouw grootste kansen in kaart en rekenen live de ROI uit.</span>
-            </span>
+          <td width="2%">&nbsp;</td>
+          <td width="32%" align="center" style="background-color:#f8fafc;border-radius:10px;padding:18px 8px;">
+            <p style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;color:#4EC0C4;line-height:1;">€2,5M+</p>
+            <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;color:#687280;line-height:1.4;">Bespaard in 2025</p>
           </td>
-        </tr>
-        <tr>
-          <td style="vertical-align:top;">
-            <div style="display:inline-block;background:#4EC0C4;color:#fff;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;font-size:.8rem;font-weight:800;">3</div>
-            <span style="display:inline-block;vertical-align:top;margin-left:12px;margin-top:4px;">
-              <strong style="display:block;color:#1B365D;font-size:.88rem;">Binnen 90 dagen — Meetbaar resultaat</strong>
-              <span style="color:#687280;font-size:.82rem;">Gegarandeerd. Geen resultaat? Dan werken wij gratis door.</span>
-            </span>
+          <td width="2%">&nbsp;</td>
+          <td width="32%" align="center" style="background-color:#f8fafc;border-radius:10px;padding:18px 8px;">
+            <p style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;color:#4EC0C4;line-height:1;">98%</p>
+            <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;color:#687280;line-height:1.4;">Klanttevredenheid</p>
           </td>
         </tr>
       </table>
-    </div>
 
-    <!-- STATS -->
-    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
-      <tr>
-        <td width="33%" style="text-align:center;padding:16px 8px;background:#f8fafc;border-radius:10px;">
-          <div style="font-size:1.4rem;font-weight:800;color:#4EC0C4;">150+</div>
-          <div style="font-size:.72rem;color:#687280;margin-top:4px;">Bedrijven geholpen</div>
-        </td>
-        <td width="4px"></td>
-        <td width="33%" style="text-align:center;padding:16px 8px;background:#f8fafc;border-radius:10px;">
-          <div style="font-size:1.4rem;font-weight:800;color:#4EC0C4;">€2,5M+</div>
-          <div style="font-size:.72rem;color:#687280;margin-top:4px;">Bespaard in 2025</div>
-        </td>
-        <td width="4px"></td>
-        <td width="33%" style="text-align:center;padding:16px 8px;background:#f8fafc;border-radius:10px;">
-          <div style="font-size:1.4rem;font-weight:800;color:#4EC0C4;">98%</div>
-          <div style="font-size:.72rem;color:#687280;margin-top:4px;">Klanttevredenheid</div>
-        </td>
-      </tr>
-    </table>
+      <!-- URGENCY -->
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
+        <tr><td style="background-color:#1B365D;border-radius:10px;padding:18px 24px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td width="28" valign="middle" style="font-size:18px;line-height:1;">⚡</td>
+              <td valign="middle" style="padding-left:12px;">
+                <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:400;color:rgba(255,255,255,0.9);line-height:1.5;"><strong style="color:#4EC0C4;">Beperkte capaciteit:</strong> we nemen maximaal 8 nieuwe klanten per maand aan. Jouw aanvraag wordt direct behandeld.</p>
+              </td>
+            </tr>
+          </table>
+        </td></tr>
+      </table>
 
-    <!-- URGENCY -->
-    <div style="background:#1B365D;border-radius:10px;padding:18px 24px;margin-bottom:28px;display:flex;align-items:center;gap:12px;">
-      <span style="font-size:1.2rem;">⚡</span>
-      <p style="margin:0;color:rgba(255,255,255,.9);font-size:.85rem;line-height:1.5;"><strong style="color:#4EC0C4;">Beperkte capaciteit:</strong> we nemen maximaal 8 nieuwe klanten per maand aan. Jouw aanvraag wordt direct behandeld.</p>
-    </div>
+      <!-- CTA -->
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 12px;">
+        <tr><td align="center" style="background-color:#4EC0C4;border-radius:10px;">
+          <a href="https://www.hartai.nl" style="display:inline-block;padding:15px 40px;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:700;color:#ffffff;text-decoration:none;letter-spacing:-0.01em;">Bekijk onze resultaten →</a>
+        </td></tr>
+      </table>
+      <p style="text-align:center;margin:0;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:400;color:#9CA3AF;line-height:1.5;">Of beantwoord gewoon deze e-mail — wij lezen alles.</p>
+    </td></tr>
 
-    <!-- CTA -->
-    <div style="text-align:center;margin-bottom:8px;">
-      <a href="https://www.hartai.nl" style="display:inline-block;background:#4EC0C4;color:#fff;padding:15px 36px;border-radius:10px;text-decoration:none;font-weight:800;font-size:.95rem;letter-spacing:-.01em;">Bekijk onze resultaten →</a>
-    </div>
-    <p style="text-align:center;color:#9CA3AF;font-size:.75rem;margin:10px 0 0;">Of beantwoord gewoon deze e-mail — wij lezen alles.</p>
+    <!-- FOOTER -->
+    <tr><td style="background-color:#132847;border-radius:0 0 16px 16px;padding:28px 40px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td valign="middle">
+            <p style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:rgba(255,255,255,0.9);line-height:1.5;">HartAI B.V.</p>
+            <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:400;color:rgba(255,255,255,0.4);line-height:1.6;">
+              <a href="mailto:contact@hartai.nl" style="color:#4EC0C4;text-decoration:none;">contact@hartai.nl</a> &nbsp;·&nbsp;
+              <a href="https://www.hartai.nl" style="color:rgba(255,255,255,0.4);text-decoration:none;">hartai.nl</a><br>
+              Nederland &nbsp;·&nbsp; AVG-compliant &nbsp;·&nbsp; Europese datacenters
+            </p>
+          </td>
+          <td width="56" align="right" valign="middle">
+            <img src="https://www.hartai.nl/images/android-chrome-192x192.png" alt="HartAI" width="44" height="44" style="display:block;border:0;border-radius:8px;" />
+          </td>
+        </tr>
+      </table>
+    </td></tr>
 
-  </td></tr>
+  </table>
 
-  <!-- FOOTER -->
-  <tr><td style="background:#132847;border-radius:0 0 16px 16px;padding:24px 40px;">
-    <table width="100%" cellpadding="0" cellspacing="0">
-      <tr>
-        <td>
-          <p style="color:rgba(255,255,255,.9);font-size:.82rem;margin:0 0 4px;font-weight:600;">HartAI B.V.</p>
-          <p style="color:rgba(255,255,255,.45);font-size:.75rem;margin:0;line-height:1.6;">
-            <a href="mailto:contact@hartai.nl" style="color:#4EC0C4;text-decoration:none;">contact@hartai.nl</a> ·
-            <a href="https://www.hartai.nl" style="color:rgba(255,255,255,.45);text-decoration:none;">hartai.nl</a><br>
-            Nederland · AVG-compliant · Europese datacenters
-          </p>
-        </td>
-        <td align="right" style="vertical-align:top;">
-          <div style="background:#4EC0C4;border-radius:8px;width:36px;height:36px;text-align:center;line-height:36px;font-size:1rem;font-weight:800;color:#fff;display:inline-block;">H</div>
-        </td>
-      </tr>
-    </table>
-  </td></tr>
-
-</table>
 </td></tr>
 </table>
 </body>
