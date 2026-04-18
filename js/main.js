@@ -182,6 +182,41 @@ cookieDecline?.addEventListener('click', () => {
   cookieBanner.setAttribute('hidden', '');
 });
 
+// ── FAQ Accordion ──
+document.querySelectorAll('.faq-item__q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    // Close all
+    document.querySelectorAll('.faq-item__q').forEach(b => {
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.hidden = true;
+    });
+    // Open clicked (if it was closed)
+    if (!expanded) {
+      btn.setAttribute('aria-expanded', 'true');
+      btn.nextElementSibling.hidden = false;
+    }
+  });
+});
+
+// ── ROI Calculator ──
+const roiInputs = document.querySelectorAll('#roi-employees, #roi-sector, #roi-wage, #roi-hours');
+function calcROI() {
+  const hours = parseInt(document.getElementById('roi-hours')?.value || 15);
+  const wageStr = document.getElementById('roi-wage')?.value || '€35/uur';
+  const wage = parseInt(wageStr.replace(/[^0-9]/g, '')) || 35;
+  const saved = Math.round(hours * 0.6);
+  const yearly = Math.round(saved * wage * 52);
+  const roi = (yearly / 5000 * 100).toFixed(1).replace('.', ',') + 'x';
+  const payback = yearly > 20000 ? '2 mnd' : yearly > 10000 ? '3 mnd' : '4 mnd';
+  const el = id => document.getElementById(id);
+  if (el('roi-hours-saved')) el('roi-hours-saved').textContent = saved + 'u';
+  if (el('roi-savings'))    el('roi-savings').textContent = '€' + yearly.toLocaleString('nl-NL');
+  if (el('roi-roi'))        el('roi-roi').textContent = roi;
+  if (el('roi-payback'))    el('roi-payback').textContent = payback;
+}
+roiInputs.forEach(input => input.addEventListener('change', calcROI));
+
 // ── Trap focus inside open mobile nav (a11y) ──
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && menu.classList.contains('is-open')) {

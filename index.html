@@ -25,7 +25,7 @@
   <!-- Organization + ProfessionalService Schema -->
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService","LocalBusiness"],"@id":"https://www.visionhart.nl/#organization","name":"HartAI","url":"https://www.visionhart.nl","logo":{"@type":"ImageObject","url":"https://www.visionhart.nl/images/logo.png","width":200,"height":60},"description":"HartAI automatiseert bedrijfsprocessen voor MKB bedrijven met 5–250 medewerkers. Bouwen niet adviseren. 90-Dagen Garantie.","slogan":"Bouwen niet adviseren.","foundingDate":"2015","numberOfEmployees":{"@type":"QuantitativeValue","value":20},"areaServed":{"@type":"Country","name":"Nederland"},"serviceType":"AI Implementatie & Automatisering voor MKB","address":{"@type":"PostalAddress","addressLocality":"Amsterdam","addressCountry":"NL"},"contactPoint":{"@type":"ContactPoint","contactType":"customer service","email":"contact@hartai.nl","availableLanguage":"Dutch"},"sameAs":["https://www.instagram.com/hartai.nl"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"150","bestRating":"5"}}]}</script>
 
-  <!-- FAQPage Schema – People Also Ask optimised -->
+  <!-- FAQPage Schema -->
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hoe lang duurt AI implementatie in het MKB?","acceptedAnswer":{"@type":"Answer","text":"De meeste AI-implementaties bij HartAI tonen meetbaar resultaat binnen 2–4 weken. Een volledige uitrol duurt gemiddeld 6–8 weken. Onze 90-Dagen Garantie betekent: geen resultaat binnen 90 dagen? Dan werken wij door zonder extra kosten."}},{"@type":"Question","name":"Hoeveel kost AI automatisering voor een MKB bedrijf?","acceptedAnswer":{"@type":"Answer","text":"AI-implementatie bij HartAI begint met een gratis kennismakingsgesprek. Een HartAI Scan & Roadmap start vanaf €1.500. Volledige procesautomatisering vanaf €5.000. De gemiddelde terugverdientijd is 3–4 maanden. Wij rekenen een vaste prijs — geen uurtje-factuurtje."}},{"@type":"Question","name":"Welke processen kan ik als MKB bedrijf automatiseren met AI?","acceptedAnswer":{"@type":"Answer","text":"De meest gevraagde AI-toepassingen voor MKB zijn: chatbot klantenservice (24/7), offerte-automatisering, factuurverwerking, e-mail & inbox automatisering, personeelsplanning, live BI-dashboards, marketing automatisering en workflow AI-agents. HartAI biedt 12 kant-en-klare AI-oplossingen."}},{"@type":"Question","name":"Is AI implementatie veilig voor onze bedrijfsdata?","acceptedAnswer":{"@type":"Answer","text":"Ja. Alle HartAI-oplossingen zijn AVG-compliant, draaien op Europese datacenters en jouw bedrijfsdata wordt nooit gebruikt voor publieke AI-modellen. Wij zijn ISO-gecertificeerd en werken volledig transparant."}},{"@type":"Question","name":"Hebben wij technische kennis nodig voor AI implementatie?","acceptedAnswer":{"@type":"Answer","text":"Nee. HartAI verzorgt de volledige implementatie — van analyse tot live oplossing. Jij hoeft geen technische kennis te hebben. Wij trainen je team en bieden doorlopende begeleiding. Bouwen niet adviseren is ons motto."}},{"@type":"Question","name":"Wat doet HartAI precies?","acceptedAnswer":{"@type":"Answer","text":"HartAI automatiseert bedrijfsprocessen voor MKB bedrijven met 5–250 medewerkers. Wij bouwen en implementeren op maat: van AI-chatbots en offerte-automatisering tot factuurverwerking en workflow-agents. Geen rapporten — werkende oplossingen. Gemiddeld 25% kostenbesparing en 12 uur per week teruggewonnen."}},{"@type":"Question","name":"Is er een garantie bij HartAI?","acceptedAnswer":{"@type":"Answer","text":"Ja. De HartAI 90-Dagen Garantie: geen meetbaar resultaat binnen 90 dagen? Dan werken wij door zonder extra kosten. Punt. Wij starten pas als wij zeker weten dat er een echte kans is."}}]}</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,7 +47,7 @@
     <a href="/" class="nav__logo" aria-label="HartAI – homepage">
       <img src="images/logo.svg" alt="HartAI logo" width="36" height="36" />
       <span class="nav__logo-text">HartAI</span>
-      <span class="nav__logo-tag">Groei begint met visie.</span>
+      <span class="nav__logo-tag">Bouwen niet adviseren.</span>
     </a>
 
     <button class="nav__toggle" id="nav-toggle" aria-label="Menu openen" aria-expanded="false">
@@ -58,8 +58,8 @@
       <a href="#diensten" class="nav__link">Diensten</a>
       <a href="#resultaten" class="nav__link">Resultaten</a>
       <a href="#voor-wie" class="nav__link">Voor wie</a>
-      <a href="#over-ons" class="nav__link">Over ons</a>
-      <a href="#contact" class="btn btn--navy btn--sm">Gratis gesprek →</a>
+      <a href="#faq" class="nav__link">FAQ</a>
+      <a href="#contact" class="btn btn--turquoise btn--sm">Gratis gesprek →</a>
     </nav>
   </div>
 </header>
@@ -67,43 +67,43 @@
 <main>
 
 <!-- ═══════════════════════════════════════
-     HERO
+     1. HERO — één CTA, maximale focus
 ═══════════════════════════════════════ -->
 <section class="hero" id="home" aria-labelledby="hero-h1">
   <div class="hero__overlay" aria-hidden="true"></div>
   <div class="container hero__content">
-    <div class="hero__badge">150+ bedrijven geholpen &nbsp;·&nbsp; Actief sinds 2015</div>
-    <h1 id="hero-h1">Stop met betalen<br />voor handmatig werk.</h1>
-    <p class="hero__sub">HartAI automatiseert wat jouw team elke week uren kost — en laat je zien wat het oplevert voordat je ook maar één euro uitgeeft.</p>
-    <div class="hero__actions">
-      <a href="#scan" class="btn btn--turquoise btn--lg">Bereken je besparingspotentieel →</a>
-      <a href="#contact" class="btn btn--navy btn--lg">Direct in gesprek →</a>
+    <div class="hero__badge">
+      <span class="hero__badge-dot" aria-hidden="true"></span>
+      150+ MKB-bedrijven geholpen &nbsp;·&nbsp; Actief sinds 2015
     </div>
+
+    <h1 id="hero-h1">Stop met betalen<br />voor handmatig werk.</h1>
+    <p class="hero__sub">HartAI automatiseert wat jouw team elke week uren kost — en laat je zien wat het oplevert <strong>voordat je ook maar één euro uitgeeft.</strong></p>
+
+    <a href="#scan" class="btn btn--turquoise btn--lg hero__primary-cta">Bereken gratis wat AI jou oplevert →</a>
     <p class="hero__trust">2 minuten &nbsp;·&nbsp; geen verplichtingen &nbsp;·&nbsp; direct resultaat</p>
 
     <div class="hero__stats" role="list">
       <div class="stat-box" role="listitem">
         <span class="stat-box__num">€2,5M+</span>
-        <span class="stat-box__label">Bespaard voor klanten in 2025</span>
+        <span class="stat-box__label">Bespaard voor klanten</span>
       </div>
       <div class="stat-box" role="listitem">
-        <span class="stat-box__num">90 dgn</span>
-        <span class="stat-box__label">Tot eerste meetbaar resultaat</span>
+        <span class="stat-box__num">150+</span>
+        <span class="stat-box__label">MKB-bedrijven geholpen</span>
       </div>
       <div class="stat-box" role="listitem">
         <span class="stat-box__num">25%</span>
         <span class="stat-box__label">Gemiddelde kostenreductie</span>
       </div>
       <div class="stat-box" role="listitem">
-        <span class="stat-box__num">98%</span>
-        <span class="stat-box__label">Klanttevredenheid</span>
+        <span class="stat-box__num">90 dgn</span>
+        <span class="stat-box__label">Garantie of gratis verder</span>
       </div>
     </div>
 
     <div class="guarantee-banner">
-      <span class="guarantee-banner__check" aria-hidden="true">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#4EC0C4"/><path d="M8 12l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#4EC0C4"/><path d="M8 12l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <strong>90-dagen garantie</strong>
       <span>Geen resultaat binnen 90 dagen? Dan werken wij door zonder extra kosten. <strong>Punt.</strong></span>
     </div>
@@ -118,7 +118,36 @@
 </section>
 
 <!-- ═══════════════════════════════════════
-     WHY – COMPETITOR COMPARISON
+     2. PIJN — agiteer eerst, dan oplossing
+═══════════════════════════════════════ -->
+<section class="pain-section" aria-labelledby="pain-h2">
+  <div class="container">
+    <p class="section-tag">HERKEN JE DIT?</p>
+    <h2 id="pain-h2">Je bedrijf groeit — maar de kosten groeien mee</h2>
+    <p class="section-sub">Elke ondernemer weet dat er efficiënter gewerkt kan worden. Ze weten alleen niet hoe — of ze hebben er geen tijd voor. Precies daar bestaat HartAI voor.</p>
+
+    <div class="pain-grid">
+      <article class="pain-card" data-animate>
+        <div class="pain-card__metric">15 uur/week</div>
+        <h3>Verdwijnt in handmatig werk</h3>
+        <p>Je team besteedt uren aan rapportages, offertes en administratie die volledig geautomatiseerd kunnen worden.</p>
+      </article>
+      <article class="pain-card" data-animate>
+        <div class="pain-card__metric">€50.000+</div>
+        <h3>Groei kost steeds meer mensen</h3>
+        <p>Elke keer dat de omzet stijgt, moeten er mensen bij. De marges blijven gelijk of worden dunner.</p>
+      </article>
+      <article class="pain-card" data-animate>
+        <div class="pain-card__metric">Kwartaal na kwartaal</div>
+        <h3>Wachten op het goede moment</h3>
+        <p>Terwijl jij wacht, gebruikt jouw concurrent AI al. Elk kwartaal zonder AI is een kwartaal achterstand.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     3. REFRAME — waarom de rest faalt
 ═══════════════════════════════════════ -->
 <section class="why-section" aria-labelledby="why-h2">
   <div class="container">
@@ -144,124 +173,321 @@
           <li>Wij bouwen de oplossing zelf</li>
           <li>Live in je bedrijf binnen 6–10 weken</li>
           <li>Resultaat meetbaar in euro's en uren</li>
-          <li>90 dagen garantie of wij werken gratis door</li>
+          <li>90-dagen garantie of wij werken gratis door</li>
         </ul>
       </div>
     </div>
 
-    <blockquote class="testimonial-block">
-      <p>"HartAi heeft ons in 8 weken geholpen om processen te automatiseren die ons jarenlang 15+ uur per week kostten. De ROI was binnen 3 maanden positief."</p>
-      <footer>
-        <img src="images/jeroen-leonard.jpg" alt="Jeroen Leonard" width="44" height="44" class="avatar-photo" />
-        <div>
-          <cite><strong>Jeroen Leonard</strong></cite>
-          <span>Kingdom Supplies</span>
-        </div>
-      </footer>
-    </blockquote>
-
     <div class="why__cta">
-      <a href="#scan" class="btn btn--turquoise btn--lg">Bereken gratis je AI-winstpotentieel →</a>
+      <a href="#contact" class="btn btn--turquoise btn--lg">Bereken gratis je AI-winstpotentieel →</a>
       <p>5 minuten &nbsp;·&nbsp; geen verkoopgesprek &nbsp;·&nbsp; direct resultaat</p>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════
-     PAIN – HERKEN JE DIT?
+     4. HOE HET WERKT — verwijder onzekerheid
 ═══════════════════════════════════════ -->
-<section class="pain-section" aria-labelledby="pain-h2">
+<section class="howit-section" aria-labelledby="howit-h2">
   <div class="container">
-    <p class="section-tag">HERKEN JE DIT?</p>
-    <h2 id="pain-h2">Je bedrijf groeit — maar de kosten groeien mee</h2>
-    <p class="section-sub">De meeste ondernemers weten dat er efficiënter gewerkt kan worden. Ze weten alleen niet hoe — of ze hebben er geen tijd voor. Dat is precies waar HartAi voor bestaat.</p>
+    <p class="section-tag">HOE HET WERKT</p>
+    <h2 id="howit-h2">Van eerste gesprek tot <span class="text-turquoise">meetbaar resultaat</span></h2>
+    <p class="section-sub">Geen maanden van voorbereiding. Geen vage trajecten. Drie stappen — en jij ziet het verschil.</p>
 
-    <div class="pain-grid">
-      <article class="pain-card">
-        <div class="pain-card__metric">15 uur/week</div>
-        <h3>Tijd die verdwijnt in handmatig werk</h3>
-        <p>Je team besteedt uren aan rapportages, offertes en administratie die geautomatiseerd kunnen worden.</p>
-      </article>
-      <article class="pain-card">
-        <div class="pain-card__metric">€50k+</div>
-        <h3>Groei kost steeds meer mensen</h3>
-        <p>Elke keer dat de omzet stijgt, moeten er mensen bij. De marges blijven gelijk of worden dunner.</p>
-      </article>
-      <article class="pain-card">
-        <div class="pain-card__metric">25%</div>
-        <h3>Processen die niemand heeft herontworpen</h3>
-        <p>Je bedrijfsprocessen zijn ooit zo ingeregeld en nooit meer aangepast. Ondertussen kost het je dagelijks geld.</p>
-      </article>
+    <div class="howit-steps">
+      <div class="howit-step" data-animate>
+        <div class="howit-step__num">01</div>
+        <div class="howit-step__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <h3>Gratis Scan</h3>
+        <p>In 30 minuten analyseren wij je bedrijfsprocessen en laten we je zien waar de grootste kansen liggen — met een concrete ROI-berekening. Geen verkoopverhaal.</p>
+        <div class="howit-step__time">30 minuten &nbsp;·&nbsp; 100% gratis</div>
+      </div>
+
+      <div class="howit-step__arrow" aria-hidden="true">→</div>
+
+      <div class="howit-step" data-animate>
+        <div class="howit-step__num">02</div>
+        <div class="howit-step__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Wij Bouwen</h3>
+        <p>Onze specialisten bouwen de oplossing op maat — geïntegreerd in jouw bestaande systemen. Jij hoeft niks te doen. Geen IT-kennis vereist. Live in 6–10 weken.</p>
+        <div class="howit-step__time">6–10 weken &nbsp;·&nbsp; vaste prijs</div>
+      </div>
+
+      <div class="howit-step__arrow" aria-hidden="true">→</div>
+
+      <div class="howit-step" data-animate>
+        <div class="howit-step__num">03</div>
+        <div class="howit-step__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <h3>Jij Oogst</h3>
+        <p>Meetbaar resultaat in euro's en uren. Gemiddeld 25% kostenbesparing en 12 uur per week teruggewonnen. Gegarandeerd binnen 90 dagen — of wij werken gratis door.</p>
+        <div class="howit-step__time">Resultaat binnen 90 dgn &nbsp;·&nbsp; gegarandeerd</div>
+      </div>
+    </div>
+
+    <div class="howit-cta">
+      <a href="#contact" class="btn btn--navy btn--lg">Start met gratis Scan →</a>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════
-     SECTORS
+     5. SOCIAL PROOF — vroeg in de funnel
+═══════════════════════════════════════ -->
+<section class="early-proof-section" aria-label="Klantresultaten">
+  <div class="container">
+    <div class="early-proof__grid">
+      <div class="early-proof__quote">
+        <div class="early-proof__stars" aria-label="5 sterren">★★★★★</div>
+        <blockquote>
+          <p>"HartAI heeft ons in 8 weken geholpen om processen te automatiseren die ons jarenlang 15+ uur per week kostten. De ROI was binnen 3 maanden positief. Dit had ik eerder moeten doen."</p>
+        </blockquote>
+        <div class="early-proof__person">
+          <img src="images/jeroen-leonard.jpg" alt="Jeroen Leonard" width="52" height="52" class="avatar-photo" />
+          <div>
+            <strong>Jeroen Leonard</strong>
+            <span>Kingdom Supplies</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="early-proof__stats">
+        <div class="early-proof__stat">
+          <span class="early-proof__num">€2,5M+</span>
+          <span>bespaard voor klanten in 2025</span>
+        </div>
+        <div class="early-proof__stat">
+          <span class="early-proof__num">4,9/5</span>
+          <span>gemiddelde klantscore</span>
+        </div>
+        <div class="early-proof__stat">
+          <span class="early-proof__num">98%</span>
+          <span>klanttevredenheid</span>
+        </div>
+        <div class="early-proof__stat">
+          <span class="early-proof__num">3–4 mnd</span>
+          <span>gemiddelde terugverdientijd</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     6. VOOR WIE — zelfidentificatie
 ═══════════════════════════════════════ -->
 <section class="sectors-section" id="voor-wie" aria-labelledby="sectors-h2">
   <div class="container">
-    <p class="section-tag section-tag--light">RESULTATEN PER SECTOR</p>
-    <h2 id="sectors-h2">Herken jij dit?</h2>
-    <p class="section-sub section-sub--light">Klik op jouw situatie en zie wat het oplevert.</p>
+    <p class="section-tag section-tag--light">IS DIT VOOR JOU?</p>
+    <h2 id="sectors-h2">Herken jij één van deze situaties?</h2>
+    <p class="section-sub section-sub--light">Klik op jouw sector en zie wat andere bedrijven zoals jij al bereikten.</p>
 
     <div class="sectors-grid">
       <article class="sector-card">
         <p class="sector-card__tag">LOGISTIEK</p>
         <h3>Planning kost elke week uren. Roosters handmatig ingevuld, fouten inbegrepen.</h3>
-        <a href="#contact" class="sector-card__link">Zie resultaat →</a>
+        <a href="#contact" class="sector-card__link">Zie wat het oplevert →</a>
       </article>
       <article class="sector-card">
         <p class="sector-card__tag">BOUW &amp; INSTALLATIE</p>
         <h3>Offertes te langzaam. Klant vraagt aan, wacht drie dagen en gaat naar de concurrent.</h3>
-        <a href="#contact" class="sector-card__link">Zie resultaat →</a>
+        <a href="#contact" class="sector-card__link">Zie wat het oplevert →</a>
       </article>
       <article class="sector-card">
         <p class="sector-card__tag">DIENSTVERLENING</p>
         <h3>Inbox loopt over. Leads stellen een vraag, horen niks en haken af.</h3>
-        <a href="#contact" class="sector-card__link">Zie resultaat →</a>
+        <a href="#contact" class="sector-card__link">Zie wat het oplevert →</a>
       </article>
       <article class="sector-card">
         <p class="sector-card__tag">ZORG</p>
         <h3>Data verspreid over systemen. Rapporten handmatig samenstellen kost dagen.</h3>
-        <a href="#contact" class="sector-card__link">Zie resultaat →</a>
+        <a href="#contact" class="sector-card__link">Zie wat het oplevert →</a>
       </article>
       <article class="sector-card">
         <p class="sector-card__tag">PRODUCTIE</p>
         <h3>3 mensen bezig met data invoeren. Elke dag opnieuw. Fouten, vertraging, frustratie.</h3>
-        <a href="#contact" class="sector-card__link">Zie resultaat →</a>
+        <a href="#contact" class="sector-card__link">Zie wat het oplevert →</a>
       </article>
       <article class="sector-card sector-card--cta">
         <h3>Andere sector?</h3>
-        <p>Wij werken met alle MKB-sectoren van 5 tot 250 medewerkers. Bereken wat het voor jouw bedrijf oplevert.</p>
-        <a href="#scan" class="btn btn--white btn--sm">Bereken je besparing →</a>
+        <p>Wij werken met alle MKB-sectoren van 5 tot 250 medewerkers.</p>
+        <a href="#contact" class="btn btn--white btn--sm">Bereken jouw besparing →</a>
       </article>
-    </div>
-
-    <div class="sectors-stats" role="list">
-      <div role="listitem"><span class="sectors-stats__num">150+</span><span>Bedrijven geholpen</span></div>
-      <div role="listitem"><span class="sectors-stats__num">€2,5M+</span><span>Bespaard in 2026</span></div>
-      <div role="listitem"><span class="sectors-stats__num">98%</span><span>Klanttevredenheid</span></div>
-      <div role="listitem"><span class="sectors-stats__num">4,9/5</span><span>Google Reviews</span></div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════
-     SERVICES – 12 AI OPLOSSINGEN
+     7. FLAGSHIP DIENSTEN — top 3, niet 12
 ═══════════════════════════════════════ -->
-<section class="services-section" id="diensten" aria-labelledby="services-h2">
+<section class="flagship-section" id="diensten" aria-labelledby="flagship-h2">
   <div class="container">
-    <p class="section-tag">WAT WIJ BOUWEN</p>
-    <h2 id="services-h2">12 AI-oplossingen die <span class="text-turquoise">direct resultaat</span> opleveren</h2>
-    <p class="section-sub">Geen generieke software. Geen abonnementen. Wij bouwen en implementeren op maat — voor jouw bedrijf, jouw sector, jouw systemen.</p>
+    <p class="section-tag">MEEST GEVRAAGD</p>
+    <h2 id="flagship-h2">De 3 AI-oplossingen met het <span class="text-turquoise">hoogste rendement</span></h2>
+    <p class="section-sub">Geen generieke software. Geen abonnementen. Op maat gebouwd voor jouw bedrijf, jouw sector, jouw systemen.</p>
 
-    <!-- ROI Calculator -->
-    <div class="roi-calculator" id="scan" aria-label="ROI Calculator">
+    <div class="flagship-grid">
+      <article class="flagship-card flagship-card--featured" data-animate>
+        <div class="flagship-card__badge">
+          <span class="badge badge--orange">🔥 Meest gevraagd</span>
+          <span class="badge badge--teal">Live in 3 weken</span>
+        </div>
+        <div class="flagship-card__icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="1.5"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+        </div>
+        <h3>AI Chatbot Klantenservice</h3>
+        <p>24/7 klantvragen beantwoorden in perfect Nederlands. Getraind op jouw producten en FAQ's. Handelt 67–78% van alle vragen volledig zelfstandig af — zonder dat jij erbij hoeft te zijn.</p>
+        <div class="flagship-card__results">
+          <div><strong>10u/week</strong><span>tijdsbesparing</span></div>
+          <div><strong>67–78%</strong><span>automatisch afgehandeld</span></div>
+          <div><strong>4,1×</strong><span>gemiddelde ROI</span></div>
+        </div>
+        <a href="#contact" class="btn btn--turquoise btn--full">Gratis demo aanvragen →</a>
+      </article>
+
+      <article class="flagship-card" data-animate>
+        <div class="flagship-card__badge">
+          <span class="badge badge--orange">🔥 Bouw populair</span>
+          <span class="badge badge--teal">Live in 4 weken</span>
+        </div>
+        <div class="flagship-card__icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        </div>
+        <h3>Offerte-Automatisering</h3>
+        <p>Klant vult een formulier in — binnen minuten staat de offerte kant-en-klaar in zijn mailbox. Gemiddeld 31% meer gewonnen opdrachten puur door snelheid van reageren.</p>
+        <div class="flagship-card__results">
+          <div><strong>+31%</strong><span>meer gewonnen opdrachten</span></div>
+          <div><strong>Zelfde dag</strong><span>offerte verstuurd</span></div>
+          <div><strong>3,8×</strong><span>gemiddelde ROI</span></div>
+        </div>
+        <a href="#contact" class="btn btn--navy btn--full">Gratis demo aanvragen →</a>
+      </article>
+
+      <article class="flagship-card" data-animate>
+        <div class="flagship-card__badge">
+          <span class="badge badge--yellow">⭐ Stille winnaar</span>
+          <span class="badge badge--teal">Live in 4 weken</span>
+        </div>
+        <div class="flagship-card__icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Factuurverwerking Autopilot</h3>
+        <p>AI leest inkomende facturen uit, herkent BTW-categorieën, matcht met bestellingen en doet boekingsvoorstellen in Exact, AFAS of Twinfield. Van 18 naar 4 dagen doorlooptijd.</p>
+        <div class="flagship-card__results">
+          <div><strong>60%</strong><span>minder boekhoudtijd</span></div>
+          <div><strong>18→4 dgn</strong><span>doorlooptijd</span></div>
+          <div><strong>5,2×</strong><span>hoogste ROI</span></div>
+        </div>
+        <a href="#contact" class="btn btn--navy btn--full">Gratis demo aanvragen →</a>
+      </article>
+    </div>
+
+    <div class="flagship-more">
+      <p>Naast deze 3 biedt HartAI nog 9 andere AI-oplossingen — van personeelsplanning tot marketing automatisering.</p>
+      <a href="#contact" class="btn btn--outline">Bekijk alle 12 oplossingen →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     8. CASES — bewijs in euro's
+═══════════════════════════════════════ -->
+<section class="cases-section" id="resultaten" aria-labelledby="cases-h2">
+  <div class="container">
+    <p class="section-tag">BEWEZEN RESULTATEN</p>
+    <h2 id="cases-h2">Bedrijven die ons voorgingen</h2>
+    <p class="section-sub">Concrete resultaten. Echte bedrijven. Meetbare euro's.</p>
+
+    <div class="cases-grid">
+      <article class="case-card" data-animate>
+        <div class="case-card__sector">Financiële dienstverlening</div>
+        <h3>Accountantskantoor</h3>
+        <p class="case-card__size">12 medewerkers</p>
+        <div class="case-card__challenge">
+          <span>UITDAGING</span>
+          <p>Te veel tijd aan maandrapportages</p>
+        </div>
+        <div class="case-card__results">
+          <div><strong>€42K</strong><span>bespaard jaar 1</span></div>
+          <div><strong>18u/week</strong><span>teruggewonnen</span></div>
+        </div>
+        <blockquote>"Rapportages die vroeger 2 dagen kostten, zijn nu in 20 minuten klaar."</blockquote>
+        <div class="case-card__person">
+          <div class="avatar avatar--sm">L</div>
+          <div><strong>Linda van der Berg</strong><br><span>Managing Partner</span></div>
+        </div>
+        <p class="case-card__timeline">⏱ Live in 6 weken</p>
+      </article>
+
+      <article class="case-card" data-animate>
+        <div class="case-card__sector">Bouw &amp; Installatie</div>
+        <h3>Bouwbedrijf</h3>
+        <p class="case-card__size">35 medewerkers</p>
+        <div class="case-card__challenge">
+          <span>UITDAGING</span>
+          <p>Offerteproces te traag, opdrachten verloren</p>
+        </div>
+        <div class="case-card__results">
+          <div><strong>€78K</strong><span>bespaard jaar 1</span></div>
+          <div><strong>+40%</strong><span>snellere offertes</span></div>
+        </div>
+        <blockquote>"We winnen nu meer projecten omdat we 2× sneller reageren op aanvragen."</blockquote>
+        <div class="case-card__person">
+          <div class="avatar avatar--sm">M</div>
+          <div><strong>Marc Jansen</strong><br><span>Directeur</span></div>
+        </div>
+        <p class="case-card__timeline">⏱ Live in 8 weken</p>
+      </article>
+
+      <article class="case-card" data-animate>
+        <div class="case-card__sector">Logistiek</div>
+        <h3>E-commerce groothandel</h3>
+        <p class="case-card__size">22 medewerkers</p>
+        <div class="case-card__challenge">
+          <span>UITDAGING</span>
+          <p>Orderverwerking bottleneck, groei gestagneerd</p>
+        </div>
+        <div class="case-card__results">
+          <div><strong>€95K</strong><span>bespaard jaar 1</span></div>
+          <div><strong>3× meer</strong><span>orders per dag</span></div>
+        </div>
+        <blockquote>"Onze omzet is met 35% gegroeid zonder extra mensen aan te nemen."</blockquote>
+        <div class="case-card__person">
+          <div class="avatar avatar--sm">S</div>
+          <div><strong>Sarah de Wit</strong><br><span>COO</span></div>
+        </div>
+        <p class="case-card__timeline">⏱ Live in 10 weken</p>
+      </article>
+    </div>
+
+    <div class="cases-stats" role="list">
+      <div role="listitem"><span class="cases-stats__num">150+</span><span>Bedrijven geholpen</span></div>
+      <div role="listitem"><span class="cases-stats__num">€2,5M+</span><span>Bespaard in 2025</span></div>
+      <div role="listitem"><span class="cases-stats__num">98%</span><span>Klanttevredenheid</span></div>
+      <div role="listitem"><span class="cases-stats__num">4,9/5</span><span>Google Reviews</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     9. ROI CALCULATOR — lead capture tool
+═══════════════════════════════════════ -->
+<section class="roi-section" id="scan" aria-labelledby="roi-h2">
+  <div class="container">
+    <p class="section-tag">GRATIS BEREKENING</p>
+    <h2 id="roi-h2">Wat levert AI jouw bedrijf op?</h2>
+    <p class="section-sub">Vul 4 velden in en zie direct de berekening — specifiek voor jouw sector en bedrijfsgrootte.</p>
+
+    <div class="roi-calculator">
       <div class="roi-calculator__header">
         <div>
           <h3>Bereken je besparingspotentieel</h3>
-          <p>Zie direct wat AI jouw bedrijf kan opleveren</p>
+          <p>Directe berekening op basis van jouw situatie</p>
         </div>
         <a href="#contact" class="btn btn--turquoise btn--sm">Gratis adviesgesprek →</a>
       </div>
@@ -325,595 +551,154 @@
       </div>
     </div>
 
-    <!-- Communicatie & Sales -->
-    <div class="service-category">
-      <div class="service-category__header">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="2" aria-hidden="true"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
-        <div>
-          <h3>Communicatie &amp; Sales</h3>
-          <p>Meer leads binnenhalen, sneller reageren, hogere conversie — zonder meer mensen</p>
-        </div>
-      </div>
-      <div class="service-cards-grid">
-        <article class="service-card service-card--featured">
-          <div class="service-card__badges"><span class="badge badge--orange">🔥 Meest gevraagd</span><span class="badge badge--teal">3 weken</span></div>
-          <h4>AI Chatbot klantenservice</h4>
-          <p>24/7 klantvragen beantwoorden in perfect Nederlands. Getraind op jouw producten, diensten en FAQ's. Handelt 67–78% van alle vragen volledig zelfstandig af.</p>
-          <div class="service-card__metrics">
-            <div><span>Tijdsbesparing</span><strong>10u/week</strong></div>
-            <div><span>Afgehandeld</span><strong>67–78%</strong></div>
-            <div><span>Live in</span><strong>3 weken</strong></div>
-            <div><span>Gem. ROI</span><strong>4,1×</strong></div>
-          </div>
-          <a href="#contact" class="service-card__link">Gratis demo aanvragen →</a>
-        </article>
-        <article class="service-card">
-          <div class="service-card__badges"><span class="badge badge--orange">🔥 Bouw populair</span></div>
-          <h4>Offerte-automatisering</h4>
-          <p>Klant vult een formulier in — binnen minuten staat de offerte kant-en-klaar in zijn mailbox. Gemiddeld 31% meer gewonnen opdrachten door snelheid.</p>
-          <div class="service-card__metrics">
-            <div><span>Sneller</span><strong>Zelfde dag</strong></div>
-            <div><span>Meer gewonnen</span><strong>+31%</strong></div>
-            <div><span>Live in</span><strong>4 weken</strong></div>
-            <div><span>Gem. ROI</span><strong>3,8×</strong></div>
-          </div>
-          <a href="#contact" class="service-card__link">Gratis demo aanvragen →</a>
-        </article>
-        <article class="service-card">
-          <div class="service-card__badges"><span class="badge badge--green">+ Hoge ROI</span></div>
-          <h4>Sales automation &amp; lead nurturing</h4>
-          <p>Leads automatisch scoren, opvolgen en door de funnel begeleiden. AI schrijft gepersonaliseerde opvolg-e-mails op basis van het gedrag van de lead.</p>
-          <div class="service-card__metrics">
-            <div><span>Meer conversie</span><strong>+24%</strong></div>
-            <div><span>Snelheid</span><strong>5× sneller</strong></div>
-            <div><span>Live in</span><strong>6 weken</strong></div>
-            <div><span>Gem. ROI</span><strong>4,5×</strong></div>
-          </div>
-          <a href="#contact" class="service-card__link">Gratis demo aanvragen →</a>
-        </article>
-      </div>
-    </div>
-
-    <!-- Finance & Administratie -->
-    <div class="service-category">
-      <div class="service-category__header">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F6AD55" stroke-width="2" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-        <div>
-          <h3>Finance &amp; Administratie</h3>
-          <p>De meest winstgevende AI-toepassing voor MKB — direct minder overhead, minder fouten</p>
-        </div>
-      </div>
-      <div class="service-cards-grid">
-        <article class="service-card service-card--featured-yellow">
-          <div class="service-card__badges"><span class="badge badge--yellow">⭐ Stille winnaar</span><span class="badge badge--teal">4 weken</span></div>
-          <h4>Factuurverwerking autopilot</h4>
-          <p>OCR + AI leest inkomende facturen uit, herkent BTW-categorieën, matcht met bestellingen en doet boekingsvoorstellen in Exact, AFAS of Twinfield.</p>
-          <div class="service-card__metrics">
-            <div><span>Tijdsbesparing</span><strong>60%</strong></div>
-            <div><span>Doorlooptijd</span><strong class="text-turquoise">18→4 dgn</strong></div>
-            <div><span>Live in</span><strong>4 weken</strong></div>
-            <div><span>Gem. ROI</span><strong>5,2×</strong></div>
-          </div>
-          <a href="#contact" class="service-card__link">Gratis demo aanvragen →</a>
-        </article>
-        <article class="service-card">
-          <div class="service-card__badges"><span class="badge badge--orange">🔥 Dienstverleners</span></div>
-          <h4>E-mail &amp; inbox automatisering</h4>
-          <p>AI classificeert inkomende e-mails, stelt antwoorden voor of verstuurt ze automatisch, routeert naar de juiste persoon en maakt taken aan. 78% afgehandeld zonder menselijk werk.</p>
-          <div class="service-card__metrics">
-            <div><span>Automatisch</span><strong>78%</strong></div>
-            <div><span>FTE vrijgespeeld</span><strong>2 FTE</strong></div>
-            <div><span>Live in</span><strong>3 weken</strong></div>
-            <div><span>Gem. ROI</span><strong>3,9×</strong></div>
-          </div>
-          <a href="#contact" class="service-card__link">Gratis demo aanvragen →</a>
-        </article>
-        <article class="service-card">
-          <div class="service-card__badges"><span class="badge badge--green">+ Logistiek &amp; Zorg</span></div>
-          <h4>Personeelsplanning automatiseren</h4>
-          <p>AI-roosterplanning op basis van beschikbaarheid, contracturen, vaardigheden en werkdruk. Conflicten automatisch gedetecteerd. Planners besparen gemiddeld 14 uur per week.</p>
-          <div class="service-card__metrics">
-            <div><span>Tijdsbesparing</span><strong>14u/week</strong></div>
-            <div><span>Fouten</span><strong>-89%</strong></div>
-            <div><span>Live in</span><strong>6 weken</strong></div>
-            <div><span>Gem. ROI</span><strong>3,5×</strong></div>
-          </div>
-          <a href="#contact" class="service-card__link">Gratis demo aanvragen →</a>
-        </article>
-      </div>
-    </div>
-
-    <!-- Free Scan CTA -->
-    <div class="scan-cta-banner">
-      <div>
-        <p class="scan-cta-banner__tag">GRATIS SCAN</p>
-        <h3>Welke oplossing levert jouw bedrijf <em>het meeste op?</em></h3>
-        <p>In 2 minuten weet je precies welke AI-oplossing het grootste effect heeft op jouw specifieke situatie — met een concrete ROI-berekening.</p>
-      </div>
-      <div>
-        <a href="#contact" class="btn btn--turquoise btn--lg">Start gratis AI Profit Scan →</a>
-        <p>8 vragen &nbsp;·&nbsp; direct PDF-rapport &nbsp;·&nbsp; 100% gratis</p>
-      </div>
-    </div>
-
-    <!-- Operaties & Data -->
-    <div class="service-category">
-      <div class="service-category__header">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="2" aria-hidden="true"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-        <div>
-          <h3>Operaties &amp; Data</h3>
-          <p>Realtime inzicht, voorspelbare processen en datagedreven beslissingen zonder data-analist</p>
-        </div>
-      </div>
-      <div class="service-cards-grid">
-        <article class="service-card service-card--featured">
-          <div class="service-card__badges"><span class="badge badge--yellow">⭐ Zorg &amp; Productie</span></div>
-          <h4>Live BI-dashboard &amp; rapportages</h4>
-          <p>Realtime inzicht in omzet, marge, bezetting en KPI's — op elk apparaat. Maandrapportages die zichzelf genereren. Gekoppeld aan al jouw bestaande systemen via standaard API's.</p>
-          <div class="service-card__metrics">
-            <div><span>Rapport tijd</span><strong>2 dgn → 0</strong></div>
-            <div><span>Betere beslissingen</span><strong class="text-turquoise">Real-time</strong></div>
-            <div><span>Live in</span><strong>8 weken</strong></div>
-            <div><span>Gem. ROI</span><strong>3,2×</strong></div>
-          </div>
-          <a href="#contact" class="service-card__link">Gratis demo aanvragen →</a>
-        </article>
-        <article class="service-card">
-          <div class="service-card__badges"><span class="badge badge--green">+ Groothandel</span></div>
-          <h4>Voorraad- &amp; orderbeheer AI</h4>
-          <p>Voorraadniveaus voorspellen op basis van historische data, seizoenen en trends. Bestellingen automatisch triggeren. Orderverwerking 3× sneller. Bewezen: 23% minder overstock.</p>
-          <div class="service-card__metrics">
-            <div><span>Minder overstock</span><strong>23%</strong></div>
-            <div><span>Orders sneller</span><strong>3×</strong></div>
-            <div><span>Live in</span><strong>10 weken</strong></div>
-            <div><span>Gem. ROI</span><strong>3,6×</strong></div>
-          </div>
-          <a href="#contact" class="service-card__link">Gratis demo aanvragen →</a>
-        </article>
-        <article class="service-card">
-          <div class="service-card__badges"><span class="badge badge--green">+ Nieuw 2025</span></div>
-          <h4>Workflow AI-agent op maat</h4>
-          <p>Een semi-autonome AI-agent die meerdere stappen in je bedrijfsproces uitvoert: informatie ophalen, beslissingen nemen, documenten aanmaken en taken uitvoeren — zonder menselijke tussenkomst.</p>
-          <div class="service-card__metrics">
-            <div><span>Handmatige stappen</span><strong>-75%</strong></div>
-            <div><span>Capaciteit</span><strong>+40%</strong></div>
-            <div><span>Live in</span><strong>8 weken</strong></div>
-            <div><span>Gem. ROI</span><strong>4,8×</strong></div>
-          </div>
-          <a href="#contact" class="service-card__link">Gratis demo aanvragen →</a>
-        </article>
-      </div>
-    </div>
-
-    <!-- Marketing & Groei -->
-    <div class="service-category">
-      <div class="service-category__header">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FC4444" stroke-width="2" aria-hidden="true"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-        <div>
-          <h3>Marketing &amp; Groei</h3>
-          <p>Meer omzet genereren zonder meer budget — door slimmere targeting en automatische contentcreatie</p>
-        </div>
-      </div>
-      <div class="service-cards-grid">
-        <article class="service-card service-card--featured-red">
-          <div class="service-card__badges"><span class="badge badge--orange">🔥 MKB favoriet</span></div>
-          <h4>Marketing automatisering</h4>
-          <p>AI schrijft en plant e-mailcampagnes, LinkedIn-posts en advertenties automatisch. Content gebaseerd op jouw tone-of-voice en sector. Gemiddeld 40 marketing-items per maand automatisch gegenereerd.</p>
-          <div class="service-card__metrics">
-            <div><span>Content output</span><strong class="text-turquoise">40×/mnd</strong></div>
-            <div><span>Tijdsbesparing</span><strong>12u/week</strong></div>
-            <div><span>Live in</span><strong>4 weken</strong></div>
-            <div><span>Gem. ROI</span><strong>3,4×</strong></div>
-          </div>
-          <a href="#contact" class="service-card__link">Gratis demo aanvragen →</a>
-        </article>
-        <article class="service-card">
-          <div class="service-card__badges"><span class="badge badge--green">+ Hoge LTV</span></div>
-          <h4>Klantretentie &amp; churn-preventie AI</h4>
-          <p>AI analyseert klantgedrag en signaleert wanneer een klant dreigt af te haken — vóórdat ze opzeggen. Automatisch persoonlijk contact op het juiste moment. Gemiddeld 28% minder klantverloop.</p>
-          <div class="service-card__metrics">
-            <div><span>Minder churn</span><strong class="text-turquoise">-28%</strong></div>
-            <div><span>Hogere LTV</span><strong>+35%</strong></div>
-            <div><span>Live in</span><strong>7 weken</strong></div>
-            <div><span>Gem. ROI</span><strong>5,1×</strong></div>
-          </div>
-          <a href="#contact" class="service-card__link">Gratis demo aanvragen →</a>
-        </article>
-        <article class="service-card">
-          <div class="service-card__badges"><span class="badge badge--green">+ HR &amp; Groei</span></div>
-          <h4>HR-automatisering &amp; onboarding</h4>
-          <p>Vacatureteksten automatisch gegenereerd, CV's gescreend door AI, onboarding-workflows op autopilot. Administratiekantoor met 12 medewerkers nam 60 extra klanten aan zonder extra mensen.</p>
-          <div class="service-card__metrics">
-            <div><span>Capaciteitsgroei</span><strong>+40%</strong></div>
-            <div><span>HR-tijd</span><strong>-50%</strong></div>
-            <div><span>Live in</span><strong>6 weken</strong></div>
-            <div><span>Gem. ROI</span><strong>3,0×</strong></div>
-          </div>
-          <a href="#contact" class="service-card__link">Gratis demo aanvragen →</a>
-        </article>
-      </div>
-    </div>
-
-    <!-- Comparison Table -->
-    <div class="solutions-table-wrap">
-      <h3>Welke oplossing past bij jou?</h3>
-      <p>Overzicht per oplossing: implementatietijd, sector en ROI</p>
-      <div class="table-scroll">
-        <table class="solutions-table" aria-label="Overzicht AI oplossingen">
-          <thead>
-            <tr>
-              <th>OPLOSSING</th>
-              <th>BESTE VOOR</th>
-              <th>LIVE IN</th>
-              <th>GEM. ROI</th>
-              <th>AVG</th>
-              <th>NL SUPPORT</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>AI Chatbot klantenservice</strong><br><small>24/7 vragen beantwoorden</small></td><td>Alle sectoren</td><td><span class="badge badge--teal">3 weken</span></td><td>4,1×</td><td>✓</td><td>✓</td></tr>
-            <tr><td><strong>Offerte-automatisering</strong><br><small>Sneller meer opdrachten winnen</small></td><td>Bouw &amp; dienst</td><td><span class="badge badge--teal">4 weken</span></td><td>3,8×</td><td>✓</td><td>✓</td></tr>
-            <tr><td><strong>Sales automation</strong><br><small>Leads opvolgen &amp; converteren</small></td><td>B2B dienstverleners</td><td><span class="badge badge--orange-soft">6 weken</span></td><td>4,5×</td><td>✓</td><td>✓</td></tr>
-            <tr><td><strong>Factuurverwerking autopilot</strong><br><small>Boekhoudautomatisering</small></td><td>Alle sectoren</td><td><span class="badge badge--teal">4 weken</span></td><td>5,2×</td><td>✓</td><td>✓</td></tr>
-            <tr><td><strong>E-mail &amp; inbox automatisering</strong><br><small>Inbox zonder handmatig werk</small></td><td>Dienstverleners</td><td><span class="badge badge--teal">3 weken</span></td><td>3,9×</td><td>✓</td><td>✓</td></tr>
-            <tr><td><strong>Personeelsplanning AI</strong><br><small>Roosters automatisch</small></td><td>Logistiek &amp; zorg</td><td><span class="badge badge--orange-soft">6 weken</span></td><td>3,5×</td><td>✓</td><td>✓</td></tr>
-            <tr><td><strong>Live BI-dashboard</strong><br><small>Realtime KPI-inzicht</small></td><td>Productie &amp; zorg</td><td><span class="badge badge--red-soft">8 weken</span></td><td>3,2×</td><td>✓</td><td>✓</td></tr>
-            <tr><td><strong>Voorraad &amp; orderbeheer AI</strong><br><small>Minder overstock</small></td><td>Groothandel</td><td><span class="badge badge--red-soft">10 weken</span></td><td>3,6×</td><td>✓</td><td>✓</td></tr>
-            <tr><td><strong>Workflow AI-agent</strong><br><small>Multi-stap automatisering</small></td><td>Alle sectoren</td><td><span class="badge badge--red-soft">8 weken</span></td><td>4,8×</td><td>✓</td><td>✓</td></tr>
-            <tr><td><strong>Marketing automatisering</strong><br><small>Content &amp; campagnes autopilot</small></td><td>MKB marketing</td><td><span class="badge badge--teal">4 weken</span></td><td>3,4×</td><td>✓</td><td>✓</td></tr>
-            <tr><td><strong>Klantretentie AI</strong><br><small>Minder churn</small></td><td>Abonnement bedrijven</td><td><span class="badge badge--orange-soft">7 weken</span></td><td>5,1×</td><td>✓</td><td>✓</td></tr>
-            <tr><td><strong>HR &amp; onboarding automatisering</strong><br><small>Groeien zonder extra mensen</small></td><td>Groeiende bedrijven</td><td><span class="badge badge--orange-soft">6 weken</span></td><td>3,0×</td><td>✓</td><td>✓</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="roi-section__cta">
+      <a href="#contact" class="btn btn--navy btn--lg">Zet deze berekening om in resultaat →</a>
+      <p>Gratis kennismakingsgesprek &nbsp;·&nbsp; geen verplichtingen &nbsp;·&nbsp; direct advies</p>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════
-     CASE STUDIES
+     10. GARANTIE BLOK — verwijder laatste bezwaar
 ═══════════════════════════════════════ -->
-<section class="cases-section" id="resultaten" aria-labelledby="cases-h2">
+<section class="guarantee-section" aria-label="90-dagen garantie">
   <div class="container">
-    <p class="section-tag">BEWEZEN RESULTATEN</p>
-    <h2 id="cases-h2">Bedrijven die ons voorgingen</h2>
-    <p class="section-sub">Concrete resultaten van bedrijven die de stap hebben gezet</p>
-
-    <div class="cases-grid">
-      <article class="case-card">
-        <div class="case-card__sector">Financiële dienstverlening</div>
-        <h3>Accountantskantoor</h3>
-        <p class="case-card__size">12 medewerkers</p>
-        <div class="case-card__challenge">
-          <span>UITDAGING</span>
-          <p>Te veel tijd aan maandrapportages</p>
+    <div class="guarantee-block">
+      <div class="guarantee-block__icon" aria-hidden="true">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="rgba(78,192,196,0.2)" stroke="#4EC0C4" stroke-width="1.5"/><path d="M8 12l3 3 5-5" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="guarantee-block__text">
+        <h2>De HartAI 90-Dagen Garantie</h2>
+        <p>Wij starten pas als <strong>wij</strong> zeker weten dat er een echte kans is. En als je geen meetbaar resultaat ziet binnen 90 dagen? Dan werken wij door — zonder extra kosten. Punt. Geen kleine lettertjes. Geen gedoe.</p>
+      </div>
+      <div class="guarantee-block__pillars">
+        <div class="guarantee-pillar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Vaste prijs — geen uurtje-factuurtje</span>
         </div>
-        <div class="case-card__results">
-          <div><strong>€42K</strong><span>bespaard<br>jaar 1</span></div>
-          <div><strong>18je/week</strong><span>teruggewonnen<br>impact</span></div>
+        <div class="guarantee-pillar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>AVG-compliant &amp; Europese datacenters</span>
         </div>
-        <blockquote>"Rapportages die vroeger 2 dagen kostten, zijn nu in 20 minuten klaar."</blockquote>
-        <div class="case-card__person">
-          <div class="avatar avatar--sm">L</div>
-          <div><strong>Linda van der Berg</strong><br><span>Managing Partner</span></div>
+        <div class="guarantee-pillar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Resultaat in weken, niet maanden</span>
         </div>
-        <p class="case-card__timeline">⏱ Live in 6 weken</p>
-      </article>
-
-      <article class="case-card">
-        <div class="case-card__sector">Bouw &amp; Installatie</div>
-        <h3>Bouwbedrijf</h3>
-        <p class="case-card__size">35 medewerkers</p>
-        <div class="case-card__challenge">
-          <span>UITDAGING</span>
-          <p>Offerteproces te traag</p>
-        </div>
-        <div class="case-card__results">
-          <div><strong>€78K</strong><span>bespaard<br>jaar 1</span></div>
-          <div><strong>40% snellere</strong><span>offertes<br>impact</span></div>
-        </div>
-        <blockquote>"We winnen nu meer projecten omdat we 2× sneller kunnen reageren op aanvragen."</blockquote>
-        <div class="case-card__person">
-          <div class="avatar avatar--sm">M</div>
-          <div><strong>Marc Jansen</strong><br><span>Directeur</span></div>
-        </div>
-        <p class="case-card__timeline">⏱ Live in 8 weken</p>
-      </article>
-
-      <article class="case-card">
-        <div class="case-card__sector">Logistiek</div>
-        <h3>E-commerce groothandel</h3>
-        <p class="case-card__size">22 medewerkers</p>
-        <div class="case-card__challenge">
-          <span>UITDAGING</span>
-          <p>Orderverwerking bottleneck</p>
-        </div>
-        <div class="case-card__results">
-          <div><strong>€95K</strong><span>bespaard<br>jaar 1</span></div>
-          <div><strong>3× meer</strong><span>orders/dag<br>impact</span></div>
-        </div>
-        <blockquote>"Onze omzet is met 35% gegroeid zonder extra mensen aan te nemen."</blockquote>
-        <div class="case-card__person">
-          <div class="avatar avatar--sm">S</div>
-          <div><strong>Sarah de Wit</strong><br><span>COO</span></div>
-        </div>
-        <p class="case-card__timeline">⏱ Live in 10 weken</p>
-      </article>
-    </div>
-
-    <div class="cases-stats" role="list">
-      <div role="listitem"><span class="cases-stats__num">150+</span><span>Bedrijven geholpen</span></div>
-      <div role="listitem"><span class="cases-stats__num">€2.5M+</span><span>Bespaard in 2025</span></div>
-      <div role="listitem"><span class="cases-stats__num">98%</span><span>Klanttevredenheid</span></div>
-      <div role="listitem"><span class="cases-stats__num">4.9/5</span><span>Google Reviews</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     PRICING
-═══════════════════════════════════════ -->
-<section class="pricing-section" aria-labelledby="pricing-h2">
-  <div class="container">
-    <p class="section-tag">KIES JE STARTPUNT</p>
-    <h2 id="pricing-h2">Klaar om te starten?</h2>
-    <p class="section-sub">Of je nu onderzoekt, wilt kennismaken, of direct wilt beginnen — we hebben de juiste optie voor jou. <strong>Geen verborgen kosten. Geen verplichtingen.</strong></p>
-
-    <div class="pricing-grid">
-      <article class="pricing-card">
-        <p class="pricing-card__level">NIVEAU 1 · VERKENNEN</p>
-        <h3>Gratis AI Profit Scan</h3>
-        <p>Ontdek in 2 minuten hoeveel jouw bedrijf kan besparen. Direct resultaat. Geen verplichtingen.</p>
-        <div class="pricing-card__detail"><span>TIJDSINVESTERING</span><strong>2 minuten</strong></div>
-        <div class="pricing-card__detail"><span>WAT JE KRIJGT</span><strong>PDF-rapport</strong></div>
-        <ul class="pricing-card__features" role="list">
-          <li>8 vragen over jouw bedrijf</li>
-          <li>Sector-specifieke quick wins</li>
-          <li>100% gratis &amp; vrijblijvend</li>
-        </ul>
-        <a href="#contact" class="btn btn--outline btn--full">Start scan →</a>
-      </article>
-
-      <article class="pricing-card">
-        <p class="pricing-card__level">NIVEAU 2 · KENNISMAKEN</p>
-        <h3>Gratis Strategiegesprek</h3>
-        <p>30 minuten met een specialist. Bespreek je uitdagingen en krijg direct advies — ook als je niet verder gaat.</p>
-        <div class="pricing-card__detail"><span>TIJDSINVESTERING</span><strong>30 minuten</strong></div>
-        <div class="pricing-card__detail"><span>WAT JE KRIJGT</span><strong>Live adviesgesprek</strong></div>
-        <ul class="pricing-card__features" role="list">
-          <li>Analyse van je bottlenecks</li>
-          <li>Eerste ROI-inschatting</li>
-          <li>Concreet advies</li>
-          <li>Geen verkooppraatje</li>
-        </ul>
-        <a href="#contact" class="btn btn--outline btn--full">Plan gesprek →</a>
-      </article>
-
-      <article class="pricing-card pricing-card--featured">
-        <div class="pricing-card__popular">Meest gekozen</div>
-        <p class="pricing-card__level">NIVEAU 3 · IMPLEMENTEREN</p>
-        <h3>Scan &amp; Implementatie</h3>
-        <p>Volledige analyse + directe implementatie. Wij bouwen, jij ziet de resultaten binnen 12 weken gegarandeerd.</p>
-        <div class="pricing-card__detail"><span>TIJDSINVESTERING</span><strong class="text-turquoise">3+ uur (spread)</strong></div>
-        <div class="pricing-card__detail"><span>TERUGVERDIENTIJD</span><strong class="text-turquoise">2-4 maanden</strong></div>
-        <ul class="pricing-card__features" role="list">
-          <li>Volledige procesanalyse</li>
-          <li>Concrete ROI-berekening</li>
-          <li>Implementatiestappen</li>
-          <li>Expert begeleiding + garantie</li>
-        </ul>
-        <a href="#contact" class="btn btn--turquoise btn--full">Start vandaag →</a>
-      </article>
-
-      <article class="pricing-card">
-        <p class="pricing-card__level">NIVEAU 4 · LANGDURIG</p>
-        <h3>Vaste Groeipartner</h3>
-        <p>Je vaste AI-partner voor doorlopende optimalisaties, nieuwe implementaties en strategische sturing.</p>
-        <div class="pricing-card__detail"><span>GEMIDDELDE BESPARING</span><strong>€5000+/jaar</strong></div>
-        <div class="pricing-card__detail"><span>COMMITMENT</span><strong>6 maanden</strong></div>
-        <ul class="pricing-card__features" role="list">
-          <li>Doorlopende implementaties</li>
-          <li>Maandelijkse strategische sturing</li>
-          <li>Vaste contactpersoon</li>
-        </ul>
-        <a href="#contact" class="btn btn--outline btn--full">Neem contact op →</a>
-      </article>
-    </div>
-
-    <div class="pricing-note">
-      <p><strong>Geen prijzen op de website?</strong> Bewust. Elke bedrijfssituatie is anders — wat jij nodig hebt bepaalt wat het kost. In het gratis strategiegesprek krijg je een exacte offerte op maat. <strong>Geen verrassingen achteraf.</strong></p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     LOGOS STRIP
-═══════════════════════════════════════ -->
-<section class="logos-section" aria-label="Certificeringen en partnerships">
-  <div class="container">
-    <p class="logos-section__label">VERTROUWD DOOR</p>
-    <div class="logos-section__row" role="list">
-      <span role="listitem">MKB Nederland</span>
-      <span role="listitem">ISO Gecertificeerd</span>
-      <span role="listitem">Google Partner</span>
-      <span role="listitem">Microsoft Partner</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     RESULTS – WAT KLANTEN BEREIKEN
-═══════════════════════════════════════ -->
-<section class="results-section" aria-labelledby="results-h2">
-  <div class="container">
-    <p class="section-tag section-tag--light">BEWEZEN RESULTATEN</p>
-    <h2 id="results-h2">Wat onze klanten gemiddeld bereiken</h2>
-    <p class="section-sub section-sub--light">Geen beloftes — cijfers. Dit zijn de gemiddelde resultaten die onze klanten behalen binnen het eerste jaar.</p>
-
-    <div class="results-grid">
-      <article class="result-card">
-        <span class="result-card__num">25%</span>
-        <h3>kostenbesparing</h3>
-        <p>Minder handmatig werk betekent direct minder overhead — zonder mensen te ontslaan.</p>
-      </article>
-      <article class="result-card">
-        <span class="result-card__num">12u</span>
-        <h3>per week teruggewonnen</h3>
-        <p>Gemiddeld 12 uur per week die terugvloeit naar factureerbaar werk of acquisitie.</p>
-      </article>
-      <article class="result-card">
-        <span class="result-card__num">15%</span>
-        <h3>omzetgroei jaar 1</h3>
-        <p>Meer tijd voor klanten en sales. Minder tijd aan administratie. Direct zichtbaar in de omzet.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     ABOUT / PARTNER
-═══════════════════════════════════════ -->
-<section class="about-section" id="over-ons" aria-labelledby="about-h2">
-  <div class="container about-section__grid">
-    <div class="about-section__image" aria-hidden="true">
-      <div class="about-section__img-placeholder">
-        <div class="about-section__badge">
-          <span class="text-turquoise" style="font-size:2rem;font-weight:800">98%</span>
-          <span>Klanttevredenheid</span>
+        <div class="guarantee-pillar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Geen technische kennis vereist</span>
         </div>
       </div>
     </div>
-    <div class="about-section__text">
-      <p class="section-tag">JE PARTNER IN GROEI</p>
-      <h2 id="about-h2">Vertrouwd door ambitieuze ondernemers</h2>
-      <p>Wij zijn geen consultants die rapporten schrijven en verdwijnen. Wij zijn je implementatiepartner die resultaat levert — van eerste analyse tot meetbare impact.</p>
-      <ul class="about-section__features" role="list">
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Transparante prijzen — geen verborgen kosten</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Snelle implementatie — resultaat in weken, niet maanden</li>
-        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Persoonlijke begeleiding — geen callcenters</li>
-      </ul>
-    </div>
   </div>
 </section>
 
-
 <!-- ═══════════════════════════════════════
-     FOR WHO
+     11. FAQ — bezwaren wegnemen + SEO
 ═══════════════════════════════════════ -->
-<section class="forwho-section" aria-labelledby="forwho-h2">
+<section class="faq-section" id="faq" aria-labelledby="faq-h2">
   <div class="container">
-    <p class="section-tag">VOOR WIE</p>
-    <h2 id="forwho-h2">Wij werken voor bedrijven die willen groeien</h2>
+    <p class="section-tag">VEELGESTELDE VRAGEN</p>
+    <h2 id="faq-h2">Alles wat je wilt weten</h2>
+    <p class="section-sub">Geen verborgen agenda. Directe antwoorden.</p>
 
-    <div class="forwho-grid">
-      <article class="forwho-card">
-        <div class="forwho-card__icon" aria-hidden="true">💼</div>
-        <h3>Zakelijke dienstverleners</h3>
-        <p>Advocaten, consultants, recruiters. Elke uur die niet aan administratie gaat, is direct meer omzet.</p>
-      </article>
-      <article class="forwho-card">
-        <div class="forwho-card__icon" aria-hidden="true">📊</div>
-        <h3>Accountantskantoren</h3>
-        <p>Automatiseer rapportages en klantcommunicatie. Meer klanten bedienen met hetzelfde team.</p>
-      </article>
-      <article class="forwho-card">
-        <div class="forwho-card__icon" aria-hidden="true">🔨</div>
-        <h3>Bouw &amp; Installatie</h3>
-        <p>Offertes, planningen en facturering op autopilot. Stop met geld laten liggen door trage processen.</p>
-      </article>
-      <article class="forwho-card">
-        <div class="forwho-card__icon" aria-hidden="true">📦</div>
-        <h3>Groothandel &amp; Logistiek</h3>
-        <p>Orderverwerking automatiseren. Dunne marges beschermen door efficiëntie.</p>
-      </article>
-      <article class="forwho-card">
-        <div class="forwho-card__icon" aria-hidden="true">🏠</div>
-        <h3>Makelaars &amp; Vastgoed</h3>
-        <p>Meer panden beheren zonder meer mensen. Contracten en communicatie geautomatiseerd.</p>
-      </article>
-      <article class="forwho-card">
-        <div class="forwho-card__icon" aria-hidden="true">🏢</div>
-        <h3>MKB — alle sectoren</h3>
-        <p>Heeft je 5 tot 250 medewerkers en wil je efficiënter werken? Dan is HartAi voor je gebouwd.</p>
-      </article>
-    </div>
-  </div>
-</section>
+    <div class="faq-list" role="list">
 
-<!-- ═══════════════════════════════════════
-     FULL TESTIMONIAL
-═══════════════════════════════════════ -->
-<section class="full-testimonial" aria-label="Klantgetuigenis">
-  <div class="container full-testimonial__inner">
-    <div class="full-testimonial__logo" aria-hidden="true">
-      <img src="images/logo-white.svg" alt="HartAI" width="52" height="52" />
-    </div>
-    <blockquote>
-      <p>"HartAi heeft ons in 8 weken geholpen om processen te automatiseren die ons jarenlang 15+ uur per week kostten. De ROI was binnen 3 maanden positief."</p>
-      <footer>
-        <img src="images/jeroen-leonard.jpg" alt="Jeroen Leonard" width="48" height="48" class="avatar-photo" />
-        <div>
-          <cite><strong>Jeroen Leonard</strong></cite>
-          <span>Kingdom Supplies</span>
+      <div class="faq-item" role="listitem">
+        <button class="faq-item__q" aria-expanded="false">
+          Hoe lang duurt AI implementatie in het MKB?
+          <svg class="faq-item__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-item__a" hidden>
+          <p>De meeste AI-implementaties bij HartAI tonen meetbaar resultaat binnen 2–4 weken. Een volledige uitrol duurt gemiddeld 6–10 weken. Onze 90-Dagen Garantie betekent: geen resultaat binnen 90 dagen? Dan werken wij door zonder extra kosten.</p>
         </div>
-      </footer>
-    </blockquote>
-  </div>
-</section>
+      </div>
 
-<!-- ═══════════════════════════════════════
-     WHY US
-═══════════════════════════════════════ -->
-<section class="whyus-section" aria-labelledby="whyus-h2">
-  <div class="container">
-    <p class="section-tag">WAAROM HARTAI</p>
-    <h2 id="whyus-h2">Wij zijn anders dan de rest</h2>
+      <div class="faq-item" role="listitem">
+        <button class="faq-item__q" aria-expanded="false">
+          Hoeveel kost AI automatisering voor een MKB bedrijf?
+          <svg class="faq-item__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-item__a" hidden>
+          <p>AI-implementatie bij HartAI begint met een gratis kennismakingsgesprek. Een HartAI Scan &amp; Roadmap start vanaf €1.500. Volledige procesautomatisering vanaf €5.000. De gemiddelde terugverdientijd is 3–4 maanden. Wij rekenen altijd een vaste prijs — geen uurtje-factuurtje, geen verrassingen achteraf.</p>
+        </div>
+      </div>
 
-    <div class="whyus-grid">
-      <article class="whyus-card">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>Resultaat — geen rapporten</h3>
-        <p>Wij leveren werkende oplossingen. Dag na oplevering zie je het verschil.</p>
-      </article>
-      <article class="whyus-card">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>10× goedkoper dan traditioneel</h3>
-        <p>Wat grote bedrijven betalen aan ontwikkelaars, leveren wij voor een fractie — zonder in te leveren op kwaliteit.</p>
-      </article>
-      <article class="whyus-card">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>Vaste prijs — geen verrassingen</h3>
-        <p>Geen uurtje-factuurtje. U weet vooraf precies wat het kost en wat je terugkrijgt.</p>
-      </article>
-      <article class="whyus-card">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>Van advies tot implementatie</h3>
-        <p>Wij denken en doen. Een partner van strategie tot live oplossing.</p>
-      </article>
-      <article class="whyus-card">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>Sector-specifieke kennis</h3>
-        <p>Geen generieke oplossingen — alles afgestemd op hoe je sector werkt.</p>
-      </article>
-      <article class="whyus-card">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>Resultaat gegarandeerd</h3>
-        <p>Wij starten pas als wij zeker weten dat er een echte kans is.</p>
-      </article>
+      <div class="faq-item" role="listitem">
+        <button class="faq-item__q" aria-expanded="false">
+          Welke processen kan ik als MKB bedrijf automatiseren met AI?
+          <svg class="faq-item__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-item__a" hidden>
+          <p>De meest gevraagde AI-toepassingen voor MKB zijn: chatbot klantenservice (24/7), offerte-automatisering, factuurverwerking, e-mail &amp; inbox automatisering, personeelsplanning, live BI-dashboards, marketing automatisering en workflow AI-agents. HartAI biedt 12 kant-en-klare AI-oplossingen voor elke sector.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-item__q" aria-expanded="false">
+          Is AI implementatie veilig voor onze bedrijfsdata?
+          <svg class="faq-item__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-item__a" hidden>
+          <p>Ja. Alle HartAI-oplossingen zijn AVG-compliant, draaien op Europese datacenters en jouw bedrijfsdata wordt nooit gebruikt voor publieke AI-modellen. Wij zijn ISO-gecertificeerd en werken volledig transparant over welke data wordt gebruikt en hoe.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-item__q" aria-expanded="false">
+          Hebben wij technische kennis nodig voor AI implementatie?
+          <svg class="faq-item__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-item__a" hidden>
+          <p>Nee. HartAI verzorgt de volledige implementatie — van analyse tot live oplossing. Jij hoeft nul technische kennis te hebben. Wij trainen je team, leveren documentatie en bieden doorlopende begeleiding. Bouwen niet adviseren is ons motto.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-item__q" aria-expanded="false">
+          Werkt HartAI met ons bestaande software (Exact, AFAS, Salesforce, etc.)?
+          <svg class="faq-item__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-item__a" hidden>
+          <p>Ja. Wij koppelen onze AI-oplossingen aan alle gangbare Nederlandse softwarepakketten: Exact, AFAS, Twinfield, Salesforce, HubSpot, Monday, en meer. Geen vervanging van je bestaande systemen — aanvulling erop.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-item__q" aria-expanded="false">
+          Wat als het toch niet werkt? Is er een garantie?
+          <svg class="faq-item__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-item__a" hidden>
+          <p>Ja — de HartAI 90-Dagen Garantie. Geen meetbaar resultaat binnen 90 dagen? Dan werken wij door zonder extra kosten. Punt. Wij starten bovendien pas met een traject als wij zelf zeker weten dat er een echte kans op succes is.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="faq-cta">
+      <p>Andere vraag? Wij antwoorden binnen 2 uur.</p>
+      <a href="#contact" class="btn btn--navy">Stel je vraag direct →</a>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════
-     FINAL CTA
+     12. FINAL CTA — urgentie + één actie
 ═══════════════════════════════════════ -->
 <section class="final-cta" id="contact" aria-labelledby="final-cta-h2">
   <div class="container">
+
+    <div class="urgency-strip" role="alert">
+      <span class="urgency-strip__dot" aria-hidden="true"></span>
+      <strong>Beperkte beschikbaarheid:</strong> wij begeleiden maximaal 6 nieuwe klanten per kwartaal — nog <strong>3 plekken</strong> beschikbaar.
+    </div>
+
     <h2 id="final-cta-h2">Klaar om je bedrijf winstgevender te maken?</h2>
-    <p>Start met een gratis kennismakingsgesprek van 30 minuten. Geen verplichtingen. Geen verkoopverhaal. Gewoon inzicht.</p>
+    <p>Start met een gratis kennismakingsgesprek van 30 minuten. Geen verplichtingen. Geen verkoopverhaal. Gewoon inzicht in wat het jou oplevert.</p>
 
     <div class="final-cta__card">
-      <h3>Gratis HartAi Kennismakingsgesprek</h3>
+      <h3>Gratis HartAI Kennismakingsgesprek</h3>
       <p>In 30 minuten laten wij je zien waar de grootste kansen liggen in je bedrijf — en wat het concreet kan opleveren.</p>
       <ul class="final-cta__features" role="list">
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Analyse van je grootste bottlenecks</li>
@@ -960,13 +745,13 @@
         <span>tot eerste resultaat</span>
       </div>
       <div role="listitem">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
         <span class="final-cta__stats-num">3×</span>
         <span>gem. ROI eerste jaar</span>
       </div>
       <div role="listitem">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-        <span class="final-cta__stats-num">47+</span>
+        <span class="final-cta__stats-num">150+</span>
         <span>MKB-bedrijven geholpen</span>
       </div>
     </div>
@@ -985,9 +770,9 @@
         <img src="images/logo-white.svg" alt="HartAI logo" width="32" height="32" />
         <span class="nav__logo-text">HartAI</span>
       </a>
-      <p>Groei begint met visie.</p>
+      <p>Bouwen niet adviseren.</p>
       <div class="footer__contact">
-        <a href="https://hartai.nl">hartai.nl</a>
+        <a href="mailto:contact@hartai.nl">contact@hartai.nl</a>
         <span>KVK: [nummer invullen]</span>
         <span>Nederland</span>
       </div>
@@ -1005,7 +790,8 @@
         <li><a href="#diensten">Diensten</a></li>
         <li><a href="#resultaten">Resultaten</a></li>
         <li><a href="#voor-wie">Voor wie</a></li>
-        <li><a href="#over-ons">Over ons</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
 
@@ -1014,7 +800,6 @@
       <ul role="list">
         <li><a href="/privacy">Privacy beleid</a></li>
         <li><a href="/algemene-voorwaarden">Algemene voorwaarden</a></li>
-        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </div>
