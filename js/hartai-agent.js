@@ -19,6 +19,9 @@
     <path d="M7 10H4M7 14H4M17 10H20M17 14H20M10 7V4M14 7V4M10 17V20M14 17V20" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
   </svg>`;
 
+  const SUMMARY_ENDPOINT = '/api/chat-summary';
+  let summaryShown = false;
+
   const QUICK_ACTIONS = [
     { icon: '🧮', label: 'Bereken mijn ROI',      msg: 'Ik wil weten wat AI mij oplevert. Bereken mijn ROI.' },
     { icon: '🔍', label: 'Welke AI past bij mij?', msg: 'Welke AI-oplossing past het beste bij mijn bedrijf?' },
@@ -89,6 +92,13 @@
         ></textarea>
         <button class="ha-send" id="ha-send" aria-label="Verstuur">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+      </div>
+
+      <div class="ha-summary-bar" id="ha-summary-bar" hidden>
+        <button class="ha-summary-btn" id="ha-summary-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v16H4z" stroke-width="0" fill="none"/><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg>
+          Ontvang samenvatting per e-mail
         </button>
       </div>
 
@@ -250,6 +260,7 @@
 
       history.push({ role: 'assistant', content: text });
       hideQuickActionsIfNeeded();
+      maybeShowSummaryBar();
 
     } catch (err) {
       removeTyping();
@@ -318,6 +329,70 @@
       .replace(/\n/g, '<br>');
   }
 
+  // ── Summary bar ──────────────────────────────────────────────────────────────
+  function maybeShowSummaryBar() {
+    if (summaryShown) return;
+    const userMsgs = history.filter(m => m.role === 'user').length;
+    if (userMsgs >= 4) {
+      document.getElementById('ha-summary-bar')?.removeAttribute('hidden');
+      summaryShown = true;
+    }
+  }
+
+  function startSummaryFlow() {
+    const bar = document.getElementById('ha-summary-bar');
+    if (bar) bar.setAttribute('hidden', '');
+
+    // Inject email capture inline in chat
+    const wrap = document.createElement('div');
+    wrap.className = 'ha-msg ha-msg--agent';
+    wrap.id = 'ha-summary-capture';
+    const av = document.createElement('div');
+    av.className = 'ha-msg-avatar';
+    av.innerHTML = AI_ICON_SM;
+    const bubble = document.createElement('div');
+    bubble.className = 'ha-msg-bubble ha-summary-form';
+    bubble.innerHTML = `
+      <p style="margin:0 0 10px;font-size:14px;">Goed idee — ik stuur je een overzicht van ons gesprek + een samenvatting direct naar je inbox. Op welk e-mailadres?</p>
+      <input type="email" id="ha-summary-email" placeholder="jouw@email.nl" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.1);border:1px solid rgba(78,192,196,0.4);border-radius:8px;padding:9px 12px;color:#d4dce8;font-size:14px;font-family:inherit;outline:none;margin-bottom:8px;" />
+      <input type="text" id="ha-summary-name" placeholder="Je naam (optioneel)" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:9px 12px;color:#d4dce8;font-size:14px;font-family:inherit;outline:none;margin-bottom:10px;" />
+      <button id="ha-summary-send" style="background:linear-gradient(135deg,#4EC0C4,#2a9da0);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">Stuur samenvatting →</button>`;
+    wrap.appendChild(av);
+    wrap.appendChild(bubble);
+    document.getElementById('ha-messages').appendChild(wrap);
+    scrollBottom();
+
+    document.getElementById('ha-summary-email')?.focus();
+
+    document.getElementById('ha-summary-send')?.addEventListener('click', async () => {
+      const email = document.getElementById('ha-summary-email')?.value?.trim();
+      const name  = document.getElementById('ha-summary-name')?.value?.trim();
+      if (!email || !email.includes('@')) {
+        document.getElementById('ha-summary-email').style.borderColor = '#e53e3e';
+        return;
+      }
+
+      document.getElementById('ha-summary-send').textContent = 'Versturen…';
+      document.getElementById('ha-summary-send').disabled = true;
+
+      try {
+        await fetch(SUMMARY_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: history, prospectEmail: email, prospectName: name }),
+        });
+        bubble.innerHTML = `<p style="margin:0;font-size:14px;">✅ Verstuurd! Check je inbox — je ontvangt de samenvatting binnen een paar minuten.<br><br>We nemen ook contact met je op. Tot snel! 👋</p>`;
+      } catch {
+        bubble.innerHTML = `<p style="margin:0;font-size:14px;color:#f87171;">Er ging iets mis. Probeer het opnieuw of mail ons via contact@hartai.nl.</p>`;
+      }
+      scrollBottom();
+    });
+
+    document.getElementById('ha-summary-email')?.addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('ha-summary-send')?.click();
+    });
+  }
+
   // ── Proactive ────────────────────────────────────────────────────────────────
   function scheduleProactive() {
     setTimeout(() => {
@@ -342,6 +417,7 @@
     input.addEventListener('input', () => autoResize(input));
 
     document.getElementById('ha-send').addEventListener('click', () => sendMessage());
+    document.getElementById('ha-summary-btn')?.addEventListener('click', startSummaryFlow);
 
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && isOpen) closePanel();

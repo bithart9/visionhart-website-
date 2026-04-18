@@ -407,6 +407,35 @@
   50%       { opacity: 0; }
 }
 
+/* ── Summary bar ── */
+.ha-summary-bar {
+  padding: 8px 14px;
+  background: rgba(78,192,196,0.06);
+  border-top: 1px solid rgba(78,192,196,0.12);
+  flex-shrink: 0;
+}
+.ha-summary-btn {
+  width: 100%;
+  background: rgba(78,192,196,0.1);
+  border: 1px solid rgba(78,192,196,0.25);
+  color: #4EC0C4;
+  border-radius: 10px;
+  padding: 9px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transition: background 0.18s, border-color 0.18s;
+}
+.ha-summary-btn:hover {
+  background: rgba(78,192,196,0.18);
+  border-color: rgba(78,192,196,0.5);
+}
+
 /* ── Footer branding ── */
 .ha-branding {
   text-align: center;
