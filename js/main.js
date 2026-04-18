@@ -53,8 +53,8 @@ modalForm?.addEventListener('submit', async (e) => {
           <h3 style="margin-bottom:8px">Bedankt!</h3>
           <p style="margin-bottom:24px">We nemen binnen 1 werkdag contact op.</p>
           <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-            <button id="modal-reset-btn" class="btn btn--outline btn--sm">Nog een aanvraag</button>
-            <button id="modal-done-btn" class="btn btn--turquoise btn--sm">Sluiten</button>
+            <button type="button" id="modal-reset-btn" class="btn btn--outline btn--sm">Nog een aanvraag</button>
+            <button type="button" id="modal-done-btn" class="btn btn--turquoise btn--sm">Sluiten</button>
           </div>
         </div>`;
       document.getElementById('modal-done-btn')?.addEventListener('click', closeModal);
