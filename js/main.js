@@ -21,8 +21,8 @@ modalClose?.addEventListener('click', closeModal);
 modal?.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hasAttribute('hidden')) closeModal(); });
 
-// Intercept all CTA buttons/links that point to #contact or #scan
-document.querySelectorAll('a.btn[href="#contact"], a.btn[href="#scan"], a[href="#contact"].sector-card__link').forEach(btn => {
+// Intercept ALL links pointing to #contact or #scan
+document.querySelectorAll('a[href="#contact"], a[href="#scan"]').forEach(btn => {
   btn.addEventListener('click', e => {
     e.preventDefault();
     openModal();
