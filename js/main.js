@@ -45,12 +45,23 @@ modalForm?.addEventListener('submit', async (e) => {
       body: JSON.stringify(data),
     });
     if (res.ok) {
+      // Sla originele form HTML op zodat we kunnen resetten
+      const originalHTML = modalForm.innerHTML;
       modalForm.innerHTML = `
         <div style="text-align:center;padding:32px 0;">
           <div style="font-size:3rem;margin-bottom:16px">✅</div>
           <h3 style="margin-bottom:8px">Bedankt!</h3>
-          <p>We nemen binnen 1 werkdag contact op.</p>
+          <p style="margin-bottom:24px">We nemen binnen 1 werkdag contact op.</p>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+            <button id="modal-reset-btn" class="btn btn--outline btn--sm">Nog een aanvraag</button>
+            <button id="modal-done-btn" class="btn btn--turquoise btn--sm">Sluiten</button>
+          </div>
         </div>`;
+      document.getElementById('modal-done-btn')?.addEventListener('click', closeModal);
+      document.getElementById('modal-reset-btn')?.addEventListener('click', () => {
+        modalForm.innerHTML = originalHTML;
+        modalForm.querySelector('input')?.focus();
+      });
     } else {
       const body = await res.json().catch(() => ({}));
       throw new Error(body.error || `HTTP ${res.status}`);
