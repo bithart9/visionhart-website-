@@ -32,6 +32,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/cookie.css" />
+  <!-- GA4 Consent Mode v2 — default deny, GA4 script geladen ná toestemming -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});
+  </script>
   <meta name="theme-color" content="#1B365D" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="geo.region" content="NL" />
@@ -788,6 +795,8 @@
       <ul role="list">
         <li><a href="/privacy/">Privacy beleid</a></li>
         <li><a href="/algemene-voorwaarden/">Algemene voorwaarden</a></li>
+        <li><a href="/cookiebeleid/">Cookiebeleid</a></li>
+        <li><button onclick="openCookieSettings()" style="background:none;border:none;cursor:pointer;padding:0;font:inherit;color:rgba(255,255,255,.55);font-size:.88rem;text-align:left;" aria-label="Cookie-instellingen beheren">Cookie-instellingen</button></li>
       </ul>
     </nav>
   </div>
@@ -842,6 +851,94 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════
+     COOKIE BANNER
+═══════════════════════════════════════ -->
+<div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie-melding" hidden>
+  <div class="cookie-banner__inner">
+    <div class="cookie-banner__text">
+      <strong>🍪 Wij gebruiken cookies</strong>
+      <p>Functionele cookies zijn altijd actief. Met jouw toestemming plaatsen wij ook analytische en marketingcookies.
+        <a href="/cookiebeleid/">Meer informatie</a></p>
+    </div>
+    <div class="cookie-banner__actions">
+      <button id="cookie-open-settings" class="btn btn--outline btn--sm">Instellingen</button>
+      <button id="cookie-decline-all"   class="btn btn--outline btn--sm">Weigeren</button>
+      <button id="cookie-accept-all"    class="btn btn--turquoise btn--sm">Alles accepteren</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     COOKIE SETTINGS MODAL
+═══════════════════════════════════════ -->
+<div id="cookie-settings-modal" class="cookie-settings-overlay" role="dialog" aria-modal="true" aria-labelledby="cookie-settings-title" hidden>
+  <div class="cookie-settings-panel">
+
+    <div class="cookie-settings-panel__head">
+      <div>
+        <h3 id="cookie-settings-title">Cookie-instellingen</h3>
+        <p>Kies welke cookies je toestaat. Functionele cookies zijn altijd ingeschakeld — die zijn nodig voor de website.</p>
+      </div>
+      <button class="cookie-settings-close" id="cookie-settings-close" aria-label="Sluiten">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="cookie-settings-panel__body">
+
+      <div class="cookie-row">
+        <div class="cookie-row__info">
+          <strong>Functioneel</strong>
+          <p>Noodzakelijk voor het functioneren van de website: cookievoorkeur opslaan, navigatie, formulieren.</p>
+          <small>Cookies: hartai_consent_v1 (localStorage)</small>
+        </div>
+        <span class="cookie-always-on">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+          Altijd aan
+        </span>
+      </div>
+
+      <div class="cookie-row">
+        <div class="cookie-row__info">
+          <strong>Analytisch</strong>
+          <p>Google Analytics 4 — anonieme statistieken over paginabezoek en gedrag. Helpt ons de website te verbeteren.</p>
+          <small>Cookies: _ga, _ga_XXXXXXXXXX (Google LLC, VS) · Bewaard: 2 jaar</small>
+        </div>
+        <label class="toggle-switch" aria-label="Analytische cookies aan/uit">
+          <input type="checkbox" id="toggle-analytics" />
+          <span class="toggle-switch__track"><span class="toggle-switch__thumb"></span></span>
+        </label>
+      </div>
+
+      <div class="cookie-row">
+        <div class="cookie-row__info">
+          <strong>Marketing</strong>
+          <p>Retargeting-pixels en advertentiecookies voor gepersonaliseerde advertenties op Google en sociale media.</p>
+          <small>Cookies: _gcl_au, fbp (Google/Meta, VS) · Bewaard: 90 dagen</small>
+        </div>
+        <label class="toggle-switch" aria-label="Marketingcookies aan/uit">
+          <input type="checkbox" id="toggle-marketing" />
+          <span class="toggle-switch__track"><span class="toggle-switch__thumb"></span></span>
+        </label>
+      </div>
+
+    </div>
+
+    <div class="cookie-settings-panel__foot">
+      <div class="cookie-settings-panel__foot-row">
+        <button id="cookie-settings-accept-all" class="btn btn--turquoise">Alles accepteren</button>
+        <button id="cookie-settings-save"       class="btn btn--navy">Opslaan</button>
+      </div>
+      <p style="font-size:.75rem;color:var(--text-muted);text-align:center;margin:4px 0 0;">
+        Meer weten? Lees ons <a href="/cookiebeleid/" style="color:var(--turquoise)">cookiebeleid</a>.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/cookie-consent.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>
 </html>

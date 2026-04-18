@@ -171,25 +171,6 @@ function showFormError(msg) {
   errEl.textContent = msg;
 }
 
-// ── Cookie banner ──
-const cookieBanner  = document.getElementById('cookie-banner');
-const cookieAccept  = document.getElementById('cookie-accept');
-const cookieDecline = document.getElementById('cookie-decline');
-
-if (!localStorage.getItem('cookieConsent')) {
-  setTimeout(() => cookieBanner?.removeAttribute('hidden'), 1500);
-}
-
-cookieAccept?.addEventListener('click', () => {
-  localStorage.setItem('cookieConsent', 'accepted');
-  cookieBanner.setAttribute('hidden', '');
-});
-
-cookieDecline?.addEventListener('click', () => {
-  localStorage.setItem('cookieConsent', 'declined');
-  cookieBanner.setAttribute('hidden', '');
-});
-
 // ── FAQ Accordion ──
 document.querySelectorAll('.faq-item__q').forEach(btn => {
   btn.addEventListener('click', () => {
