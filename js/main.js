@@ -51,13 +51,18 @@ modalForm?.addEventListener('submit', async (e) => {
           <h3 style="margin-bottom:8px">Bedankt!</h3>
           <p>We nemen binnen 1 werkdag contact op.</p>
         </div>`;
-    } else { throw new Error(); }
-  } catch {
+    } else {
+      const body = await res.json().catch(() => ({}));
+      throw new Error(body.error || `HTTP ${res.status}`);
+    }
+  } catch(err) {
     btn.disabled = false;
     btn.innerHTML = orig;
-    let err = modalForm.querySelector('.form-error');
-    if (!err) { err = document.createElement('p'); err.className = 'form-error'; err.style.cssText = 'color:#E53E3E;font-size:.85rem;text-align:center;'; modalForm.appendChild(err); }
-    err.textContent = 'Er ging iets mis. Probeer het opnieuw of mail ons op info@hartai.nl';
+    let errEl = modalForm.querySelector('.form-error');
+    if (!errEl) { errEl = document.createElement('p'); errEl.className = 'form-error'; errEl.style.cssText = 'color:#E53E3E;font-size:.85rem;text-align:center;'; modalForm.appendChild(errEl); }
+    errEl.textContent = err.message && err.message !== 'Failed to fetch'
+      ? err.message
+      : 'Er ging iets mis. Probeer het opnieuw of mail ons op contact@hartai.nl';
   }
 });
 
@@ -156,7 +161,7 @@ form?.addEventListener('submit', async (e) => {
   } catch {
     btn.disabled = false;
     btn.innerHTML = originalText;
-    showFormError('Er ging iets mis. Probeer het opnieuw of mail ons op info@hartai.nl');
+    showFormError('Er ging iets mis. Probeer het opnieuw of mail ons op contact@hartai.nl');
   }
 });
 
