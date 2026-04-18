@@ -39,7 +39,7 @@ modalForm?.addEventListener('submit', async (e) => {
   btn.innerHTML = '<span>Verzenden...</span>';
   const data = Object.fromEntries(new FormData(modalForm));
   try {
-    const res = await fetch('/contact', {
+    const res = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(data),
@@ -136,7 +136,7 @@ form?.addEventListener('submit', async (e) => {
   const data = Object.fromEntries(new FormData(form));
 
   try {
-    const res = await fetch('/contact', {
+    const res = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(data),
