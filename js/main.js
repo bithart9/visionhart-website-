@@ -1,4 +1,4 @@
-/* HartAI – VisionHart | main.js */
+/* HartAI | main.js */
 
 // ── Dynamic year in footer ──
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -148,7 +148,7 @@ form?.addEventListener('submit', async (e) => {
   } catch {
     btn.disabled = false;
     btn.innerHTML = originalText;
-    showFormError('Er ging iets mis. Probeer het opnieuw of mail ons op info@visionhart.nl');
+    showFormError('Er ging iets mis. Probeer het opnieuw of mail ons op info@hartai.nl');
   }
 });
 

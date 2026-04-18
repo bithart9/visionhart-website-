@@ -8,6 +8,7 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://www.visionhart.nl/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visionhart.nl/"/>
   </url>
 
   <url>
