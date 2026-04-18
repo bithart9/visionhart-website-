@@ -127,7 +127,7 @@
       const typing = showTypingRaw();
       setTimeout(() => {
         typing.remove();
-        appendAgentMessage(WELCOME);
+        appendAgentMessage(WELCOME, true); // welcome is UI-only, not sent to API
         document.getElementById('ha-input')?.focus();
       }, 900);
     } else {
@@ -144,11 +144,11 @@
   }
 
   // ── Messages ─────────────────────────────────────────────────────────────────
-  function appendAgentMessage(text) {
+  function appendAgentMessage(text, skipHistory) {
     const el = createBubble('agent', text);
     document.getElementById('ha-messages').appendChild(el);
     scrollBottom();
-    history.push({ role: 'assistant', content: text });
+    if (!skipHistory) history.push({ role: 'assistant', content: text });
     hideQuickActionsIfNeeded();
     return el;
   }
