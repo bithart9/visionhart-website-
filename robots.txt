@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /contact-success/
+
+Sitemap: https://www.visionhart.nl/sitemap.xml
