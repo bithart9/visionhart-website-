@@ -4,12 +4,12 @@
   "description": "AI-oplossingen voor het Nederlandse MKB. Meer winst, lagere overhead.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0A0A0F",
-  "theme_color": "#7C5CFC",
+  "background_color": "#1B365D",
+  "theme_color": "#1B365D",
   "lang": "nl",
   "icons": [
-    { "src": "/images/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/images/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "/images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    { "src": "/images/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/images/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/images/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }
