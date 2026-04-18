@@ -3,58 +3,58 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>https://www.visionhart.nl/</loc>
+    <loc>https://www.hartai.nl/</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://www.visionhart.nl/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.visionhart.nl/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.hartai.nl/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.hartai.nl/"/>
   </url>
 
   <url>
-    <loc>https://www.visionhart.nl/diensten/ai-automatisering/</loc>
+    <loc>https://www.hartai.nl/diensten/ai-automatisering/</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.visionhart.nl/diensten/ai-chatbot/</loc>
+    <loc>https://www.hartai.nl/diensten/ai-chatbot/</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.visionhart.nl/diensten/ai-strategie/</loc>
+    <loc>https://www.hartai.nl/diensten/ai-strategie/</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.visionhart.nl/diensten/ai-training/</loc>
+    <loc>https://www.hartai.nl/diensten/ai-training/</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.visionhart.nl/over-ons/</loc>
+    <loc>https://www.hartai.nl/over-ons/</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.visionhart.nl/contact/</loc>
+    <loc>https://www.hartai.nl/contact/</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.visionhart.nl/privacy/</loc>
+    <loc>https://www.hartai.nl/privacy/</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

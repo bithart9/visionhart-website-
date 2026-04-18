@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /contact-success/
 
-Sitemap: https://www.visionhart.nl/sitemap.xml
+Sitemap: https://www.hartai.nl/sitemap.xml
