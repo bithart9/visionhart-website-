@@ -197,35 +197,21 @@ export default async function handler(req, res) {
         max_tokens: 600,
         system: SYSTEM_PROMPT,
         messages: sanitized,
-        stream: true,
       }),
     });
 
     if (!anthropicRes.ok) {
+      const errText = await anthropicRes.text().catch(() => '');
+      console.error('Anthropic error', anthropicRes.status, errText);
       return res.status(502).json({ error: 'AI service unavailable' });
     }
 
-    res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('Connection', 'keep-alive');
-    res.setHeader('X-Accel-Buffering', 'no');
+    const data = await anthropicRes.json();
+    const text = data?.content?.[0]?.text || '';
+    return res.status(200).json({ text });
 
-    const reader = anthropicRes.body.getReader();
-    const decoder = new TextDecoder();
-
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      res.write(decoder.decode(value, { stream: true }));
-    }
-
-    res.write('data: [DONE]\n\n');
-    res.end();
   } catch (err) {
-    if (!res.headersSent) {
-      res.status(500).json({ error: 'Server error' });
-    } else {
-      res.end();
-    }
+    console.error('chat handler error:', err);
+    return res.status(500).json({ error: 'Server error' });
   }
 }

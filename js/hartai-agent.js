@@ -5,75 +5,95 @@
   const ENDPOINT = '/api/chat';
   const PROACTIVE_DELAY = 9000;
 
+  // SVG AI chip icon — used for avatar
+  const AI_ICON_SVG = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <rect x="7" y="7" width="10" height="10" rx="1.5" stroke="#fff" stroke-width="1.5"/>
+    <circle cx="12" cy="12" r="2" fill="#fff"/>
+    <path d="M7 10H4M7 12H4M7 14H4M17 10H20M17 12H20M17 14H20M10 7V4M12 7V4M14 7V4M10 17V20M12 17V20M14 17V20" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>`;
+
+  // Small avatar SVG for message bubbles
+  const AI_ICON_SM = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <rect x="7" y="7" width="10" height="10" rx="1.5" stroke="#fff" stroke-width="1.8"/>
+    <circle cx="12" cy="12" r="2" fill="#fff"/>
+    <path d="M7 10H4M7 14H4M17 10H20M17 14H20M10 7V4M14 7V4M10 17V20M14 17V20" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+  </svg>`;
+
   const QUICK_ACTIONS = [
-    { icon: '🧮', label: 'Bereken mijn ROI', msg: 'Ik wil weten wat AI mij oplevert. Bereken mijn ROI.' },
+    { icon: '🧮', label: 'Bereken mijn ROI',      msg: 'Ik wil weten wat AI mij oplevert. Bereken mijn ROI.' },
     { icon: '🔍', label: 'Welke AI past bij mij?', msg: 'Welke AI-oplossing past het beste bij mijn bedrijf?' },
-    { icon: '💬', label: 'Wat kost dit?', msg: 'Wat zijn de kosten en wat levert het op?' },
-    { icon: '📅', label: 'Plan een demo', msg: 'Ik wil een gratis kennismakingsgesprek plannen.' },
-    { icon: '🔌', label: 'Mijn software?', msg: 'Werkt jullie oplossing met mijn bestaande software?' },
-    { icon: '❓', label: 'Stel een vraag', msg: 'Ik heb een vraag over HartAI.' },
+    { icon: '💬', label: 'Wat kost het?',           msg: 'Wat zijn de kosten en wat levert het op?' },
+    { icon: '📅', label: 'Plan een demo',           msg: 'Ik wil een gratis kennismakingsgesprek plannen.' },
+    { icon: '🔌', label: 'Mijn software?',          msg: 'Werkt jullie oplossing met mijn bestaande software?' },
+    { icon: '❓', label: 'Stel een vraag',          msg: 'Ik heb een vraag over HartAI.' },
   ];
 
-  const WELCOME = 'Hoi 👋 Ik ben de AI Specialist van HartAI. Ik help je ontdekken hoeveel tijd en geld AI voor jouw bedrijf kan besparen.\n\nWaar kan ik je mee helpen?';
+  const WELCOME = 'Hoi 👋 Ik ben de AI Specialist van HartAI. Ik help je direct ontdekken hoeveel tijd en geld AI voor jouw bedrijf kan besparen.\n\nWaar kan ik je mee helpen?';
 
   let isOpen = false;
   let isStreaming = false;
   let history = [];
   let proactiveFired = false;
 
-  // ── Build HTML ──────────────────────────────────────────────────────────────
+  // ── Build ────────────────────────────────────────────────────────────────────
   function build() {
-    const wrap = document.createElement('div');
-    wrap.innerHTML = `
-      <!-- Trigger -->
-      <button class="ha-trigger" id="ha-trigger" aria-label="Chat met HartAI AI Specialist" aria-expanded="false">
-        <div class="ha-trigger-avatar" aria-hidden="true">🤖</div>
-        <div class="ha-trigger-text">
-          <span class="ha-trigger-label">AI Specialist</span>
-          <span class="ha-trigger-sub">Direct beschikbaar</span>
-        </div>
-        <div class="ha-trigger-dot" aria-hidden="true"></div>
-        <span class="ha-badge" id="ha-badge" hidden aria-live="polite">1</span>
-      </button>
-
-      <!-- Panel -->
-      <div class="ha-panel" id="ha-panel" role="dialog" aria-label="HartAI Chat" aria-modal="true" hidden>
-
-        <div class="ha-header">
-          <div class="ha-header-avatar" aria-hidden="true">🤖</div>
-          <div class="ha-header-info">
-            <p class="ha-header-name">HartAI AI Specialist</p>
-            <p class="ha-header-status">
-              <span class="ha-header-status-dot" aria-hidden="true"></span>
-              AI Specialist Online
-            </p>
-          </div>
-          <button class="ha-close" id="ha-close" aria-label="Sluit chat">✕</button>
-        </div>
-
-        <div class="ha-messages" id="ha-messages" role="log" aria-live="polite" aria-label="Chatberichten"></div>
-
-        <div class="ha-quick-actions" id="ha-quick-actions" aria-label="Snelle keuzes"></div>
-
-        <div class="ha-input-area">
-          <textarea
-            class="ha-input"
-            id="ha-input"
-            placeholder="Stel een vraag…"
-            rows="1"
-            maxlength="1000"
-            aria-label="Typ je bericht"
-          ></textarea>
-          <button class="ha-send" id="ha-send" aria-label="Verstuur bericht">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-          </button>
-        </div>
-
-        <div class="ha-branding">Powered by <a href="https://www.hartai.nl" target="_blank" rel="noopener">HartAI</a></div>
+    // Trigger button
+    const trigger = document.createElement('button');
+    trigger.className = 'ha-trigger';
+    trigger.id = 'ha-trigger';
+    trigger.setAttribute('aria-label', 'Chat met HartAI AI Specialist');
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.innerHTML = `
+      <div class="ha-trigger-icon">${AI_ICON_SVG}</div>
+      <div class="ha-trigger-info">
+        <span class="ha-trigger-name">AI Specialist</span>
+        <span class="ha-trigger-status">
+          <span class="ha-trigger-dot"></span>Direct beschikbaar
+        </span>
       </div>
-    `;
-    document.body.appendChild(wrap.firstElementChild); // trigger
-    document.body.appendChild(wrap.lastElementChild);  // panel
+      <span class="ha-badge" id="ha-badge" hidden aria-live="polite">1</span>`;
+    document.body.appendChild(trigger);
+
+    // Panel
+    const panel = document.createElement('div');
+    panel.className = 'ha-panel';
+    panel.id = 'ha-panel';
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-label', 'HartAI Chat');
+    panel.setAttribute('aria-modal', 'true');
+    panel.setAttribute('hidden', '');
+    panel.innerHTML = `
+      <div class="ha-header">
+        <div class="ha-header-avatar">${AI_ICON_SVG}</div>
+        <div class="ha-header-info">
+          <p class="ha-header-name">HartAI AI Specialist</p>
+          <p class="ha-header-status">
+            <span class="ha-status-live">Live</span>&nbsp;· Altijd beschikbaar
+          </p>
+        </div>
+        <button class="ha-close" id="ha-close" aria-label="Sluit chat">✕</button>
+      </div>
+
+      <div class="ha-messages" id="ha-messages" role="log" aria-live="polite" aria-label="Chatberichten"></div>
+
+      <div class="ha-quick-actions" id="ha-quick-actions" aria-label="Snelle keuzes"></div>
+
+      <div class="ha-input-area">
+        <textarea
+          class="ha-input"
+          id="ha-input"
+          placeholder="Stel een vraag…"
+          rows="1"
+          maxlength="1000"
+          aria-label="Typ je bericht"
+        ></textarea>
+        <button class="ha-send" id="ha-send" aria-label="Verstuur">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+      </div>
+
+      <div class="ha-branding">Powered by <a href="https://www.hartai.nl" target="_blank" rel="noopener">HartAI</a></div>`;
+    document.body.appendChild(panel);
 
     buildQuickActions();
   }
@@ -89,25 +109,30 @@
     });
   }
 
-  // ── Open / Close ────────────────────────────────────────────────────────────
+  // ── Open / Close ─────────────────────────────────────────────────────────────
   function openPanel() {
     isOpen = true;
     const panel = document.getElementById('ha-panel');
     const trigger = document.getElementById('ha-trigger');
     panel.removeAttribute('hidden');
-    requestAnimationFrame(() => panel.classList.add('is-open'));
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => panel.classList.add('is-open'));
+    });
     trigger.setAttribute('aria-expanded', 'true');
     document.getElementById('ha-badge').setAttribute('hidden', '');
     proactiveFired = true;
 
     if (history.length === 0) {
-      appendAgentMessage(WELCOME);
+      // Show welcome with typing delay for realism
+      const typing = showTypingRaw();
+      setTimeout(() => {
+        typing.remove();
+        appendAgentMessage(WELCOME);
+        document.getElementById('ha-input')?.focus();
+      }, 900);
+    } else {
+      setTimeout(() => document.getElementById('ha-input')?.focus(), 250);
     }
-
-    setTimeout(() => {
-      const input = document.getElementById('ha-input');
-      if (input) input.focus();
-    }, 250);
   }
 
   function closePanel() {
@@ -115,21 +140,16 @@
     const panel = document.getElementById('ha-panel');
     panel.classList.remove('is-open');
     document.getElementById('ha-trigger').setAttribute('aria-expanded', 'false');
-    setTimeout(() => panel.setAttribute('hidden', ''), 280);
+    setTimeout(() => panel.setAttribute('hidden', ''), 300);
   }
 
-  // ── Messages ────────────────────────────────────────────────────────────────
+  // ── Messages ─────────────────────────────────────────────────────────────────
   function appendAgentMessage(text) {
     const el = createBubble('agent', text);
     document.getElementById('ha-messages').appendChild(el);
     scrollBottom();
-
     history.push({ role: 'assistant', content: text });
-
-    // Hide quick actions after first real exchange
-    if (history.filter(m => m.role === 'assistant').length >= 2) {
-      document.getElementById('ha-quick-actions').setAttribute('hidden', '');
-    }
+    hideQuickActionsIfNeeded();
     return el;
   }
 
@@ -148,8 +168,7 @@
     if (type === 'agent') {
       const av = document.createElement('div');
       av.className = 'ha-msg-avatar';
-      av.setAttribute('aria-hidden', 'true');
-      av.textContent = '🤖';
+      av.innerHTML = AI_ICON_SM;
       wrap.appendChild(av);
     }
 
@@ -160,42 +179,44 @@
     return wrap;
   }
 
-  function showTyping() {
-    const msgEl = document.getElementById('ha-messages');
+  function showTypingRaw() {
     const el = document.createElement('div');
     el.className = 'ha-msg ha-msg--agent';
     el.id = 'ha-typing-indicator';
-
     const av = document.createElement('div');
     av.className = 'ha-msg-avatar';
-    av.setAttribute('aria-hidden', 'true');
-    av.textContent = '🤖';
-
+    av.innerHTML = AI_ICON_SM;
     const dots = document.createElement('div');
     dots.className = 'ha-typing';
     dots.setAttribute('aria-label', 'Aan het typen');
     dots.innerHTML = '<span></span><span></span><span></span>';
-
     el.appendChild(av);
     el.appendChild(dots);
-    msgEl.appendChild(el);
+    document.getElementById('ha-messages').appendChild(el);
     scrollBottom();
     return el;
   }
 
-  function removeTyping() {
-    const el = document.getElementById('ha-typing-indicator');
-    if (el) el.remove();
+  function showTyping() {
+    return showTypingRaw();
   }
 
-  // ── Streaming Agent Response ─────────────────────────────────────────────────
+  function removeTyping() {
+    document.getElementById('ha-typing-indicator')?.remove();
+  }
+
+  function hideQuickActionsIfNeeded() {
+    if (history.filter(m => m.role === 'assistant').length >= 2) {
+      document.getElementById('ha-quick-actions').setAttribute('hidden', '');
+    }
+  }
+
+  // ── Agent Response with typewriter ───────────────────────────────────────────
   async function streamAgentResponse() {
     isStreaming = true;
     setSendState(true);
 
-    const typingEl = showTyping();
-    let streamBubble = null;
-    let accumulated = '';
+    showTyping();
 
     try {
       const res = await fetch(ENDPOINT, {
@@ -204,71 +225,35 @@
         body: JSON.stringify({ messages: history }),
       });
 
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json().catch(() => ({}));
 
+      if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+
+      const text = data.text || '...';
       removeTyping();
 
-      // Create streaming bubble
+      // Create bubble and typewrite the text
       const wrap = document.createElement('div');
       wrap.className = 'ha-msg ha-msg--agent';
       const av = document.createElement('div');
       av.className = 'ha-msg-avatar';
-      av.setAttribute('aria-hidden', 'true');
-      av.textContent = '🤖';
+      av.innerHTML = AI_ICON_SM;
       const bubble = document.createElement('div');
       bubble.className = 'ha-msg-bubble';
-      bubble.innerHTML = '<span class="ha-cursor"></span>';
+      bubble.innerHTML = '<span class="ha-cursor" aria-hidden="true"></span>';
       wrap.appendChild(av);
       wrap.appendChild(bubble);
       document.getElementById('ha-messages').appendChild(wrap);
-      streamBubble = bubble;
       scrollBottom();
 
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = '';
+      await typewrite(bubble, text);
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n');
-        buffer = lines.pop();
-
-        for (const line of lines) {
-          if (!line.startsWith('data: ')) continue;
-          const raw = line.slice(6).trim();
-          if (raw === '[DONE]') break;
-          try {
-            const parsed = JSON.parse(raw);
-            if (parsed.type === 'content_block_delta' && parsed.delta?.type === 'text_delta') {
-              accumulated += parsed.delta.text;
-              streamBubble.innerHTML = renderMarkdown(accumulated) + '<span class="ha-cursor" aria-hidden="true"></span>';
-              scrollBottom();
-            }
-          } catch {}
-        }
-      }
-
-      // Finalise bubble (remove cursor)
-      if (streamBubble) {
-        streamBubble.innerHTML = renderMarkdown(accumulated);
-      }
-
-      history.push({ role: 'assistant', content: accumulated });
-
-      if (history.filter(m => m.role === 'assistant').length >= 2) {
-        document.getElementById('ha-quick-actions').setAttribute('hidden', '');
-      }
+      history.push({ role: 'assistant', content: text });
+      hideQuickActionsIfNeeded();
 
     } catch (err) {
       removeTyping();
-      if (streamBubble) {
-        streamBubble.innerHTML = renderMarkdown(accumulated || 'Er ging iets mis. Probeer het opnieuw of stuur ons een e-mail op **contact@hartai.nl**.');
-      } else {
-        appendAgentMessage('Er ging iets mis. Probeer het opnieuw of stuur ons een e-mail op **contact@hartai.nl**.');
-      }
+      appendAgentMessage('Er ging iets mis. Probeer het opnieuw of mail ons via **contact@hartai.nl**.');
     }
 
     isStreaming = false;
@@ -276,14 +261,33 @@
     scrollBottom();
   }
 
-  // ── Send Message ─────────────────────────────────────────────────────────────
+  // Typewriter: reveal text char-by-char at natural speed
+  function typewrite(el, text) {
+    return new Promise(resolve => {
+      let i = 0;
+      const speed = text.length > 300 ? 8 : text.length > 150 ? 12 : 18; // ms per char
+
+      function tick() {
+        i++;
+        el.innerHTML = renderMarkdown(text.slice(0, i)) + '<span class="ha-cursor" aria-hidden="true"></span>';
+        scrollBottom();
+        if (i < text.length) {
+          setTimeout(tick, speed);
+        } else {
+          el.innerHTML = renderMarkdown(text);
+          resolve();
+        }
+      }
+      tick();
+    });
+  }
+
+  // ── Send ─────────────────────────────────────────────────────────────────────
   function sendMessage(text) {
-    const msg = (text || document.getElementById('ha-input').value).trim();
+    const msg = (text || document.getElementById('ha-input')?.value || '').trim();
     if (!msg || isStreaming) return;
-
-    document.getElementById('ha-input').value = '';
-    autoResizeInput();
-
+    const input = document.getElementById('ha-input');
+    if (input) { input.value = ''; autoResize(input); }
     appendUserMessage(msg);
     streamAgentResponse();
   }
@@ -299,57 +303,43 @@
     if (el) el.scrollTop = el.scrollHeight;
   }
 
-  function autoResizeInput() {
-    const input = document.getElementById('ha-input');
-    if (!input) return;
+  function autoResize(input) {
     input.style.height = 'auto';
-    input.style.height = Math.min(input.scrollHeight, 100) + 'px';
+    input.style.height = Math.min(input.scrollHeight, 96) + 'px';
   }
 
   function renderMarkdown(text) {
     if (!text) return '';
     return text
-      // Escape HTML entities first (security)
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
-      // Bold **text**
-      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-      // Line breaks
+      .replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\n/g, '<br>');
   }
 
-  // ── Proactive Engagement ─────────────────────────────────────────────────────
+  // ── Proactive ────────────────────────────────────────────────────────────────
   function scheduleProactive() {
     setTimeout(() => {
       if (!isOpen && !proactiveFired) {
         proactiveFired = true;
-        const badge = document.getElementById('ha-badge');
-        if (badge) badge.removeAttribute('hidden');
+        document.getElementById('ha-badge')?.removeAttribute('hidden');
       }
     }, PROACTIVE_DELAY);
   }
 
-  // ── Event Listeners ──────────────────────────────────────────────────────────
+  // ── Listeners ────────────────────────────────────────────────────────────────
   function attachListeners() {
     document.getElementById('ha-trigger').addEventListener('click', () => {
       isOpen ? closePanel() : openPanel();
     });
-
     document.getElementById('ha-close').addEventListener('click', closePanel);
-
-    document.getElementById('ha-panel').addEventListener('click', e => {
-      if (e.target.id === 'ha-panel') closePanel();
-    });
 
     const input = document.getElementById('ha-input');
     input.addEventListener('keydown', e => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage();
-      }
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
     });
-    input.addEventListener('input', autoResizeInput);
+    input.addEventListener('input', () => autoResize(input));
 
     document.getElementById('ha-send').addEventListener('click', () => sendMessage());
 
@@ -359,19 +349,15 @@
   }
 
   // ── Init ─────────────────────────────────────────────────────────────────────
-  function init() {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', run);
-    } else {
-      run();
-    }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
   }
 
-  function run() {
+  function start() {
     build();
     attachListeners();
     scheduleProactive();
   }
-
-  init();
 })();
