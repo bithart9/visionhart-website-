@@ -3,8 +3,66 @@
 // ── Dynamic year in footer ──
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// ── Contact Modal ──
+const modal      = document.getElementById('contact-modal');
+const modalClose = document.getElementById('modal-close');
+
+function openModal() {
+  modal.removeAttribute('hidden');
+  document.body.style.overflow = 'hidden';
+  modal.querySelector('input').focus();
+}
+function closeModal() {
+  modal.setAttribute('hidden', '');
+  document.body.style.overflow = '';
+}
+
+modalClose?.addEventListener('click', closeModal);
+modal?.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hasAttribute('hidden')) closeModal(); });
+
+// Intercept all CTA buttons/links that point to #contact or #scan
+document.querySelectorAll('a.btn[href="#contact"], a.btn[href="#scan"], a[href="#contact"].sector-card__link').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    openModal();
+  });
+});
+
+// Modal form submission
+const modalForm = document.getElementById('modal-contact-form');
+modalForm?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = modalForm.querySelector('button[type="submit"]');
+  const orig = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<span>Verzenden...</span>';
+  const data = Object.fromEntries(new FormData(modalForm));
+  try {
+    const res = await fetch('/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (res.ok) {
+      modalForm.innerHTML = `
+        <div style="text-align:center;padding:32px 0;">
+          <div style="font-size:3rem;margin-bottom:16px">✅</div>
+          <h3 style="margin-bottom:8px">Bedankt!</h3>
+          <p>We nemen binnen 1 werkdag contact op.</p>
+        </div>`;
+    } else { throw new Error(); }
+  } catch {
+    btn.disabled = false;
+    btn.innerHTML = orig;
+    let err = modalForm.querySelector('.form-error');
+    if (!err) { err = document.createElement('p'); err.className = 'form-error'; err.style.cssText = 'color:#E53E3E;font-size:.85rem;text-align:center;'; modalForm.appendChild(err); }
+    err.textContent = 'Er ging iets mis. Probeer het opnieuw of mail ons op info@hartai.nl';
+  }
+});
+
 // ── Nav: sticky + mobile toggle ──
-const header = document.getElementById('nav-header');
+const header = document.getElementById('nav');
 const toggle = document.getElementById('nav-toggle');
 const menu   = document.getElementById('nav-menu');
 
