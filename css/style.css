@@ -810,17 +810,15 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 }
 .howit-step:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--turquoise); }
 .howit-step__num {
-  font-size: 2.2rem; font-weight: 800; color: var(--turquoise);
-  line-height: 1; letter-spacing: -.04em; opacity: .35;
+  font-size: 1rem; font-weight: 800; color: var(--turquoise);
+  letter-spacing: .1em; text-transform: uppercase; opacity: .6;
 }
-.howit-step__icon {
+.howit-step__emoji {
+  font-size: 3rem; line-height: 1;
   width: 88px; height: 88px; border-radius: 50%;
-  background: linear-gradient(135deg, rgba(78,192,196,.18) 0%, rgba(78,192,196,.08) 100%);
-  border: 2px solid rgba(78,192,196,.4);
+  background: var(--light-gray); border: 2px solid var(--turquoise);
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 0 8px rgba(78,192,196,.06);
 }
-.howit-step__icon svg { width: 36px; height: 36px; }
 .howit-step h3 { font-size: 1.15rem; }
 .howit-step p  { font-size: .88rem; max-width: 260px; }
 .howit-step__time {
@@ -887,14 +885,12 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 .flagship-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--turquoise); }
 .flagship-card--featured { border-color: var(--turquoise); border-width: 2px; }
 .flagship-card__badge { display: flex; flex-wrap: wrap; gap: 6px; }
-.flagship-card__icon {
+.flagship-card__emoji {
+  font-size: 2.8rem; line-height: 1;
   width: 72px; height: 72px; border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(78,192,196,.15) 0%, rgba(78,192,196,.05) 100%);
-  border: 1.5px solid rgba(78,192,196,.35);
+  background: var(--light-gray); border: 2px solid var(--turquoise);
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 12px rgba(78,192,196,.12);
 }
-.flagship-card__icon svg { width: 36px; height: 36px; }
 .flagship-card h3 { font-size: 1.1rem; }
 .flagship-card p  { font-size: .88rem; color: var(--text-muted); flex: 1; }
 .flagship-card__results {
