@@ -1,6 +1,6 @@
 /* HartAI | cookie-consent.js — GA4 Consent Mode v2 */
 
-const GA4_ID    = 'G-XXXXXXXXXX'; // ← vervang met jouw GA4 Measurement ID
+const GA4_ID    = 'G-NJ63NG8D2B';
 const STORE_KEY = 'hartai_consent_v1';
 
 // ── Helpers ──────────────────────────────────────────
