@@ -717,8 +717,8 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
    RESPONSIVE
 ══════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .howit-steps { flex-direction: column; }
-  .howit-step__arrow { transform: rotate(90deg); align-self: center; }
+  .howit-steps { grid-template-columns: 1fr; }
+  .howit-step__arrow { transform: rotate(90deg); justify-self: center; }
   .flagship-grid { grid-template-columns: 1fr 1fr; }
   .early-proof__grid { grid-template-columns: 1fr; gap: 40px; }
   .guarantee-block { grid-template-columns: 1fr; gap: 28px; }
@@ -797,25 +797,30 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 .howit-section h2 { margin-bottom: 16px; }
 
 .howit-steps {
-  display: flex; align-items: flex-start; gap: 0;
-  margin: 56px 0 40px; position: relative;
+  display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center; gap: 0;
+  margin: 56px 0 40px;
 }
 .howit-step {
-  flex: 1; padding: 36px 28px; border-radius: var(--radius-xl);
-  background: var(--light-gray); border: 1px solid var(--gray-light);
+  padding: 36px 24px; border-radius: var(--radius-xl);
+  background: var(--white); border: 1.5px solid var(--gray-light);
   display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px;
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  height: 100%;
 }
-.howit-step:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.howit-step:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--turquoise); }
 .howit-step__num {
-  font-size: 3rem; font-weight: 800; color: var(--gray-light);
-  line-height: 1; letter-spacing: -.04em;
+  font-size: 2.2rem; font-weight: 800; color: var(--turquoise);
+  line-height: 1; letter-spacing: -.04em; opacity: .35;
 }
 .howit-step__icon {
-  width: 64px; height: 64px; border-radius: 50%;
-  background: rgba(78,192,196,.1); border: 1px solid rgba(78,192,196,.25);
+  width: 88px; height: 88px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(78,192,196,.18) 0%, rgba(78,192,196,.08) 100%);
+  border: 2px solid rgba(78,192,196,.4);
   display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 8px rgba(78,192,196,.06);
 }
+.howit-step__icon svg { width: 36px; height: 36px; }
 .howit-step h3 { font-size: 1.15rem; }
 .howit-step p  { font-size: .88rem; max-width: 260px; }
 .howit-step__time {
@@ -824,8 +829,8 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
   background: rgba(78,192,196,.1); border: 1px solid rgba(78,192,196,.2);
 }
 .howit-step__arrow {
-  font-size: 1.8rem; color: var(--turquoise); padding: 0 8px;
-  align-self: center; flex-shrink: 0; font-weight: 300;
+  font-size: 2rem; color: var(--turquoise); padding: 0 4px;
+  align-self: center; flex-shrink: 0; opacity: .5;
 }
 .howit-cta { text-align: center; }
 
@@ -870,7 +875,7 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 .flagship-section { padding: 100px 0; background: var(--white); text-align: center; }
 .flagship-section h2 { margin-bottom: 16px; }
 .flagship-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px; margin: 48px 0 32px; text-align: left;
 }
 .flagship-card {
@@ -883,10 +888,13 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 .flagship-card--featured { border-color: var(--turquoise); border-width: 2px; }
 .flagship-card__badge { display: flex; flex-wrap: wrap; gap: 6px; }
 .flagship-card__icon {
-  width: 56px; height: 56px; border-radius: var(--radius);
-  background: rgba(78,192,196,.08); border: 1px solid rgba(78,192,196,.2);
+  width: 72px; height: 72px; border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(78,192,196,.15) 0%, rgba(78,192,196,.05) 100%);
+  border: 1.5px solid rgba(78,192,196,.35);
   display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(78,192,196,.12);
 }
+.flagship-card__icon svg { width: 36px; height: 36px; }
 .flagship-card h3 { font-size: 1.1rem; }
 .flagship-card p  { font-size: .88rem; color: var(--text-muted); flex: 1; }
 .flagship-card__results {
