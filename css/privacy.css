@@ -1,0 +1,111 @@
+/* ── Privacy / Legal pages ── */
+
+.privacy-hero {
+  padding: 120px 0 48px;
+  background: linear-gradient(135deg, #132847 0%, #1B365D 100%);
+  text-align: center;
+}
+.privacy-hero h1 { color: #fff; margin-bottom: 12px; }
+.privacy-hero p  { color: rgba(255,255,255,.55); font-size: .9rem; }
+
+.privacy-body {
+  padding: 64px 0 80px;
+  background: linear-gradient(180deg, #f4f7fb 0%, #ffffff 100%);
+}
+
+.privacy-content {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.privacy-article {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--gray-light);
+}
+.privacy-article:last-of-type { border-bottom: none; }
+
+.privacy-article h2 {
+  font-size: 1.15rem;
+  color: var(--navy);
+  margin-bottom: 16px;
+}
+
+.privacy-article p {
+  font-size: .92rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+.privacy-article p:last-child { margin-bottom: 0; }
+
+.privacy-article a { color: var(--turquoise); text-decoration: underline; }
+.privacy-article a:hover { color: var(--turq-dark); }
+
+.privacy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 12px 0;
+  padding-left: 0;
+}
+.privacy-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: .92rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  list-style: none;
+}
+.privacy-list li::before {
+  content: '›';
+  color: var(--turquoise);
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.privacy-ground {
+  background: var(--light-gray);
+  border-left: 3px solid var(--turquoise);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 16px 20px;
+  margin: 12px 0;
+}
+.privacy-ground h3 {
+  font-size: .92rem;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.privacy-ground h3 span {
+  font-size: .78rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-left: 6px;
+}
+.privacy-ground p {
+  margin: 0;
+  font-size: .88rem;
+}
+
+.privacy-contact-box {
+  margin-top: 48px;
+  padding: 32px 36px;
+  background: var(--navy);
+  border-radius: var(--radius-xl);
+}
+.privacy-contact-box h3 { color: #fff; margin-bottom: 12px; }
+.privacy-contact-box p  { color: rgba(255,255,255,.65); font-size: .9rem; margin-bottom: 6px; }
+.privacy-contact-box a  { color: var(--turquoise); }
+.privacy-contact-box a:hover { color: #fff; }
+
+@media (max-width: 768px) {
+  .privacy-hero { padding: 100px 0 36px; }
+  .privacy-body  { padding: 40px 0 60px; }
+  .privacy-article { padding: 28px 0; }
+  .privacy-contact-box { padding: 24px 20px; }
+}
