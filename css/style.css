@@ -850,6 +850,14 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 /* ── 480px: small mobile ── */
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
+  /* Flagship twin */
+  .flagship-twin { padding: 24px 18px; gap: 20px; }
+  .flagship-twin__title { font-size: 1.15rem; }
+  .flagship-twin__desc { font-size: .84rem; }
+  .flagship-twin__stats { gap: 16px; }
+  .flagship-twin__stats strong { font-size: .95rem; }
+  /* Nav new badge */
+  .nav__new-badge { display: none; }
 
   /* Section padding: 60px → 48px */
   .why-section, .pain-section, .sectors-section, .services-section,
