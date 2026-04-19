@@ -38,7 +38,7 @@
   --transition: .2s ease;
 }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
 body {
   font-family: var(--font);
   background: var(--white);
@@ -351,7 +351,7 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23687280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 10px center; padding-right: 32px;
-  font-size: .88rem;
+  font-size: 1rem;
 }
 .roi-calculator__results {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
@@ -662,7 +662,7 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 .form-group label { font-size: .82rem; font-weight: 600; color: var(--navy); }
 .form-group input {
   padding: 12px 14px; border-radius: var(--radius); border: 1px solid var(--gray-light);
-  background: var(--light-gray); color: var(--text); font-size: .9rem;
+  background: var(--light-gray); color: var(--text); font-size: 1rem;
   transition: border-color var(--transition), box-shadow var(--transition);
 }
 .form-group input:focus { outline: none; border-color: var(--turquoise); box-shadow: 0 0 0 3px rgba(78,192,196,.15); }
@@ -931,7 +931,7 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
   .modal__features { margin-bottom: 16px; gap: 6px; }
   .modal__features li { font-size: .8rem; }
   .contact-form { gap: 12px; }
-  .form-group input { padding: 10px 12px; font-size: .88rem; }
+  .form-group input { padding: 10px 12px; font-size: 1rem; }
   .contact-form__note { font-size: .74rem; }
 }
 
