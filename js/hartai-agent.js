@@ -38,6 +38,7 @@
   let isStreaming = false;
   let history = [];
   let proactiveFired = false;
+  let welcomeShown = false;
 
   // ── Build ────────────────────────────────────────────────────────────────────
   function build() {
@@ -133,12 +134,12 @@
     document.getElementById('ha-badge').setAttribute('hidden', '');
     proactiveFired = true;
 
-    if (history.length === 0) {
-      // Show welcome with typing delay for realism
+    if (!welcomeShown) {
+      welcomeShown = true;
       const typing = showTypingRaw();
       setTimeout(() => {
         typing.remove();
-        appendAgentMessage(WELCOME, true); // welcome is UI-only, not sent to API
+        appendAgentMessage(WELCOME, true);
         document.getElementById('ha-input')?.focus();
       }, 900);
     } else {
