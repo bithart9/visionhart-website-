@@ -767,15 +767,18 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 
 /* ── 768px: tablet portrait / large mobile ── */
 @media (max-width: 768px) {
-  /* Nav */
+  /* Nav — compact on mobile */
+  .nav__inner { height: 60px; padding: 0 20px; }
+  .nav__logo-text { font-size: 1.15rem; }
   .nav__menu {
-    display: none; position: fixed; top: 68px; left: 0; right: 0;
-    flex-direction: column; background: #fff; padding: 16px 24px;
-    border-bottom: 1px solid var(--gray-light); gap: 4px;
-    box-shadow: var(--shadow);
+    display: none; position: fixed; top: 60px; left: 0; right: 0;
+    flex-direction: column; background: #fff; padding: 8px 16px 16px;
+    border-bottom: 1px solid var(--gray-light); gap: 2px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
   }
   .nav__menu.is-open { display: flex; }
-  .nav__link, .nav__menu .btn { display: block; text-align: center; padding: 14px 16px; }
+  .nav__link { padding: 12px 16px; font-size: .88rem; border-radius: 8px; }
+  .nav__menu .btn { display: block; text-align: center; padding: 13px 16px; margin-top: 6px; }
   .nav__toggle { display: flex; }
 
   /* Typography */
@@ -792,7 +795,7 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 
   /* Hero — mobile rework */
   .hero {
-    padding-top: 88px;
+    padding-top: 80px;
     padding-bottom: 48px;
     min-height: 100svh;
     /* Portrait-optimised crop: show top-center of image */
@@ -806,10 +809,15 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
       url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=1200&q=85&fit=crop&crop=top') top center / cover no-repeat;
     align-items: flex-start; /* left-align on mobile for easier reading */
   }
-  .hero__content { text-align: left; align-items: flex-start; }
-  .hero__badge { align-self: flex-start; }
-  .hero h1 { font-size: clamp(2rem, 8vw, 3rem); line-height: 1.15; }
-  .hero__sub { font-size: .95rem; max-width: 100%; }
+  .hero__content { text-align: left; align-items: flex-start; gap: 16px; }
+  .hero__badge {
+    align-self: flex-start;
+    padding: 6px 14px;
+    font-size: .78rem;
+    gap: 6px;
+  }
+  .hero h1 { font-size: clamp(2rem, 8vw, 3rem); line-height: 1.15; margin-bottom: 0; }
+  .hero__sub { font-size: .92rem; max-width: 100%; line-height: 1.6; }
   .hero__actions { flex-direction: column; align-items: stretch; width: 100%; }
   .hero__actions .btn { width: 100%; justify-content: center; max-width: 100%; }
   .hero__trust { font-size: .78rem; text-align: center; }
