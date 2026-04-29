@@ -813,7 +813,7 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
   .cases-grid { grid-template-columns: 1fr; }
   .service-cards-grid { grid-template-columns: 1fr; }
   .pricing-grid { grid-template-columns: 1fr; }
-  .flagship-grid { grid-template-columns: 1fr; }
+  /* flagship-grid handled by carousel rules below */
 
   /* ROI calc */
   .roi-calculator__inputs { grid-template-columns: 1fr 1fr; }
@@ -1133,6 +1133,8 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 .flagship-card__results span  { font-size: .68rem; color: var(--text-muted); }
 .flagship-more { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; }
 .flagship-more > p { font-size: .88rem; color: var(--text-muted); }
+.flagship-carousel { /* desktop: transparent wrapper */ }
+.flagship-scroll-hint { display: none; /* shown only on mobile */ }
 
 /* ══════════════════════════════════════════
    ROI SECTION (standalone)
@@ -1353,6 +1355,74 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 
   /* ROI section */
   .roi-section { padding: 48px 0; }
+}
+
+/* ── Flagship carousel — mobile swipe ── */
+@media (max-width: 768px) {
+  /* Turn the wrapper into a horizontal scroll track */
+  .flagship-carousel {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 20px;
+    /* Break out of container padding so cards go edge-to-edge */
+    margin: 0 -20px;
+    padding: 4px 20px 8px;
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .flagship-carousel::-webkit-scrollbar { display: none; }
+
+  /* Turn the inner grid into a flex row */
+  .flagship-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    margin: 0;
+    /* Right padding so last card doesn't touch edge */
+    padding-right: 20px;
+  }
+
+  /* Each card: 84vw wide — peek of ~12% of next card triggers swipe */
+  .flagship-card {
+    flex-shrink: 0;
+    width: 84vw;
+    max-width: 340px;
+    scroll-snap-align: start;
+    padding: 24px 20px;
+    /* Slight scale-down for non-active feel — optional */
+  }
+
+  /* Featured card gets a subtle elevation to stand out */
+  .flagship-card--featured {
+    border-width: 2px;
+    box-shadow: 0 4px 20px rgba(78,192,196,.15);
+  }
+
+  /* Results block stays 3-column — compact on mobile */
+  .flagship-card__results {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 12px;
+  }
+  .flagship-card__results strong { font-size: .85rem; }
+  .flagship-card__results span  { font-size: .65rem; }
+
+  /* Scroll-position dots */
+  .flagship-scroll-hint {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin: 12px 0 4px;
+  }
+  .flagship-scroll-hint span {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--turquoise);
+    opacity: 0.3;
+  }
+  .flagship-scroll-hint span:first-child { opacity: 1; }
 }
 
 @media print {
