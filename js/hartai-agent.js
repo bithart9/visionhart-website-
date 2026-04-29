@@ -50,7 +50,7 @@
     trigger.innerHTML = `
       <div class="ha-trigger-icon">${AI_ICON_SVG}</div>
       <div class="ha-trigger-info">
-        <span class="ha-trigger-name">AI Specialist</span>
+        <span class="ha-trigger-name">HartAI Specialist</span>
         <span class="ha-trigger-status">
           <span class="ha-trigger-dot"></span>Direct beschikbaar
         </span>
@@ -262,7 +262,7 @@
       history.push({ role: 'assistant', content: text });
       hideQuickActionsIfNeeded();
       await maybeAutoSendSummary();
-      maybeShowSummaryBar();
+      maybeInjectSummaryAsk();
 
     } catch (err) {
       removeTyping();
@@ -386,21 +386,23 @@
     } catch { /* silent */ }
   }
 
-  // ── Summary bar ──────────────────────────────────────────────────────────────
-  function maybeShowSummaryBar() {
-    if (summaryShown || summarySent) return;
+  // ── Summary bar (hidden — kept for legacy, replaced by proactive inline flow) ─
+  function maybeShowSummaryBar() { /* replaced by maybeInjectSummaryAsk */ }
+
+  function startSummaryFlow() { maybeInjectSummaryAsk(true); }
+
+  // ── Proactive inline email ask ───────────────────────────────────────────────
+  let summaryAskInjected = false;
+
+  function maybeInjectSummaryAsk(force) {
+    if (summaryShown || summarySent || summaryAskInjected) return;
     const userMsgs = history.filter(m => m.role === 'user').length;
-    if (userMsgs >= 4) {
-      document.getElementById('ha-summary-bar')?.removeAttribute('hidden');
-      summaryShown = true;
-    }
-  }
+    if (!force && userMsgs < 3) return;
 
-  function startSummaryFlow() {
-    const bar = document.getElementById('ha-summary-bar');
-    if (bar) bar.setAttribute('hidden', '');
+    summaryAskInjected = true;
+    summaryShown = true;
+    document.getElementById('ha-summary-bar')?.setAttribute('hidden', '');
 
-    // Inject email capture inline in chat
     const wrap = document.createElement('div');
     wrap.className = 'ha-msg ha-msg--agent';
     wrap.id = 'ha-summary-capture';
@@ -410,43 +412,54 @@
     const bubble = document.createElement('div');
     bubble.className = 'ha-msg-bubble ha-summary-form';
     bubble.innerHTML = `
-      <p style="margin:0 0 10px;font-size:14px;">Goed idee — ik stuur je een overzicht van ons gesprek + een samenvatting direct naar je inbox. Op welk e-mailadres?</p>
-      <input type="email" id="ha-summary-email" placeholder="jouw@email.nl" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.1);border:1px solid rgba(78,192,196,0.4);border-radius:8px;padding:9px 12px;color:#d4dce8;font-size:14px;font-family:inherit;outline:none;margin-bottom:8px;" />
-      <input type="text" id="ha-summary-name" placeholder="Je naam (optioneel)" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:9px 12px;color:#d4dce8;font-size:14px;font-family:inherit;outline:none;margin-bottom:10px;" />
-      <button id="ha-summary-send" style="background:linear-gradient(135deg,#4EC0C4,#2a9da0);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">Stuur samenvatting →</button>`;
+      <p style="margin:0 0 10px;font-size:14px;line-height:1.5;">Trouwens — wil je een samenvatting van ons gesprek per mail? Handig om te bewaren of te delen. Typ je e-mailadres hieronder, ik stuur het gelijk.</p>
+      <input type="email" id="ha-summary-email" placeholder="jouw@email.nl" autocomplete="email" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.1);border:1px solid rgba(78,192,196,0.4);border-radius:8px;padding:9px 12px;color:#d4dce8;font-size:14px;font-family:inherit;outline:none;" />
+      <p id="ha-summary-hint" style="margin:6px 0 0;font-size:12px;color:rgba(255,255,255,0.4);">Druk op Enter of wacht even na het typen</p>`;
     wrap.appendChild(av);
     wrap.appendChild(bubble);
     document.getElementById('ha-messages').appendChild(wrap);
     scrollBottom();
+    setTimeout(() => document.getElementById('ha-summary-email')?.focus(), 100);
 
-    document.getElementById('ha-summary-email')?.focus();
-
-    document.getElementById('ha-summary-send')?.addEventListener('click', async () => {
-      const email = document.getElementById('ha-summary-email')?.value?.trim();
-      const name  = document.getElementById('ha-summary-name')?.value?.trim();
-      if (!email || !email.includes('@')) {
-        document.getElementById('ha-summary-email').style.borderColor = '#e53e3e';
+    async function submitEmail() {
+      const input = document.getElementById('ha-summary-email');
+      const email = input?.value?.trim();
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      if (!email || !emailRe.test(email)) {
+        if (input) input.style.borderColor = '#e53e3e';
         return;
       }
+      if (summarySent) return;
+      summarySent = true;
 
-      document.getElementById('ha-summary-send').textContent = 'Versturen…';
-      document.getElementById('ha-summary-send').disabled = true;
+      bubble.innerHTML = `<p style="margin:0;font-size:14px;">⏳ Even geduld, ik stuur de samenvatting naar <strong>${email}</strong>…</p>`;
+      scrollBottom();
 
+      const name = extractNameFromHistory();
       try {
-        await fetch(SUMMARY_ENDPOINT, {
+        const res = await fetch(SUMMARY_ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ messages: history, prospectEmail: email, prospectName: name }),
         });
-        bubble.innerHTML = `<p style="margin:0;font-size:14px;">✅ Verstuurd! Check je inbox — je ontvangt de samenvatting binnen een paar minuten.<br><br>We nemen ook contact met je op. Tot snel! 👋</p>`;
+        if (res.ok) {
+          bubble.innerHTML = `<p style="margin:0;font-size:14px;">✅ Verstuurd naar <strong>${email}</strong>! Check je inbox. Tot snel 👋</p>`;
+        } else {
+          bubble.innerHTML = `<p style="margin:0;font-size:14px;color:#f87171;">Er ging iets mis. Mail ons via contact@hartai.nl.</p>`;
+        }
       } catch {
-        bubble.innerHTML = `<p style="margin:0;font-size:14px;color:#f87171;">Er ging iets mis. Probeer het opnieuw of mail ons via contact@hartai.nl.</p>`;
+        bubble.innerHTML = `<p style="margin:0;font-size:14px;color:#f87171;">Er ging iets mis. Mail ons via contact@hartai.nl.</p>`;
       }
       scrollBottom();
-    });
+    }
 
+    let autoTimer;
+    document.getElementById('ha-summary-email')?.addEventListener('input', () => {
+      clearTimeout(autoTimer);
+      autoTimer = setTimeout(submitEmail, 1200);
+    });
     document.getElementById('ha-summary-email')?.addEventListener('keydown', e => {
-      if (e.key === 'Enter') document.getElementById('ha-summary-send')?.click();
+      if (e.key === 'Enter') { clearTimeout(autoTimer); submitEmail(); }
     });
   }
 
