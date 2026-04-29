@@ -853,14 +853,32 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
   }
   .guarantee-banner span { display: none; } /* keep just icon + "90-dagen garantie" */
 
-  /* Trust strip — compact 2x2 wrap on mobile */
+  /* Trust strip — clean 2x2 grid on mobile */
   .hero__trust-strip {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 16px;
-    font-size: .75rem;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    width: 100%;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: .78rem;
   }
+  .hero__trust-strip span[role="listitem"] {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 14px;
+    border-right: 1px solid rgba(255,255,255,.1);
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    color: rgba(255,255,255,.8);
+    font-size: .76rem;
+  }
+  .hero__trust-strip span[role="listitem"]:nth-child(2n) { border-right: none; }
+  .hero__trust-strip span[role="listitem"]:nth-child(3),
+  .hero__trust-strip span[role="listitem"]:nth-child(4) { border-bottom: none; }
+  .hero__trust-strip .trust-dot { flex-shrink: 0; }
 
   /* Ensure all tap targets ≥44px */
   .btn { min-height: 44px; }
