@@ -686,28 +686,28 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 /* ══════════════════════════════════════════
    FOOTER
 ══════════════════════════════════════════ */
-.footer { background: var(--navy); padding: 72px 0 0; }
-.footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; padding-bottom: 56px; }
+.footer { background: var(--navy); padding: 48px 0 0; }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; padding-bottom: 36px; }
 .footer__logo .nav__logo-text { color: #fff; }
-.footer__brand p { font-size: .88rem; color: rgba(255,255,255,.55); margin-top: 12px; }
-.footer__contact { display: flex; flex-direction: column; gap: 6px; margin-top: 16px; }
+.footer__brand p { font-size: .85rem; color: rgba(255,255,255,.55); margin-top: 8px; }
+.footer__contact { display: flex; flex-direction: column; gap: 5px; margin-top: 12px; }
 .footer__contact a, .footer__contact span { font-size: .82rem; color: rgba(255,255,255,.45); }
 .footer__contact a:hover { color: var(--turquoise); }
-.footer__social p { font-size: .78rem; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .08em; margin: 20px 0 10px; }
-.footer__social a {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px; border-radius: var(--radius-sm);
-  border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.55);
-  transition: all var(--transition);
+.footer__contact-row { display: flex; align-items: center; gap: 12px; }
+.footer__social-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: .78rem; color: rgba(255,255,255,.4);
+  transition: color var(--transition);
 }
-.footer__social a:hover { border-color: var(--turquoise); color: var(--turquoise); }
-.footer__nav h4 { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 16px; }
-.footer__nav ul { display: flex; flex-direction: column; gap: 10px; }
-.footer__nav a { font-size: .88rem; color: rgba(255,255,255,.55); transition: color var(--transition); }
+.footer__social-link:hover { color: var(--turquoise); }
+.footer__nav h4 { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 12px; }
+.footer__nav ul { display: flex; flex-direction: column; gap: 8px; }
+.footer__nav a { font-size: .84rem; color: rgba(255,255,255,.55); transition: color var(--transition); }
 .footer__nav a:hover { color: #fff; }
-.footer__bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 20px 0; }
+.footer__nav button { font-size: .84rem; }
+.footer__bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 16px 0; }
 .footer__bottom-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-.footer__bottom p { font-size: .78rem; color: rgba(255,255,255,.35); }
+.footer__bottom p { font-size: .76rem; color: rgba(255,255,255,.35); }
 
 /* ══════════════════════════════════════════
    ANIMATIONS
@@ -824,9 +824,22 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
   .scan-cta-banner > div:last-child { align-items: stretch; width: 100%; }
   .scan-cta-banner > div:last-child .btn { width: 100%; justify-content: center; }
 
-  /* Footer */
-  .footer__grid { grid-template-columns: 1fr; gap: 32px; }
-  .footer__bottom-inner { flex-direction: column; text-align: center; }
+  /* Footer — brand full width top, nav columns side by side */
+  .footer { padding: 32px 0 0; }
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 24px;
+    padding-bottom: 24px;
+  }
+  .footer__brand {
+    grid-column: 1 / -1; /* span both columns */
+    display: flex; flex-wrap: wrap; align-items: center;
+    justify-content: space-between; gap: 12px;
+  }
+  .footer__brand p { margin-top: 0; }
+  .footer__contact { margin-top: 0; flex-direction: row; flex-wrap: wrap; gap: 8px 16px; }
+  .footer__bottom-inner { flex-direction: column; text-align: center; gap: 4px; }
 
   /* Final CTA */
   .final-cta__card { padding: 28px 20px; }
