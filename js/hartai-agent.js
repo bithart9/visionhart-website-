@@ -21,6 +21,7 @@
 
   const SUMMARY_ENDPOINT = '/api/chat-summary';
   let summaryShown = false;
+  let summarySent = false;
 
   const QUICK_ACTIONS = [
     { icon: '🧮', label: 'Bereken mijn ROI',      msg: 'Ik wil weten wat AI mij oplevert. Bereken mijn ROI.' },
@@ -31,7 +32,7 @@
     { icon: '❓', label: 'Stel een vraag',          msg: 'Ik heb een vraag over HartAI.' },
   ];
 
-  const WELCOME = 'Hoi 👋 Ik ben de AI Specialist van HartAI. Ik help je direct ontdekken hoeveel tijd en geld AI voor jouw bedrijf kan besparen.\n\nWaar kan ik je mee helpen?';
+  const WELCOME = 'Hoi 👋 Ik ben Jean-Pierre, oprichter van HartAI. Ik help MKB-ondernemers schalen met AI — zodoende je meer kan focussen op je klanten en minder op de rompslomp eromheen.\n\nWat speelt er bij jou?';
 
   let isOpen = false;
   let isStreaming = false;
@@ -44,7 +45,7 @@
     const trigger = document.createElement('button');
     trigger.className = 'ha-trigger';
     trigger.id = 'ha-trigger';
-    trigger.setAttribute('aria-label', 'Chat met HartAI AI Specialist');
+    trigger.setAttribute('aria-label', 'Chat met HartAI Specialist');
     trigger.setAttribute('aria-expanded', 'false');
     trigger.innerHTML = `
       <div class="ha-trigger-icon">${AI_ICON_SVG}</div>
@@ -69,7 +70,7 @@
       <div class="ha-header">
         <div class="ha-header-avatar">${AI_ICON_SVG}</div>
         <div class="ha-header-info">
-          <p class="ha-header-name">HartAI AI Specialist</p>
+          <p class="ha-header-name">HartAI Specialist</p>
           <p class="ha-header-status">
             <span class="ha-status-live">Live</span>&nbsp;· Altijd beschikbaar
           </p>
@@ -260,6 +261,7 @@
 
       history.push({ role: 'assistant', content: text });
       hideQuickActionsIfNeeded();
+      await maybeAutoSendSummary();
       maybeShowSummaryBar();
 
     } catch (err) {
@@ -329,9 +331,64 @@
       .replace(/\n/g, '<br>');
   }
 
+  // ── Auto summary ─────────────────────────────────────────────────────────────
+  function extractEmailFromHistory() {
+    const re = /[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/;
+    for (const msg of history) {
+      if (msg.role === 'user') {
+        const m = msg.content.match(re);
+        if (m) return m[0];
+      }
+    }
+    return null;
+  }
+
+  function extractNameFromHistory() {
+    for (let i = 0; i < history.length - 1; i++) {
+      const cur = history[i];
+      const next = history[i + 1];
+      if (cur.role === 'assistant' && next.role === 'user') {
+        const lower = cur.content.toLowerCase();
+        if (lower.includes('naam') || lower.includes('hoe heet') || lower.includes('je naam')) {
+          const candidate = next.content.trim();
+          if (candidate.length > 1 && candidate.length < 60 && !candidate.includes('@')) {
+            return candidate;
+          }
+        }
+      }
+    }
+    return '';
+  }
+
+  async function maybeAutoSendSummary() {
+    if (summarySent) return;
+    const userMsgs = history.filter(m => m.role === 'user').length;
+    if (userMsgs < 3) return;
+
+    const email = extractEmailFromHistory();
+    if (!email) return;
+
+    summarySent = true;
+    summaryShown = true;
+    document.getElementById('ha-summary-bar')?.setAttribute('hidden', '');
+
+    const name = extractNameFromHistory();
+
+    try {
+      const res = await fetch(SUMMARY_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history, prospectEmail: email, prospectName: name }),
+      });
+      if (res.ok) {
+        appendAgentMessage(`📧 Ik heb de samenvatting van ons gesprek verstuurd naar **${email}**. Check je inbox!`, true);
+      }
+    } catch { /* silent */ }
+  }
+
   // ── Summary bar ──────────────────────────────────────────────────────────────
   function maybeShowSummaryBar() {
-    if (summaryShown) return;
+    if (summaryShown || summarySent) return;
     const userMsgs = history.filter(m => m.role === 'user').length;
     if (userMsgs >= 4) {
       document.getElementById('ha-summary-bar')?.removeAttribute('hidden');
