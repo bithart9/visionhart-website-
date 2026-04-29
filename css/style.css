@@ -174,7 +174,12 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 }
 .hero__overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(27,54,93,.05) 0%, rgba(27,54,93,.1) 100%);
+  background: linear-gradient(to bottom, rgba(27,54,93,.05) 0%, rgba(27,54,93,.2) 100%);
+  pointer-events: none;
+}
+@media (max-width: 768px) {
+  /* Remove the overlay entirely on mobile — the background gradient handles depth */
+  .hero__overlay { display: none; }
 }
 .hero__content {
   position: relative; z-index: 1;
@@ -785,14 +790,63 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
   .roi-section, .faq-section { padding-top: 60px; padding-bottom: 60px; }
   .early-proof-section, .guarantee-section { padding-top: 48px; padding-bottom: 48px; }
 
-  /* Hero */
-  .hero { padding-top: 80px; padding-bottom: 48px; }
-  .hero__actions { flex-direction: column; align-items: center; }
-  .hero__actions .btn { width: 100%; max-width: 340px; justify-content: center; }
-  .hero__stats { flex-direction: column; }
-  .stat-box { border-right: none; border-bottom: 1px solid rgba(255,255,255,.15); min-width: unset; width: 100%; }
-  .stat-box:last-child { border-bottom: none; }
-  .guarantee-banner { flex-direction: column; text-align: center; padding: 16px 20px; }
+  /* Hero — mobile rework */
+  .hero {
+    padding-top: 88px;
+    padding-bottom: 48px;
+    min-height: 100svh;
+    /* Portrait-optimised crop: show top-center of image */
+    background:
+      linear-gradient(
+        175deg,
+        rgba(19,40,71,.78) 0%,
+        rgba(27,54,93,.55) 45%,
+        rgba(27,54,93,.82) 100%
+      ),
+      url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=1200&q=85&fit=crop&crop=top') top center / cover no-repeat;
+    align-items: flex-start; /* left-align on mobile for easier reading */
+  }
+  .hero__content { text-align: left; align-items: flex-start; }
+  .hero__badge { align-self: flex-start; }
+  .hero h1 { font-size: clamp(2rem, 8vw, 3rem); line-height: 1.15; }
+  .hero__sub { font-size: .95rem; max-width: 100%; }
+  .hero__actions { flex-direction: column; align-items: stretch; width: 100%; }
+  .hero__actions .btn { width: 100%; justify-content: center; max-width: 100%; }
+  .hero__trust { font-size: .78rem; text-align: center; }
+
+  /* Stats: 2×2 grid instead of tall column stack */
+  .hero__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-direction: unset;
+    max-width: 100%;
+  }
+  .stat-box {
+    border-right: 1px solid rgba(255,255,255,.12);
+    border-bottom: 1px solid rgba(255,255,255,.12);
+    min-width: unset;
+    width: auto;
+    padding: 16px 12px;
+  }
+  .stat-box:nth-child(2n) { border-right: none; }
+  .stat-box:nth-child(3),
+  .stat-box:nth-child(4) { border-bottom: none; }
+  .stat-box__num { font-size: 1.4rem; }
+  .stat-box__label { font-size: .67rem; }
+
+  /* Guarantee banner — compact single line on mobile */
+  .guarantee-banner {
+    flex-direction: row;
+    text-align: left;
+    padding: 14px 16px;
+    font-size: .82rem;
+    gap: 8px;
+    max-width: 100%;
+  }
+  .guarantee-banner span { display: none; } /* keep just icon + "90-dagen garantie" */
+
+  /* Hide trust strip on mobile — saves space, signals shown elsewhere */
+  .hero__trust-strip { display: none; }
 
   /* Ensure all tap targets ≥44px */
   .btn { min-height: 44px; }
@@ -1320,6 +1374,14 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 
   /* ROI section */
   .roi-section { padding: 64px 0; }
+
+  /* Hero */
+  .hero { padding-top: 80px; padding-bottom: 40px; }
+  .hero h1 { font-size: clamp(1.85rem, 7.5vw, 2.4rem); }
+  .stat-box { padding: 14px 10px; }
+  .stat-box__num { font-size: 1.25rem; }
+  .stat-box__label { font-size: .62rem; }
+  .guarantee-banner { padding: 12px 14px; font-size: .78rem; }
 
   /* Hero primary CTA — full width on mobile */
   .hero__primary-cta { width: 100%; text-align: center; justify-content: center; padding: 16px 24px; font-size: .98rem; }
