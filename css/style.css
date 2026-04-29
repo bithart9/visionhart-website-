@@ -853,8 +853,14 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
   }
   .guarantee-banner span { display: none; } /* keep just icon + "90-dagen garantie" */
 
-  /* Hide trust strip on mobile — saves space, signals shown elsewhere */
-  .hero__trust-strip { display: none; }
+  /* Trust strip — compact 2x2 wrap on mobile */
+  .hero__trust-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    font-size: .75rem;
+    justify-content: flex-start;
+  }
 
   /* Ensure all tap targets ≥44px */
   .btn { min-height: 44px; }
