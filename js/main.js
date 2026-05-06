@@ -77,6 +77,25 @@ modalForm?.addEventListener('submit', async (e) => {
   }
 });
 
+// ── Flagship carousel dots ──
+(function () {
+  const carousel = document.querySelector('.flagship-carousel');
+  const grid = carousel?.querySelector('.flagship-grid');
+  const dots = document.querySelectorAll('#flagship-dots span:not(.flagship-swipe-hint)');
+  const swipeHint = document.querySelector('.flagship-swipe-hint');
+  if (!grid || !dots.length) return;
+
+  grid.addEventListener('scroll', () => {
+    const card = grid.querySelector('.flagship-card');
+    if (!card) return;
+    const cardWidth = card.offsetWidth + 12; // gap = 12px
+    const index = Math.min(Math.round(grid.scrollLeft / cardWidth), dots.length - 1);
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    // hide swipe hint after first swipe
+    if (swipeHint && grid.scrollLeft > 20) swipeHint.style.opacity = '0';
+  }, { passive: true });
+}());
+
 // ── Nav: sticky + mobile toggle ──
 const header = document.getElementById('nav');
 const toggle = document.getElementById('nav-toggle');
