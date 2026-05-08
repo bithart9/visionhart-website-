@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Van 10 uur naar 1 uur per week: hoe een MKB-bedrijf zijn administratie automatiseerde | HartAI</title>
+  <meta name="description" content="Case study: hoe TechInstall BV zijn administratie in 90 dagen automatiseerde. Van 10 uur naar 1 uur per week aan factuurverwerking, planning en e-mail." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.hartai.nl/blog/van-10-naar-1-uur-per-week-administratie-automatiseren/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.hartai.nl/blog/van-10-naar-1-uur-per-week-administratie-automatiseren/" />
+  <meta property="og:title" content="Van 10 uur naar 1 uur per week: hoe een MKB-bedrijf zijn administratie automatiseerde" />
+  <meta property="og:description" content="Case study: hoe TechInstall BV zijn administratie in 90 dagen automatiseerde. Van 10 uur naar 1 uur per week." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" />
+  <meta property="og:locale" content="nl_NL" />
+  <meta property="og:site_name" content="HartAI" />
+  <meta property="article:published_time" content="2026-05-19T00:00:00+01:00" />
+  <meta property="article:modified_time" content="2026-05-19T00:00:00+01:00" />
+  <meta property="article:author" content="HartAI Team" />
+  <meta property="article:section" content="Cases &amp; Resultaten" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Van 10 uur naar 1 uur per week: hoe een MKB-bedrijf zijn administratie automatiseerde" />
+  <meta name="twitter:description" content="Case study: TechInstall BV automatiseerde zijn administratie in 90 dagen. Van 10 uur naar 1 uur per week." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" />
+
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.hartai.nl/blog/van-10-naar-1-uur-per-week-administratie-automatiseren/"},
+    "headline": "Van 10 uur naar 1 uur per week: hoe een MKB-bedrijf zijn administratie automatiseerde",
+    "description": "Case study: hoe TechInstall BV zijn administratie in 90 dagen automatiseerde. Van 10 uur naar 1 uur per week aan factuurverwerking, planning en e-mail.",
+    "image": {"@type": "ImageObject", "url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80", "width": 1200, "height": 630},
+    "datePublished": "2026-05-19T00:00:00+01:00",
+    "dateModified": "2026-05-19T00:00:00+01:00",
+    "author": {"@type": "Organization", "name": "HartAI Team", "url": "https://www.hartai.nl"},
+    "publisher": {
+      "@type": "Organization",
+      "name": "HartAI",
+      "url": "https://www.hartai.nl",
+      "logo": {"@type": "ImageObject", "url": "https://www.hartai.nl/images/logo.png", "width": 200, "height": 60}
+    },
+    "url": "https://www.hartai.nl/blog/van-10-naar-1-uur-per-week-administratie-automatiseren/",
+    "inLanguage": "nl-NL",
+    "articleSection": "Cases & Resultaten",
+    "keywords": "AI automatisering case study, administratie automatiseren MKB, factuurverwerking automatisch, tijdsbesparing AI installatiebedrijf, AI implementatie Nederland"
+  }</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/blog.css" />
+  <link rel="stylesheet" href="/css/cookie.css" />
+  <link rel="icon" href="/images/favicon.ico" sizes="any" />
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <meta name="theme-color" content="#1B365D" />
+</head>
+<body>
+
+<header class="nav" id="nav" role="banner">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="HartAI – homepage">
+      <img src="/images/logo.svg" alt="HartAI logo" width="36" height="36" />
+      <span class="nav__logo-text">HartAI</span>
+      <span class="nav__logo-tag">Bouwen niet adviseren.</span>
+    </a>
+    <button class="nav__toggle" id="nav-toggle" aria-label="Menu openen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav__menu" id="nav-menu" aria-label="Hoofdnavigatie">
+      <a href="/digitale-twin-medewerker/" class="nav__link nav__link--new">Digitale Twin <span class="nav__new-badge">Nieuw</span></a>
+      <a href="/#diensten" class="nav__link">Diensten</a>
+      <a href="/blog/" class="nav__link">Blog</a>
+      <a href="/#contact" class="nav__link">Contact</a>
+      <a href="/#contact" class="btn btn--turquoise btn--sm">Gratis gesprek →</a>
+    </nav>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="container">
+    <div class="breadcrumb__inner">
+      <a href="/blog/" class="breadcrumb__link">Blog</a>
+      <span class="breadcrumb__sep">›</span>
+      <a href="/blog/" class="breadcrumb__link">Cases &amp; Resultaten</a>
+      <span class="breadcrumb__sep">›</span>
+      <span class="breadcrumb__current">Van 10 uur naar 1 uur per week</span>
+    </div>
+  </div>
+</div>
+
+<div class="article-header container">
+  <span class="article-category">Cases &amp; Resultaten</span>
+  <h1>Van 10 uur naar 1 uur per week: hoe een MKB-bedrijf zijn administratie automatiseerde</h1>
+  <p class="article-subtitle">Een installatiebedrijf uit Rotterdam spendeert minder dan 60 minuten per week aan factuurverwerking, planning en klantcommunicatie — taken die vroeger de hele vrijdagochtend opsloopten. Dit is hoe ze dat deden.</p>
+  <div class="article-meta">
+    <span class="article-meta__author">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="HartAI Team" class="article-meta__avatar" />
+      HartAI Team
+    </span>
+    <span class="article-meta__dot">•</span>
+    <span>19 mei 2026</span>
+    <span class="article-meta__dot">•</span>
+    <span>5 min leestijd</span>
+    <span class="article-meta__dot">•</span>
+    <button class="article-meta__share" onclick="shareArticle()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Delen
+    </button>
+  </div>
+</div>
+
+<figure class="article-hero">
+  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="MKB-ondernemer die zijn administratie heeft geautomatiseerd met AI" loading="eager" />
+  <figcaption>Van 10 uur naar 1 uur per week — hoe AI-automatisering de vrijdagochtend van een MKB-directeur terugveroverde</figcaption>
+</figure>
+
+<div class="article-layout">
+
+  <div class="toc-col">
+  <aside class="toc" aria-label="Inhoudsopgave">
+    <p class="toc__title">In dit artikel</p>
+    <nav class="toc__list">
+      <a href="#voor-situatie" class="toc__item active">De situatie voor automatisering</a>
+      <a href="#aanpak" class="toc__item">De aanpak: 3 workflows</a>
+      <a href="#workflow-1" class="toc__item">Workflow 1: Factuurverwerking</a>
+      <a href="#workflow-2" class="toc__item">Workflow 2: Planning</a>
+      <a href="#workflow-3" class="toc__item">Workflow 3: Klantcommunicatie</a>
+      <a href="#resultaten" class="toc__item">Resultaten na 90 dagen</a>
+      <a href="#samenvatting" class="toc__item">Samenvatting</a>
+    </nav>
+
+    <hr class="toc-divider" />
+
+    <p class="toc-articles__title">Alle artikelen</p>
+    <a href="/blog/hoe-ai-jouw-mkb-bedrijf-20-uur-per-week-bespaart/" class="toc-article">
+      <span class="toc-article__dot"></span>
+      <div class="toc-article__info">
+        <span class="toc-article__name">Hoe AI Jouw MKB-Bedrijf 20 Uur Per Week Bespaart</span>
+        <span class="toc-article__meta">7 min leestijd</span>
+      </div>
+    </a>
+    <a href="/blog/de-echte-kosten-van-administratie-voor-mkb-ondernemers/" class="toc-article">
+      <span class="toc-article__dot"></span>
+      <div class="toc-article__info">
+        <span class="toc-article__name">De Echte Kosten van Administratie voor MKB-Ondernemers</span>
+        <span class="toc-article__meta">6 min leestijd</span>
+      </div>
+    </a>
+    <a href="/blog/waarom-mkb-ondernemers-vastlopen-in-hun-eigen-operatie/" class="toc-article">
+      <span class="toc-article__dot"></span>
+      <div class="toc-article__info">
+        <span class="toc-article__name">Waarom MKB-Ondernemers Vastlopen in Hun Eigen Operatie</span>
+        <span class="toc-article__meta">6 min leestijd</span>
+      </div>
+    </a>
+    <a href="/blog/btw-facturen-planning-hoe-ai-dit-volledig-overneemt/" class="toc-article">
+      <span class="toc-article__dot"></span>
+      <div class="toc-article__info">
+        <span class="toc-article__name">BTW, Facturen, Planning: Hoe AI Dit Volledig Overneemt</span>
+        <span class="toc-article__meta">6 min leestijd</span>
+      </div>
+    </a>
+    <a href="/blog/van-80-naar-35-uur-per-week/" class="toc-article">
+      <span class="toc-article__dot"></span>
+      <div class="toc-article__info">
+        <span class="toc-article__name">Van 80 naar 35 Uur per Week</span>
+        <span class="toc-article__meta">6 min leestijd</span>
+      </div>
+    </a>
+    <a href="/blog/hartai-vs-een-extra-medewerker/" class="toc-article">
+      <span class="toc-article__dot"></span>
+      <div class="toc-article__info">
+        <span class="toc-article__name">HartAI vs. Een Extra Medewerker</span>
+        <span class="toc-article__meta">5 min leestijd</span>
+      </div>
+    </a>
+    <a href="/blog/hoe-kies-je-de-juiste-ai-partner/" class="toc-article">
+      <span class="toc-article__dot"></span>
+      <div class="toc-article__info">
+        <span class="toc-article__name">Hoe Kies Je de Juiste AI-Partner?</span>
+        <span class="toc-article__meta">6 min leestijd</span>
+      </div>
+    </a>
+    <a href="/blog/wat-kost-een-extra-medewerker/" class="toc-article">
+      <span class="toc-article__dot"></span>
+      <div class="toc-article__info">
+        <span class="toc-article__name">Wat kost een extra medewerker écht?</span>
+        <span class="toc-article__meta">7 min leestijd</span>
+      </div>
+    </a>
+    <a href="/blog/hoeveel-tijd-bespaar-je-met-ai-automatisering/" class="toc-article">
+      <span class="toc-article__dot"></span>
+      <div class="toc-article__info">
+        <span class="toc-article__name">Hoeveel tijd bespaar je met AI automatisering?</span>
+        <span class="toc-article__meta">6 min leestijd</span>
+      </div>
+    </a>
+    <a href="/blog/ai-en-avg-klantdata-automatisering-nederland/" class="toc-article">
+      <span class="toc-article__dot"></span>
+      <div class="toc-article__info">
+        <span class="toc-article__name">AI en AVG: mag je klantdata gebruiken?</span>
+        <span class="toc-article__meta">6 min leestijd</span>
+      </div>
+    </a>
+    <a href="/blog/van-10-naar-1-uur-per-week-administratie-automatiseren/" class="toc-article current">
+      <span class="toc-article__dot"></span>
+      <div class="toc-article__info">
+        <span class="toc-article__name">Van 10 uur naar 1 uur per week: case study</span>
+        <span class="toc-article__meta">5 min leestijd</span>
+      </div>
+    </a>
+  </aside>
+  </div>
+
+  <article class="article-content" id="article">
+
+    <div class="stats-row">
+      <div class="stat-box stat-box--turquoise">
+        <div class="stat-box__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="stat-box__value">10u → 1u</div>
+        <div class="stat-box__label">admin per week</div>
+      </div>
+      <div class="stat-box stat-box--gray">
+        <div class="stat-box__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="stat-box__value">9 uur</div>
+        <div class="stat-box__label">bespaard per week</div>
+      </div>
+      <div class="stat-box stat-box--orange">
+        <div class="stat-box__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="stat-box__value">90 dagen</div>
+        <div class="stat-box__label">implementatietijd</div>
+      </div>
+    </div>
+
+    <p><em>Deze case study is gebaseerd op een anoniem klanttraject. Naam en branchedetails zijn geanonimiseerd op verzoek van de klant.</em></p>
+
+    <p>Elke vrijdagochtend hetzelfde ritueel: koffie, laptop open, en drie uur lang door facturen, planningsverzoeken en e-mails werken. Voor de directeur van TechInstall BV — een installatiebedrijf met 12 medewerkers in Rotterdam — was dit de werkelijkheid van zijn ondernemersleven.</p>
+
+    <p>Niet omdat hij er slecht in was. Maar omdat niemand anders het deed, en omdat de systemen die hij gebruikte volledig handmatige input vereisten.</p>
+
+    <p>"Ik had eigenlijk een parttime kantoorkracht nodig, maar kon me dat niet veroorloven. En een fulltime medewerker kon ik niet vullen," vertelde hij ons in het eerste gesprek.</p>
+
+    <p>Negentig dagen later was die vrijdagochtend vrij. Hier is wat er veranderde.</p>
+
+    <h2 id="voor-situatie">De situatie voor automatisering</h2>
+
+    <p>TechInstall BV doet installaties voor woningcorporaties en commercieel vastgoed — denk aan CV-installaties, elektra en sanitair. Fijn bedrijf, stabiele klantenkring, maar qua administratie volledig afhankelijk van de directeur zelf.</p>
+
+    <div class="comparison-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Taak</th>
+            <th>Tijd per week</th>
+            <th>Hoe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Inkomende facturen verwerken</td>
+            <td>4 uur</td>
+            <td>Handmatig in boekhoudpakket</td>
+          </tr>
+          <tr>
+            <td>Monteurs inplannen</td>
+            <td>3 uur</td>
+            <td>Whiteboard + telefoontjes</td>
+          </tr>
+          <tr>
+            <td>Klantcommunicatie</td>
+            <td>2 uur</td>
+            <td>Losse e-mails, geen template</td>
+          </tr>
+          <tr>
+            <td>Offertes opvolgen</td>
+            <td>1 uur</td>
+            <td>Notities in agenda</td>
+          </tr>
+          <tr>
+            <td><strong>Totaal</strong></td>
+            <td><strong>10 uur</strong></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>10 uur per week is 40 uur per maand. Bij een directeurstijd van €75 per uur is dat €3.000 per maand aan tijd die besteed wordt aan taken die in principe niet zijn expertise vereisen.</p>
+
+    <p>Maar het ging verder dan alleen de tijd. De directeur miste klantgesprekken omdat hij in zijn e-mail zat. Hij kon niet groeien naar 15 medewerkers omdat de administratie al bij 12 man te veel tijd kostte.</p>
+
+    <h2 id="aanpak">De aanpak: 3 workflows</h2>
+
+    <p>Na een intake van 45 minuten stelden we een plan op voor drie specifieke automatiseringsworkflows. Geen grote transformatie, geen maandenlange implementatie. Drie gerichte ingrepen op de drie grootste tijdseters.</p>
+
+    <div class="feature-cards">
+      <div class="feature-card">
+        <div class="feature-card__icon feature-card__icon--turquoise">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <h4>Workflow 1</h4>
+        <p>Factuurverwerking — van PDF naar boekhoudpakket zonder handmatige invoer</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon feature-card__icon--blue">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h4>Workflow 2</h4>
+        <p>Monteurplanning — automatische toewijzing op basis van locatie, beschikbaarheid en specialisatie</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon feature-card__icon--orange">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+        </div>
+        <h4>Workflow 3</h4>
+        <p>Klantcommunicatie — automatische bevestigingen, herinneringen en status-updates</p>
+      </div>
+    </div>
+
+    <p>Elk van deze workflows werd in een aparte sprint van 2–3 weken gebouwd en getest voordat we naar de volgende gingen. Geen big bang implementatie, maar gecontroleerde uitrol per proces.</p>
+
+    <h2 id="workflow-1">Workflow 1: Factuurverwerking</h2>
+
+    <p>Het probleem was simpel: leveranciers stuurden facturen als PDF naar een e-mailbox. De directeur moest elk document openen, de gegevens uitlezen en handmatig in het boekhoudpakket invoeren. Bij gemiddeld 25 facturen per week — elk 8-10 minuten werk — zat je al op 3-4 uur.</p>
+
+    <p>De oplossing: een geautomatiseerde pipeline die e-mailattachments monitort, PDF-facturen verwerkt met document-AI, de gegevens valideert en direct in het boekhoudpakket (Exact Online) boekt.</p>
+
+    <div class="comparison-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Stap</th>
+            <th>Vroeger</th>
+            <th>Nu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Factuur ontvangen</td>
+            <td>E-mail handmatig checken</td>
+            <td>Automatisch gedetecteerd</td>
+          </tr>
+          <tr>
+            <td>Gegevens uitlezen</td>
+            <td>Handmatig lezen</td>
+            <td>Document-AI in 2 sec.</td>
+          </tr>
+          <tr>
+            <td>Boeken</td>
+            <td>Handmatige invoer</td>
+            <td>Automatisch naar Exact</td>
+          </tr>
+          <tr>
+            <td>Controle</td>
+            <td>Altijd handmatig</td>
+            <td>Alleen uitzonderingen (5%)</td>
+          </tr>
+          <tr>
+            <td>Tijd per factuur</td>
+            <td>8–10 min</td>
+            <td>0 min (of 2 min bij uitzondering)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Het systeem herkent inmiddels 95% van alle facturen zonder menselijke tussenkomst. De resterende 5% — nieuwe leveranciers of ongewone formaten — worden gemarkeerd voor handmatige review. Dat is de enige tijd die de directeur nog in factuurverwerking steekt.</p>
+
+    <p><strong>Tijdsbesparing: van 4 uur naar 15 minuten per week.</strong></p>
+
+    <h2 id="workflow-2">Workflow 2: Monteurplanning</h2>
+
+    <p>Planning was het meest complexe deel. Vier monteurs, wisselende kluslocaties, verschillende specialisaties (gas, elektra, sanitair) en klanten die graag dezelfde monteur terugzien. De directeur hield dit allemaal bij op een whiteboard en in zijn hoofd.</p>
+
+    <p>We bouwden een planningsysteem dat:</p>
+
+    <ul>
+      <li>Nieuwe opdrachten automatisch indeelt op basis van locatie en reistijd</li>
+      <li>Rekening houdt met specialisatie en beschikbaarheid van elke monteur</li>
+      <li>Klanten automatisch bevestigingen stuurt met naam van de monteur en tijdvenster</li>
+      <li>Planningswijzigingen (ziek, vertraging) automatisch communiceert naar klanten</li>
+    </ul>
+
+    <p>De eerste week was wennen. Het systeem maakte twee keer een suboptimale keuze die de directeur handmatig corrigeerde. Die correcties werden als feedback gebruikt om het systeem te verfijnen.</p>
+
+    <p>Vanaf week drie liep de planning volledig automatisch.</p>
+
+    <p><strong>Tijdsbesparing: van 3 uur naar 20 minuten per week.</strong></p>
+
+    <h2 id="workflow-3">Workflow 3: Klantcommunicatie</h2>
+
+    <p>De derde workflow was qua techniek het eenvoudigst, maar qua impact het meest merkbaar voor de klanten zelf. Voorheen stuurde de directeur handmatig bevestigingen, herinneringen en follow-ups. Vaak vergat hij het, of deed hij het te laat.</p>
+
+    <p>Nu loopt er een geautomatiseerde communicatieflow:</p>
+
+    <div class="summary-box">
+      <h3>Automatische communicatiemomenten</h3>
+      <div class="summary-item">
+        <div class="summary-item__check">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p><strong>Direct na boeking:</strong> bevestiging met datum, tijdvenster en naam monteur</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-item__check">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p><strong>Dag voor afspraak:</strong> herinnering met contactgegevens monteur</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-item__check">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p><strong>Op dag zelf:</strong> monteur onderweg notificatie (optioneel per klant)</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-item__check">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p><strong>Na afronding:</strong> automatische tevredenheidsvraag en factuur</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-item__check">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p><strong>Openstaande offertes:</strong> automatische follow-up na 5 werkdagen</p>
+      </div>
+    </div>
+
+    <p>Onverwacht bijproduct: het aantal no-shows daalde van gemiddeld 2 per maand naar 0. Klanten waren beter voorbereid, en de monteurs hoefden minder te wachten.</p>
+
+    <p><strong>Tijdsbesparing: van 2 uur naar 0 minuten per week.</strong></p>
+
+    <h2 id="resultaten">Resultaten na 90 dagen</h2>
+
+    <p>Na drie maanden maakten we de balans op. De directeur vulde een gedetailleerde tijdsregistratie in over zijn werkweek — iets wat hij voor het traject ook had gedaan als nulmeting.</p>
+
+    <div class="comparison-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Taak</th>
+            <th>Voor</th>
+            <th>Na 90 dagen</th>
+            <th>Besparing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Factuurverwerking</td>
+            <td>4 uur/week</td>
+            <td>15 min/week</td>
+            <td>3 uur 45 min</td>
+          </tr>
+          <tr>
+            <td>Monteurplanning</td>
+            <td>3 uur/week</td>
+            <td>20 min/week</td>
+            <td>2 uur 40 min</td>
+          </tr>
+          <tr>
+            <td>Klantcommunicatie</td>
+            <td>2 uur/week</td>
+            <td>0 min/week</td>
+            <td>2 uur</td>
+          </tr>
+          <tr>
+            <td>Offerteopvolging</td>
+            <td>1 uur/week</td>
+            <td>5 min/week</td>
+            <td>55 min</td>
+          </tr>
+          <tr>
+            <td><strong>Totaal</strong></td>
+            <td><strong>10 uur/week</strong></td>
+            <td><strong>40 min/week</strong></td>
+            <td><strong>9 uur 20 min</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Maar de getallen vertellen niet het hele verhaal. De directeur gebruikte de vrijgekomen tijd om twee nieuwe woningcorporaties te benaderen — iets wat hij eerder nooit tijd voor had. Eén daarvan is inmiddels klant geworden.</p>
+
+    <p>"Ik had altijd het gevoel dat ik te druk was om te groeien," zei hij in het evaluatiegesprek. "Nu heb ik ruimte om vooruit te kijken in plaats van alleen maar bij te houden."</p>
+
+    <div class="cost-highlight">
+      <p class="cost-highlight__calc">9 uur × €75 per uur × 48 werkweken</p>
+      <div class="cost-highlight__amount">€32.400</div>
+      <p class="cost-highlight__label">Waarde van teruggewonnen directeurstijd per jaar — plus de omzet van de nieuwe klant die hij nooit had kunnen binnenhalen</p>
+    </div>
+
+    <div class="next-step-cta">
+      <p class="next-step-cta__tag">Herken je dit?</p>
+      <h2>Is jouw vrijdagochtend ook bezet door administratie?</h2>
+      <p>Plan een gratis gesprek van 30 minuten. Wij analyseren welke processen in jouw bedrijf het meest geschikt zijn voor automatisering — en wat de realistische tijdsbesparing is.</p>
+      <a href="/#contact" class="btn btn--turquoise btn--lg">Plan jouw gratis gesprek →</a>
+      <p class="next-step-cta__note">Geen verplichtingen. Concrete analyse op basis van jouw bedrijfssituatie.</p>
+    </div>
+
+    <h2 id="samenvatting">Samenvatting</h2>
+
+    <div class="summary-box">
+      <h3>De kern op een rij</h3>
+      <div class="summary-item">
+        <div class="summary-item__check">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p>TechInstall BV bespaarde 9 uur per week door drie gerichte AI-workflows te implementeren in 90 dagen</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-item__check">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p>Factuurverwerking daalde van 4 uur naar 15 minuten per week dankzij document-AI die PDF's automatisch verwerkt</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-item__check">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p>Monteurplanning werd volledig geautomatiseerd: toewijzing op basis van locatie, specialisatie en beschikbaarheid</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-item__check">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p>Klantcommunicatie loopt nu volledig automatisch — van boekingsbevestiging tot tevredenheidsvraag</p>
+      </div>
+      <div class="summary-item">
+        <div class="summary-item__check">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p>De directeur gebruikte de vrijgekomen tijd voor acquisitie en won een nieuwe klant die de investering al terugverdiende</p>
+      </div>
+    </div>
+
+    <!-- Prev/Next -->
+    <div style="display:flex; gap:16px; margin-top:48px; flex-wrap:wrap;">
+      <a href="/blog/ai-en-avg-klantdata-automatisering-nederland/" class="next-article" style="flex:1; min-width:240px;">
+        <div class="next-article__label">← Vorig artikel</div>
+        <div class="next-article__body">
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=200&q=80" alt="AI en AVG klantdata" class="next-article__img" />
+          <div>
+            <p class="next-article__cat">AI Strategie</p>
+            <p class="next-article__title">AI en AVG: mag je klantdata gebruiken voor automatisering?</p>
+            <p class="next-article__time">6 min leestijd</p>
+          </div>
+          <svg class="next-article__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+    </div>
+
+    <div class="article-tags">
+      <a href="/blog/" class="article-tag">Case Study</a>
+      <a href="/blog/" class="article-tag">Administratie Automatiseren</a>
+      <a href="/blog/" class="article-tag">Factuurverwerking</a>
+      <a href="/blog/" class="article-tag">MKB Resultaten</a>
+    </div>
+
+    <div class="author-bio">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=140&q=80" alt="HartAI Team" class="author-bio__avatar" />
+      <div>
+        <p class="author-bio__name">HartAI Team</p>
+        <p class="author-bio__role">AI Implementatie Specialisten</p>
+        <p class="author-bio__bio">Bij HartAI maken we bedrijven winstgevender door slimme AI-automatisering. Wij bouwen, implementeren en beheren AI-systemen die direct meetbare resultaten opleveren voor het Nederlandse MKB.</p>
+        <a href="/blog/" class="author-bio__link">Bekijk alle artikelen van HartAI Team →</a>
+      </div>
+    </div>
+
+    <div class="share-bar">
+      <span class="share-bar__label">Delen</span>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.hartai.nl%2Fblog%2Fvan-10-naar-1-uur-per-week-administratie-automatiseren%2F" target="_blank" rel="noopener noreferrer" class="share-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.hartai.nl%2Fblog%2Fvan-10-naar-1-uur-per-week-administratie-automatiseren%2F&text=Van+10+uur+naar+1+uur+per+week%3A+case+study+AI+automatisering+MKB" target="_blank" rel="noopener noreferrer" class="share-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X
+      </a>
+      <button class="share-btn share-btn--copy" onclick="copyLink()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        <span id="copy-label">Kopieer link</span>
+      </button>
+    </div>
+
+  </article>
+
+  <div class="sidebar-col">
+  <aside class="article-sidebar" aria-label="Auteur en delen">
+    <div class="sidebar-author">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=140&q=80" alt="HartAI Team" class="sidebar-author__avatar" />
+      <p class="sidebar-author__name">HartAI Team</p>
+      <p class="sidebar-author__role">AI Implementatie Specialisten</p>
+      <p class="sidebar-author__bio">Bij HartAI maken we bedrijven winstgevender door slimme AI-automatisering voor het Nederlandse MKB.</p>
+    </div>
+    <div class="sidebar-share">
+      <p class="sidebar-share__title">Delen</p>
+      <div class="sidebar-share__list">
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.hartai.nl%2Fblog%2Fvan-10-naar-1-uur-per-week-administratie-automatiseren%2F" target="_blank" rel="noopener noreferrer" class="sidebar-share__btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <button class="sidebar-share__btn" onclick="copyLink()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Kopieer link
+        </button>
+      </div>
+    </div>
+  </aside>
+  </div>
+
+</div>
+
+<section class="related-posts" aria-label="Verder lezen">
+  <div class="container">
+    <div class="related-posts__header"><h2>Verder lezen</h2></div>
+    <div class="related-grid">
+      <a href="/blog/hoeveel-tijd-bespaar-je-met-ai-automatisering/" class="post-card">
+        <div class="post-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Tijdsbesparing AI automatisering" loading="lazy" />
+          <span class="post-card__category">AI Strategie</span>
+        </div>
+        <div class="post-card__body">
+          <p class="post-card__title">Hoeveel tijd bespaar je met AI automatisering?</p>
+          <p class="post-card__excerpt">Concrete tijdsbesparings-data per bedrijfsproces voor MKB-ondernemers.</p>
+          <div class="post-card__meta">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="HartAI Team" class="post-card__meta-avatar" />
+            <span class="post-card__meta-name">HartAI Team</span><span class="post-card__meta-dot">•</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min
+          </div>
+        </div>
+      </a>
+      <a href="/blog/wat-kost-een-extra-medewerker/" class="post-card">
+        <div class="post-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80" alt="Kosten extra medewerker" loading="lazy" />
+          <span class="post-card__category">ROI &amp; Financiën</span>
+        </div>
+        <div class="post-card__body">
+          <p class="post-card__title">Wat kost een extra medewerker écht?</p>
+          <p class="post-card__excerpt">De volledige kostenberekening inclusief verborgen kosten die de meeste ondernemers vergeten.</p>
+          <div class="post-card__meta">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="HartAI Team" class="post-card__meta-avatar" />
+            <span class="post-card__meta-name">HartAI Team</span><span class="post-card__meta-dot">•</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min
+          </div>
+        </div>
+      </a>
+      <a href="/blog/hoe-ai-jouw-mkb-bedrijf-20-uur-per-week-bespaart/" class="post-card">
+        <div class="post-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80" alt="AI besparing MKB" loading="lazy" />
+          <span class="post-card__category">AI Strategie</span>
+        </div>
+        <div class="post-card__body">
+          <p class="post-card__title">Hoe AI Jouw MKB-Bedrijf 20 Uur Per Week Bespaart</p>
+          <p class="post-card__excerpt">Waarom slimme ondernemers AI inzetten om wekelijks twintig uur terug te winnen.</p>
+          <div class="post-card__meta">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="HartAI Team" class="post-card__meta-avatar" />
+            <span class="post-card__meta-name">HartAI Team</span><span class="post-card__meta-dot">•</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a href="/" class="nav__logo footer__logo" aria-label="HartAI homepage">
+        <img src="/images/logo-white.svg" alt="HartAI logo" width="32" height="32" />
+        <span class="nav__logo-text">HartAI</span>
+      </a>
+      <p>Wij maken bedrijven winstgevender — sneller en slimmer dan ooit mogelijk was.</p>
+      <div class="footer__contact">
+        <a href="mailto:contact@hartai.nl">contact@hartai.nl</a>
+        <div class="footer__contact-row">
+          <span>Nederland</span>
+          <a href="https://www.instagram.com/hartai.nl" target="_blank" rel="noopener noreferrer" aria-label="HartAI op Instagram" class="footer__social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="footer__nav" aria-label="Navigatie">
+      <h4>Navigatie</h4>
+      <ul role="list">
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact">Over Ons</a></li>
+        <li><a href="/#resultaten">Cases</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <nav class="footer__nav" aria-label="Categorieën">
+      <h4>Categorieën</h4>
+      <ul role="list">
+        <li><a href="/blog/">AI Strategie</a></li>
+        <li><a href="/blog/">Implementatie</a></li>
+        <li><a href="/blog/">Cases &amp; Resultaten</a></li>
+        <li><a href="/blog/">ROI &amp; Financiën</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p>© <span id="year"></span> HartAI. Alle rechten voorbehouden.</p>
+      <p>Made with ♥ in Nederland</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    menu.style.display = open ? '' : 'flex';
+  });
+  const tocItems = document.querySelectorAll('.toc__item');
+  const sections = document.querySelectorAll('.article-content h2[id]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocItems.forEach(item => item.classList.remove('active'));
+        const active = document.querySelector('.toc__item[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+  function shareArticle() {
+    if (navigator.share) { navigator.share({ title: document.title, url: window.location.href }); } else { copyLink(); }
+  }
+  function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const label = document.getElementById('copy-label');
+      if (label) { label.textContent = 'Gekopieerd!'; setTimeout(() => { label.textContent = 'Kopieer link'; }, 2000); }
+    });
+  }
+</script>
+</body>
+</html>
