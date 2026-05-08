@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Blog | AI Automatisering voor MKB | HartAI</title>
+  <meta name="description" content="Praktische inzichten over AI-automatisering voor het Nederlandse MKB. Geen theorie — concrete kennis die je morgen kunt toepassen." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.hartai.nl/blog/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.hartai.nl/blog/" />
+  <meta property="og:title" content="Blog | AI Automatisering voor MKB | HartAI" />
+  <meta property="og:description" content="Praktische inzichten over AI-automatisering voor het Nederlandse MKB." />
+  <meta property="og:image" content="https://www.hartai.nl/images/og-hartai.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/blog.css" />
+  <link rel="stylesheet" href="/css/cookie.css" />
+  <link rel="icon" href="/images/favicon.ico" sizes="any" />
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <meta name="theme-color" content="#1B365D" />
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<header class="nav" id="nav" role="banner">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="HartAI – homepage">
+      <img src="/images/logo.svg" alt="HartAI logo" width="36" height="36" />
+      <span class="nav__logo-text">HartAI</span>
+    </a>
+    <button class="nav__toggle" id="nav-toggle" aria-label="Menu openen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav__menu" id="nav-menu" aria-label="Hoofdnavigatie">
+      <a href="/digitale-twin-medewerker/" class="nav__link nav__link--new">Digitale Twin <span class="nav__new-badge">Nieuw</span></a>
+      <a href="/#diensten" class="nav__link">Diensten</a>
+      <a href="/blog/" class="nav__link">Blog</a>
+      <a href="/#contact" class="nav__link">Contact</a>
+      <a href="/#contact" class="btn btn--turquoise btn--sm">Gratis gesprek →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="blog-hero">
+  <div class="container">
+    <h1>Blog</h1>
+    <p>Praktische inzichten over AI-automatisering voor het Nederlandse MKB. Geen theorie — concrete kennis die je morgen kunt toepassen.</p>
+  </div>
+</section>
+
+<!-- ═══ CATEGORIES ═══ -->
+<div class="blog-categories" style="padding-top: 32px; padding-bottom: 0;">
+  <div class="container">
+    <div class="blog-categories__list">
+      <button class="blog-cat-btn active" onclick="filterCat(this, 'all')">Alle artikelen</button>
+      <button class="blog-cat-btn" onclick="filterCat(this, 'ai-strategie')">AI Strategie</button>
+      <button class="blog-cat-btn" onclick="filterCat(this, 'implementatie')">Implementatie</button>
+      <button class="blog-cat-btn" onclick="filterCat(this, 'cases')">Cases &amp; Resultaten</button>
+      <button class="blog-cat-btn" onclick="filterCat(this, 'roi')">ROI &amp; Financiën</button>
+      <button class="blog-cat-btn" onclick="filterCat(this, 'bedrijfsvoering')">Bedrijfsvoering</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ARTICLES ═══ -->
+<section class="blog-grid-section">
+  <div class="container">
+    <div class="blog-grid" id="blog-grid">
+
+      <a href="/blog/hoe-ai-jouw-mkb-bedrijf-20-uur-per-week-bespaart/" class="post-card" data-cat="ai-strategie">
+        <div class="post-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="AI voor MKB tijdsbesparing" loading="lazy" />
+          <span class="post-card__category">AI voor MKB</span>
+        </div>
+        <div class="post-card__body">
+          <p class="post-card__title">Hoe AI Jouw MKB-Bedrijf 20 Uur Per Week Bespaart</p>
+          <p class="post-card__excerpt">Als MKB-ondernemer werk je keihard, maar waar gaan al die uren naartoe? Ontdek hoe AI concreet 20 uur per week teruggeeft.</p>
+          <div class="post-card__meta">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="HartAI Team" class="post-card__meta-avatar" />
+            <span class="post-card__meta-name">HartAI Team</span>
+            <span class="post-card__meta-dot">•</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            7 min
+          </div>
+        </div>
+      </a>
+
+      <a href="/blog/de-echte-kosten-van-administratie-voor-mkb-ondernemers/" class="post-card" data-cat="bedrijfsvoering">
+        <div class="post-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80" alt="Kosten administratie" loading="lazy" />
+          <span class="post-card__category">Bedrijfsvoering</span>
+        </div>
+        <div class="post-card__body">
+          <p class="post-card__title">De Echte Kosten van Administratie voor MKB-Ondernemers</p>
+          <p class="post-card__excerpt">Een diepgaande analyse van hoeveel tijd en geld werkelijk opgaat aan administratieve taken — meer dan €143.000 per jaar.</p>
+          <div class="post-card__meta">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="HartAI Team" class="post-card__meta-avatar" />
+            <span class="post-card__meta-name">HartAI Team</span>
+            <span class="post-card__meta-dot">•</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            6 min
+          </div>
+        </div>
+      </a>
+
+      <a href="/blog/waarom-mkb-ondernemers-vastlopen-in-hun-eigen-operatie/" class="post-card" data-cat="ai-strategie">
+        <div class="post-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80" alt="MKB ondernemer vastgelopen in operatie" loading="lazy" />
+          <span class="post-card__category">AI voor MKB</span>
+        </div>
+        <div class="post-card__body">
+          <p class="post-card__title">Waarom MKB-Ondernemers Vastlopen in Hun Eigen Operatie</p>
+          <p class="post-card__excerpt">De operationele val: het punt waarop het bedrijf de ondernemer runt. Herken de vier signalen en ontdek hoe je eruit komt.</p>
+          <div class="post-card__meta">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="HartAI Team" class="post-card__meta-avatar" />
+            <span class="post-card__meta-name">HartAI Team</span>
+            <span class="post-card__meta-dot">•</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            6 min
+          </div>
+        </div>
+      </a>
+
+      <a href="/blog/btw-facturen-planning-hoe-ai-dit-volledig-overneemt/" class="post-card" data-cat="implementatie">
+        <div class="post-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="BTW facturen planning AI automatisering" loading="lazy" />
+          <span class="post-card__category">AI voor MKB</span>
+        </div>
+        <div class="post-card__body">
+          <p class="post-card__title">BTW, Facturen, Planning: Hoe AI Dit Volledig Overneemt</p>
+          <p class="post-card__excerpt">Concreet: wat AI doet per bedrijfsproces, hoe het werkt, en wat het jou oplevert. 19 tot 31 uur bespaard per maand.</p>
+          <div class="post-card__meta">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="HartAI Team" class="post-card__meta-avatar" />
+            <span class="post-card__meta-name">HartAI Team</span>
+            <span class="post-card__meta-dot">•</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            6 min
+          </div>
+        </div>
+      </a>
+
+      <a href="/blog/van-80-naar-35-uur-per-week/" class="post-card" data-cat="ai-strategie">
+        <div class="post-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80" alt="Van 80 naar 35 uur werkweek" loading="lazy" />
+          <span class="post-card__category">AI voor MKB</span>
+        </div>
+        <div class="post-card__body">
+          <p class="post-card__title">Van 80 naar 35 Uur per Week: Hoe Dat Eruitziet in de Praktijk</p>
+          <p class="post-card__excerpt">28 uur per week structureel teruggewonnen. Zelfde bedrijf, zelfde omzet — welke taken verdwijnen en hoe de week eruitziet.</p>
+          <div class="post-card__meta">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="HartAI Team" class="post-card__meta-avatar" />
+            <span class="post-card__meta-name">HartAI Team</span>
+            <span class="post-card__meta-dot">•</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            6 min
+          </div>
+        </div>
+      </a>
+
+      <a href="/blog/hartai-vs-een-extra-medewerker/" class="post-card" data-cat="roi">
+        <div class="post-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1553484771-371a605b060b?w=600&q=80" alt="HartAI vs extra medewerker vergelijking" loading="lazy" />
+          <span class="post-card__category">ROI &amp; Financiën</span>
+        </div>
+        <div class="post-card__body">
+          <p class="post-card__title">HartAI vs. Een Extra Medewerker: Wat Levert Meer Op?</p>
+          <p class="post-card__excerpt">Een eerlijke vergelijking op tien factoren. Voor herhaalbare processen wint AI het altijd op kosten, snelheid en consistentie.</p>
+          <div class="post-card__meta">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="HartAI Team" class="post-card__meta-avatar" />
+            <span class="post-card__meta-name">HartAI Team</span>
+            <span class="post-card__meta-dot">•</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            5 min
+          </div>
+        </div>
+      </a>
+
+      <a href="/blog/hoe-kies-je-de-juiste-ai-partner/" class="post-card" data-cat="ai-strategie">
+        <div class="post-card__img-wrap">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80" alt="De juiste AI partner kiezen voor MKB" loading="lazy" />
+          <span class="post-card__category">AI Strategie</span>
+        </div>
+        <div class="post-card__body">
+          <p class="post-card__title">Hoe Kies Je de Juiste AI-Partner voor Jouw Bedrijf?</p>
+          <p class="post-card__excerpt">Zeven kritische vragen die je elke potentiële AI-partner moet stellen — inclusief rode vlaggen en de antwoorden die je zou moeten horen.</p>
+          <div class="post-card__meta">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="HartAI Team" class="post-card__meta-avatar" />
+            <span class="post-card__meta-name">HartAI Team</span>
+            <span class="post-card__meta-dot">•</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            6 min
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BANNER ═══ -->
+<section style="padding: 0 0 80px;">
+  <div class="container">
+    <div class="next-step-cta">
+      <p class="next-step-cta__tag">Volgende stap</p>
+      <h2>Wil je weten hoeveel jouw bedrijf kan besparen?</h2>
+      <p>Plan een gratis gesprek van 30 minuten. Geen verkooppraat. Eén concrete vervolgactie.</p>
+      <a href="/#contact" class="btn btn--turquoise btn--lg">Plan een gratis gesprek →</a>
+      <p class="next-step-cta__note">Geen verplichtingen. We bereiden het gesprek voor met je website als context.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer" role="contentinfo">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a href="/" class="nav__logo footer__logo" aria-label="HartAI homepage">
+        <img src="/images/logo-white.svg" alt="HartAI logo" width="32" height="32" />
+        <span class="nav__logo-text">HartAI</span>
+      </a>
+      <p>Wij maken bedrijven winstgevender — sneller en slimmer dan ooit mogelijk was.</p>
+      <div class="footer__contact">
+        <a href="mailto:contact@hartai.nl">contact@hartai.nl</a>
+        <div class="footer__contact-row">
+          <span>Nederland</span>
+          <a href="https://www.instagram.com/hartai.nl" target="_blank" rel="noopener noreferrer" aria-label="HartAI op Instagram" class="footer__social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="footer__nav" aria-label="Navigatie">
+      <h4>Navigatie</h4>
+      <ul role="list">
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact">Over Ons</a></li>
+        <li><a href="/#resultaten">Cases</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <nav class="footer__nav" aria-label="Categorieën">
+      <h4>Categorieën</h4>
+      <ul role="list">
+        <li><a href="/blog/">AI Strategie</a></li>
+        <li><a href="/blog/">Implementatie</a></li>
+        <li><a href="/blog/">Cases &amp; Resultaten</a></li>
+        <li><a href="/blog/">Tools &amp; Frameworks</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p>© <span id="year"></span> HartAI. Alle rechten voorbehouden.</p>
+      <p>Made with ♥ in Nederland</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    menu.style.display = open ? '' : 'flex';
+  });
+
+  function filterCat(btn, cat) {
+    document.querySelectorAll('.blog-cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.post-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+    });
+  }
+</script>
+
+</body>
+</html>
