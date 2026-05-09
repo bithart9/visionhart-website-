@@ -57,172 +57,33 @@
     .hero-scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(255,255,255,.3), transparent); animation: scroll-line 2s ease-in-out infinite; }
     @keyframes scroll-line { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
 
-    /* ── 3D DEVICE SCENE ── */
-    .devices-scene { position: relative; margin: 0 auto 60px; height: 520px; max-width: 980px; width: 100%; perspective: 1500px; }
-    @keyframes float-laptop { 0%,100% { transform: rotateY(20deg) rotateX(7deg) translateY(0); } 50% { transform: rotateY(20deg) rotateX(7deg) translateY(-14px); } }
-    @keyframes float-phone  { 0%,100% { transform: rotateY(-30deg) rotateX(6deg) rotateZ(5deg) translateY(0); } 50% { transform: rotateY(-30deg) rotateX(6deg) rotateZ(5deg) translateY(-20px); } }
-
-    /* ── MACBOOK PRO 16" (Silver Aluminum) ── */
-    .macbook { position: absolute; left: 0; top: 10px; width: 540px; animation: float-laptop 7s ease-in-out infinite; transform-style: preserve-3d; }
-    .macbook-glow { position: absolute; bottom: -40px; left: 8%; width: 84%; height: 70px; background: radial-gradient(ellipse, rgba(78,192,196,.3) 0%, transparent 70%); filter: blur(24px); border-radius: 50%; }
-    /* Lid outer shell — silver aluminum */
-    .macbook-lid {
-      background: linear-gradient(172deg, #e2e2e4 0%, #d4d4d6 35%, #dcdcde 60%, #c8c8ca 100%);
-      border-radius: 13px 13px 2px 2px;
-      border: 1px solid rgba(0,0,0,.22);
-      padding: 9px 9px 6px;
-      position: relative;
-      box-shadow: inset 0 1.5px 0 rgba(255,255,255,.7), inset 0 -1px 0 rgba(0,0,0,.1), 0 -2px 10px rgba(0,0,0,.35);
-    }
-    /* Top highlight edge */
-    .macbook-lid::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, rgba(255,255,255,.2), rgba(255,255,255,.75), rgba(255,255,255,.2)); border-radius: 13px 13px 0 0; pointer-events: none; }
-    /* Screen bezel */
-    .macbook-screen { background: #090909; border-radius: 6px; overflow: hidden; height: 262px; position: relative; box-shadow: inset 0 0 0 1px rgba(0,0,0,.9); }
-    /* Camera notch */
-    .macbook-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 132px; height: 22px; background: #090909; border-radius: 0 0 14px 14px; z-index: 10; display: flex; align-items: center; justify-content: center; }
-    .macbook-notch::before { content: ''; width: 9px; height: 9px; background: radial-gradient(circle, #2a2a2a 40%, #111 100%); border-radius: 50%; box-shadow: 0 0 0 1.5px #0a0a0a; }
-    /* Hinge */
-    .macbook-hinge { height: 5px; background: linear-gradient(to bottom, #6a6a6c, #545456, #6e6e70); border-left: 1px solid rgba(0,0,0,.3); border-right: 1px solid rgba(0,0,0,.3); }
-    /* Keyboard deck */
-    .macbook-deck {
-      background: linear-gradient(172deg, #d8d8da 0%, #c6c6c8 45%, #d0d0d2 100%);
-      border-radius: 0 0 12px 12px;
-      border: 1px solid rgba(0,0,0,.22);
-      border-top: none;
-      padding: 10px 14px 0 14px;
-      position: relative;
-      box-shadow: 0 10px 32px rgba(0,0,0,.55), inset 0 -1px 0 rgba(255,255,255,.2), inset 1px 0 0 rgba(255,255,255,.25), inset -1px 0 0 rgba(0,0,0,.08);
-    }
-    /* Speaker grille dots (left + right) */
-    .macbook-speakers { display: flex; justify-content: space-between; margin-bottom: 8px; }
-    .macbook-spk { width: 54px; height: 54px; background:
-      repeating-linear-gradient(0deg, transparent 0px, transparent 4px, rgba(0,0,0,.22) 4px, rgba(0,0,0,.22) 5px),
-      repeating-linear-gradient(90deg, transparent 0px, transparent 4px, rgba(0,0,0,.22) 4px, rgba(0,0,0,.22) 5px),
-      #b8b8ba; border-radius: 3px; box-shadow: inset 0 1px 2px rgba(0,0,0,.2); }
-    /* Keyboard area */
-    .macbook-keyboard {
-      background:
-        repeating-linear-gradient(90deg, rgba(0,0,0,.0) 0px, rgba(0,0,0,.0) 27px, rgba(0,0,0,.32) 27px, rgba(0,0,0,.32) 28.5px),
-        repeating-linear-gradient(0deg, rgba(0,0,0,.0) 0px, rgba(0,0,0,.0) 21px, rgba(0,0,0,.32) 21px, rgba(0,0,0,.32) 22.5px),
-        linear-gradient(180deg, #232323 0%, #1a1a1a 100%);
-      border-radius: 5px;
-      height: 58px;
-      margin: 0 4px;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,.6), inset 0 -1px 0 rgba(255,255,255,.04), 0 1px 0 rgba(0,0,0,.3);
-    }
-    /* Trackpad */
-    .macbook-trackpad {
-      width: 134px;
-      height: 72px;
-      background: linear-gradient(172deg, #c8c8ca 0%, #b8b8ba 60%, #c0c0c2 100%);
-      border-radius: 10px;
-      margin: 8px auto 0;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(0,0,0,.12), 0 0 0 0.5px rgba(0,0,0,.18), 0 1px 3px rgba(0,0,0,.12);
-      position: relative;
-      overflow: hidden;
-    }
-    .macbook-trackpad::before { content: ''; position: absolute; inset: 0; background: linear-gradient(138deg, rgba(255,255,255,.45) 0%, transparent 50%, rgba(0,0,0,.04) 100%); border-radius: 10px; }
-    /* Rubber feet */
-    .macbook-feet { display: flex; justify-content: space-between; padding: 6px 10px 8px; }
-    .macbook-foot { width: 22px; height: 5px; background: linear-gradient(to bottom, #1c1c1e, #2c2c2e); border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,.5); }
-
-    /* Dashboard UI */
-    .dash { display: flex; height: 100%; font-size: 0; }
-    .dash-sidebar { width: 52px; background: #111; border-right: 1px solid #222; display: flex; flex-direction: column; align-items: center; padding: 16px 0; gap: 14px; flex-shrink: 0; }
-    .dash-sidebar-icon { width: 28px; height: 28px; background: #1e1e1e; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-    .dash-sidebar-icon--active { background: rgba(78,192,196,.2); }
-    .dash-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-    .dash-topbar { padding: 8px 12px; border-bottom: 1px solid #1e1e1e; display: flex; align-items: center; justify-content: space-between; background: #0d0d0d; flex-shrink: 0; }
-    .dash-topbar-title { font-size: 9px; font-weight: 700; color: #fff; letter-spacing: .04em; }
-    .dash-topbar-badge { font-size: 7px; background: rgba(78,192,196,.2); color: #4EC0C4; padding: 2px 6px; border-radius: 8px; font-weight: 700; }
-    .dash-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; padding: 8px; flex-shrink: 0; }
-    .dash-stat { background: #141414; border: 1px solid #222; border-radius: 6px; padding: 6px 8px; }
-    .dash-stat-val { font-size: 12px; font-weight: 800; color: #fff; }
-    .dash-stat-val em { color: #4EC0C4; font-style: normal; }
-    .dash-stat-label { font-size: 7px; color: #555; margin-top: 2px; }
-    .dash-convs { flex: 1; overflow: hidden; padding: 0 8px 8px; display: flex; flex-direction: column; gap: 4px; }
-    .dash-conv { display: flex; align-items: center; gap: 8px; padding: 7px 8px; background: #111; border: 1px solid #1e1e1e; border-radius: 6px; flex-shrink: 0; }
-    .dash-conv--active { background: rgba(78,192,196,.06); border-color: rgba(78,192,196,.2); }
-    .dash-conv-avatar { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: #fff; }
-    .dash-conv-body { flex: 1; min-width: 0; }
-    .dash-conv-name { font-size: 8px; font-weight: 700; color: #fff; }
-    .dash-conv-preview { font-size: 7px; color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
-    .dash-conv-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex-shrink: 0; }
-    .dash-conv-time { font-size: 6px; color: #444; }
-    .dash-conv-dot { width: 12px; height: 12px; background: #4EC0C4; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 7px; font-weight: 700; color: #000; }
-
-    /* ── IPHONE 15 PRO (Natural Titanium) ── */
-    .iphone { position: absolute; right: 16px; top: 0px; width: 178px; animation: float-phone 6s ease-in-out infinite; animation-delay: -1.5s; transform-style: preserve-3d; }
-    .iphone-glow { position: absolute; bottom: -30px; left: 8%; width: 84%; height: 55px; background: radial-gradient(ellipse, rgba(37,211,102,.32) 0%, transparent 70%); filter: blur(20px); border-radius: 50%; }
-    /* Titanium frame — flat-band sides with brushed finish */
-    .iphone-frame {
-      background: linear-gradient(168deg,
-        #cacacc 0%, #b8b8ba 12%,
-        #d2d2d4 26%, #a8a8aa 42%,
-        #c6c6c8 58%, #b0b0b2 72%,
-        #d0d0d2 86%, #bcbcbe 100%
-      );
-      border-radius: 46px;
-      padding: 13px 10px 2px;
-      position: relative;
-      box-shadow:
-        0 0 0 0.5px rgba(0,0,0,.45),
-        inset 0 2px 0 rgba(255,255,255,.65),
-        inset 0 -2px 0 rgba(0,0,0,.22),
-        inset 2px 0 0 rgba(255,255,255,.22),
-        inset -2px 0 0 rgba(0,0,0,.12),
-        0 50px 100px rgba(0,0,0,.9),
-        0 10px 40px rgba(0,0,0,.65);
-    }
-    /* Polished chamfer highlight */
-    .iphone-frame::before { content: ''; position: absolute; inset: 0; border-radius: 46px; background: linear-gradient(168deg, rgba(255,255,255,.4) 0%, rgba(255,255,255,.08) 25%, transparent 60%, rgba(0,0,0,.08) 100%); pointer-events: none; }
-    /* Action Button (orange pill, left upper) */
-    .iphone-action { position: absolute; left: -4px; top: 60px; width: 4px; height: 22px; background: linear-gradient(to right, #cc6600, #e07a00, #cc6600); border-radius: 2px 0 0 2px; box-shadow: -1px 0 3px rgba(0,0,0,.4); }
-    /* Volume Up */
-    .iphone-vol-up { position: absolute; left: -4px; top: 94px; width: 4px; height: 34px; background: linear-gradient(170deg, #d2d2d4, #b4b4b6, #c8c8ca); border-radius: 2px 0 0 2px; box-shadow: -1px 0 2px rgba(0,0,0,.35); }
-    /* Volume Down */
-    .iphone-vol-down { position: absolute; left: -4px; top: 138px; width: 4px; height: 34px; background: linear-gradient(170deg, #d2d2d4, #b4b4b6, #c8c8ca); border-radius: 2px 0 0 2px; box-shadow: -1px 0 2px rgba(0,0,0,.35); }
-    /* Power/Sleep button */
-    .iphone-pwr { position: absolute; right: -4px; top: 106px; width: 4px; height: 66px; background: linear-gradient(190deg, #d2d2d4, #b4b4b6, #c8c8ca); border-radius: 0 2px 2px 0; box-shadow: 1px 0 2px rgba(0,0,0,.35); }
-    /* Screen */
-    .iphone-screen { background: #111b21; border-radius: 36px; overflow: hidden; position: relative; height: 352px; }
-    /* Dynamic Island */
-    .iphone-island { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 84px; height: 26px; background: #000; border-radius: 22px; z-index: 10; display: flex; align-items: center; justify-content: flex-end; padding-right: 9px; gap: 6px; }
-    .iphone-island::before { content: ''; width: 11px; height: 11px; background: radial-gradient(circle, #222 50%, #111 100%); border-radius: 50%; box-shadow: inset 0 0 3px rgba(0,0,0,.8), 0 0 0 0.5px rgba(255,255,255,.05); }
-    /* Bottom bar: speaker dots + USB-C + speaker dots */
-    .iphone-bottom { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 5px 0 3px; }
-    .iphone-usbc { width: 26px; height: 6px; background: linear-gradient(to bottom, #181818, #0c0c0c); border-radius: 3px; box-shadow: inset 0 1px 2px rgba(0,0,0,.6), 0 0 0 0.5px rgba(255,255,255,.05); flex-shrink: 0; }
-    .iphone-spk { display: flex; gap: 2.5px; align-items: center; }
-    .iphone-spk-dot { width: 2.5px; height: 2.5px; background: rgba(0,0,0,.65); border-radius: 50%; }
-
-    /* WhatsApp UI */
-    .wa { display: flex; flex-direction: column; height: 100%; }
-    .wa-header { background: #1f2c34; padding: 28px 10px 8px; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-    .wa-back { color: #25d366; font-size: 10px; font-weight: 700; }
-    .wa-avatar { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, #1B365D, #4EC0C4); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
-    .wa-info { flex: 1; }
-    .wa-name { font-size: 9px; font-weight: 700; color: #e9edef; }
-    .wa-status { font-size: 7px; color: #8696a0; }
-    .wa-icons { display: flex; gap: 10px; }
-    .wa-icons svg { opacity: .7; }
-    .wa-bg { flex: 1; background: #0b141a; padding: 8px; display: flex; flex-direction: column; gap: 6px; overflow: hidden; position: relative; }
-    .wa-msg { max-width: 80%; animation: msg-in .35s ease both; }
-    @keyframes msg-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    .wa-msg--in { align-self: flex-start; }
-    .wa-msg--out { align-self: flex-end; }
-    .wa-bubble { padding: 6px 8px 14px; border-radius: 8px; font-size: 8px; line-height: 1.4; position: relative; }
-    .wa-msg--in .wa-bubble { background: #202c33; color: #e9edef; border-top-left-radius: 2px; }
-    .wa-msg--out .wa-bubble { background: #005c4b; color: #e9edef; border-top-right-radius: 2px; }
-    .wa-bubble-time { position: absolute; bottom: 3px; right: 6px; font-size: 6px; color: #8696a0; }
-    .wa-msg--out .wa-bubble-time { color: rgba(134,150,160,.8); }
-    .wa-typing { display: flex; gap: 3px; padding: 8px 10px; background: #202c33; border-radius: 8px; border-top-left-radius: 2px; width: fit-content; }
-    .wa-typing span { width: 5px; height: 5px; background: #8696a0; border-radius: 50%; animation: typing .9s ease infinite; }
-    .wa-typing span:nth-child(2) { animation-delay: .15s; }
-    .wa-typing span:nth-child(3) { animation-delay: .3s; }
-    @keyframes typing { 0%,60%,100% { transform: translateY(0); opacity:.4; } 30% { transform: translateY(-5px); opacity:1; } }
-    .wa-input { background: #1f2c34; padding: 6px 8px; display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
-    .wa-input-field { flex: 1; background: #2a3942; border: none; border-radius: 20px; padding: 5px 10px; color: #e9edef; font-size: 7.5px; font-family: inherit; }
-    .wa-send { width: 26px; height: 26px; background: #00a884; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    /* ── CHAT MOCKUP ── */
+    .chat-mockup-wrap { margin: 0 auto 60px; max-width: 400px; width: 100%; }
+    .chat-phone { background: linear-gradient(145deg, #1a1a2e, #16213e); border-radius: 24px; border: 1px solid rgba(255,255,255,.12); overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.04); }
+    .chat-header { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,.03); }
+    .chat-avatar { width: 36px; height: 36px; background: linear-gradient(135deg, var(--navy), var(--turq)); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .chat-header-info { flex: 1; }
+    .chat-header-name { font-size: .85rem; font-weight: 700; color: #fff; }
+    .chat-header-status { font-size: .72rem; color: var(--turq); display: flex; align-items: center; gap: 4px; }
+    .chat-status-dot { width: 5px; height: 5px; background: var(--turq); border-radius: 50%; animation: pulse 1.5s infinite; }
+    .chat-body { padding: 20px; display: flex; flex-direction: column; gap: 12px; min-height: 220px; }
+    .chat-msg { max-width: 80%; animation: msg-in .4s ease both; }
+    @keyframes msg-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .chat-msg--bot { align-self: flex-start; }
+    .chat-msg--user { align-self: flex-end; }
+    .chat-bubble { padding: 10px 14px; border-radius: 14px; font-size: .82rem; line-height: 1.5; }
+    .chat-msg--bot .chat-bubble { background: rgba(255,255,255,.08); color: rgba(255,255,255,.9); border-bottom-left-radius: 4px; }
+    .chat-msg--user .chat-bubble { background: var(--turq); color: #fff; border-bottom-right-radius: 4px; }
+    .chat-time { font-size: .65rem; color: rgba(255,255,255,.3); margin-top: 4px; padding: 0 4px; }
+    .chat-msg--user .chat-time { text-align: right; }
+    .chat-typing { display: flex; gap: 4px; padding: 10px 14px; background: rgba(255,255,255,.06); border-radius: 14px; border-bottom-left-radius: 4px; width: fit-content; }
+    .chat-typing span { width: 6px; height: 6px; background: rgba(255,255,255,.4); border-radius: 50%; animation: typing .9s ease infinite; }
+    .chat-typing span:nth-child(2) { animation-delay: .15s; }
+    .chat-typing span:nth-child(3) { animation-delay: .3s; }
+    @keyframes typing { 0%,60%,100% { transform: translateY(0); opacity:.4; } 30% { transform: translateY(-6px); opacity:1; } }
+    .chat-input { padding: 12px 16px; border-top: 1px solid rgba(255,255,255,.06); display: flex; gap: 10px; align-items: center; }
+    .chat-input-field { flex: 1; background: rgba(255,255,255,.06); border: none; border-radius: 20px; padding: 8px 14px; color: rgba(255,255,255,.5); font-size: .8rem; font-family: inherit; }
+    .chat-send { width: 32px; height: 32px; background: var(--turq); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
     /* ── STATEMENT SECTION ── */
     .statement { background: #000; padding: 120px 24px; text-align: center; }
@@ -400,132 +261,28 @@
     <h1>Jouw bedrijf.<br><em>Digitaal gekloond.</em></h1>
     <p class="hero-sub">Geen chatbot. Een digitale medewerker die spreekt zoals jij, jouw aanbod kent en 24/7 autonoom werkt — op website en WhatsApp.</p>
 
-    <!-- 3D Device Scene -->
-    <div class="devices-scene reveal">
-
-      <!-- MacBook -->
-      <div class="macbook">
-        <div class="macbook-glow"></div>
-        <div class="macbook-lid">
-          <div class="macbook-screen">
-            <div class="macbook-notch"></div>
-            <div class="dash">
-              <div class="dash-sidebar">
-                <div class="dash-sidebar-icon dash-sidebar-icon--active">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                </div>
-                <div class="dash-sidebar-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/></svg>
-                </div>
-                <div class="dash-sidebar-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-                </div>
-                <div class="dash-sidebar-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M4.93 4.93a10 10 0 000 14.14"/></svg>
-                </div>
-              </div>
-              <div class="dash-main">
-                <div class="dash-topbar">
-                  <span class="dash-topbar-title">HartAI · Gesprekken</span>
-                  <span class="dash-topbar-badge">● Live</span>
-                </div>
-                <div class="dash-stats">
-                  <div class="dash-stat"><div class="dash-stat-val">24<em>/7</em></div><div class="dash-stat-label">Beschikbaar</div></div>
-                  <div class="dash-stat"><div class="dash-stat-val">47<em>x</em></div><div class="dash-stat-label">Gesprekken</div></div>
-                  <div class="dash-stat"><div class="dash-stat-val"><em>€</em>12k</div><div class="dash-stat-label">Pipeline</div></div>
-                </div>
-                <div class="dash-convs">
-                  <div class="dash-conv dash-conv--active">
-                    <div class="dash-conv-avatar" style="background:linear-gradient(135deg,#1B365D,#4EC0C4)">M</div>
-                    <div class="dash-conv-body">
-                      <div class="dash-conv-name">Mark de Vries</div>
-                      <div class="dash-conv-preview">Kunnen jullie ook integreren met...</div>
-                    </div>
-                    <div class="dash-conv-meta"><div class="dash-conv-time">nu</div><div class="dash-conv-dot">2</div></div>
-                  </div>
-                  <div class="dash-conv">
-                    <div class="dash-conv-avatar" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">S</div>
-                    <div class="dash-conv-body">
-                      <div class="dash-conv-name">Sandra Bakker</div>
-                      <div class="dash-conv-preview">Wat is de terugverdientijd?</div>
-                    </div>
-                    <div class="dash-conv-meta"><div class="dash-conv-time">2m</div></div>
-                  </div>
-                  <div class="dash-conv">
-                    <div class="dash-conv-avatar" style="background:linear-gradient(135deg,#059669,#34d399)">R</div>
-                    <div class="dash-conv-body">
-                      <div class="dash-conv-name">Roel Jansen</div>
-                      <div class="dash-conv-preview">Demo afspraak bevestigd ✓</div>
-                    </div>
-                    <div class="dash-conv-meta"><div class="dash-conv-time">14m</div></div>
-                  </div>
-                  <div class="dash-conv">
-                    <div class="dash-conv-avatar" style="background:linear-gradient(135deg,#dc2626,#f87171)">A</div>
-                    <div class="dash-conv-body">
-                      <div class="dash-conv-name">Anke Smit</div>
-                      <div class="dash-conv-preview">Offerte ontvangen, ziet er goed...</div>
-                    </div>
-                    <div class="dash-conv-meta"><div class="dash-conv-time">1u</div></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <!-- Animated Chat Mockup -->
+    <div class="chat-mockup-wrap reveal">
+      <div class="chat-phone">
+        <div class="chat-header">
+          <div class="chat-avatar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="7" y="7" width="10" height="10" rx="1.5"/><circle cx="12" cy="12" r="2" fill="white" stroke="none"/><path d="M7 10H4M7 14H4M17 10H20M17 14H20M10 7V4M14 7V4M10 17V20M14 17V20" stroke-linecap="round"/></svg>
+          </div>
+          <div class="chat-header-info">
+            <div class="chat-header-name">Digitale Medewerker</div>
+            <div class="chat-header-status"><span class="chat-status-dot"></span>Direct beschikbaar</div>
           </div>
         </div>
-        <div class="macbook-hinge"></div>
-        <div class="macbook-deck">
-          <div class="macbook-speakers">
-            <div class="macbook-spk"></div>
-            <div class="macbook-spk"></div>
-          </div>
-          <div class="macbook-keyboard"></div>
-          <div class="macbook-trackpad"></div>
-          <div class="macbook-feet">
-            <div class="macbook-foot"></div>
-            <div class="macbook-foot"></div>
+        <div class="chat-body" id="chat-body">
+          <!-- messages injected by JS -->
+        </div>
+        <div class="chat-input">
+          <input class="chat-input-field" placeholder="Stel een vraag..." readonly />
+          <div class="chat-send">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           </div>
         </div>
       </div>
-
-      <!-- iPhone -->
-      <div class="iphone">
-        <div class="iphone-glow"></div>
-        <div class="iphone-frame">
-          <div class="iphone-action"></div>
-          <div class="iphone-vol-up"></div>
-          <div class="iphone-vol-down"></div>
-          <div class="iphone-pwr"></div>
-          <div class="iphone-screen">
-            <div class="iphone-island"></div>
-            <div class="wa">
-              <div class="wa-header">
-                <span class="wa-back">‹</span>
-                <div class="wa-avatar">H</div>
-                <div class="wa-info">
-                  <div class="wa-name">HartAI Medewerker</div>
-                  <div class="wa-status">online</div>
-                </div>
-                <div class="wa-icons">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-                </div>
-              </div>
-              <div class="wa-bg" id="wa-body"></div>
-              <div class="wa-input">
-                <input class="wa-input-field" placeholder="Bericht" readonly />
-                <div class="wa-send">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="iphone-bottom">
-            <div class="iphone-spk"><div class="iphone-spk-dot"></div><div class="iphone-spk-dot"></div><div class="iphone-spk-dot"></div><div class="iphone-spk-dot"></div><div class="iphone-spk-dot"></div></div>
-            <div class="iphone-usbc"></div>
-            <div class="iphone-spk"><div class="iphone-spk-dot"></div><div class="iphone-spk-dot"></div><div class="iphone-spk-dot"></div><div class="iphone-spk-dot"></div><div class="iphone-spk-dot"></div></div>
-          </div>
-        </div>
-      </div>
-
     </div>
 
     <div class="hero-actions">
@@ -841,43 +598,43 @@ const counterObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 counters.forEach(c => counterObserver.observe(c));
 
-// ── WhatsApp animated chat ──
-const waMessages = [
-  { type: 'in',  text: 'Hoi! Wat kost een digitale twin medewerker?', time: '09:41', delay: 500 },
-  { type: 'typing', delay: 1100 },
-  { type: 'out', text: 'Hey! Goede vraag 👋 We starten vanaf €297/mnd all-in. Geen setup kosten bij jaarcontract.', time: '09:41', delay: 2400 },
-  { type: 'in',  text: 'En hoe snel is hij live?', time: '09:42', delay: 4000 },
-  { type: 'typing', delay: 4600 },
-  { type: 'out', text: 'Binnen 48 uur na onze DNA-sessie van 90 min. Daarna direct live op jouw site + WhatsApp ✅', time: '09:42', delay: 5800 },
-  { type: 'in',  text: 'Kunnen we een demo plannen?', time: '09:43', delay: 7400 },
-  { type: 'typing', delay: 8000 },
-  { type: 'out', text: 'Zeker! Ik stuur je een Calendly link — kies zelf een moment 📅', time: '09:43', delay: 9200 },
+// ── Animated chat ──
+const messages = [
+  { type: 'bot', text: 'Hoi! Ik ben de digitale medewerker van dit bedrijf. Waarmee kan ik je helpen?', delay: 600 },
+  { type: 'user', text: 'Wat zijn jullie tarieven?', delay: 2000 },
+  { type: 'typing', delay: 2600 },
+  { type: 'bot', text: 'Goeie vraag. We werken met vaste pakketten — geen verrassingen achteraf. Wil je dat ik de opties doorloop?', delay: 3800 },
+  { type: 'user', text: 'Ja graag!', delay: 5200 },
+  { type: 'typing', delay: 5700 },
+  { type: 'bot', text: 'Top. Ik plan meteen een korte call in — dan laat ik alles zien. Welk tijdstip past jou?', delay: 6900 },
 ];
-const waBody = document.getElementById('wa-body');
-function addWaMsg(msg) {
+const chatBody = document.getElementById('chat-body');
+function addMsg(msg) {
   if (msg.type === 'typing') {
     const el = document.createElement('div');
-    el.className = 'wa-msg wa-msg--out';
-    el.id = 'wa-typing';
-    el.innerHTML = '<div class="wa-typing"><span></span><span></span><span></span></div>';
-    waBody.appendChild(el);
-    waBody.scrollTop = waBody.scrollHeight;
+    el.className = 'chat-msg chat-msg--bot';
+    el.id = 'typing-indicator';
+    el.innerHTML = '<div class="chat-typing"><span></span><span></span><span></span></div>';
+    chatBody.appendChild(el);
+    chatBody.scrollTop = chatBody.scrollHeight;
     return;
   }
-  const t = document.getElementById('wa-typing');
-  if (t) t.remove();
+  const typing = document.getElementById('typing-indicator');
+  if (typing) typing.remove();
   const el = document.createElement('div');
-  el.className = `wa-msg wa-msg--${msg.type}`;
-  el.innerHTML = `<div class="wa-bubble">${msg.text}<span class="wa-bubble-time">${msg.time}${msg.type==='out'?' ✓✓':''}</span></div>`;
-  waBody.appendChild(el);
-  waBody.scrollTop = waBody.scrollHeight;
+  el.className = `chat-msg chat-msg--${msg.type}`;
+  el.innerHTML = `<div class="chat-bubble">${msg.text}</div><div class="chat-time">${msg.type === 'bot' ? 'Medewerker' : 'Jij'} · nu</div>`;
+  chatBody.appendChild(el);
+  chatBody.scrollTop = chatBody.scrollHeight;
 }
-function runWaChat() {
-  waBody.innerHTML = '';
-  waMessages.forEach(m => setTimeout(() => addWaMsg(m), m.delay));
-}
-runWaChat();
-setInterval(runWaChat, 12000);
+messages.forEach(msg => setTimeout(() => addMsg(msg), msg.delay));
+// loop
+setTimeout(() => {
+  setInterval(() => {
+    chatBody.innerHTML = '';
+    messages.forEach(msg => setTimeout(() => addMsg(msg), msg.delay));
+  }, 10000);
+}, 8000);
 </script>
 </body>
 </html>
