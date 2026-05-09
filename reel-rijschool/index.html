@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=390,initial-scale=1"/>
+<title>HartAI Reel — Rijschool</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+
+.frame{
+  width:390px;height:844px;position:relative;overflow:hidden;
+  background:#0a0a0a;border-radius:44px;
+  box-shadow:0 0 0 8px #1a1a1a,0 0 0 10px #2a2a2a,0 40px 80px rgba(0,0,0,0.8);
+  flex-shrink:0;
+}
+
+/* Progress segments */
+.progress-wrap{position:absolute;top:16px;left:16px;right:16px;z-index:200;display:flex;gap:4px}
+.seg{height:2.5px;flex:1;background:rgba(255,255,255,0.25);border-radius:2px;overflow:hidden}
+.seg-fill{height:100%;width:0%;background:#fff;border-radius:2px;transition:none}
+
+/* Slides */
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:56px 32px 48px;opacity:0;pointer-events:none}
+.slide.active{opacity:1;pointer-events:all}
+
+/* Slide backgrounds */
+.s1{background:#0a0a0a}
+.s2{background:#111b21}
+.s3{background:#0a0a0a}
+.s4{background:#0d0d0d}
+.s5{background:linear-gradient(160deg,#0d1e3a 0%,#0a0a0a 100%)}
+.s6{background:#111b21}
+.s7{background:#0d1e3a}
+.s8{background:#080808}
+.s9{background:linear-gradient(160deg,#1B365D,#0d1e3a)}
+
+/* Type */
+.xl{font-size:54px;font-weight:900;color:#fff;line-height:1.05;letter-spacing:-.03em;text-align:center}
+.lg{font-size:36px;font-weight:800;color:#fff;line-height:1.2;text-align:center}
+.md{font-size:22px;font-weight:700;color:rgba(255,255,255,.75);text-align:center;line-height:1.5}
+.sm{font-size:15px;font-weight:600;color:rgba(255,255,255,.45);text-align:center;line-height:1.6}
+.turq{color:#4EC0C4}
+.red{color:#ef4444}
+.gap{margin-bottom:14px}
+
+/* Label pill */
+.pill{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(78,192,196,.12);border:1px solid rgba(78,192,196,.35);
+  color:#4EC0C4;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 14px;border-radius:50px;margin-bottom:20px;
+  opacity:0;transform:translateY(10px);
+}
+
+/* Animated elements */
+.anim{opacity:0;transform:translateY(24px)}
+.anim-left{opacity:0;transform:translateX(-24px)}
+.anim-scale{opacity:0;transform:scale(.85)}
+
+/* WhatsApp */
+.wa-wrap{width:100%;display:flex;flex-direction:column;gap:0}
+.wa-header{display:flex;align-items:center;gap:12px;background:#1f2c33;padding:12px 16px;border-radius:14px 14px 0 0}
+.wa-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#4EC0C4,#1B365D);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;color:#fff;flex-shrink:0}
+.wa-info .name{font-size:15px;font-weight:700;color:#e9edef}
+.wa-info .status{font-size:12px;color:#8696a0}
+.wa-body{background:#0b141a;border-radius:0 0 14px 14px;padding:12px 12px 16px;display:flex;flex-direction:column;gap:7px}
+.bubble{max-width:78%;padding:8px 11px;font-size:14px;line-height:1.45;border-radius:8px;opacity:0;transform:translateY(8px) scale(.97)}
+.bubble.in{background:#202c33;color:#e9edef;align-self:flex-start;border-radius:0 8px 8px 8px}
+.bubble.out{background:#005c4b;color:#e9edef;align-self:flex-end;border-radius:8px 8px 0 8px}
+.bubble.miss{background:#202c33;color:#ef4444;align-self:flex-start;border-radius:0 8px 8px 8px;display:flex;align-items:center;gap:8px}
+.wa-time{font-size:11px;color:#8696a0;text-align:right;margin-top:3px}
+
+/* Check list */
+.checklist{width:100%;display:flex;flex-direction:column;gap:13px;margin-top:20px}
+.check{display:flex;align-items:center;gap:14px;opacity:0;transform:translateX(-20px)}
+.check-ic{width:30px;height:30px;border-radius:50%;background:rgba(78,192,196,.15);border:1.5px solid #4EC0C4;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+.check-tx{font-size:16px;font-weight:600;color:#fff}
+
+/* Stats */
+.statgrid{width:100%;display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.stat{background:rgba(78,192,196,.07);border:1px solid rgba(78,192,196,.2);border-radius:14px;padding:16px 24px;display:flex;align-items:center;gap:16px;opacity:0;transform:translateY(20px)}
+.stat-n{font-size:42px;font-weight:900;color:#4EC0C4;line-height:1;min-width:80px}
+.stat-l{font-size:14px;color:rgba(255,255,255,.6);line-height:1.4}
+
+/* CTA button */
+.cta{
+  display:inline-block;background:#4EC0C4;color:#fff;font-size:17px;font-weight:800;
+  padding:16px 40px;border-radius:50px;margin-top:28px;
+  opacity:0;transform:scale(.9);
+  box-shadow:0 8px 32px rgba(78,192,196,.35);
+}
+
+/* Replay */
+.replay{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#fff;padding:11px 30px;border-radius:50px;cursor:pointer;
+  font-size:14px;font-weight:700;font-family:'Inter',sans-serif;
+  display:none;z-index:300;
+}
+
+/* Emoji big */
+.emoji-big{font-size:72px;margin-bottom:12px;opacity:0}
+
+/* Transition overlay */
+.overlay{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;z-index:150;transition:opacity .25s}
+</style>
+</head>
+<body>
+<div class="frame" id="frame">
+
+  <!-- Progress bar -->
+  <div class="progress-wrap" id="progressWrap">
+    <div class="seg"><div class="seg-fill" id="p1"></div></div>
+    <div class="seg"><div class="seg-fill" id="p2"></div></div>
+    <div class="seg"><div class="seg-fill" id="p3"></div></div>
+    <div class="seg"><div class="seg-fill" id="p4"></div></div>
+    <div class="seg"><div class="seg-fill" id="p5"></div></div>
+    <div class="seg"><div class="seg-fill" id="p6"></div></div>
+    <div class="seg"><div class="seg-fill" id="p7"></div></div>
+    <div class="seg"><div class="seg-fill" id="p8"></div></div>
+    <div class="seg"><div class="seg-fill" id="p9"></div></div>
+  </div>
+
+  <!-- SLIDE 1 — HOOK -->
+  <div class="slide s1" id="s1">
+    <div class="emoji-big" id="e1">📱</div>
+    <div class="xl gap anim" id="t1a">Je geeft rijles.</div>
+    <div class="xl gap anim" id="t1b">Telefoon<br/><span class="turq">gaat af.</span></div>
+    <div class="xl red anim" id="t1c">Weer.</div>
+    <div class="sm anim" id="t1d" style="margin-top:20px">Herken je dit? Swipe 👇</div>
+  </div>
+
+  <!-- SLIDE 2 — PAIN: WhatsApp storm -->
+  <div class="slide s2" id="s2">
+    <div class="wa-wrap">
+      <div class="wa-header">
+        <div class="wa-av">?</div>
+        <div class="wa-info">
+          <div class="name">Potentiële leerling</div>
+          <div class="status">online</div>
+        </div>
+      </div>
+      <div class="wa-body">
+        <div class="bubble in" id="m1">Hoi, zijn er nog plekken? 🙏<div class="wa-time">09:14</div></div>
+        <div class="bubble in" id="m2">Wanneer kan ik beginnen?<div class="wa-time">09:15</div></div>
+        <div class="bubble miss" id="m3">📞 Gemiste oproep<div class="wa-time">09:22</div></div>
+        <div class="bubble in" id="m4">Hoi?? 🤔<div class="wa-time">09:31</div></div>
+        <div class="bubble in" id="m5" style="color:#ef4444">Laat maar, ga naar een andere rijschool 👋<div class="wa-time">09:45</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 — THE COST -->
+  <div class="slide s3" id="s3">
+    <div class="pill anim" id="pill3">💸 De echte prijs</div>
+    <div class="lg gap anim" id="t3a">Elke gemiste oproep</div>
+    <div class="lg turq gap anim" id="t3b">= 1 leerling minder</div>
+    <div class="xl red anim" id="t3c">= €1.200<br/>weg.</div>
+  </div>
+
+  <!-- SLIDE 4 — TRUTH -->
+  <div class="slide s4" id="s4">
+    <div class="lg gap anim" id="t4a">Je kunt niet<br/><span class="red">opnemen.</span></div>
+    <div class="md anim" id="t4b" style="margin-bottom:8px">Je rijdt. Je geeft les.</div>
+    <div class="md anim" id="t4c" style="margin-bottom:8px">Je bent bezig met je leerling.</div>
+    <div class="lg turq anim" id="t4d" style="margin-top:16px">Dat hoort zo. 🚗</div>
+  </div>
+
+  <!-- SLIDE 5 — PLOT TWIST -->
+  <div class="slide s5" id="s5">
+    <div class="xl gap anim" id="t5a">Maar wat als...</div>
+    <div class="xl turq anim" id="t5b">jouw telefoon<br/>zichzelf<br/>beantwoordde?</div>
+  </div>
+
+  <!-- SLIDE 6 — SOLUTION: Twin in action -->
+  <div class="slide s6" id="s6">
+    <div class="wa-wrap">
+      <div class="wa-header">
+        <div class="wa-av" style="font-size:13px;font-weight:900;letter-spacing:-.02em">AI</div>
+        <div class="wa-info">
+          <div class="name">HartAI Twin — Rijschool</div>
+          <div class="status" style="color:#4EC0C4">● actief & reageert</div>
+        </div>
+      </div>
+      <div class="wa-body">
+        <div class="bubble in" id="m6">Hoi, zijn er nog plekken? 🙏<div class="wa-time">09:14</div></div>
+        <div class="bubble out" id="m7">Hoi! 👋 Ja we hebben plekken. Wanneer wil je beginnen?<div class="wa-time">09:14</div></div>
+        <div class="bubble in" id="m8">Maandag ochtend?<div class="wa-time">09:15</div></div>
+        <div class="bubble out" id="m9">Perfect! Je staat ingepland voor maandag 9:00. Bevestiging + welkomstinfo volgt zo 🎉<div class="wa-time">09:15</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7 — HOW IT WORKS -->
+  <div class="slide s7" id="s7" style="align-items:flex-start">
+    <div class="pill anim" id="pill7" style="align-self:flex-start">Jouw digitale twin</div>
+    <div class="lg anim" id="t7a" style="text-align:left;margin-bottom:4px">Terwijl jij rijles<br/>geeft, doet jouw<br/>twin dit:</div>
+    <div class="checklist">
+      <div class="check" id="c1"><div class="check-ic">✓</div><div class="check-tx">Beantwoordt vragen 24/7</div></div>
+      <div class="check" id="c2"><div class="check-ic">✓</div><div class="check-tx">Plant lessen automatisch in</div></div>
+      <div class="check" id="c3"><div class="check-ic">✓</div><div class="check-tx">Volgt leads op via WhatsApp</div></div>
+      <div class="check" id="c4"><div class="check-ic">✓</div><div class="check-tx">Stuurt betalingslinks</div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8 — RESULTS -->
+  <div class="slide s8" id="s8">
+    <div class="pill anim" id="pill8">Rijscholen met HartAI</div>
+    <div class="statgrid">
+      <div class="stat" id="st1"><div class="stat-n">+40%</div><div class="stat-l">meer nieuwe leerlingen per maand</div></div>
+      <div class="stat" id="st2"><div class="stat-n">3u</div><div class="stat-l">minder admin & WhatsApp per dag</div></div>
+      <div class="stat" id="st3"><div class="stat-n">24/7</div><div class="stat-l">nooit meer een lead gemist</div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9 — CTA -->
+  <div class="slide s9" id="s9">
+    <div class="pill anim" id="pill9">HartAI · Digitale Twin</div>
+    <div class="xl gap anim" id="t9a">Nooit meer<br/>een lead<br/><span class="turq">missen.</span></div>
+    <div class="md anim" id="t9b">Gratis gesprek → link in bio</div>
+    <div class="cta anim-scale" id="t9c">hartai.nl →</div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+  <button class="replay" id="replay" onclick="start()">↺ Opnieuw afspelen</button>
+</div>
+
+<script>
+const SLIDES = [
+  {id:'s1', dur:4500},
+  {id:'s2', dur:6000},
+  {id:'s3', dur:4500},
+  {id:'s4', dur:4000},
+  {id:'s5', dur:3500},
+  {id:'s6', dur:6000},
+  {id:'s7', dur:5000},
+  {id:'s8', dur:4000},
+  {id:'s9', dur:5000},
+];
+const TOTAL = SLIDES.reduce((a,s)=>a+s.dur,0);
+
+let timers=[];
+function later(fn,ms){const t=setTimeout(fn,ms);timers.push(t);return t;}
+function clear(){timers.forEach(clearTimeout);timers=[];}
+const $=id=>document.getElementById(id);
+
+function show(id,delay,extra){
+  later(()=>{
+    const el=$(id);if(!el)return;
+    el.style.transition='opacity .45s ease,transform .45s cubic-bezier(.34,1.3,.64,1)';
+    el.style.opacity='1';
+    el.style.transform=extra||'translateY(0) scale(1)';
+  },delay);
+}
+
+function fadeSlide(id,inOrOut,delay=0){
+  later(()=>{
+    const el=$(id);if(!el)return;
+    if(inOrOut==='in'){el.style.opacity='1';el.classList.add('active');}
+    else{
+      el.style.transition='opacity .3s ease';
+      el.style.opacity='0';
+      later(()=>el.classList.remove('active'),300);
+    }
+  },delay);
+}
+
+function fillSeg(num,dur){
+  later(()=>{
+    const el=$('p'+num);if(!el)return;
+    el.style.transition=`width ${dur}ms linear`;
+    el.style.width='100%';
+  },50);
+}
+
+function resetAll(){
+  clear();
+  SLIDES.forEach((_,i)=>{
+    const el=$('s'+(i+1));if(!el)return;
+    el.classList.remove('active');el.style.opacity='0';el.style.transition='none';
+  });
+  // Reset all animated children
+  document.querySelectorAll('.anim,.anim-left,.anim-scale,.pill,.emoji-big,.bubble,.check,.stat').forEach(el=>{
+    el.style.transition='none';el.style.opacity='0';
+    if(el.classList.contains('anim'))el.style.transform='translateY(24px)';
+    else if(el.classList.contains('anim-left'))el.style.transform='translateX(-24px)';
+    else if(el.classList.contains('anim-scale'))el.style.transform='scale(.85)';
+    else if(el.classList.contains('check'))el.style.transform='translateX(-20px)';
+    else if(el.classList.contains('stat'))el.style.transform='translateY(20px)';
+    else if(el.classList.contains('bubble'))el.style.transform='translateY(8px) scale(.97)';
+    else if(el.classList.contains('pill'))el.style.transform='translateY(10px)';
+  });
+  for(let i=1;i<=9;i++){const el=$('p'+i);if(el){el.style.transition='none';el.style.width='0%';}}
+  $('replay').style.display='none';
+  $('overlay').style.opacity='0';
+}
+
+function start(){
+  resetAll();
+  let offset=0;
+
+  SLIDES.forEach((s,i)=>{
+    const num=i+1;
+    const o=offset;
+    fadeSlide(s.id,'in',o);
+    fillSeg(num,s.dur);
+    runSlide(num,o);
+    fadeSlide(s.id,'out',o+s.dur-250);
+    offset+=s.dur;
+  });
+
+  later(()=>{ $('replay').style.display='block'; },TOTAL+200);
+}
+
+function runSlide(n,base){
+  const d=(ms)=>base+ms;
+  if(n===1){
+    show('e1',d(100));
+    show('t1a',d(300));
+    show('t1b',d(900));
+    show('t1c',d(1600));
+    show('t1d',d(2400));
+  }
+  if(n===2){
+    show('m1',d(300));
+    show('m2',d(1100));
+    show('m3',d(2100));
+    show('m4',d(3100));
+    show('m5',d(4000));
+  }
+  if(n===3){
+    show('pill3',d(100));
+    show('t3a',d(400));
+    show('t3b',d(1000));
+    show('t3c',d(1700));
+  }
+  if(n===4){
+    show('t4a',d(200));
+    show('t4b',d(900));
+    show('t4c',d(1400));
+    show('t4d',d(2100));
+  }
+  if(n===5){
+    show('t5a',d(200));
+    show('t5b',d(900));
+  }
+  if(n===6){
+    show('m6',d(400));
+    show('m7',d(1300));
+    show('m8',d(2600));
+    show('m9',d(3600));
+  }
+  if(n===7){
+    show('pill7',d(100));
+    show('t7a',d(350));
+    show('c1',d(800),'translateX(0)');
+    show('c2',d(1200),'translateX(0)');
+    show('c3',d(1600),'translateX(0)');
+    show('c4',d(2000),'translateX(0)');
+  }
+  if(n===8){
+    show('pill8',d(100));
+    show('st1',d(400),'translateY(0)');
+    show('st2',d(900),'translateY(0)');
+    show('st3',d(1400),'translateY(0)');
+  }
+  if(n===9){
+    show('pill9',d(150));
+    show('t9a',d(450));
+    show('t9b',d(1100));
+    show('t9c',d(1700),'scale(1)');
+  }
+}
+
+window.addEventListener('load',()=>setTimeout(start,600));
+</script>
+</body>
+</html>
