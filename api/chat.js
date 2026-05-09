@@ -99,7 +99,7 @@ Verzamel: naam → bedrijf → e-mail → telefoon (optioneel)
 ## WIE IS HARTAI?
 
 HartAI is een Nederlands AI-implementatiebedrijf voor MKB (5–250 medewerkers).
-Motto: "Bouwen, niet adviseren."
+Motto: "Geef je saaiste uren aan AI."
 
 - Live in 6–10 weken
 - Vaste prijs, geen uurtje-factuurtje
@@ -362,7 +362,7 @@ Vraag NOOIT twee keer om het e-mailadres. Zeg dit MAXIMAAL één keer per gespre
 /*
 
 HartAI is een Nederlands AI-implementatiebedrijf dat zich exclusief richt op het MKB (5–250 medewerkers).
-Motto: "Bouwen, niet adviseren."
+Motto: "Geef je saaiste uren aan AI."
 
 Wat HartAI uniek maakt:
 - Wij schrijven geen rapporten of adviesdocumenten — wij BOUWEN de oplossing zelf
