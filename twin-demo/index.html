@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digitale Twin Medewerker | HartAI</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1B365D;
+      --turq: #4EC0C4;
+      --turq-dark: #3aafb3;
+      --white: #ffffff;
+      --gray: #86868b;
+      --light: #f5f5f7;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; backdrop-filter: blur(20px); background: rgba(0,0,0,.72); border-bottom: 1px solid rgba(255,255,255,.06); transition: background .3s; }
+    .nav__logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .nav__logo img { width: 28px; height: 28px; filter: brightness(0) invert(1); }
+    .nav__logo-text { font-size: .95rem; font-weight: 700; color: #fff; }
+    .nav__links { display: flex; align-items: center; gap: 28px; }
+    .nav__link { font-size: .82rem; color: rgba(255,255,255,.75); text-decoration: none; transition: color .15s; }
+    .nav__link:hover { color: #fff; }
+    .nav__cta { background: var(--turq); color: #fff; padding: 7px 16px; border-radius: 20px; font-size: .82rem; font-weight: 600; text-decoration: none; transition: background .15s; }
+    .nav__cta:hover { background: var(--turq-dark); }
+
+    /* ── HERO ── */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 120% 80% at 50% 20%, #0d2a4a 0%, #000 70%); }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .35; animation: orb-float 8s ease-in-out infinite; }
+    .hero-orb-1 { width: 600px; height: 600px; background: var(--turq); top: -200px; left: -100px; animation-delay: 0s; }
+    .hero-orb-2 { width: 500px; height: 500px; background: var(--navy); top: 100px; right: -150px; animation-delay: -4s; }
+    .hero-orb-3 { width: 300px; height: 300px; background: var(--turq); bottom: -100px; left: 50%; animation-delay: -2s; }
+    @keyframes orb-float { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-40px) scale(1.05); } }
+    .hero-content { position: relative; z-index: 1; max-width: 900px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(78,192,196,.15); border: 1px solid rgba(78,192,196,.4); border-radius: 20px; padding: 6px 16px; font-size: .78rem; font-weight: 600; color: var(--turq); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 28px; }
+    .hero-badge-dot { width: 6px; height: 6px; background: var(--turq); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.4; transform:scale(1.3); } }
+    .hero h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -.03em; margin-bottom: 24px; }
+    .hero h1 em { font-style: normal; background: linear-gradient(135deg, var(--turq), #7edee0, var(--turq)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200%; animation: shimmer 4s linear infinite; }
+    @keyframes shimmer { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+    .hero-sub { font-size: clamp(1rem, 2.5vw, 1.3rem); color: rgba(255,255,255,.65); max-width: 620px; margin: 0 auto 48px; line-height: 1.6; font-weight: 400; }
+    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 80px; }
+    .btn-primary { background: var(--turq); color: #fff; padding: 16px 32px; border-radius: 50px; font-size: 1rem; font-weight: 700; text-decoration: none; transition: all .2s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { background: var(--turq-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(78,192,196,.4); }
+    .btn-secondary { background: rgba(255,255,255,.08); color: #fff; padding: 16px 32px; border-radius: 50px; font-size: 1rem; font-weight: 600; text-decoration: none; border: 1px solid rgba(255,255,255,.15); transition: all .2s; }
+    .btn-secondary:hover { background: rgba(255,255,255,.14); transform: translateY(-2px); }
+    .hero-scroll { color: rgba(255,255,255,.3); font-size: .78rem; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .hero-scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(255,255,255,.3), transparent); animation: scroll-line 2s ease-in-out infinite; }
+    @keyframes scroll-line { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+    /* ── CHAT MOCKUP ── */
+    .chat-mockup-wrap { margin: 0 auto 60px; max-width: 400px; width: 100%; }
+    .chat-phone { background: linear-gradient(145deg, #1a1a2e, #16213e); border-radius: 24px; border: 1px solid rgba(255,255,255,.12); overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.04); }
+    .chat-header { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,.03); }
+    .chat-avatar { width: 36px; height: 36px; background: linear-gradient(135deg, var(--navy), var(--turq)); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .chat-header-info { flex: 1; }
+    .chat-header-name { font-size: .85rem; font-weight: 700; color: #fff; }
+    .chat-header-status { font-size: .72rem; color: var(--turq); display: flex; align-items: center; gap: 4px; }
+    .chat-status-dot { width: 5px; height: 5px; background: var(--turq); border-radius: 50%; animation: pulse 1.5s infinite; }
+    .chat-body { padding: 20px; display: flex; flex-direction: column; gap: 12px; min-height: 220px; }
+    .chat-msg { max-width: 80%; animation: msg-in .4s ease both; }
+    @keyframes msg-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .chat-msg--bot { align-self: flex-start; }
+    .chat-msg--user { align-self: flex-end; }
+    .chat-bubble { padding: 10px 14px; border-radius: 14px; font-size: .82rem; line-height: 1.5; }
+    .chat-msg--bot .chat-bubble { background: rgba(255,255,255,.08); color: rgba(255,255,255,.9); border-bottom-left-radius: 4px; }
+    .chat-msg--user .chat-bubble { background: var(--turq); color: #fff; border-bottom-right-radius: 4px; }
+    .chat-time { font-size: .65rem; color: rgba(255,255,255,.3); margin-top: 4px; padding: 0 4px; }
+    .chat-msg--user .chat-time { text-align: right; }
+    .chat-typing { display: flex; gap: 4px; padding: 10px 14px; background: rgba(255,255,255,.06); border-radius: 14px; border-bottom-left-radius: 4px; width: fit-content; }
+    .chat-typing span { width: 6px; height: 6px; background: rgba(255,255,255,.4); border-radius: 50%; animation: typing .9s ease infinite; }
+    .chat-typing span:nth-child(2) { animation-delay: .15s; }
+    .chat-typing span:nth-child(3) { animation-delay: .3s; }
+    @keyframes typing { 0%,60%,100% { transform: translateY(0); opacity:.4; } 30% { transform: translateY(-6px); opacity:1; } }
+    .chat-input { padding: 12px 16px; border-top: 1px solid rgba(255,255,255,.06); display: flex; gap: 10px; align-items: center; }
+    .chat-input-field { flex: 1; background: rgba(255,255,255,.06); border: none; border-radius: 20px; padding: 8px 14px; color: rgba(255,255,255,.5); font-size: .8rem; font-family: inherit; }
+    .chat-send { width: 32px; height: 32px; background: var(--turq); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+    /* ── STATEMENT SECTION ── */
+    .statement { background: #000; padding: 120px 24px; text-align: center; }
+    .statement-inner { max-width: 900px; margin: 0 auto; }
+    .statement h2 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; letter-spacing: -.03em; color: #fff; }
+    .statement h2 span { color: var(--turq); }
+    .statement p { font-size: clamp(1rem, 2vw, 1.25rem); color: rgba(255,255,255,.5); margin-top: 24px; line-height: 1.7; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+    /* ── FEATURE SECTIONS ── */
+    .feature { min-height: 100vh; display: flex; align-items: center; padding: 100px 24px; }
+    .feature-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .feature-inner--reverse { direction: rtl; }
+    .feature-inner--reverse > * { direction: ltr; }
+    .feature-tag { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--turq); margin-bottom: 16px; }
+    .feature-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; color: #fff; margin-bottom: 20px; }
+    .feature-desc { font-size: 1.05rem; color: rgba(255,255,255,.55); line-height: 1.75; margin-bottom: 32px; }
+    .feature-points { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .feature-points li { display: flex; align-items: flex-start; gap: 12px; font-size: .95rem; color: rgba(255,255,255,.75); }
+    .feature-points li::before { content: ''; width: 20px; height: 20px; background: rgba(78,192,196,.15); border: 1px solid rgba(78,192,196,.4); border-radius: 50%; display: flex; flex-shrink: 0; margin-top: 2px; background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12' stroke='%234EC0C4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; }
+
+    /* ── VISUAL CARDS ── */
+    .visual-card { background: linear-gradient(145deg, #0d1b2a, #1a2744); border: 1px solid rgba(255,255,255,.08); border-radius: 24px; padding: 32px; position: relative; overflow: hidden; }
+    .visual-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 70% 20%, rgba(78,192,196,.08), transparent 60%); }
+    .vc-label { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 24px; }
+    .vc-number { font-size: 4rem; font-weight: 800; letter-spacing: -.04em; line-height: 1; }
+    .vc-number span { color: var(--turq); }
+    .vc-sub { font-size: .9rem; color: rgba(255,255,255,.45); margin-top: 8px; }
+    .vc-bar-wrap { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
+    .vc-bar-row { display: flex; align-items: center; gap: 12px; }
+    .vc-bar-label { font-size: .75rem; color: rgba(255,255,255,.4); width: 80px; flex-shrink: 0; }
+    .vc-bar-track { flex: 1; height: 4px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden; }
+    .vc-bar-fill { height: 100%; border-radius: 2px; background: linear-gradient(to right, var(--navy), var(--turq)); transform-origin: left; transition: transform 1.5s ease; }
+    .vc-bar-val { font-size: .75rem; color: var(--turq); font-weight: 600; width: 36px; text-align: right; flex-shrink: 0; }
+
+    /* clock visual */
+    .clock-visual { display: flex; flex-direction: column; gap: 16px; }
+    .clock-row { display: flex; align-items: center; gap: 16px; padding: 16px; background: rgba(255,255,255,.04); border-radius: 14px; border: 1px solid rgba(255,255,255,.06); transition: border-color .3s; }
+    .clock-row:hover { border-color: rgba(78,192,196,.3); }
+    .clock-row-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.3rem; }
+    .clock-row-icon--green { background: rgba(34,197,94,.12); }
+    .clock-row-icon--turq { background: rgba(78,192,196,.12); }
+    .clock-row-icon--blue { background: rgba(59,130,246,.12); }
+    .clock-row-text { flex: 1; }
+    .clock-row-title { font-size: .88rem; font-weight: 600; color: #fff; }
+    .clock-row-sub { font-size: .75rem; color: rgba(255,255,255,.4); margin-top: 2px; }
+    .clock-row-badge { font-size: .7rem; font-weight: 700; padding: 3px 8px; border-radius: 20px; }
+    .clock-row-badge--green { background: rgba(34,197,94,.15); color: #4ade80; }
+    .clock-row-badge--turq { background: rgba(78,192,196,.15); color: var(--turq); }
+    .clock-row-badge--blue { background: rgba(59,130,246,.15); color: #60a5fa; }
+
+    /* timeline visual */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .tl-item { display: flex; gap: 20px; padding-bottom: 32px; position: relative; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-left { display: flex; flex-direction: column; align-items: center; }
+    .tl-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .8rem; flex-shrink: 0; z-index: 1; }
+    .tl-dot--done { background: var(--turq); color: #fff; }
+    .tl-dot--active { background: rgba(78,192,196,.2); border: 2px solid var(--turq); color: var(--turq); animation: tl-pulse 2s infinite; }
+    .tl-dot--next { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.3); }
+    @keyframes tl-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(78,192,196,.4); } 50% { box-shadow: 0 0 0 8px rgba(78,192,196,0); } }
+    .tl-line { flex: 1; width: 1px; background: linear-gradient(to bottom, rgba(78,192,196,.4), rgba(255,255,255,.06)); margin: 4px 0; }
+    .tl-item:last-child .tl-line { display: none; }
+    .tl-body { padding-top: 6px; }
+    .tl-title { font-size: .92rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .tl-desc { font-size: .8rem; color: rgba(255,255,255,.4); line-height: 1.5; }
+    .tl-time { font-size: .7rem; color: var(--turq); font-weight: 600; margin-top: 4px; }
+
+    /* ── STATS ── */
+    .stats-section { background: #0a0a0a; padding: 120px 24px; text-align: center; }
+    .stats-label { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--turq); margin-bottom: 16px; }
+    .stats-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.02em; color: #fff; margin-bottom: 80px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; max-width: 900px; margin: 0 auto; background: rgba(255,255,255,.06); border-radius: 24px; overflow: hidden; }
+    .stat-item { background: #0a0a0a; padding: 48px 32px; text-align: center; transition: background .3s; }
+    .stat-item:hover { background: #111; }
+    .stat-num { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -.04em; color: #fff; line-height: 1; }
+    .stat-num em { font-style: normal; color: var(--turq); }
+    .stat-unit { font-size: 1.5rem; font-weight: 800; color: var(--turq); }
+    .stat-desc { font-size: .88rem; color: rgba(255,255,255,.4); margin-top: 12px; line-height: 1.4; }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: #000; padding: 120px 24px; }
+    .how-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--turq); text-align: center; margin-bottom: 16px; }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.02em; color: #fff; text-align: center; margin-bottom: 80px; }
+    .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,.06); border-radius: 24px; overflow: hidden; }
+    .how-item { background: #000; padding: 40px 28px; transition: background .3s; }
+    .how-item:hover { background: #0d0d0d; }
+    .how-num { font-size: .72rem; font-weight: 700; letter-spacing: .08em; color: var(--turq); margin-bottom: 20px; }
+    .how-icon { width: 52px; height: 52px; background: rgba(78,192,196,.1); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .how-item h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .how-item p { font-size: .83rem; color: rgba(255,255,255,.45); line-height: 1.6; }
+
+    /* ── SECTORS ── */
+    .sectors { background: #0a0a0a; padding: 120px 24px; }
+    .sectors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 900px; margin: 0 auto; }
+    .sector-chip { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 20px 24px; display: flex; align-items: center; gap: 14px; transition: all .2s; cursor: default; }
+    .sector-chip:hover { background: rgba(78,192,196,.06); border-color: rgba(78,192,196,.3); transform: translateY(-2px); }
+    .sector-chip-icon { font-size: 1.5rem; }
+    .sector-chip-text { font-size: .88rem; font-weight: 600; color: rgba(255,255,255,.75); }
+
+    /* ── CTA ── */
+    .cta-section { background: #000; padding: 160px 24px; text-align: center; position: relative; overflow: hidden; }
+    .cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(78,192,196,.08), transparent); }
+    .cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .cta-section h2 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -.03em; color: #fff; margin-bottom: 24px; }
+    .cta-section p { font-size: 1.1rem; color: rgba(255,255,255,.55); margin-bottom: 48px; line-height: 1.6; }
+    .cta-note { font-size: .8rem; color: rgba(255,255,255,.25); margin-top: 20px; }
+
+    /* ── FOOTER ── */
+    .footer { background: #000; border-top: 1px solid rgba(255,255,255,.06); padding: 40px 24px; text-align: center; }
+    .footer p { font-size: .8rem; color: rgba(255,255,255,.25); }
+    .footer a { color: rgba(255,255,255,.4); text-decoration: none; }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal { opacity: 0; transform: translateY(48px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+    .reveal-left { opacity: 0; transform: translateX(-48px); transition: opacity .9s ease, transform .9s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(48px); transition: opacity .9s ease, transform .9s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ── BG SECTIONS ── */
+    .bg-dark { background: #000; }
+    .bg-darker { background: #050505; }
+    .feature--dark { background: #050505; }
+    .feature--darker { background: #000; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .feature-inner { grid-template-columns: 1fr; gap: 48px; }
+      .feature-inner--reverse { direction: ltr; }
+      .how-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: 1fr 1fr; }
+      .nav__links { display: none; }
+    }
+    @media (max-width: 560px) {
+      .how-grid { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav__logo">
+    <img src="/images/logo.svg" alt="HartAI" />
+    <span class="nav__logo-text">HartAI</span>
+  </a>
+  <div class="nav__links">
+    <a href="/#diensten" class="nav__link">Diensten</a>
+    <a href="/blog/" class="nav__link">Blog</a>
+    <a href="/ai-voor-mkb/" class="nav__link">AI voor MKB</a>
+    <a href="/#contact" class="nav__link">Contact</a>
+    <a href="/#contact" class="nav__cta">Gratis gesprek →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Live in 48 uur
+    </div>
+    <h1>Jouw bedrijf.<br><em>Digitaal gekloond.</em></h1>
+    <p class="hero-sub">Geen chatbot. Een digitale medewerker die spreekt zoals jij, jouw aanbod kent en 24/7 autonoom werkt — op website en WhatsApp.</p>
+
+    <!-- Animated Chat Mockup -->
+    <div class="chat-mockup-wrap reveal">
+      <div class="chat-phone">
+        <div class="chat-header">
+          <div class="chat-avatar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="7" y="7" width="10" height="10" rx="1.5"/><circle cx="12" cy="12" r="2" fill="white" stroke="none"/><path d="M7 10H4M7 14H4M17 10H20M17 14H20M10 7V4M14 7V4M10 17V20M14 17V20" stroke-linecap="round"/></svg>
+          </div>
+          <div class="chat-header-info">
+            <div class="chat-header-name">Digitale Medewerker</div>
+            <div class="chat-header-status"><span class="chat-status-dot"></span>Direct beschikbaar</div>
+          </div>
+        </div>
+        <div class="chat-body" id="chat-body">
+          <!-- messages injected by JS -->
+        </div>
+        <div class="chat-input">
+          <input class="chat-input-field" placeholder="Stel een vraag..." readonly />
+          <div class="chat-send">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="/#contact" class="btn-primary">Gratis demo aanvragen <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="#how" class="btn-secondary">Hoe het werkt</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement">
+  <div class="statement-inner">
+    <h2 class="reveal">Geen chatbot.<br><span>Een kloon van jouw beste medewerker.</span></h2>
+    <p class="reveal reveal-delay-1">Terwijl andere bedrijven nog werken met generieke bots die frustreren, bouw jij een digitale versie van jezelf die écht converteert — in jouw taal, met jouw kennis, op jouw manier.</p>
+  </div>
+</section>
+
+<!-- FEATURE 1: Spreekt jouw taal -->
+<section class="feature feature--dark">
+  <div class="feature-inner">
+    <div class="reveal-left">
+      <div class="feature-tag">Persoonlijkheid</div>
+      <h2 class="feature-title">Spreekt jouw taal.<br>Denkt jouw gedachten.</h2>
+      <p class="feature-desc">De digitale twin wordt getraind op jouw kennis, jouw aanbod en jouw manier van communiceren. Klanten merken het verschil niet — want er ís geen verschil.</p>
+      <ul class="feature-points">
+        <li>Jouw tone of voice, exacte woordkeuze</li>
+        <li>Volledige kennis van jouw aanbod en prijzen</li>
+        <li>Reageert op nuance, context en intonatie</li>
+        <li>Leert continu bij van elk gesprek</li>
+      </ul>
+    </div>
+    <div class="reveal-right">
+      <div class="visual-card">
+        <div class="vc-label">Persoonlijkheidscore</div>
+        <div class="vc-number"><span class="count" data-target="97">0</span><span>%</span></div>
+        <div class="vc-sub">overeenkomst met jouw communicatiestijl</div>
+        <div class="vc-bar-wrap">
+          <div class="vc-bar-row">
+            <div class="vc-bar-label">Tone of voice</div>
+            <div class="vc-bar-track"><div class="vc-bar-fill" style="width:97%"></div></div>
+            <div class="vc-bar-val">97%</div>
+          </div>
+          <div class="vc-bar-row">
+            <div class="vc-bar-label">Productkennis</div>
+            <div class="vc-bar-track"><div class="vc-bar-fill" style="width:100%"></div></div>
+            <div class="vc-bar-val">100%</div>
+          </div>
+          <div class="vc-bar-row">
+            <div class="vc-bar-label">Reactiesnelheid</div>
+            <div class="vc-bar-track"><div class="vc-bar-fill" style="width:100%"></div></div>
+            <div class="vc-bar-val">&lt;1s</div>
+          </div>
+          <div class="vc-bar-row">
+            <div class="vc-bar-label">Beschikbaarheid</div>
+            <div class="vc-bar-track"><div class="vc-bar-fill" style="width:100%"></div></div>
+            <div class="vc-bar-val">24/7</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 2: 24/7 -->
+<section class="feature feature--darker">
+  <div class="feature-inner feature-inner--reverse">
+    <div class="reveal-right">
+      <div class="feature-tag">Beschikbaarheid</div>
+      <h2 class="feature-title">Terwijl jij slaapt.<br>Werkt hij.</h2>
+      <p class="feature-desc">73% van de leads neemt contact op buiten kantooruren. Je digitale twin converteert ze 24/7 — op website, WhatsApp, en elke andere kanaal.</p>
+      <ul class="feature-points">
+        <li>Simultaan honderden gesprekken voeren</li>
+        <li>Leads kwalificeren en agenda vullen</li>
+        <li>Offertes opstellen en versturen</li>
+        <li>Volledige conversaties doorsturen naar jou</li>
+      </ul>
+    </div>
+    <div class="reveal-left">
+      <div class="visual-card">
+        <div class="vc-label">Live activiteit — vandaag</div>
+        <div class="clock-visual">
+          <div class="clock-row">
+            <div class="clock-row-icon clock-row-icon--green">💬</div>
+            <div class="clock-row-text">
+              <div class="clock-row-title">Gesprek afgehandeld</div>
+              <div class="clock-row-sub">Klant: Wat zijn de mogelijkheden? — 02:34</div>
+            </div>
+            <div class="clock-row-badge clock-row-badge--green">Geconverteerd</div>
+          </div>
+          <div class="clock-row">
+            <div class="clock-row-icon clock-row-icon--turq">📅</div>
+            <div class="clock-row-text">
+              <div class="clock-row-title">Afspraak ingepland</div>
+              <div class="clock-row-sub">Demo gepland voor dinsdag 10:00 — 05:17</div>
+            </div>
+            <div class="clock-row-badge clock-row-badge--turq">Nieuw lead</div>
+          </div>
+          <div class="clock-row">
+            <div class="clock-row-icon clock-row-icon--blue">📋</div>
+            <div class="clock-row-text">
+              <div class="clock-row-title">Offerte verstuurd</div>
+              <div class="clock-row-sub">Op basis van klantgesprek automatisch gegenereerd — 08:02</div>
+            </div>
+            <div class="clock-row-badge clock-row-badge--blue">Automatisch</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 3: 48 uur live -->
+<section class="feature feature--dark">
+  <div class="feature-inner">
+    <div class="reveal-left">
+      <div class="feature-tag">Implementatie</div>
+      <h2 class="feature-title">Live in<br>48 uur.</h2>
+      <p class="feature-desc">Geen weken durende trajecten. Geen dikke rapporten. Eén DNA-sessie van 90 minuten — en jouw digitale medewerker staat binnen 48 uur live.</p>
+      <ul class="feature-points">
+        <li>DNA-sessie: 90 minuten jouw kennis extraheren</li>
+        <li>Training & persoonlijkheidsbouw door ons team</li>
+        <li>Integratie op jouw website én WhatsApp</li>
+        <li>Continue optimalisatie op basis van gesprekken</li>
+      </ul>
+    </div>
+    <div class="reveal-right">
+      <div class="visual-card">
+        <div class="vc-label">Implementatietijdlijn</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-left">
+              <div class="tl-dot tl-dot--done">✓</div>
+              <div class="tl-line"></div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-title">DNA-sessie</div>
+              <div class="tl-desc">Jouw kennis, aanbod en communicatiestijl vastleggen</div>
+              <div class="tl-time">Dag 1 — 90 minuten</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left">
+              <div class="tl-dot tl-dot--done">✓</div>
+              <div class="tl-line"></div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-title">Training & bouw</div>
+              <div class="tl-desc">Persoonlijkheidsmodel trainen en testen</div>
+              <div class="tl-time">Dag 1-2 — door ons team</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left">
+              <div class="tl-dot tl-dot--active">→</div>
+              <div class="tl-line"></div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-title">Integratie & live</div>
+              <div class="tl-desc">Installatie op website + WhatsApp, eerste test</div>
+              <div class="tl-time">Dag 2 — live!</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left">
+              <div class="tl-dot tl-dot--next">4</div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-title">Continue optimalisatie</div>
+              <div class="tl-desc">Maandelijkse updates op basis van gesprekdata</div>
+              <div class="tl-time">Doorlopend</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="section-label reveal">Bewezen resultaten</div>
+  <div class="section-title reveal reveal-delay-1">Cijfers die voor zich spreken.</div>
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-num"><span class="count" data-target="15">0</span><em>u</em></div>
+      <div class="stat-desc">gemiddelde tijdsbesparing<br>per week</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-num"><span class="count" data-target="300">0</span><em>%</em></div>
+      <div class="stat-desc">gemiddelde ROI<br>in jaar 1</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-num"><span class="count" data-target="48">0</span><em>u</em></div>
+      <div class="stat-desc">van DNA-sessie<br>tot live</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-inner">
+    <div class="section-label reveal">Werkwijze</div>
+    <div class="section-title reveal reveal-delay-1">Van jouw kennis naar<br>een werkende digitale twin.</div>
+    <div class="how-grid">
+      <div class="how-item reveal">
+        <div class="how-num">01</div>
+        <div class="how-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>DNA-sessie</h3>
+        <p>90 minuten diep gesprek. Wij extraheren alles wat jij weet over jouw bedrijf, aanbod en klanten.</p>
+      </div>
+      <div class="how-item reveal reveal-delay-1">
+        <div class="how-num">02</div>
+        <div class="how-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+        </div>
+        <h3>Training & bouw</h3>
+        <p>Ons team traint het persoonlijkheidsmodel op jouw kennisbase. Testen tot het perfect voelt.</p>
+      </div>
+      <div class="how-item reveal reveal-delay-2">
+        <div class="how-num">03</div>
+        <div class="how-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3>Integratie</h3>
+        <p>Live op jouw website én WhatsApp. Eén snippet code — de rest doen wij. Binnen 48 uur.</p>
+      </div>
+      <div class="how-item reveal reveal-delay-3">
+        <div class="how-num">04</div>
+        <div class="how-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="1.8"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <h3>Optimalisatie</h3>
+        <p>Maandelijkse analyse van gesprekken. De twin leert en verbetert continu op basis van echte data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="sectors">
+  <div class="section-label reveal">Sectoren</div>
+  <div class="section-title reveal reveal-delay-1">Geschikt voor elke branche.</div>
+  <div class="sectors-grid">
+    <div class="sector-chip reveal"><span class="sector-chip-icon">🔨</span><span class="sector-chip-text">Bouw & Installatie</span></div>
+    <div class="sector-chip reveal reveal-delay-1"><span class="sector-chip-icon">🛍️</span><span class="sector-chip-text">Retail & E-commerce</span></div>
+    <div class="sector-chip reveal reveal-delay-2"><span class="sector-chip-icon">🏥</span><span class="sector-chip-text">Zorg & Welzijn</span></div>
+    <div class="sector-chip reveal reveal-delay-1"><span class="sector-chip-icon">🚚</span><span class="sector-chip-text">Logistiek</span></div>
+    <div class="sector-chip reveal reveal-delay-2"><span class="sector-chip-icon">💼</span><span class="sector-chip-text">Dienstverlening</span></div>
+    <div class="sector-chip reveal reveal-delay-3"><span class="sector-chip-icon">🏠</span><span class="sector-chip-text">Makelaardij & Vastgoed</span></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <h2 class="reveal">Klaar voor jouw<br>digitale medewerker?</h2>
+    <p class="reveal reveal-delay-1">Eén gesprek van 30 minuten. Wij laten zien wat jouw digitale twin kan — live, in jouw branche, met jouw copy.</p>
+    <a href="/#contact" class="btn-primary reveal reveal-delay-2" style="display:inline-flex;font-size:1.1rem;padding:18px 40px">
+      Plan een gratis demo
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <div class="cta-note reveal reveal-delay-3">Geen verplichtingen. Geen verkooppraatje. Bouwen niet adviseren.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 HartAI — <a href="/">hartai.nl</a> — Bouwen niet adviseren.</p>
+</footer>
+
+<script>
+// ── Scroll reveal ──
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// ── Bar fills ──
+const bars = document.querySelectorAll('.vc-bar-fill');
+const barObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.transform = 'scaleX(1)';
+      barObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+bars.forEach(b => { b.style.transform = 'scaleX(0)'; barObserver.observe(b); });
+
+// ── Counter animation ──
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const duration = 1800;
+  const start = performance.now();
+  function update(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(ease * target);
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+const counters = document.querySelectorAll('.count');
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); counterObserver.unobserve(e.target); } });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObserver.observe(c));
+
+// ── Animated chat ──
+const messages = [
+  { type: 'bot', text: 'Hoi! Ik ben de digitale medewerker van dit bedrijf. Waarmee kan ik je helpen?', delay: 600 },
+  { type: 'user', text: 'Wat zijn jullie tarieven?', delay: 2000 },
+  { type: 'typing', delay: 2600 },
+  { type: 'bot', text: 'Goeie vraag. We werken met vaste pakketten — geen verrassingen achteraf. Wil je dat ik de opties doorloop?', delay: 3800 },
+  { type: 'user', text: 'Ja graag!', delay: 5200 },
+  { type: 'typing', delay: 5700 },
+  { type: 'bot', text: 'Top. Ik plan meteen een korte call in — dan laat ik alles zien. Welk tijdstip past jou?', delay: 6900 },
+];
+const chatBody = document.getElementById('chat-body');
+function addMsg(msg) {
+  if (msg.type === 'typing') {
+    const el = document.createElement('div');
+    el.className = 'chat-msg chat-msg--bot';
+    el.id = 'typing-indicator';
+    el.innerHTML = '<div class="chat-typing"><span></span><span></span><span></span></div>';
+    chatBody.appendChild(el);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    return;
+  }
+  const typing = document.getElementById('typing-indicator');
+  if (typing) typing.remove();
+  const el = document.createElement('div');
+  el.className = `chat-msg chat-msg--${msg.type}`;
+  el.innerHTML = `<div class="chat-bubble">${msg.text}</div><div class="chat-time">${msg.type === 'bot' ? 'Medewerker' : 'Jij'} · nu</div>`;
+  chatBody.appendChild(el);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+messages.forEach(msg => setTimeout(() => addMsg(msg), msg.delay));
+// loop
+setTimeout(() => {
+  setInterval(() => {
+    chatBody.innerHTML = '';
+    messages.forEach(msg => setTimeout(() => addMsg(msg), msg.delay));
+  }, 10000);
+}, 8000);
+</script>
+</body>
+</html>
