@@ -519,3 +519,14 @@ html, body { overflow-x: clip; }
 .hub-callout svg { flex-shrink: 0; margin-top: 2px; color: #4EC0C4; }
 .hub-callout a { color: #1B365D; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 .hub-callout a:hover { color: #4EC0C4; }
+
+/* FAQ accordion */
+.faq-block { margin: 40px 0; }
+.faq-block h2 { font-size: 1.35rem; font-weight: 700; color: #1B365D; margin-bottom: 16px; }
+.faq-item { border: 1px solid #e0e6ef; border-radius: 10px; overflow: hidden; margin-bottom: 8px; }
+.faq-question { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; font-weight: 600; font-size: .93rem; color: #1B365D; cursor: pointer; background: #fff; user-select: none; gap: 12px; }
+.faq-question:hover { background: #f8fafc; }
+.faq-answer { padding: 0 18px; max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s ease; background: #fafcfe; font-size: .88rem; color: #444; line-height: 1.65; }
+.faq-item.open .faq-answer { padding: 4px 18px 16px; max-height: 600px; }
+.faq-chevron { transition: transform .25s; flex-shrink: 0; color: #4EC0C4; }
+.faq-item.open .faq-chevron { transform: rotate(180deg); }

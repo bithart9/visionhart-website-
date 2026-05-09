@@ -46,6 +46,8 @@
     "articleSection": "AI Strategie",
     "keywords": "AI AVG Nederland, GDPR automatisering, klantdata AI, privacywetgeving AI MKB, AVG compliant automatisering"
   }</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Mag je klantdata gebruiken voor AI-automatisering onder de AVG?","acceptedAnswer":{"@type":"Answer","text":"Ja, maar alleen als je een geldige rechtsgrond hebt. De meest gebruikte grondslagen zijn: toestemming van de klant, uitvoering van een overeenkomst (bijv. verwerking van een bestelling), of gerechtvaardigd belang (bijv. fraudepreventie). Voor marketing-AI is expliciete toestemming vereist. Zorg altijd voor een verwerkersovereenkomst met de AI-tool die je gebruikt."}},{"@type":"Question","name":"Wat is een verwerkersovereenkomst en wanneer heb ik die nodig?","acceptedAnswer":{"@type":"Answer","text":"Een verwerkersovereenkomst (ook: DPA of Data Processing Agreement) is een contract tussen jou als verwerkingsverantwoordelijke en de leverancier van een AI-tool als verwerker. Je hebt deze nodig zodra de AI-tool toegang heeft tot persoonsgegevens van jouw klanten of medewerkers. Dit is verplicht onder de AVG (artikel 28). Zonder DPA loop je risico op een boete van de Autoriteit Persoonsgegevens."}},{"@type":"Question","name":"Welke AI-tools zijn AVG-compliant voor gebruik in Nederland?","acceptedAnswer":{"@type":"Answer","text":"AVG-compliant gebruik vereist minimaal: een verwerkersovereenkomst (DPA), dataopslag bij voorkeur binnen de EU (of met een adequaatheidsbesluit voor het betreffende land), en transparantie naar klanten over het gebruik van AI. Tools met een goede AVG-reputatie voor MKB: Microsoft Azure AI (EU-datacenters), OpenAI Enterprise (met DPA), en diverse Europese alternatieven. Controleer altijd de meest recente verwerkingslocatie."}},{"@type":"Question","name":"Wat zijn de risico's als ik klantdata gebruik in een AI-tool zonder DPA?","acceptedAnswer":{"@type":"Answer","text":"Zonder verwerkersovereenkomst riskeer je: een boete van de Autoriteit Persoonsgegevens (tot 4% van jaarlijkse omzet of €20 miljoen), reputatieschade bij een datalek, aansprakelijkheid jegens klanten, en verlies van klantvertrouwen. De AP hanteert bij eerste overtredingen vaak een waarschuwing, maar herhaalde of ernstige overtredingen leiden tot forse boetes."}},{"@type":"Question","name":"Hoe verwerk ik klantdata AVG-proof met AI-automatisering?","acceptedAnswer":{"@type":"Answer","text":"Volg deze stappen: (1) Inventariseer welke persoonsgegevens de AI verwerkt, (2) Sluit een verwerkersovereenkomst met elke AI-toolprovider, (3) Gebruik geanonimiseerde of gepseudonimiseerde data waar mogelijk, (4) Informeer klanten in je privacyverklaring over AI-gebruik, (5) Stel een bewaartermijn in voor data in AI-systemen. Bij twijfel: vraag een AVG-specialist om een quickscan."}}]}</script>
+
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -568,7 +570,31 @@
       </button>
     </div>
 
-  </article>
+  
+    <div class="faq-block">
+      <h2>Veelgestelde vragen</h2>
+      <div class="faq-item open">
+        <div class="faq-question" onclick="toggleFaq(this)">Mag je klantdata gebruiken voor AI-automatisering onder de AVG?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="faq-answer"><p>Ja, maar alleen als je een geldige rechtsgrond hebt. De meest gebruikte grondslagen zijn: toestemming van de klant, uitvoering van een overeenkomst (bijv. verwerking van een bestelling), of gerechtvaardigd belang (bijv. fraudepreventie). Voor marketing-AI is expliciete toestemming vereist. Zorg altijd voor een verwerkersovereenkomst met de AI-tool die je gebruikt.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Wat is een verwerkersovereenkomst en wanneer heb ik die nodig?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="faq-answer"><p>Een verwerkersovereenkomst (ook: DPA of Data Processing Agreement) is een contract tussen jou als verwerkingsverantwoordelijke en de leverancier van een AI-tool als verwerker. Je hebt deze nodig zodra de AI-tool toegang heeft tot persoonsgegevens van jouw klanten of medewerkers. Dit is verplicht onder de AVG (artikel 28). Zonder DPA loop je risico op een boete van de Autoriteit Persoonsgegevens.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Welke AI-tools zijn AVG-compliant voor gebruik in Nederland?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="faq-answer"><p>AVG-compliant gebruik vereist minimaal: een verwerkersovereenkomst (DPA), dataopslag bij voorkeur binnen de EU (of met een adequaatheidsbesluit voor het betreffende land), en transparantie naar klanten over het gebruik van AI. Tools met een goede AVG-reputatie voor MKB: Microsoft Azure AI (EU-datacenters), OpenAI Enterprise (met DPA), en diverse Europese alternatieven. Controleer altijd de meest recente verwerkingslocatie.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Wat zijn de risico's als ik klantdata gebruik in een AI-tool zonder DPA?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="faq-answer"><p>Zonder verwerkersovereenkomst riskeer je: een boete van de Autoriteit Persoonsgegevens (tot 4% van jaarlijkse omzet of €20 miljoen), reputatieschade bij een datalek, aansprakelijkheid jegens klanten, en verlies van klantvertrouwen. De AP hanteert bij eerste overtredingen vaak een waarschuwing, maar herhaalde of ernstige overtredingen leiden tot forse boetes.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Hoe verwerk ik klantdata AVG-proof met AI-automatisering?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="faq-answer"><p>Volg deze stappen: (1) Inventariseer welke persoonsgegevens de AI verwerkt, (2) Sluit een verwerkersovereenkomst met elke AI-toolprovider, (3) Gebruik geanonimiseerde of gepseudonimiseerde data waar mogelijk, (4) Informeer klanten in je privacyverklaring over AI-gebruik, (5) Stel een bewaartermijn in voor data in AI-systemen. Bij twijfel: vraag een AVG-specialist om een quickscan.</p></div>
+      </div>
+    </div>
+</article>
 
   <div class="sidebar-col">
   <aside class="article-sidebar" aria-label="Auteur en delen">
