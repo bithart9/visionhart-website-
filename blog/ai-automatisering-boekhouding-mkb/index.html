@@ -49,6 +49,7 @@
   <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
   <meta name="theme-color" content="#1B365D" />
+  <link rel="stylesheet" href="/css/hartai-agent.css" />
 </head>
 <body>
 <header class="nav" id="nav" role="banner">
@@ -396,4 +397,5 @@
   function onScroll(){let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocItems.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})}
   window.addEventListener('scroll',onScroll,{passive:true});
 </script>
+<script src="/js/hartai-agent.js" defer></script>
 </body></html>
