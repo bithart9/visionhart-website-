@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "api/**/*.js", "use": "@vercel/node" },
-    { "src": "**/*", "use": "@vercel/static", "config": { "exclude": ["api/**"] } }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" }
-  ]
+  "functions": {
+    "api/chat.js": { "maxDuration": 30 },
+    "api/chat-summary.js": { "maxDuration": 30 },
+    "api/contact.js": { "maxDuration": 30 }
+  }
 }
