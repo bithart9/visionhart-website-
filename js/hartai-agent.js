@@ -40,6 +40,40 @@
   let proactiveFired = false;
   let welcomeShown = false;
 
+  // ── Session persistence (localStorage) ───────────────────────────────────────
+  const STORAGE_KEY = 'ha_session';
+  const SESSION_TTL = 24 * 60 * 60 * 1000; // 24 hours
+
+  function saveSession() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        history,
+        welcomeShown,
+        summaryShown,
+        summarySent,
+        html: document.getElementById('ha-messages')?.innerHTML || '',
+        ts: Date.now(),
+      }));
+    } catch (_) {}
+  }
+
+  function loadSession() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      const d = JSON.parse(raw);
+      if (!d || Date.now() - (d.ts || 0) > SESSION_TTL) {
+        localStorage.removeItem(STORAGE_KEY);
+        return null;
+      }
+      history = Array.isArray(d.history) ? d.history : [];
+      welcomeShown = !!d.welcomeShown;
+      summaryShown = !!d.summaryShown;
+      summarySent = !!d.summarySent;
+      return d;
+    } catch (_) { return null; }
+  }
+
   // ── Build ────────────────────────────────────────────────────────────────────
   function build() {
     // Trigger button
@@ -162,6 +196,7 @@
     scrollBottom();
     if (!skipHistory) history.push({ role: 'assistant', content: text });
     hideQuickActionsIfNeeded();
+    saveSession();
     return el;
   }
 
@@ -171,6 +206,7 @@
     scrollBottom();
     history.push({ role: 'user', content: text });
     document.getElementById('ha-quick-actions').setAttribute('hidden', '');
+    saveSession();
   }
 
   function createBubble(type, text) {
@@ -262,6 +298,7 @@
 
       history.push({ role: 'assistant', content: text });
       hideQuickActionsIfNeeded();
+      saveSession();
       await maybeAutoSendSummary();
       maybeInjectSummaryAsk();
 
@@ -505,6 +542,15 @@
   function start() {
     build();
     attachListeners();
+    const saved = loadSession();
+    if (saved && saved.html) {
+      const msgs = document.getElementById('ha-messages');
+      if (msgs) {
+        msgs.innerHTML = saved.html;
+        hideQuickActionsIfNeeded();
+        scrollBottom();
+      }
+    }
     scheduleProactive();
   }
 })();
