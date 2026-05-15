@@ -32,7 +32,7 @@
     { icon: '❓', label: 'Stel een vraag',          msg: 'Ik heb een vraag over HartAI.' },
   ];
 
-  const WELCOME = 'Hoi 👋 Ik ben Jean-Pierre, oprichter van HartAI. Ik help MKB-ondernemers schalen met AI — zodoende je meer kan focussen op je klanten en minder op de rompslomp eromheen.\n\nWat speelt er bij jou?';
+  const WELCOME = 'Hoi! 👋 Ik ben Jean-Pierre van HartAI. Waarmee kan ik je van dienst zijn?';
 
   let isOpen = false;
   let isStreaming = false;
