@@ -557,34 +557,41 @@ export default async function handler(req, res) {
 
   if (sanitized.length === 0) return res.status(400).json({ error: 'No valid messages' });
 
-  try {
-    const anthropicRes = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'x-api-key': process.env.ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 600,
-        system: SYSTEM_PROMPT,
-        messages: sanitized,
-      }),
-    });
+  const models = ['claude-haiku-4-5-20251001', 'claude-sonnet-4-6'];
 
-    if (!anthropicRes.ok) {
-      const errText = await anthropicRes.text().catch(() => '');
-      console.error('Anthropic error', anthropicRes.status, errText);
-      return res.status(502).json({ error: 'AI service unavailable', detail: errText });
+  for (const model of models) {
+    try {
+      const anthropicRes = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'x-api-key': process.env.ANTHROPIC_API_KEY,
+          'anthropic-version': '2023-06-01',
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          model,
+          max_tokens: 600,
+          system: SYSTEM_PROMPT,
+          messages: sanitized,
+        }),
+      });
+
+      if (!anthropicRes.ok) {
+        const errText = await anthropicRes.text().catch(() => '');
+        const errJson = JSON.parse(errText);
+        if (errJson?.error?.type === 'overloaded_error') continue;
+        console.error('Anthropic error', anthropicRes.status, errText);
+        return res.status(502).json({ error: 'AI service unavailable', detail: errText });
+      }
+
+      const data = await anthropicRes.json();
+      const text = data?.content?.[0]?.text || '';
+      return res.status(200).json({ text });
+
+    } catch (err) {
+      console.error('chat handler error:', err);
     }
-
-    const data = await anthropicRes.json();
-    const text = data?.content?.[0]?.text || '';
-    return res.status(200).json({ text });
-
-  } catch (err) {
-    console.error('chat handler error:', err);
-    return res.status(500).json({ error: 'Server error' });
   }
+
+  return res.status(502).json({ error: 'AI service unavailable' });
 }
