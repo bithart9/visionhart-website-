@@ -249,3 +249,42 @@ document.addEventListener('keydown', e => {
     toggle.focus();
   }
 });
+
+// ── Spotlight chat animatie ──
+(function() {
+  const container = document.getElementById('spotlight-chat');
+  if (!container) return;
+  const convo = [
+    { role: 'user', text: 'Wat kost jullie digitale twin?' },
+    { role: 'ai',   text: 'Vanaf €497/maand, inclusief setup en WhatsApp. Live in 48 uur.' },
+    { role: 'user', text: 'Kan hij ook offertes versturen?' },
+    { role: 'ai',   text: 'Ja — volledig geautomatiseerd. Klant vraagt aan, jij ontvangt de lead.' },
+    { role: 'user', text: 'Ik wil dit proberen' },
+    { role: 'ai',   text: 'Top. Ik plan een gratis demo voor je in — wanneer schikt het?' },
+  ];
+  let idx = 0;
+  function addMsg() {
+    if (idx >= convo.length) {
+      setTimeout(() => { container.innerHTML = ''; idx = 0; addMsg(); }, 2500);
+      return;
+    }
+    const m = convo[idx++];
+    const typing = document.createElement('div');
+    typing.className = 'twin-chat__typing';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    if (m.role === 'ai') {
+      container.appendChild(typing);
+      container.scrollTop = container.scrollHeight;
+    }
+    setTimeout(() => {
+      if (m.role === 'ai') typing.remove();
+      const el = document.createElement('div');
+      el.className = 'twin-chat__msg twin-chat__msg--' + m.role;
+      el.textContent = m.text;
+      container.appendChild(el);
+      container.scrollTop = container.scrollHeight;
+      setTimeout(addMsg, m.role === 'ai' ? 1600 : 900);
+    }, m.role === 'ai' ? 900 : 0);
+  }
+  setTimeout(addMsg, 800);
+})();
