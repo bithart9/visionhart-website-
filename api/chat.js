@@ -566,7 +566,7 @@ export default async function handler(req, res) {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
+        model: 'claude-3-5-haiku-20241022',
         max_tokens: 600,
         system: SYSTEM_PROMPT,
         messages: sanitized,
@@ -576,7 +576,7 @@ export default async function handler(req, res) {
     if (!anthropicRes.ok) {
       const errText = await anthropicRes.text().catch(() => '');
       console.error('Anthropic error', anthropicRes.status, errText);
-      return res.status(502).json({ error: 'AI service unavailable' });
+      return res.status(502).json({ error: 'AI service unavailable', detail: errText });
     }
 
     const data = await anthropicRes.json();
