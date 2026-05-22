@@ -1586,7 +1586,7 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 
 /* ── DIGITAL TWIN SPOTLIGHT (W10) ── */
 .twin-spotlight {
-  background: #050505;
+  background: var(--navy);
   padding: 80px 0;
   overflow: hidden;
 }
