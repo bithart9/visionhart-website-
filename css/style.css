@@ -1949,3 +1949,49 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
   .team-card--founder { flex-direction: column; align-items: center; text-align: center; }
   .team-facts { display: grid; grid-template-columns: 1fr 1fr; }
 }
+
+/* ── Twin spotlight two-track layout ── */
+.twin-spotlight__twotrack {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+.twin-spotlight__track {
+  flex: 1;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(78,192,196,.2);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+.twin-spotlight__track-label {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: #4EC0C4;
+  margin-bottom: 6px;
+}
+.twin-spotlight__track strong {
+  display: block;
+  color: #fff;
+  font-size: .95rem;
+  margin-bottom: 10px;
+}
+.twin-spotlight__track .twin-spotlight__list {
+  margin-bottom: 0;
+  gap: 7px;
+}
+.twin-spotlight__track .twin-spotlight__list li {
+  font-size: .85rem;
+}
+.twin-spotlight__track-divider {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: rgba(78,192,196,.5);
+  padding-top: 48px;
+  flex-shrink: 0;
+}
+@media (max-width: 600px) {
+  .twin-spotlight__twotrack { flex-direction: column; }
+  .twin-spotlight__track-divider { padding-top: 0; text-align: center; }
+}
