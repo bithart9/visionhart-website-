@@ -1878,11 +1878,15 @@ p  { color: var(--text-muted); line-height: 1.7; font-size: .95rem; }
 .team-card__photo img {
   width: 160px;
   height: 160px;
+  min-width: 160px;
+  min-height: 160px;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   object-fit: cover;
   object-position: center 18%;
   flex-shrink: 0;
   border: 3px solid var(--turquoise);
+  display: block;
 }
 .team-card__initials {
   width: 160px;
