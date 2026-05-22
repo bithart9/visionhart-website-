@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="/css/hartai-agent.css" />
   <link rel="icon" href="/images/favicon.ico" sizes="any" />
   <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
   <meta name="theme-color" content="#1B365D" />
 </head>
 <body>
@@ -32,10 +33,15 @@
       <span></span><span></span><span></span>
     </button>
     <nav class="nav__menu" id="nav-menu" aria-label="Hoofdnavigatie">
-      <a href="/digitale-twin-medewerker/" class="nav__link nav__link--new">Digitale Twin <span class="nav__new-badge">Nieuw</span></a>
-      <a href="/#diensten" class="nav__link">Diensten</a>
+      <div class="nav__dropdown">
+        <a href="/oplossingen/" class="nav__link">Producten ▾</a>
+        <div class="nav__dropdown-menu">
+          <a href="/digitale-twin-medewerker/" class="nav__dropdown-link">Digitale Twin</a>
+          <a href="/infrastructuur/" class="nav__dropdown-link">AI Infrastructuur</a>
+          <a href="/oplossingen/" class="nav__dropdown-link">Alle Oplossingen</a>
+        </div>
+      </div>
       <a href="/#resultaten" class="nav__link">Resultaten</a>
-      <a href="/#voor-wie" class="nav__link">Voor wie</a>
       <a href="/#faq" class="nav__link">FAQ</a>
       <a href="/blog/" class="nav__link">Blog</a>
       <a href="/#contact" class="btn btn--turquoise btn--sm">Gratis gesprek →</a>
@@ -328,7 +334,8 @@
       <h4>Navigatie</h4>
       <ul role="list">
         <li><a href="/">Home</a></li>
-        <li><a href="/#diensten">Diensten</a></li>
+        <li><a href="/digitale-twin-medewerker/">Digitale Twin</a></li>
+        <li><a href="/infrastructuur/">AI Infrastructuur</a></li>
         <li><a href="/#resultaten">Resultaten</a></li>
         <li><a href="/#faq">FAQ</a></li>
         <li><a href="/#contact">Contact</a></li>
