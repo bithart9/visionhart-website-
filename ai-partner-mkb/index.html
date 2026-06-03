@@ -213,6 +213,7 @@
     .links-strip a:hover { text-decoration: underline; }
     .links-strip__sep { color: var(--gray-light); }
 
+    /* ── Tablet ── */
     @media (max-width: 900px) {
       .partner-hero__inner { grid-template-columns: 1fr; gap: 32px; }
       .partner-hero__right { display: none; }
@@ -220,10 +221,101 @@
       .partner-hero__ctas { justify-content: center; }
       .compare-cards { grid-template-columns: 1fr; }
       .hart-cards { grid-template-columns: 1fr; }
-      .partner-steps { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
+      .partner-steps { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; }
       .partner-steps-line { display: none; }
-      .voor-wie__inner { grid-template-columns: 1fr; }
-      .partner-hero__stats { gap: 24px; }
+      .voor-wie__inner { grid-template-columns: 1fr; gap: 48px; }
+      .partner-hero__stats { gap: 20px; }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      /* Section padding */
+      .partner-hero { padding: 80px 0 40px; }
+      .compare-section { padding: 64px 0; }
+      .hart-section { padding: 64px 0; }
+      .partner-howit { padding: 64px 0; }
+      .voor-wie { padding: 64px 0; }
+
+      /* Hero stats: 2×2 grid */
+      .partner-hero__stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        text-align: center;
+      }
+      .partner-hero__stat { padding: 12px 0; }
+      .partner-hero__stat strong { font-size: 1.65rem; }
+      .partner-hero__stat span { font-size: .8rem; }
+
+      /* Compare section */
+      .compare-section__intro { margin-bottom: 40px; }
+      .compare-card { padding: 24px 20px; }
+      .compare-card__icon-wrap { width: 44px; height: 44px; border-radius: 12px; margin-bottom: 16px; }
+
+      /* HART cards */
+      .hart-card { padding: 24px 20px; }
+
+      /* Steps */
+      .partner-steps { max-width: 100%; }
+      .partner-step__head { padding: 20px 20px 16px; gap: 12px; }
+      .partner-step__body { padding: 16px 20px 22px; }
+      .partner-step__badge { width: 38px; height: 38px; font-size: .7rem; }
+
+      /* Voor wie */
+      .voor-wie__inner { gap: 36px; }
+      .voor-wie__visual { padding: 24px 20px; }
+      .voor-wie__checklist { gap: 12px; }
+      .voor-wie__check { padding: 12px 14px; }
+
+      /* Sector tags */
+      .sector-tags { gap: 8px; }
+      .sector-tag { font-size: .8rem; padding: 7px 13px; }
+    }
+
+    /* ── Small phones ── */
+    @media (max-width: 480px) {
+      .partner-hero { padding: 72px 0 32px; }
+      .compare-section { padding: 48px 0; }
+      .hart-section { padding: 48px 0; }
+      .partner-howit { padding: 48px 0; }
+      .voor-wie { padding: 48px 0; }
+
+      /* Hero stats: 2-col compact */
+      .partner-hero__stats { gap: 12px; }
+      .partner-hero__stat strong { font-size: 1.45rem; }
+      .partner-hero__stat span { font-size: .75rem; }
+
+      /* Hero badge + text */
+      .partner-hero__badge { font-size: .74rem; padding: 5px 12px; }
+      .partner-hero__sub-text { font-size: .96rem; }
+
+      /* Hero CTAs: stack */
+      .partner-hero__ctas { flex-direction: column; align-items: center; }
+      .partner-hero__ctas .btn { width: 100%; justify-content: center; text-align: center; }
+
+      /* Compare cards */
+      .compare-card { padding: 20px 16px; border-radius: 16px; }
+      .compare-section__intro { margin-bottom: 28px; }
+
+      /* HART cards: reduce letter */
+      .hart-card { padding: 20px 16px; gap: 14px; }
+      .hart-card__letter { font-size: 2rem; width: 36px; }
+
+      /* Steps */
+      .partner-step__head { padding: 16px 16px 12px; }
+      .partner-step__body { padding: 14px 16px 18px; }
+      .partner-step__badge { width: 34px; height: 34px; font-size: .65rem; }
+      .partner-step__icon { width: 34px; height: 34px; border-radius: 10px; }
+
+      /* Voor wie */
+      .voor-wie__inner { gap: 28px; }
+      .voor-wie__visual { padding: 20px 16px; border-radius: 16px; }
+      .voor-wie__check { padding: 10px 12px; gap: 10px; }
+      .voor-wie__check-text strong { font-size: .87rem; }
+      .voor-wie__check-text span { font-size: .78rem; }
+
+      /* Sector tags smaller */
+      .sector-tag { font-size: .76rem; padding: 6px 10px; gap: 5px; }
     }
   </style>
 </head>
