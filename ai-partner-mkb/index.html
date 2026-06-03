@@ -73,21 +73,8 @@
     .partner-hero__sub-text { font-size: 1.05rem; color: rgba(255,255,255,.78); line-height: 1.7; }
     .partner-hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
     .partner-hero__cta-note { font-size: .82rem; color: rgba(255,255,255,.5); }
-    /* Right: visual card */
+    /* Right: compare widget */
     .partner-hero__right { position: relative; z-index: 2; }
-    .partner-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; padding: 28px; backdrop-filter: blur(12px); box-shadow: 0 24px 60px rgba(0,0,0,.25); }
-    .partner-card__header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,.1); }
-    .partner-card__dot { width: 10px; height: 10px; border-radius: 50%; background: #4EC0C4; box-shadow: 0 0 8px rgba(78,192,196,.6); }
-    .partner-card__title { font-size: .75rem; font-weight: 700; letter-spacing: .1em; color: rgba(78,192,196,.9); text-transform: uppercase; }
-    .partner-promise { display: flex; flex-direction: column; gap: 8px; }
-    .partner-promise__item { display: flex; align-items: flex-start; gap: 12px; padding: 13px 14px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; }
-    .partner-promise__item--active { background: rgba(78,192,196,.1); border-color: rgba(78,192,196,.25); }
-    .partner-promise__letter { font-size: 1.3rem; font-weight: 800; color: #4EC0C4; width: 28px; flex-shrink: 0; line-height: 1.2; }
-    .partner-promise__text strong { display: block; font-size: .88rem; color: #fff; margin-bottom: 2px; }
-    .partner-promise__text span { font-size: .78rem; color: rgba(255,255,255,.6); }
-    .partner-card__foot { margin-top: 14px; padding: 14px; background: rgba(78,192,196,.1); border: 1px solid rgba(78,192,196,.25); border-radius: 12px; display: flex; align-items: center; gap: 12px; }
-    .partner-card__foot-num { font-size: 1.5rem; font-weight: 800; color: #4EC0C4; flex-shrink: 0; }
-    .partner-card__foot-label { font-size: .82rem; color: rgba(255,255,255,.78); line-height: 1.4; }
     /* Stats */
     .partner-hero__stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding-top: 40px; border-top: 1px solid rgba(255,255,255,.1); }
     .partner-hero__stat strong { display: block; font-size: 2rem; font-weight: 800; color: #4EC0C4; }
@@ -219,46 +206,88 @@
         <span class="partner-hero__cta-note">30 minuten · geen verkoopverhaal · concreet advies</span>
       </div>
 
-      <!-- Rechts: visuele HART-kaart -->
+      <!-- Rechts: compare widget -->
       <div class="partner-hero__right" aria-hidden="true">
-        <div class="partner-card">
-          <div class="partner-card__header">
-            <div class="partner-card__dot"></div>
-            <span class="partner-card__title">De HART-aanpak</span>
+        <div class="hv-compare">
+          <div class="hv-compare__head">
+            <div class="hv-ch hv-ch--voor">Zonder AI</div>
+            <div></div>
+            <div class="hv-ch hv-ch--na">Met HartAI</div>
           </div>
-          <div class="partner-promise">
-            <div class="partner-promise__item partner-promise__item--active">
-              <div class="partner-promise__letter">H</div>
-              <div class="partner-promise__text">
-                <strong>Herken</strong>
-                <span>Wij starten met jouw bedrijf — niet met techniek.</span>
+          <div class="hv-row">
+            <div class="hv-side hv-side--voor">
+              <div class="hv-icon hv-icon--voor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+              <div class="hv-val">
+                <span class="hv-big hv-big--voor">55 uur</span>
+                <span class="hv-lbl">werkweek</span>
+                <div class="hv-bar"><span style="width:100%"></span></div>
               </div>
             </div>
-            <div class="partner-promise__item">
-              <div class="partner-promise__letter">A</div>
-              <div class="partner-promise__text">
-                <strong>Afstemmen</strong>
-                <span>AI die past bij jouw werkwijze, niet andersom.</span>
-              </div>
-            </div>
-            <div class="partner-promise__item">
-              <div class="partner-promise__letter">R</div>
-              <div class="partner-promise__text">
-                <strong>Richten</strong>
-                <span>Eerst aanpakken wat het meeste oplevert.</span>
-              </div>
-            </div>
-            <div class="partner-promise__item">
-              <div class="partner-promise__letter">T</div>
-              <div class="partner-promise__text">
-                <strong>Triggeren</strong>
-                <span>Jouw team pakt het op — en houdt het vol.</span>
+            <div class="hv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            <div class="hv-side hv-side--na">
+              <div class="hv-icon hv-icon--na"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+              <div class="hv-val hv-val--na">
+                <span class="hv-big hv-big--na">40 uur</span>
+                <span class="hv-lbl">werkweek</span>
+                <div class="hv-bar hv-bar--na"><span style="width:73%"></span></div>
               </div>
             </div>
           </div>
-          <div class="partner-card__foot">
-            <div class="partner-card__foot-num">90 dgn</div>
-            <div class="partner-card__foot-label">garantie of wij werken door — <strong>gratis</strong></div>
+          <div class="hv-row">
+            <div class="hv-side hv-side--voor">
+              <div class="hv-icon hv-icon--voor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><rect x="6" y="4" width="12" height="16" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h4"/></svg></div>
+              <div class="hv-val">
+                <span class="hv-big hv-big--voor">15 uur</span>
+                <span class="hv-lbl">handmatig werk</span>
+                <div class="hv-bar"><span style="width:100%"></span></div>
+              </div>
+            </div>
+            <div class="hv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            <div class="hv-side hv-side--na">
+              <div class="hv-icon hv-icon--na"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/><path d="M18 14l.9 2.1L21 17l-2.1.9L18 20l-.9-2.1L15 17l2.1-.9z"/></svg></div>
+              <div class="hv-val hv-val--na">
+                <span class="hv-big hv-big--na">0 uur</span>
+                <span class="hv-lbl">handmatig werk</span>
+                <div class="hv-bar hv-bar--na"><span style="width:4%"></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="hv-row">
+            <div class="hv-side hv-side--voor">
+              <div class="hv-icon hv-icon--voor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></div>
+              <div class="hv-val">
+                <span class="hv-big hv-big--voor">Gemist</span>
+                <span class="hv-lbl">leads 's avonds</span>
+              </div>
+            </div>
+            <div class="hv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            <div class="hv-side hv-side--na">
+              <div class="hv-icon hv-icon--na"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></div>
+              <div class="hv-val hv-val--na">
+                <span class="hv-big hv-big--na">24/7</span>
+                <span class="hv-lbl">opgevangen</span>
+              </div>
+            </div>
+          </div>
+          <div class="hv-row hv-row--highlight">
+            <div class="hv-side hv-side--voor">
+              <div class="hv-icon hv-icon--voor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></div>
+              <div class="hv-val">
+                <span class="hv-big hv-big--voor">€3.000</span>
+                <span class="hv-lbl">voor extra medewerker</span>
+              </div>
+            </div>
+            <div class="hv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            <div class="hv-side hv-side--na">
+              <div class="hv-icon hv-icon--na"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3M10 10h4v4h-4z"/></svg></div>
+              <div class="hv-val hv-val--na">
+                <span class="hv-big hv-big--na">€347</span>
+                <span class="hv-lbl">voor AI Twin</span>
+              </div>
+            </div>
+          </div>
+          <div class="hv-compare__foot">
+            <span class="hv-live"><span class="hv-live-dot"></span><span>Gemiddeld <strong>15 uur per week terug</strong> — en <strong>€2.650 lagere kosten</strong> per maand</span></span>
           </div>
         </div>
       </div>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>HartAI | AI Automatisering MKB | €2.347.000 Bespaard | 147 Klanten</title>
-  <meta name="description" content="HartAI bouwt AI-automatisering voor MKB (5–250 medewerkers). 147 bedrijven geholpen. €2.347.000 bespaard. 15 uur/week terug. 90-Dagen Garantie of gratis verder. Scan in 30 min." />
+  <title>HartAI | AI Automatisering MKB | Gemiddeld €40K Bespaard | 147 Klanten</title>
+  <meta name="description" content="HartAI bouwt AI-automatisering voor MKB (5–250 medewerkers). 147 ondernemers begeleid. Gemiddeld €40K bespaard per klant in jaar 1. 90-Dagen Garantie of gratis verder. Scan in 30 min." />
   <meta name="keywords" content="AI automatisering MKB, AI voor het MKB, AI consultant MKB Nederland, chatbot klantenservice MKB, factuurverwerking automatisering, AI implementatie bedrijf, procesoptimalisatie AI, AI strategie MKB, gratis AI advies MKB, HartAI" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="google-site-verification" content="dc0b74a3570a0169" />
@@ -12,15 +12,15 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.hartai.nl/" />
-  <meta property="og:title" content="HartAI | AI Automatisering MKB | €2.347.000 Bespaard | 147 Klanten" />
-  <meta property="og:description" content="HartAI bouwt AI-automatisering voor MKB (5–250 medewerkers). 147 bedrijven geholpen. €2.347.000 bespaard. 15 uur/week terug. 90-Dagen Garantie of gratis verder." />
+  <meta property="og:title" content="HartAI | AI Automatisering MKB | Gemiddeld €40K Bespaard | 147 Klanten" />
+  <meta property="og:description" content="HartAI bouwt AI-automatisering voor MKB (5–250 medewerkers). 147 ondernemers begeleid. Gemiddeld €40K bespaard per klant jaar 1. 90-Dagen Garantie of gratis verder." />
   <meta property="og:image" content="https://www.hartai.nl/images/og-hartai.jpg" />
   <meta property="og:locale" content="nl_NL" />
   <meta property="og:site_name" content="HartAI" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="HartAI | AI Automatisering MKB | €2.347.000 Bespaard | 147 Klanten" />
-  <meta name="twitter:description" content="HartAI bouwt AI-automatisering voor MKB (5–250 medewerkers). 147 bedrijven geholpen. €2.347.000 bespaard. 90-Dagen Garantie of gratis verder." />
+  <meta name="twitter:title" content="HartAI | AI Automatisering MKB | Gemiddeld €40K Bespaard | 147 Klanten" />
+  <meta name="twitter:description" content="HartAI bouwt AI-automatisering voor MKB (5–250 medewerkers). 147 ondernemers begeleid. Gemiddeld €40K bespaard per klant jaar 1. 90-Dagen Garantie of gratis verder." />
   <meta name="twitter:image" content="https://www.hartai.nl/images/og-hartai.jpg" />
 
   <!-- Organization + ProfessionalService Schema -->
@@ -68,11 +68,33 @@
 
     <nav class="nav__menu" id="nav-menu" aria-label="Hoofdnavigatie">
       <div class="nav__dropdown">
-        <a href="/oplossingen/" class="nav__link">Producten ▾</a>
-        <div class="nav__dropdown-menu">
-          <a href="/digitale-twin-medewerker/" class="nav__dropdown-link">Digitale Twin</a>
-          <a href="/infrastructuur/" class="nav__dropdown-link">AI Infrastructuur</a>
-          <a href="/oplossingen/" class="nav__dropdown-link">Alle Oplossingen</a>
+        <button class="nav__dropdown-btn" id="nav-products-toggle" aria-expanded="false" aria-controls="nav-products-menu">
+          <span>Producten</span>
+          <svg class="nav__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="nav__dropdown-menu" id="nav-products-menu" role="region">
+          <a href="/digitale-twin-medewerker/" class="nav__dropdown-link">
+            <span class="nav__dropdown-icon">🤖</span> Digitale Twin
+          </a>
+          <a href="/infrastructuur/" class="nav__dropdown-link">
+            <span class="nav__dropdown-icon">⚙️</span> AI Infrastructuur
+          </a>
+          <a href="/oplossingen/" class="nav__dropdown-link">
+            <span class="nav__dropdown-icon">📋</span> Alle Oplossingen
+          </a>
+          <div class="nav__dropdown-divider"></div>
+          <p class="nav__dropdown-label">Sector oplossingen</p>
+          <a href="/rijschool/" class="nav__dropdown-link">
+            <span class="nav__dropdown-icon">🚗</span> Rijschool
+          </a>
+          <a href="/makelaar/" class="nav__dropdown-link">
+            <span class="nav__dropdown-icon">🏠</span> Makelaar
+          </a>
+          <a href="/restaurant/" class="nav__dropdown-link">
+            <span class="nav__dropdown-icon">🍽️</span> Restaurant
+          </a>
         </div>
       </div>
       <a href="#resultaten" class="nav__link">Resultaten</a>
@@ -91,48 +113,114 @@
 <section class="hero" id="home" aria-labelledby="hero-h1">
   <div class="hero__overlay" aria-hidden="true"></div>
   <div class="container hero__content">
-    <div class="hero__badge">
-      <span class="hero__badge-dot" aria-hidden="true"></span>
-      147 MKB-bedrijven geholpen &nbsp;·&nbsp; Actief sinds 2015
+
+    <!-- Left: tekst + CTA -->
+    <div class="hero__left">
+      <div class="hero__badge">
+        <span class="hero__badge-dot" aria-hidden="true"></span>
+        147 MKB-bedrijven geholpen &nbsp;·&nbsp; Actief sinds 2015
+      </div>
+      <h1 id="hero-h1">
+        <span class="hero__line-wrap"><span class="hero__line">Stop met betalen</span></span>
+        <span class="hero__line-wrap"><span class="hero__line hero__line--2">voor handmatig werk.</span></span>
+      </h1>
+      <p class="hero__sub hero__reveal" style="--rd:.38s">HartAI automatiseert de 15 uur die jouw team elke week kwijt is aan handmatig werk.</p>
+      <p class="hero__sub hero__reveal" style="--rd:.52s">Je ziet precies wat het oplevert — <strong>voordat je één euro uitgeeft.</strong></p>
+      <a href="#scan" class="btn btn--turquoise btn--lg hero__primary-cta hero__reveal" style="--rd:.66s">Ontdek gratis wat AI jou oplevert →</a>
+      <p class="hero__trust hero__reveal" style="--rd:.76s">2 minuten &nbsp;·&nbsp; geen verplichtingen &nbsp;·&nbsp; direct resultaat</p>
     </div>
 
-    <h1 id="hero-h1">Stop met betalen<br />voor handmatig werk.</h1>
-    <p class="hero__sub">HartAI automatiseert de 15 uur die jouw team elke week kwijt is aan handmatig werk — en laat je zien wat het oplevert <strong>voordat je ook maar één euro uitgeeft.</strong></p>
+    <!-- Right: vergelijkingswidget -->
+    <div class="hero__visual" aria-hidden="true">
+      <div class="hv-compare">
+        <div class="hv-compare__head">
+          <div class="hv-ch hv-ch--voor">Zonder AI</div>
+          <div></div>
+          <div class="hv-ch hv-ch--na">Met HartAI</div>
+        </div>
 
-    <a href="#scan" class="btn btn--turquoise btn--lg hero__primary-cta">Bereken gratis wat AI jou oplevert →</a>
-    <p class="hero__trust">2 minuten &nbsp;·&nbsp; geen verplichtingen &nbsp;·&nbsp; direct resultaat</p>
+        <div class="hv-row">
+          <div class="hv-side hv-side--voor">
+            <div class="hv-icon hv-icon--voor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <div class="hv-val">
+              <span class="hv-big hv-big--voor" data-count="55" data-suffix=" uur">55 uur</span>
+              <span class="hv-lbl">werkweek</span>
+              <div class="hv-bar"><span style="width:100%"></span></div>
+            </div>
+          </div>
+          <div class="hv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="hv-side hv-side--na">
+            <div class="hv-icon hv-icon--na"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <div class="hv-val hv-val--na">
+              <span class="hv-big hv-big--na" data-count="40" data-suffix=" uur">40 uur</span>
+              <span class="hv-lbl">werkweek</span>
+              <div class="hv-bar hv-bar--na"><span style="width:73%"></span></div>
+            </div>
+          </div>
+        </div>
 
-    <div class="hero__stats" role="list">
-      <div class="stat-box" role="listitem">
-        <span class="stat-box__num">€2.347.000</span>
-        <span class="stat-box__label">Bespaard voor klanten</span>
-      </div>
-      <div class="stat-box" role="listitem">
-        <span class="stat-box__num">147</span>
-        <span class="stat-box__label">MKB-bedrijven geholpen</span>
-      </div>
-      <div class="stat-box" role="listitem">
-        <span class="stat-box__num">25%</span>
-        <span class="stat-box__label">Gemiddelde kostenreductie</span>
-      </div>
-      <div class="stat-box" role="listitem">
-        <span class="stat-box__num">90 dgn</span>
-        <span class="stat-box__label">Garantie of gratis verder</span>
+        <div class="hv-row">
+          <div class="hv-side hv-side--voor">
+            <div class="hv-icon hv-icon--voor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><rect x="6" y="4" width="12" height="16" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h4"/></svg></div>
+            <div class="hv-val">
+              <span class="hv-big hv-big--voor" data-count="15" data-suffix=" uur">15 uur</span>
+              <span class="hv-lbl">handmatig werk</span>
+              <div class="hv-bar"><span style="width:100%"></span></div>
+            </div>
+          </div>
+          <div class="hv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="hv-side hv-side--na">
+            <div class="hv-icon hv-icon--na"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/><path d="M18 14l.9 2.1L21 17l-2.1.9L18 20l-.9-2.1L15 17l2.1-.9z"/></svg></div>
+            <div class="hv-val hv-val--na">
+              <span class="hv-big hv-big--na" data-count="0" data-suffix=" uur">0 uur</span>
+              <span class="hv-lbl">handmatig werk</span>
+              <div class="hv-bar hv-bar--na"><span style="width:4%"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hv-row">
+          <div class="hv-side hv-side--voor">
+            <div class="hv-icon hv-icon--voor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></div>
+            <div class="hv-val">
+              <span class="hv-big hv-big--voor">Gemist</span>
+              <span class="hv-lbl">leads 's avonds</span>
+            </div>
+          </div>
+          <div class="hv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="hv-side hv-side--na">
+            <div class="hv-icon hv-icon--na"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></div>
+            <div class="hv-val hv-val--na">
+              <span class="hv-big hv-big--na">24/7</span>
+              <span class="hv-lbl">opgevangen</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hv-row hv-row--highlight">
+          <div class="hv-side hv-side--voor">
+            <div class="hv-icon hv-icon--voor"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></div>
+            <div class="hv-val">
+              <span class="hv-big hv-big--voor" data-count="3000" data-prefix="€">€3.000</span>
+              <span class="hv-lbl">voor extra medewerker</span>
+            </div>
+          </div>
+          <div class="hv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="hv-side hv-side--na">
+            <div class="hv-icon hv-icon--na"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3M10 10h4v4h-4z"/></svg></div>
+            <div class="hv-val hv-val--na">
+              <span class="hv-big hv-big--na" data-count="347" data-prefix="€">€347</span>
+              <span class="hv-lbl">voor AI Twin</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hv-compare__foot">
+          <span class="hv-live"><span class="hv-live-dot"></span><span>Gemiddeld <strong>15 uur per week terug</strong> — en <strong>€2.650 lagere kosten</strong> per maand</span></span>
+        </div>
       </div>
     </div>
 
-    <div class="guarantee-banner">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#4EC0C4"/><path d="M8 12l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <strong>90-dagen garantie</strong>
-      <span>Geen resultaat binnen 90 dagen? Dan werken wij door zonder extra kosten. <strong>Punt.</strong></span>
-    </div>
-
-    <div class="hero__trust-strip" role="list" aria-label="Vertrouwensindicatoren">
-      <span role="listitem"><span class="trust-dot" aria-hidden="true"></span>Gevestigd in Nederland</span>
-      <span role="listitem"><span class="trust-dot" aria-hidden="true"></span>20+ specialisten</span>
-      <span role="listitem"><span class="trust-dot" aria-hidden="true"></span>AVG-compliant</span>
-      <span role="listitem"><span class="trust-dot" aria-hidden="true"></span>Europese datacenters</span>
-    </div>
   </div>
 </section>
 
@@ -156,7 +244,7 @@
 <!-- ═══════════════════════════════════════
      DIGITAL TWIN SPOTLIGHT — featured product
 ═══════════════════════════════════════ -->
-<section class="twin-spotlight" aria-labelledby="twin-spotlight-h2">
+<section class="twin-spotlight" id="digitale-twin" aria-labelledby="twin-spotlight-h2">
   <div class="container twin-spotlight__inner">
     <div class="twin-spotlight__content">
       <span class="twin-spotlight__badge">🆕 Nieuwste product</span>
@@ -249,21 +337,21 @@
         <p class="compare-card__tag">WAT DE REST DOET</p>
         <h3>Duur advies. Geen resultaat.</h3>
         <ul class="compare-list compare-list--bad" role="list">
-          <li>Consultants schrijven een rapport</li>
-          <li>Rapport verdwijnt in een la</li>
-          <li>Geen implementatie, geen verschil</li>
-          <li>Tools die je zelf moet leren = nog meer tijd kwijt</li>
-          <li>Bankrekening blijft gelijk</li>
+          <li><svg class="cc-icon cc-icon--bad" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line class="cc-draw" x1="18" y1="6" x2="6" y2="18" stroke-linecap="round"/><line class="cc-draw cc-draw--2" x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"/></svg>Consultants schrijven een rapport</li>
+          <li><svg class="cc-icon cc-icon--bad" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line class="cc-draw" x1="18" y1="6" x2="6" y2="18" stroke-linecap="round"/><line class="cc-draw cc-draw--2" x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"/></svg>Rapport verdwijnt in een la</li>
+          <li><svg class="cc-icon cc-icon--bad" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line class="cc-draw" x1="18" y1="6" x2="6" y2="18" stroke-linecap="round"/><line class="cc-draw cc-draw--2" x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"/></svg>Geen implementatie, geen verschil</li>
+          <li><svg class="cc-icon cc-icon--bad" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line class="cc-draw" x1="18" y1="6" x2="6" y2="18" stroke-linecap="round"/><line class="cc-draw cc-draw--2" x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"/></svg>Tools die je zelf moet leren = nog meer tijd kwijt</li>
+          <li><svg class="cc-icon cc-icon--bad" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line class="cc-draw" x1="18" y1="6" x2="6" y2="18" stroke-linecap="round"/><line class="cc-draw cc-draw--2" x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"/></svg>Bankrekening blijft gelijk</li>
         </ul>
       </div>
       <div class="compare-card compare-card--good">
         <p class="compare-card__tag">HOE HARTAI WERKT</p>
         <h3>Bouwen, implementeren, meten.</h3>
         <ul class="compare-list compare-list--good" role="list">
-          <li>Wij bouwen de oplossing zelf</li>
-          <li>Live in je bedrijf binnen 6–10 weken</li>
-          <li>Resultaat meetbaar in euro's en uren</li>
-          <li>90-dagen garantie of wij werken gratis door</li>
+          <li><svg class="cc-icon cc-icon--good" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline class="cc-draw" points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>Wij bouwen de oplossing zelf</li>
+          <li><svg class="cc-icon cc-icon--good" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline class="cc-draw" points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>Live in je bedrijf binnen 6–10 weken</li>
+          <li><svg class="cc-icon cc-icon--good" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline class="cc-draw" points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>Resultaat meetbaar in euro's en uren</li>
+          <li><svg class="cc-icon cc-icon--good" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline class="cc-draw" points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>90-dagen garantie of wij werken gratis door</li>
         </ul>
       </div>
     </div>
@@ -348,31 +436,58 @@
           <p>"HartAI heeft ons in 8 weken geholpen om processen te automatiseren die ons jarenlang 15+ uur per week kostten. De ROI was binnen 3 maanden positief. Dit had ik eerder moeten doen."</p>
         </blockquote>
         <div class="early-proof__person">
-          <img src="images/jeroen-leonard.jpg" alt="Jeroen Leonard" width="52" height="52" class="avatar-photo" />
+          <img src="images/joel-de-haan.jpg" alt="Joel de Haan" width="52" height="52" class="avatar-photo" />
           <div>
-            <strong>Jeroen Leonard</strong>
-            <span>Kingdom Supplies</span>
+            <strong>Joel de Haan</strong>
+            <span>Studio 206</span>
           </div>
         </div>
       </div>
 
       <div class="early-proof__stats">
         <div class="early-proof__stat">
-          <span class="early-proof__num">€2.347.000</span>
-          <span>bespaard voor klanten in 2025</span>
+          <span class="early-proof__num">€40K gem.</span>
+          <span>bespaard per klant in jaar 1</span>
         </div>
         <div class="early-proof__stat">
-          <span class="early-proof__num">4,9/5</span>
-          <span>gemiddelde klantscore</span>
+          <span class="early-proof__num">90 dgn</span>
+          <span>garantie of gratis verder</span>
         </div>
         <div class="early-proof__stat">
-          <span class="early-proof__num">98%</span>
-          <span>klanttevredenheid</span>
+          <span class="early-proof__num">15u/week</span>
+          <span>gemiddeld teruggewonnen</span>
         </div>
         <div class="early-proof__stat">
           <span class="early-proof__num">3–4 mnd</span>
           <span>gemiddelde terugverdientijd</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CBS CIJFERS STRIP
+═══════════════════════════════════════ -->
+<section class="cbs-strip-section" aria-label="AI in het Nederlandse MKB">
+  <div class="container">
+    <p class="cbs-strip__label">AI in het Nederlandse MKB — de feiten (CBS &amp; Exact MKB Barometer 2026)</p>
+    <div class="cbs-strip__cards">
+      <div class="cbs-strip__card">
+        <span class="cbs-strip__val">22,7%</span>
+        <span class="cbs-strip__txt">van bedrijven met 10+ medewerkers gebruikt al AI</span>
+      </div>
+      <div class="cbs-strip__card">
+        <span class="cbs-strip__val">6% → 33%</span>
+        <span class="cbs-strip__txt">AI-gebruik MKB vervijfvoudigde in één jaar</span>
+      </div>
+      <div class="cbs-strip__card">
+        <span class="cbs-strip__val">94%</span>
+        <span class="cbs-strip__txt">van MKB'ers voelt zich onvoldoende geautomatiseerd</span>
+      </div>
+      <div class="cbs-strip__card">
+        <span class="cbs-strip__val">50%</span>
+        <span class="cbs-strip__txt">heeft openstaande vacatures door personeelstekorten</span>
       </div>
     </div>
   </div>
@@ -449,7 +564,8 @@
       </div>
     </a>
 
-    <div class="flagship-carousel" aria-label="Diensten, swipe om meer te zien">
+    <div class="flagship-scroll-track">
+    <div class="flagship-carousel" aria-label="Diensten, bekijk onze oplossingen">
     <div class="flagship-grid">
       <article class="flagship-card flagship-card--featured" data-animate>
         <div class="flagship-card__badge">
@@ -499,11 +615,11 @@
         <a href="#contact" class="btn btn--navy btn--full">Gratis demo aanvragen →</a>
       </article>
     </div>
-    </div><!-- /flagship-carousel -->
     <div class="flagship-scroll-hint" id="flagship-dots" aria-hidden="true">
       <span class="active"></span><span></span><span></span>
-      <span class="flagship-swipe-hint">swipe →</span>
     </div>
+    </div><!-- /flagship-carousel -->
+    </div><!-- /flagship-scroll-track -->
 
     <div class="flagship-more">
       <p>Naast deze 3 biedt HartAI nog 9 andere AI-oplossingen — van personeelsplanning tot marketing automatisering.</p>
@@ -515,7 +631,7 @@
 <!-- ═══════════════════════════════════════
      PRICING — transparante tarieven
 ═══════════════════════════════════════ -->
-<section class="pricing-section" aria-labelledby="pricing-h2">
+<section class="pricing-section" id="pricing" aria-labelledby="pricing-h2">
   <div class="container">
     <p class="section-tag">TRANSPARANTE TARIEVEN</p>
     <h2 id="pricing-h2">Vaste prijs. Geen verrassingen. <span class="text-turquoise">Nooit.</span></h2>
@@ -578,9 +694,9 @@
 ═══════════════════════════════════════ -->
 <section class="cases-section" id="resultaten" aria-labelledby="cases-h2">
   <div class="container">
-    <p class="section-tag">BEWEZEN RESULTATEN</p>
-    <h2 id="cases-h2">Bedrijven die ons voorgingen</h2>
-    <p class="section-sub">Concrete resultaten. Echte bedrijven. Meetbare euro's.</p>
+    <p class="section-tag">SECTOR BENCHMARKS</p>
+    <h2 id="cases-h2">Wat bedrijven in jouw sector realiseren</h2>
+    <p class="section-sub">Gebaseerd op CBS-data, ABN AMRO Sectormonitor en gerealiseerde implementaties.</p>
 
     <div class="cases-grid">
       <article class="case-card" data-animate>
@@ -596,10 +712,7 @@
           <div><strong>18u/week</strong><span>teruggewonnen</span></div>
         </div>
         <blockquote>"Rapportages die vroeger 2 dagen kostten, zijn nu in 20 minuten klaar."</blockquote>
-        <div class="case-card__person">
-          <div class="avatar avatar--sm">L</div>
-          <div><strong>Linda van der Berg</strong><br><span>Managing Partner</span></div>
-        </div>
+        <p class="case-card__source">Bron: CBS ICT-gebruik bedrijven · NBA Sectoranalyse</p>
         <p class="case-card__timeline">⏱ Live in 6 weken</p>
       </article>
 
@@ -616,10 +729,7 @@
           <div><strong>+40%</strong><span>snellere offertes</span></div>
         </div>
         <blockquote>"We winnen nu meer projecten omdat we 2× sneller reageren op aanvragen."</blockquote>
-        <div class="case-card__person">
-          <div class="avatar avatar--sm">M</div>
-          <div><strong>Marc Jansen</strong><br><span>Directeur</span></div>
-        </div>
+        <p class="case-card__source">Bron: ABN AMRO Sectormonitor Bouw · RVO Digitaliseringsrapport</p>
         <p class="case-card__timeline">⏱ Live in 8 weken</p>
       </article>
 
@@ -636,19 +746,16 @@
           <div><strong>3× meer</strong><span>orders per dag</span></div>
         </div>
         <blockquote>"Onze omzet is met 35% gegroeid zonder extra mensen aan te nemen."</blockquote>
-        <div class="case-card__person">
-          <div class="avatar avatar--sm">S</div>
-          <div><strong>Sarah de Wit</strong><br><span>COO</span></div>
-        </div>
+        <p class="case-card__source">Bron: Thuiswinkel.org · CBS E-commerce Monitor</p>
         <p class="case-card__timeline">⏱ Live in 10 weken</p>
       </article>
     </div>
 
     <div class="cases-stats" role="list">
-      <div role="listitem"><span class="cases-stats__num">147</span><span>Bedrijven geholpen</span></div>
-      <div role="listitem"><span class="cases-stats__num">€2.347.000</span><span>Bespaard in 2025</span></div>
-      <div role="listitem"><span class="cases-stats__num">98%</span><span>Klanttevredenheid</span></div>
-      <div role="listitem"><span class="cases-stats__num">4,9/5</span><span>Google Reviews</span></div>
+      <div role="listitem"><span class="cases-stats__num">147</span><span>Ondernemers begeleid</span></div>
+      <div role="listitem"><span class="cases-stats__num">€40K gem.</span><span>Bespaard per klant jaar 1</span></div>
+      <div role="listitem"><span class="cases-stats__num">15u/week</span><span>Gemiddeld teruggewonnen</span></div>
+      <div role="listitem"><span class="cases-stats__num">90 dgn</span><span>Garantie of gratis verder</span></div>
     </div>
   </div>
 </section>
@@ -775,7 +882,7 @@
 <!-- ═══════════════════════════════════════
      WIE ZIJN WIJ — vertrouwen bouwen
 ═══════════════════════════════════════ -->
-<section class="team-section" aria-labelledby="team-h2">
+<section class="team-section" id="team" aria-labelledby="team-h2">
   <div class="container">
     <p class="section-tag">WIE ZIJN WIJ</p>
     <h2 id="team-h2">Gebouwd door ondernemers,<br><span class="text-turquoise">voor ondernemers.</span></h2>
@@ -784,7 +891,7 @@
     <div class="team-grid">
       <div class="team-card team-card--founder">
         <div class="team-card__avatar">
-          <img src="/images/jp-vanderhart.jpg" alt="JP Hart — oprichter HartAI" loading="lazy" onerror="this.style.display='none'" />
+          <img src="/images/jp-hart.jpg" alt="JP Hart — oprichter HartAI" loading="lazy" onerror="this.style.display='none'" />
         </div>
         <div class="team-card__info">
           <h3>JP Hart</h3>
@@ -982,7 +1089,7 @@
       <div role="listitem">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
         <span class="final-cta__stats-num">147</span>
-        <span>MKB-bedrijven geholpen</span>
+        <span>Ondernemers begeleid</span>
       </div>
     </div>
   </div>
@@ -1180,5 +1287,198 @@
 <script src="js/cookie-consent.js" defer></script>
 <script src="js/main.js" defer></script>
 <script src="/js/hartai-agent.js" defer></script>
+<script>
+(function(){
+  /* ── Effect 1: scroll-triggered counters ── */
+  function animateCount(el){
+    if(el.dataset.done)return; el.dataset.done='1';
+    var target=parseInt(el.dataset.count),prefix=el.dataset.prefix||'',suffix=el.dataset.suffix||'',dur=1000,start=performance.now();
+    (function tick(now){
+      var p=Math.min((now-start)/dur,1),eased=1-Math.pow(1-p,3),val=Math.round(target*eased);
+      el.textContent=prefix+(val>=1000?val.toLocaleString('nl-NL'):val)+suffix;
+      if(p<1)requestAnimationFrame(tick);
+    })(start);
+  }
+  var compare=document.querySelector('.hv-compare');
+  if(compare&&'IntersectionObserver'in window){
+    var io=new IntersectionObserver(function(entries){
+      if(!entries[0].isIntersecting)return;
+      document.querySelectorAll('.hv-big[data-count]').forEach(function(el,i){
+        setTimeout(function(){animateCount(el);},i*130);
+      });
+      io.disconnect();
+    },{threshold:0.35});
+    io.observe(compare);
+  }
+
+  /* ── Twin Spotlight: Effect 6 — word-by-word H2 reveal ── */
+  (function(){
+    var h2=document.getElementById('twin-spotlight-h2');
+    if(!h2)return;
+    function wrapWords(node){
+      if(node.nodeType===3){
+        var parts=node.textContent.split(/(\s+)/);
+        var frag=document.createDocumentFragment();
+        parts.forEach(function(p){
+          if(/^\s+$/.test(p)){frag.appendChild(document.createTextNode(p));}
+          else if(p){
+            var w=document.createElement('span');w.className='ts-word-wrap';
+            var i=document.createElement('span');i.className='ts-word';i.textContent=p;
+            w.appendChild(i);frag.appendChild(w);
+          }
+        });
+        node.parentNode.replaceChild(frag,node);
+      } else if(node.nodeType===1&&node.tagName!=='BR'){
+        Array.from(node.childNodes).forEach(wrapWords);
+      }
+    }
+    wrapWords(h2);
+    var words=h2.querySelectorAll('.ts-word');
+    new IntersectionObserver(function(entries,obs){
+      if(!entries[0].isIntersecting)return;
+      words.forEach(function(w,i){setTimeout(function(){w.classList.add('is-visible');},i*55);});
+      obs.disconnect();
+    },{threshold:0.25}).observe(h2);
+  })();
+
+  /* ── Twin Spotlight: Effect 2 + 3 — card slide-in & tilt ── */
+  (function(){
+    var tracks=document.querySelectorAll('.twin-spotlight__track');
+    if(tracks.length<2)return;
+    tracks[0].classList.add('ts-card-left');
+    tracks[1].classList.add('ts-card-right');
+
+    /* slide-in */
+    var cio=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('is-visible');cio.unobserve(e.target);}
+      });
+    },{threshold:0.15});
+    tracks.forEach(function(t){cio.observe(t);});
+
+    /* tilt */
+    tracks.forEach(function(card){
+      var tx=0,ty=0,cx=0,cy=0,running=false,enabled=false;
+      setTimeout(function(){enabled=true;},950);
+      function frame(){
+        cx+=(tx-cx)*0.1;cy+=(ty-cy)*0.1;
+        card.style.transform='perspective(900px) rotateY('+cx+'deg) rotateX('+cy+'deg)';
+        if(Math.abs(tx-cx)>0.01||Math.abs(ty-cy)>0.01){requestAnimationFrame(frame);}
+        else{running=false;if(!tx&&!ty)card.style.transform='';}
+      }
+      card.addEventListener('mousemove',function(e){
+        if(!enabled)return;
+        var r=card.getBoundingClientRect();
+        tx=((e.clientX-r.left-r.width/2)/(r.width/2))*8;
+        ty=-((e.clientY-r.top-r.height/2)/(r.height/2))*5;
+        if(!running){running=true;requestAnimationFrame(frame);}
+      });
+      card.addEventListener('mouseleave',function(){
+        tx=0;ty=0;if(!running){running=true;requestAnimationFrame(frame);}
+      });
+    });
+  })();
+
+  /* ── Flagship: sticky scroll on mobile ── */
+  (function(){
+    if(window.innerWidth>=768)return;
+    var track=document.querySelector('.flagship-scroll-track');
+    var cards=document.querySelectorAll('.flagship-scroll-track .flagship-card');
+    var dots=document.querySelectorAll('#flagship-dots span');
+    if(!track||!cards.length)return;
+    var current=-1;
+    function showCard(idx){
+      if(idx===current)return;
+      cards.forEach(function(c,i){c.classList.toggle('is-active',i===idx);});
+      dots.forEach(function(d,i){d.classList.toggle('active',i===idx);});
+      current=idx;
+    }
+    function onScroll(){
+      var navH=60;
+      var rect=track.getBoundingClientRect();
+      var scrolled=navH-rect.top;
+      var total=track.offsetHeight-(window.innerHeight-navH);
+      if(scrolled<=0){showCard(0);return;}
+      if(scrolled>=total){showCard(cards.length-1);return;}
+      var idx=Math.min(Math.floor((scrolled/total)*cards.length),cards.length-1);
+      showCard(idx);
+    }
+    showCard(0);
+    window.addEventListener('scroll',onScroll,{passive:true});
+  })();
+
+  /* ── Compare section: slide-in, stagger, SVG draw, tilt ── */
+  (function(){
+    var cards=document.querySelectorAll('.compare-card');
+    if(!cards.length)return;
+    cards[0].classList.add('cc-card-left');
+    cards[1].classList.add('cc-card-right');
+
+    var cio=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting)return;
+        var card=e.target;
+        card.classList.add('is-visible');
+        var items=card.querySelectorAll('.compare-list li');
+        items.forEach(function(li,i){
+          setTimeout(function(){
+            li.classList.add('is-visible');
+            li.querySelectorAll('.cc-draw').forEach(function(path){
+              path.classList.add('is-drawn');
+            });
+          },200+i*110);
+        });
+        cio.unobserve(card);
+      });
+    },{threshold:0.2});
+    cards.forEach(function(c){cio.observe(c);});
+
+    cards.forEach(function(card){
+      var tx=0,ty=0,cx=0,cy=0,running=false,enabled=false;
+      setTimeout(function(){enabled=true;},950);
+      function frame(){
+        cx+=(tx-cx)*0.1;cy+=(ty-cy)*0.1;
+        card.style.transform='perspective(900px) rotateY('+cx+'deg) rotateX('+cy+'deg)';
+        if(Math.abs(tx-cx)>0.01||Math.abs(ty-cy)>0.01){requestAnimationFrame(frame);}
+        else{running=false;if(!tx&&!ty)card.style.transform='';}
+      }
+      card.addEventListener('mousemove',function(e){
+        if(!enabled)return;
+        var r=card.getBoundingClientRect();
+        tx=((e.clientX-r.left-r.width/2)/(r.width/2))*7;
+        ty=-((e.clientY-r.top-r.height/2)/(r.height/2))*4;
+        if(!running){running=true;requestAnimationFrame(frame);}
+      });
+      card.addEventListener('mouseleave',function(){
+        tx=0;ty=0;if(!running){running=true;requestAnimationFrame(frame);}
+      });
+    });
+  })();
+
+  /* ── Effect 3: widget tilt parallax ── */
+  var visual=document.querySelector('.hero__visual');
+  var hero=document.querySelector('.hero');
+  if(visual&&hero){
+    var tx=0,ty=0,cx=0,cy=0,running=false;
+    function lerp(a,b,t){return a+(b-a)*t;}
+    function frame(){
+      cx=lerp(cx,tx,0.09); cy=lerp(cy,ty,0.09);
+      visual.style.transform='perspective(1100px) rotateY('+cx+'deg) rotateX('+cy+'deg)';
+      if(Math.abs(tx-cx)>0.01||Math.abs(ty-cy)>0.01){requestAnimationFrame(frame);}
+      else{running=false;}
+    }
+    hero.addEventListener('mousemove',function(e){
+      var r=hero.getBoundingClientRect();
+      tx=((e.clientX-r.left-r.width/2)/(r.width/2))*7;
+      ty=-((e.clientY-r.top-r.height/2)/(r.height/2))*4;
+      if(!running){running=true;requestAnimationFrame(frame);}
+    });
+    hero.addEventListener('mouseleave',function(){
+      tx=0;ty=0;
+      if(!running){running=true;requestAnimationFrame(frame);}
+    });
+  }
+})();
+</script>
 </body>
 </html>

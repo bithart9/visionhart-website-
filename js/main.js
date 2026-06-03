@@ -77,8 +77,9 @@ modalForm?.addEventListener('submit', async (e) => {
   }
 });
 
-// ── Flagship carousel dots ──
+// ── Flagship carousel dots (desktop/tablet only — mobile uses sticky scroll) ──
 (function () {
+  if (window.innerWidth < 768) return;
   const carousel = document.querySelector('.flagship-carousel');
   const grid = carousel?.querySelector('.flagship-grid');
   const dots = document.querySelectorAll('#flagship-dots span:not(.flagship-swipe-hint)');
@@ -96,6 +97,17 @@ modalForm?.addEventListener('submit', async (e) => {
   }, { passive: true });
 }());
 
+// ── Nav: Producten accordion toggle ──
+(function () {
+  const btn  = document.getElementById('nav-products-toggle');
+  const menu = document.getElementById('nav-products-menu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+}());
+
 // ── Nav: sticky + mobile toggle ──
 const header = document.getElementById('nav');
 const toggle = document.getElementById('nav-toggle');
@@ -109,6 +121,11 @@ toggle?.addEventListener('click', () => {
   const open = menu.classList.toggle('is-open');
   toggle.setAttribute('aria-expanded', open);
   toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+  // Reset products accordion when menu closes
+  if (!open) {
+    document.getElementById('nav-products-menu')?.classList.remove('is-open');
+    document.getElementById('nav-products-toggle')?.setAttribute('aria-expanded', 'false');
+  }
 });
 
 // Close mobile nav on link click
