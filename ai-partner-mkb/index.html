@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dé AI-Partner voor het Nederlandse MKB | HartAI</title>
+  <meta name="description" content="Op zoek naar een AI-partner die niet alleen bouwt, maar je hele team meeneemt? HartAI is dé AI-partner voor het Nederlandse MKB. Bouwen én begeleiden. Gratis scan in 30 min." />
+  <link rel="canonical" href="https://www.hartai.nl/ai-partner-mkb/" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.hartai.nl/ai-partner-mkb/" />
+  <meta property="og:title" content="Dé AI-Partner voor het Nederlandse MKB | HartAI" />
+  <meta property="og:description" content="Op zoek naar een AI-partner die niet alleen bouwt, maar je hele team meeneemt? HartAI is dé AI-partner voor het Nederlandse MKB. Bouwen én begeleiden. Gratis scan in 30 min." />
+  <meta property="og:image" content="https://www.hartai.nl/images/og-hartai.jpg" />
+  <meta property="og:locale" content="nl_NL" />
+  <meta property="og:site_name" content="HartAI" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dé AI-Partner voor het Nederlandse MKB | HartAI" />
+  <meta name="twitter:description" content="Op zoek naar een AI-partner die niet alleen bouwt, maar je hele team meeneemt? HartAI is dé AI-partner voor het Nederlandse MKB." />
+  <meta name="twitter:image" content="https://www.hartai.nl/images/og-hartai.jpg" />
+
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.hartai.nl/#organization",
+        "name": "HartAI",
+        "url": "https://www.hartai.nl",
+        "logo": {"@type": "ImageObject", "url": "https://www.hartai.nl/images/logo.png"}
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.hartai.nl/ai-partner-mkb/",
+        "url": "https://www.hartai.nl/ai-partner-mkb/",
+        "name": "Dé AI-Partner voor het Nederlandse MKB | HartAI",
+        "description": "HartAI is dé AI-partner voor het Nederlandse MKB: wij bouwen AI-oplossingen én begeleiden jouw team in de invoering. Van scan tot meetbaar resultaat.",
+        "publisher": {"@id": "https://www.hartai.nl/#organization"},
+        "inLanguage": "nl-NL"
+      },
+      {
+        "@type": "Service",
+        "name": "AI-Partner voor het MKB",
+        "provider": {"@id": "https://www.hartai.nl/#organization"},
+        "description": "HartAI is dé AI-implementatiepartner voor het Nederlandse MKB: wij bouwen AI-oplossingen én begeleiden jouw team in de invoering.",
+        "areaServed": "NL",
+        "serviceType": "AI Automatisering"
+      }
+    ]
+  }</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/hartai-agent.css" />
+  <link rel="icon" href="/images/favicon.ico" sizes="any" />
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <meta name="theme-color" content="#1B365D" />
+
+  <style>
+    /* ── Hero ── */
+    .partner-hero { background: var(--navy); color: #fff; padding: 100px 0 80px; text-align: center; position: relative; overflow: hidden; }
+    .partner-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(78,192,196,.15) 0%, transparent 70%); pointer-events: none; }
+    .partner-hero__badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(78,192,196,.12); border: 1px solid rgba(78,192,196,.3); color: #4EC0C4; font-size: .8rem; font-weight: 600; letter-spacing: .06em; padding: 6px 16px; border-radius: 100px; margin-bottom: 24px; }
+    .partner-hero h1 { font-size: clamp(2rem,5vw,3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+    .partner-hero h1 span { color: #4EC0C4; }
+    .partner-hero__sub-text { font-size: 1.1rem; color: rgba(255,255,255,.75); max-width: 640px; margin: 0 auto 36px; line-height: 1.7; }
+    .partner-hero__cta-note { display: block; font-size: .85rem; color: rgba(255,255,255,.5); margin-top: 14px; }
+    .partner-hero__stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,.1); }
+    .partner-hero__stat strong { display: block; font-size: 2rem; font-weight: 800; color: #4EC0C4; }
+    .partner-hero__stat span { font-size: .85rem; color: rgba(255,255,255,.6); }
+
+    /* ── Vergelijking sectie ── */
+    .compare-section { padding: 80px 0; background: #fff; }
+    .compare-section__intro { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+    .compare-section__intro h2 { font-size: clamp(1.5rem,2.5vw,2rem); font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+    .compare-section__intro p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
+    .compare-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .compare-card { border-radius: var(--radius-xl); padding: 32px 28px; border: 2px solid var(--gray-light); background: #fff; }
+    .compare-card--winner { border-color: #4EC0C4; background: rgba(78,192,196,.04); }
+    .compare-card__badge { display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-bottom: 16px; background: var(--gray-light); color: var(--text-muted); }
+    .compare-card--winner .compare-card__badge { background: rgba(78,192,196,.15); color: var(--turquoise); }
+    .compare-card__icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+    .compare-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .compare-card p { font-size: .88rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── HART sectie ── */
+    .hart-section { padding: 80px 0; background: var(--light-gray); }
+    .hart-section__intro { text-align: center; max-width: 680px; margin: 0 auto 48px; }
+    .hart-section__intro h2 { font-size: clamp(1.5rem,2.5vw,2rem); font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+    .hart-section__intro p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
+    .hart-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 36px; }
+    .hart-card { background: #fff; border-radius: var(--radius-xl); padding: 32px; border: 1px solid var(--gray-light); display: flex; gap: 20px; align-items: flex-start; }
+    .hart-card__letter { font-size: 2.5rem; font-weight: 800; color: #4EC0C4; flex-shrink: 0; line-height: 1; width: 44px; }
+    .hart-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .hart-card p { font-size: .88rem; color: var(--text-muted); line-height: 1.65; }
+    .hart-link { display: inline-flex; align-items: center; gap: 6px; color: var(--turquoise); font-weight: 600; font-size: .9rem; text-decoration: none; }
+    .hart-link:hover { text-decoration: underline; }
+
+    /* ── Hoe het werkt ── */
+    .partner-howit { padding: 80px 0; background: var(--navy); color: #fff; }
+    .partner-howit h2 { text-align: center; font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .partner-howit .section-sub { color: rgba(255,255,255,.7); text-align: center; }
+    .partner-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+    .partner-step { background: rgba(255,255,255,.06); border: 1px solid rgba(78,192,196,.2); border-radius: var(--radius-xl); padding: 32px 28px; text-align: center; }
+    .partner-step__num { font-size: 2.5rem; font-weight: 800; color: rgba(78,192,196,.3); margin-bottom: 12px; }
+    .partner-step h3 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .partner-step p { font-size: .9rem; color: rgba(255,255,255,.65); line-height: 1.6; }
+    .partner-step__time { margin-top: 16px; font-size: .78rem; font-weight: 600; color: #4EC0C4; }
+
+    /* ── Voor wie ── */
+    .voor-wie { padding: 80px 0; background: #fff; }
+    .voor-wie__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .voor-wie h2 { font-size: clamp(1.5rem,2.5vw,2rem); font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+    .voor-wie > .container > .voor-wie__inner > div > p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 24px; }
+    .sector-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    .sector-tag { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 100px; background: rgba(27,54,93,.06); border: 1px solid rgba(27,54,93,.1); font-size: .85rem; font-weight: 500; color: var(--navy); }
+    .voor-wie__visual { background: var(--navy); border-radius: var(--radius-xl); padding: 36px; color: #fff; position: relative; overflow: hidden; }
+    .voor-wie__visual::before { content: ''; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(78,192,196,.15) 0%, transparent 70%); }
+    .voor-wie__visual-title { font-size: .75rem; font-weight: 700; letter-spacing: .1em; color: rgba(78,192,196,.8); text-transform: uppercase; margin-bottom: 20px; }
+    .voor-wie__checklist { display: flex; flex-direction: column; gap: 16px; }
+    .voor-wie__check { display: flex; align-items: flex-start; gap: 12px; }
+    .voor-wie__check-icon { width: 22px; height: 22px; border-radius: 50%; background: rgba(78,192,196,.15); border: 1px solid rgba(78,192,196,.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .voor-wie__check-text strong { display: block; font-size: .9rem; color: #fff; margin-bottom: 2px; }
+    .voor-wie__check-text span { font-size: .82rem; color: rgba(255,255,255,.6); }
+
+    /* ── Links strip ── */
+    .links-strip { padding: 32px 0; background: var(--light-gray); border-top: 1px solid var(--gray-light); }
+    .links-strip__inner { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .85rem; color: var(--text-muted); }
+    .links-strip a { color: var(--turquoise); font-weight: 600; text-decoration: none; }
+    .links-strip a:hover { text-decoration: underline; }
+    .links-strip__sep { color: var(--gray-light); }
+
+    @media (max-width: 900px) {
+      .compare-cards { grid-template-columns: 1fr; }
+      .hart-cards { grid-template-columns: 1fr; }
+      .partner-steps { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+      .voor-wie__inner { grid-template-columns: 1fr; }
+      .partner-hero__stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="nav" id="nav" role="banner">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="HartAI – homepage">
+      <img src="/images/logo.svg" alt="HartAI logo" width="36" height="36" />
+      <span class="nav__logo-text">HartAI</span>
+      <span class="nav__logo-tag">Geef je saaiste uren aan AI.</span>
+    </a>
+    <button class="nav__toggle" id="nav-toggle" aria-label="Menu openen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav__menu" id="nav-menu" aria-label="Hoofdnavigatie">
+      <div class="nav__dropdown">
+        <a href="/oplossingen/" class="nav__link">Producten ▾</a>
+        <div class="nav__dropdown-menu">
+          <a href="/digitale-twin-medewerker/" class="nav__dropdown-link">Digitale Twin</a>
+          <a href="/infrastructuur/" class="nav__dropdown-link">AI Infrastructuur</a>
+          <a href="/ai-partner-mkb/" class="nav__dropdown-link">AI Partner voor MKB</a>
+          <a href="/oplossingen/" class="nav__dropdown-link">Alle Oplossingen</a>
+        </div>
+      </div>
+      <a href="/#resultaten" class="nav__link">Resultaten</a>
+      <a href="/#faq" class="nav__link">FAQ</a>
+      <a href="/blog/" class="nav__link">Blog</a>
+      <a href="/#contact" class="btn btn--turquoise btn--sm">Gratis gesprek →</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="partner-hero" aria-labelledby="partner-h1">
+  <div class="container">
+    <div class="partner-hero__badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      Jouw partner in AI, van eerste stap tot resultaat
+    </div>
+    <h1 id="partner-h1">Dé <span>AI-partner</span> voor het Nederlandse MKB</h1>
+    <p class="partner-hero__sub-text">De meeste AI-projecten mislukken niet door de techniek — maar omdat niemand de ondernemer en zijn team meeneemt. HartAI is de AI-partner die het MKB wél verder helpt: wij bouwen de oplossing én zorgen dat jouw mensen er echt mee werken. Bouwen én begeleiden, in één hand.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="/#contact" class="btn btn--turquoise btn--lg">Plan je gratis AI-scan →</a>
+      <a href="#aanpak" class="btn btn--outline" style="border-color:rgba(255,255,255,.3);color:#fff;">Onze aanpak ↓</a>
+    </div>
+    <span class="partner-hero__cta-note">30 minuten · geen verkoopverhaal · concreet advies</span>
+    <div class="partner-hero__stats">
+      <div class="partner-hero__stat"><strong>147</strong><span>MKB-bedrijven geholpen</span></div>
+      <div class="partner-hero__stat"><strong>25%</strong><span>gemiddelde kostenreductie</span></div>
+      <div class="partner-hero__stat"><strong>90 dgn</strong><span>garantie of gratis verder</span></div>
+      <div class="partner-hero__stat"><strong>1 partner</strong><span>van scan tot resultaat</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTIE 1: HET PROBLEEM -->
+<section class="compare-section" aria-labelledby="compare-h2">
+  <div class="container">
+    <div class="compare-section__intro">
+      <h2 id="compare-h2">Waarom de meeste MKB-bedrijven geen partner hebben, maar een leverancier</h2>
+      <p>De markt voor AI valt uiteen in twee soorten aanbieders. De <em>adviseurs</em> schrijven een rapport en laten jou het zelf uitzoeken. De <em>bouwers</em> leveren een tool en wensen je succes. In beide gevallen sta je er daarna alleen voor — en precies daar stranden de meeste AI-trajecten: niet op de techniek, maar op de invoering. Een echte AI-partner voor het MKB doet allebei: bouwen én begeleiden, tot het werkt.</p>
+    </div>
+    <div class="compare-cards">
+      <div class="compare-card">
+        <span class="compare-card__badge">De adviseur</span>
+        <span class="compare-card__icon">🧩</span>
+        <h3>Mooi rapport. Geen implementatie.</h3>
+        <p>Schrijft een analyse en laat jou het implementeren. Verdwijnt zodra het rapport is opgeleverd — jij staat er alleen voor, en het verdwijnt in een la.</p>
+      </div>
+      <div class="compare-card">
+        <span class="compare-card__badge">De bouwer</span>
+        <span class="compare-card__icon">🔧</span>
+        <h3>Levert een tool. Geen adoptie.</h3>
+        <p>Bouwt de techniek en wenst je succes. Jouw team pakt het niet op — en het gereedschap stoft in. Technisch correct, praktisch nutteloos.</p>
+      </div>
+      <div class="compare-card compare-card--winner">
+        <span class="compare-card__badge">De partner (HartAI)</span>
+        <span class="compare-card__icon">🤝</span>
+        <h3>Bouwt, implementeert én begeleidt.</h3>
+        <p>Eén aanspreekpunt, van scan tot meetbaar resultaat. Wij zorgen dat jouw team er écht mee werkt — want een ongebruikte AI-oplossing is geen oplossing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTIE 2: DE HART-METHODE -->
+<section class="hart-section" aria-labelledby="hart-h2">
+  <div class="container">
+    <div class="hart-section__intro">
+      <p class="section-tag">DE HART-METHODE</p>
+      <h2 id="hart-h2">Wat HartAI tot dé AI-partner voor het MKB maakt</h2>
+      <p>Een AI-partner levert niet alleen techniek, maar een werkende verandering. Daarom werkt HartAI volgens een eigen methode — <strong>HART</strong> — die in onze software én in onze begeleiding zit. Zo praat elke oplossing in jouw taal en gaat elke verandering ook echt leven bij je team.</p>
+    </div>
+    <div class="hart-cards">
+      <div class="hart-card">
+        <div class="hart-card__letter">H</div>
+        <div>
+          <h3>Herken</h3>
+          <p>We beginnen niet met techniek, maar met begrijpen wat er in jouw bedrijf écht speelt. Waar verlies je tijd en geld, en wat heeft de hoogste impact?</p>
+        </div>
+      </div>
+      <div class="hart-card">
+        <div class="hart-card__letter">A</div>
+        <div>
+          <h3>Afstemmen</h3>
+          <p>De oplossing sluit aan op hoe jij en je team werken — niet andersom. Geen generieke tool, maar AI die in jouw taal spreekt en past bij jouw processen.</p>
+        </div>
+      </div>
+      <div class="hart-card">
+        <div class="hart-card__letter">R</div>
+        <div>
+          <h3>Richten</h3>
+          <p>We pakken eerst de processen aan met de hoogste impact, meetbaar in euro's en uren. Geen eindeloos traject — snelle, concrete resultaten.</p>
+        </div>
+      </div>
+      <div class="hart-card">
+        <div class="hart-card__letter">T</div>
+        <div>
+          <h3>Triggeren</h3>
+          <p>We zorgen dat je team de oplossing echt gebruikt en borgen het resultaat. Want een AI-systeem dat niet gebruikt wordt, levert niks op.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <!-- TODO: vervang href naar /hart-methode/ zodra die pagina bestaat -->
+      <a href="/oplossingen/" class="hart-link">
+        Lees meer over de HART-methode
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTIE 3: HOE HET WERKT -->
+<section class="partner-howit" id="aanpak" aria-labelledby="aanpak-h2">
+  <div class="container">
+    <p class="section-tag" style="color:rgba(78,192,196,.8);text-align:center;">HOE HET WERKT</p>
+    <h2 id="aanpak-h2">Eén partner, van eerste scan tot meetbaar resultaat</h2>
+    <p class="section-sub">Geen maanden van voorbereiding. Geen vage trajecten. Drie stappen en jij ziet het verschil.</p>
+    <div class="partner-steps">
+      <div class="partner-step">
+        <div class="partner-step__num">01</div>
+        <h3>Gratis AI-Scan</h3>
+        <p>In 30 minuten brengen wij in kaart waar jouw grootste kansen liggen en wat automatisering concreet oplevert. Gratis, geen verkoopverhaal — alleen inzicht.</p>
+        <div class="partner-step__time">30 minuten · 100% gratis</div>
+      </div>
+      <div class="partner-step">
+        <div class="partner-step__num">02</div>
+        <h3>Wij Bouwen én Begeleiden</h3>
+        <p>Wij bouwen de oplossing op maat én zorgen dat jouw mensen er écht mee werken. Onze HART-methode borgt adoptie — geen half werk. Live in 6–10 weken.</p>
+        <div class="partner-step__time">6–10 weken · vaste prijs</div>
+      </div>
+      <div class="partner-step">
+        <div class="partner-step__num">03</div>
+        <h3>Jij Oogst</h3>
+        <p>Meetbaar resultaat in euro's en uren. Gemiddeld 25% kostenreductie. Gegarandeerd binnen 90 dagen — of wij werken gratis door tot het resultaat er is.</p>
+        <div class="partner-step__time">Resultaat binnen 90 dgn · gegarandeerd</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTIE 4: VOOR WIE -->
+<section class="voor-wie" aria-labelledby="voor-wie-h2">
+  <div class="container">
+    <div class="voor-wie__inner">
+      <div>
+        <p class="section-tag">VOOR WIE</p>
+        <h2 id="voor-wie-h2">Een AI-partner voor elk MKB-bedrijf van 5 tot 250 medewerkers</h2>
+        <p>Of je nu een rijschool runt, een accountantskantoor leidt of een bouwbedrijf hebt — als jouw team tijd verliest aan werk dat geautomatiseerd kan worden, ben je bij de juiste partner. We werken sectorgewijs, met een aanpak die past bij jouw vak.</p>
+        <div class="sector-tags">
+          <span class="sector-tag">🚗 Rijscholen</span>
+          <span class="sector-tag">🏗️ Bouwbedrijven</span>
+          <span class="sector-tag">📊 Accountancy</span>
+          <span class="sector-tag">⚡ Installatie</span>
+          <span class="sector-tag">🏪 Retail</span>
+          <span class="sector-tag">🏥 Zorg</span>
+          <span class="sector-tag">🍽️ Horeca</span>
+          <span class="sector-tag">📦 Logistiek</span>
+        </div>
+        <a href="/ai-voor-mkb/" class="hart-link">
+          Bekijk de complete AI-gids voor het MKB
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="voor-wie__visual" aria-hidden="true">
+        <div class="voor-wie__visual-title">Wat je als AI-partner krijgt</div>
+        <div class="voor-wie__checklist">
+          <div class="voor-wie__check">
+            <div class="voor-wie__check-icon">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="voor-wie__check-text">
+              <strong>Eén vast aanspreekpunt</strong>
+              <span>Van scan tot nazorg — je belt altijd dezelfde persoon</span>
+            </div>
+          </div>
+          <div class="voor-wie__check">
+            <div class="voor-wie__check-icon">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="voor-wie__check-text">
+              <strong>Bouwen én begeleiden</strong>
+              <span>Wij zorgen ook dat jouw team het gebruikt — geen half werk</span>
+            </div>
+          </div>
+          <div class="voor-wie__check">
+            <div class="voor-wie__check-icon">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="voor-wie__check-text">
+              <strong>90-dagen resultaatgarantie</strong>
+              <span>Meetbaar in euro's en uren, of wij werken gratis door</span>
+            </div>
+          </div>
+          <div class="voor-wie__check">
+            <div class="voor-wie__check-icon">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="voor-wie__check-text">
+              <strong>Vaste prijs, geen verrassingen</strong>
+              <span>Transparante investering, berekend tijdens de scan</span>
+            </div>
+          </div>
+          <div class="voor-wie__check">
+            <div class="voor-wie__check-icon">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="voor-wie__check-text">
+              <strong>Sectorkennis</strong>
+              <span>Wij spreken jouw taal en kennen jouw branche</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNE LINKS STRIP -->
+<div class="links-strip" aria-label="Meer van HartAI">
+  <div class="container">
+    <div class="links-strip__inner">
+      <span>Meer van HartAI:</span>
+      <a href="/digitale-twin-medewerker/">Digitale Twin Medewerker</a>
+      <span class="links-strip__sep">·</span>
+      <a href="/infrastructuur/">AI Infrastructuur</a>
+      <span class="links-strip__sep">·</span>
+      <a href="/oplossingen/">Alle Oplossingen</a>
+      <span class="links-strip__sep">·</span>
+      <a href="/ai-voor-mkb/">AI-gids voor MKB</a>
+      <span class="links-strip__sep">·</span>
+      <a href="/blog/">Blog</a>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="contact" aria-labelledby="cta-h2">
+  <div class="container">
+    <h2 id="cta-h2">Klaar voor een AI-partner die naast je staat?</h2>
+    <p>Start met een gratis scan van 30 minuten. Wij laten zien waar je grootste kansen liggen — en wat het oplevert. Geen verplichtingen, geen verkoopverhaal.</p>
+    <div class="final-cta__card">
+      <h3>Gratis AI-Scan</h3>
+      <p>In 30 minuten brengen wij jouw bottlenecks in kaart en laten we zien wat automatisering concreet oplevert — in euro's en uren.</p>
+      <ul class="final-cta__features" role="list">
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Analyse van jouw processen en bottlenecks</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Concrete besparingspotentie in euro's en uren</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Implementatieplan op maat via de HART-methode</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke="#4EC0C4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Altijd gratis en vrijblijvend</li>
+      </ul>
+      <form class="contact-form" id="contact-form" novalidate aria-label="Gratis AI-scan aanvragen">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-name">Naam *</label>
+            <input type="text" id="f-name" name="name" placeholder="Jan de Vries" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="f-company">Bedrijf</label>
+            <input type="text" id="f-company" name="company" placeholder="Bedrijfsnaam" autocomplete="organization" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-email">E-mail *</label>
+            <input type="email" id="f-email" name="email" placeholder="jan@bedrijf.nl" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="f-phone">Telefoon</label>
+            <input type="tel" id="f-phone" name="phone" placeholder="+31 6 00 00 00 00" autocomplete="tel" />
+          </div>
+        </div>
+        <button type="submit" class="btn btn--navy btn--full btn--lg">Plan mijn gratis AI-scan →</button>
+        <p class="contact-form__note">⏱ Binnen 24 uur krijg je een bevestiging.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a href="/" class="nav__logo footer__logo" aria-label="HartAI homepage">
+        <img src="/images/logo-white.svg" alt="HartAI logo" width="32" height="32" />
+        <span class="nav__logo-text">HartAI</span>
+      </a>
+      <p>Geef je saaiste uren aan AI.</p>
+      <div class="footer__contact">
+        <a href="mailto:contact@hartai.nl">contact@hartai.nl</a>
+        <div class="footer__contact-row">
+          <span>Nederland</span>
+          <a href="https://www.instagram.com/hartai.nl" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer__social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+          <a href="https://www.linkedin.com/in/vanderhart" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer__social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="footer__nav" aria-label="Navigatie">
+      <h4>Navigatie</h4>
+      <ul role="list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/digitale-twin-medewerker/">Digitale Twin</a></li>
+        <li><a href="/infrastructuur/">AI Infrastructuur</a></li>
+        <li><a href="/ai-partner-mkb/">AI Partner voor MKB</a></li>
+        <li><a href="/oplossingen/">Alle oplossingen</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <nav class="footer__nav" aria-label="Legaal">
+      <h4>Legaal</h4>
+      <ul role="list">
+        <li><a href="/privacy/">Privacy beleid</a></li>
+        <li><a href="/algemene-voorwaarden/">Algemene voorwaarden</a></li>
+        <li><a href="/cookiebeleid/">Cookiebeleid</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p>© <span id="year"></span> HartAI. Alle rechten voorbehouden.</p>
+      <p>Made with ♥ in Nederland</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/cookie-consent.js" defer></script>
+<script src="/js/main.js" defer></script>
+<script src="/js/hartai-agent.js" defer></script>
+</body>
+</html>
