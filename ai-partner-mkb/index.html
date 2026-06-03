@@ -81,18 +81,54 @@
     .partner-hero__stat span { font-size: .85rem; color: rgba(255,255,255,.6); }
 
     /* ── Vergelijking sectie ── */
-    .compare-section { padding: 80px 0; background: #fff; }
-    .compare-section__intro { text-align: center; max-width: 720px; margin: 0 auto 48px; }
-    .compare-section__intro h2 { font-size: clamp(1.5rem,2.5vw,2rem); font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
-    .compare-section__intro p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
-    .compare-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .compare-card { border-radius: var(--radius-xl); padding: 32px 28px; border: 2px solid var(--gray-light); background: #fff; }
-    .compare-card--winner { border-color: #4EC0C4; background: rgba(78,192,196,.04); }
-    .compare-card__badge { display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-bottom: 16px; background: var(--gray-light); color: var(--text-muted); }
-    .compare-card--winner .compare-card__badge { background: rgba(78,192,196,.15); color: var(--turquoise); }
-    .compare-card__icon { font-size: 2rem; margin-bottom: 16px; display: block; }
-    .compare-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-    .compare-card p { font-size: .88rem; color: var(--text-muted); line-height: 1.65; }
+    .compare-section { padding: 100px 0; background: linear-gradient(160deg, #0D2240 0%, #0A1F3D 60%, #071529 100%); position: relative; overflow: hidden; }
+    .compare-section::before { content: ''; position: absolute; top: -120px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(78,192,196,.07) 0%, transparent 70%); pointer-events: none; }
+    .compare-section__intro { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+    .compare-section__intro h2 { font-size: clamp(1.6rem,2.8vw,2.2rem); font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+    .compare-section__intro p { color: rgba(255,255,255,.65); font-size: 1rem; line-height: 1.75; }
+    .compare-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    /* Basis kaart */
+    .compare-card {
+      border-radius: 20px; padding: 36px 28px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease, border-color .3s ease;
+      opacity: 0; transform: translateY(24px);
+    }
+    .compare-card.is-visible { opacity: 1; transform: translateY(0); }
+    .compare-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,.35); }
+
+    /* Winner kaart */
+    .compare-card--winner {
+      border-color: rgba(78,192,196,.5);
+      background: rgba(78,192,196,.08);
+      box-shadow: 0 0 0 1px rgba(78,192,196,.15), 0 8px 40px rgba(78,192,196,.15);
+    }
+    .compare-card--winner:hover { box-shadow: 0 0 0 1px rgba(78,192,196,.3), 0 28px 56px rgba(78,192,196,.2); }
+
+    /* Badge */
+    .compare-card__badge { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; margin-bottom: 24px; background: rgba(255,255,255,.08); color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.1); }
+    .compare-card--winner .compare-card__badge { background: rgba(78,192,196,.15); color: #4EC0C4; border-color: rgba(78,192,196,.3); }
+
+    /* Icoon wrapper */
+    .compare-card__icon-wrap { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); }
+    .compare-card--winner .compare-card__icon-wrap { background: rgba(78,192,196,.12); border-color: rgba(78,192,196,.25); }
+    .compare-card__icon-wrap svg { stroke: rgba(255,255,255,.5); }
+    .compare-card--winner .compare-card__icon-wrap svg { stroke: #4EC0C4; }
+
+    /* Tekst */
+    .compare-card h3 { font-size: 1.05rem; font-weight: 700; color: rgba(255,255,255,.9); margin-bottom: 10px; line-height: 1.3; }
+    .compare-card p { font-size: .88rem; color: rgba(255,255,255,.5); line-height: 1.7; }
+    .compare-card--winner h3 { color: #fff; }
+    .compare-card--winner p { color: rgba(255,255,255,.75); }
+
+    /* Stagger animatie */
+    .compare-card:nth-child(1) { transition-delay: 0s; }
+    .compare-card:nth-child(2) { transition-delay: .1s; }
+    .compare-card:nth-child(3) { transition-delay: .2s; }
 
     /* ── HART sectie ── */
     .hart-section { padding: 80px 0; background: var(--light-gray); }
@@ -314,19 +350,41 @@
     <div class="compare-cards">
       <div class="compare-card">
         <span class="compare-card__badge">De adviseur</span>
-        <span class="compare-card__icon">🧩</span>
+        <div class="compare-card__icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
         <h3>Mooi rapport. Geen implementatie.</h3>
         <p>Schrijft een analyse en laat jou het implementeren. Verdwijnt zodra het rapport is opgeleverd — jij staat er alleen voor, en het verdwijnt in een la.</p>
       </div>
       <div class="compare-card">
         <span class="compare-card__badge">De bouwer</span>
-        <span class="compare-card__icon">🔧</span>
+        <div class="compare-card__icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
         <h3>Levert een tool. Geen adoptie.</h3>
         <p>Bouwt de techniek en wenst je succes. Jouw team pakt het niet op — en het gereedschap stoft in. Technisch correct, praktisch nutteloos.</p>
       </div>
       <div class="compare-card compare-card--winner">
-        <span class="compare-card__badge">De partner (HartAI)</span>
-        <span class="compare-card__icon">🤝</span>
+        <span class="compare-card__badge">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          De partner — HartAI
+        </span>
+        <div class="compare-card__icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
         <h3>Bouwt, implementeert én begeleidt.</h3>
         <p>Eén aanspreekpunt, van scan tot meetbaar resultaat. Wij zorgen dat jouw team er écht mee werkt — want een ongebruikte AI-oplossing is geen oplossing.</p>
       </div>
@@ -604,5 +662,18 @@
 <script src="/js/cookie-consent.js" defer></script>
 <script src="/js/main.js" defer></script>
 <script src="/js/hartai-agent.js" defer></script>
+<script>
+  // Scroll-triggered fade-in voor compare-cards
+  (function(){
+    var cards = document.querySelectorAll('.compare-card');
+    if(!cards.length) return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    cards.forEach(function(c){ io.observe(c); });
+  })();
+</script>
 </body>
 </html>
