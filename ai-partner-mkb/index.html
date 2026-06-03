@@ -63,14 +63,33 @@
 
   <style>
     /* ── Hero ── */
-    .partner-hero { background: var(--navy); color: #fff; padding: 100px 0 80px; text-align: center; position: relative; overflow: hidden; }
-    .partner-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(78,192,196,.15) 0%, transparent 70%); pointer-events: none; }
-    .partner-hero__badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(78,192,196,.12); border: 1px solid rgba(78,192,196,.3); color: #4EC0C4; font-size: .8rem; font-weight: 600; letter-spacing: .06em; padding: 6px 16px; border-radius: 100px; margin-bottom: 24px; }
-    .partner-hero h1 { font-size: clamp(2rem,5vw,3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+    .partner-hero { background: linear-gradient(135deg, #1A3557 0%, #0A1F3D 100%); color: #fff; padding: 108px 0 60px; position: relative; overflow: hidden; }
+    .partner-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 60% 0%, rgba(78,192,196,.15) 0%, transparent 70%); pointer-events: none; }
+    .partner-hero__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 60px; }
+    .partner-hero__left { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
+    .partner-hero__badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(78,192,196,.12); border: 1px solid rgba(78,192,196,.3); color: #4EC0C4; font-size: .8rem; font-weight: 600; letter-spacing: .06em; padding: 6px 16px; border-radius: 100px; }
+    .partner-hero h1 { font-size: clamp(2rem,4vw,3.2rem); font-weight: 800; line-height: 1.1; color: #fff; }
     .partner-hero h1 span { color: #4EC0C4; }
-    .partner-hero__sub-text { font-size: 1.1rem; color: rgba(255,255,255,.75); max-width: 640px; margin: 0 auto 36px; line-height: 1.7; }
-    .partner-hero__cta-note { display: block; font-size: .85rem; color: rgba(255,255,255,.5); margin-top: 14px; }
-    .partner-hero__stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,.1); }
+    .partner-hero__sub-text { font-size: 1.05rem; color: rgba(255,255,255,.78); line-height: 1.7; }
+    .partner-hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .partner-hero__cta-note { font-size: .82rem; color: rgba(255,255,255,.5); }
+    /* Right: visual card */
+    .partner-hero__right { position: relative; z-index: 2; }
+    .partner-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; padding: 28px; backdrop-filter: blur(12px); box-shadow: 0 24px 60px rgba(0,0,0,.25); }
+    .partner-card__header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .partner-card__dot { width: 10px; height: 10px; border-radius: 50%; background: #4EC0C4; box-shadow: 0 0 8px rgba(78,192,196,.6); }
+    .partner-card__title { font-size: .75rem; font-weight: 700; letter-spacing: .1em; color: rgba(78,192,196,.9); text-transform: uppercase; }
+    .partner-promise { display: flex; flex-direction: column; gap: 8px; }
+    .partner-promise__item { display: flex; align-items: flex-start; gap: 12px; padding: 13px 14px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; }
+    .partner-promise__item--active { background: rgba(78,192,196,.1); border-color: rgba(78,192,196,.25); }
+    .partner-promise__letter { font-size: 1.3rem; font-weight: 800; color: #4EC0C4; width: 28px; flex-shrink: 0; line-height: 1.2; }
+    .partner-promise__text strong { display: block; font-size: .88rem; color: #fff; margin-bottom: 2px; }
+    .partner-promise__text span { font-size: .78rem; color: rgba(255,255,255,.6); }
+    .partner-card__foot { margin-top: 14px; padding: 14px; background: rgba(78,192,196,.1); border: 1px solid rgba(78,192,196,.25); border-radius: 12px; display: flex; align-items: center; gap: 12px; }
+    .partner-card__foot-num { font-size: 1.5rem; font-weight: 800; color: #4EC0C4; flex-shrink: 0; }
+    .partner-card__foot-label { font-size: .82rem; color: rgba(255,255,255,.78); line-height: 1.4; }
+    /* Stats */
+    .partner-hero__stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding-top: 40px; border-top: 1px solid rgba(255,255,255,.1); }
     .partner-hero__stat strong { display: block; font-size: 2rem; font-weight: 800; color: #4EC0C4; }
     .partner-hero__stat span { font-size: .85rem; color: rgba(255,255,255,.6); }
 
@@ -136,6 +155,10 @@
     .links-strip__sep { color: var(--gray-light); }
 
     @media (max-width: 900px) {
+      .partner-hero__inner { grid-template-columns: 1fr; gap: 32px; }
+      .partner-hero__right { display: none; }
+      .partner-hero__left { align-items: center; text-align: center; }
+      .partner-hero__ctas { justify-content: center; }
       .compare-cards { grid-template-columns: 1fr; }
       .hart-cards { grid-template-columns: 1fr; }
       .partner-steps { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
@@ -179,17 +202,70 @@
 <!-- HERO -->
 <section class="partner-hero" aria-labelledby="partner-h1">
   <div class="container">
-    <div class="partner-hero__badge">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-      Jouw partner in AI, van eerste stap tot resultaat
-    </div>
-    <h1 id="partner-h1">Dé <span>AI-partner</span> voor het Nederlandse MKB</h1>
-    <p class="partner-hero__sub-text">De meeste AI-projecten mislukken niet door de techniek — maar omdat niemand de ondernemer en zijn team meeneemt. HartAI is de AI-partner die het MKB wél verder helpt: wij bouwen de oplossing én zorgen dat jouw mensen er echt mee werken. Bouwen én begeleiden, in één hand.</p>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a href="/#contact" class="btn btn--turquoise btn--lg">Plan je gratis AI-scan →</a>
-      <a href="#aanpak" class="btn btn--outline" style="border-color:rgba(255,255,255,.3);color:#fff;">Onze aanpak ↓</a>
-    </div>
-    <span class="partner-hero__cta-note">30 minuten · geen verkoopverhaal · concreet advies</span>
+    <div class="partner-hero__inner">
+
+      <!-- Links: tekst + CTA -->
+      <div class="partner-hero__left">
+        <div class="partner-hero__badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          Jouw partner in AI, van eerste stap tot resultaat
+        </div>
+        <h1 id="partner-h1">Dé <span>AI-partner</span> voor het Nederlandse MKB</h1>
+        <p class="partner-hero__sub-text">De meeste AI-projecten mislukken niet door de techniek — maar omdat niemand de ondernemer en zijn team meeneemt. HartAI is de AI-partner die het MKB wél verder helpt: wij bouwen de oplossing én zorgen dat jouw mensen er echt mee werken. Bouwen én begeleiden, in één hand.</p>
+        <div class="partner-hero__ctas">
+          <a href="/#contact" class="btn btn--turquoise btn--lg">Plan je gratis AI-scan →</a>
+          <a href="#aanpak" class="btn btn--outline" style="border-color:rgba(255,255,255,.3);color:#fff;">Onze aanpak ↓</a>
+        </div>
+        <span class="partner-hero__cta-note">30 minuten · geen verkoopverhaal · concreet advies</span>
+      </div>
+
+      <!-- Rechts: visuele HART-kaart -->
+      <div class="partner-hero__right" aria-hidden="true">
+        <div class="partner-card">
+          <div class="partner-card__header">
+            <div class="partner-card__dot"></div>
+            <span class="partner-card__title">De HART-aanpak</span>
+          </div>
+          <div class="partner-promise">
+            <div class="partner-promise__item partner-promise__item--active">
+              <div class="partner-promise__letter">H</div>
+              <div class="partner-promise__text">
+                <strong>Herken</strong>
+                <span>Wij starten met jouw bedrijf — niet met techniek.</span>
+              </div>
+            </div>
+            <div class="partner-promise__item">
+              <div class="partner-promise__letter">A</div>
+              <div class="partner-promise__text">
+                <strong>Afstemmen</strong>
+                <span>AI die past bij jouw werkwijze, niet andersom.</span>
+              </div>
+            </div>
+            <div class="partner-promise__item">
+              <div class="partner-promise__letter">R</div>
+              <div class="partner-promise__text">
+                <strong>Richten</strong>
+                <span>Eerst aanpakken wat het meeste oplevert.</span>
+              </div>
+            </div>
+            <div class="partner-promise__item">
+              <div class="partner-promise__letter">T</div>
+              <div class="partner-promise__text">
+                <strong>Triggeren</strong>
+                <span>Jouw team pakt het op — en houdt het vol.</span>
+              </div>
+            </div>
+          </div>
+          <div class="partner-card__foot">
+            <div class="partner-card__foot-num">90 dgn</div>
+            <div class="partner-card__foot-label">garantie of wij werken door — <strong>gratis</strong></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.partner-hero__inner -->
+
+    <!-- Stats -->
     <div class="partner-hero__stats">
       <div class="partner-hero__stat"><strong>147</strong><span>MKB-bedrijven geholpen</span></div>
       <div class="partner-hero__stat"><strong>25%</strong><span>gemiddelde kostenreductie</span></div>
