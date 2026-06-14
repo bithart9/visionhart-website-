@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HartAI Concierge | AI Ticket-assistent met Avatar | Meer Conversie, Minder Vragen</title>
+  <meta name="description" content="HartAI Concierge is een AI-gestuurde chat-assistent met spraak en avatar voor webshops en ticketplatforms. Guided selling, 24/7 actief, live in 1 dag." />
+  <meta name="keywords" content="AI concierge, ticket chatbot, guided selling, AI avatar, webshop assistent, HartAi Methode, conversie verhogen" />
+  <link rel="canonical" href="https://www.hartai.nl/concierge/" />
+  <meta property="og:title" content="HartAI Concierge | AI Ticket-assistent met Avatar" />
+  <meta property="og:description" content="Van bezoeker naar koper in 3 klikken. Guided selling, AI-stem en lip-sync avatar — 24/7, zonder extra medewerker." />
+  <meta property="og:url" content="https://www.hartai.nl/concierge/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="/images/favicon.ico" sizes="any" />
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <meta name="theme-color" content="#1B365D" />
+  <link rel="stylesheet" href="/css/hartai-agent.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1B365D;
+      --turq: #4EC0C4;
+      --turq-dark: #3aafb3;
+      --white: #ffffff;
+      --gray: #86868b;
+      --light: #f5f5f7;
+      --orange: #e8896b;
+      --green: #1D9E75;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; backdrop-filter: blur(20px); background: rgba(0,0,0,.72); border-bottom: 1px solid rgba(255,255,255,.06); transition: background .3s; }
+    .nav__logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .nav__logo img { width: 28px; height: 28px; }
+    .nav__logo-text { font-size: .95rem; font-weight: 700; color: #fff; }
+    .nav__logo-product { font-size: .75rem; font-weight: 600; color: var(--turq); background: rgba(78,192,196,.12); border: 1px solid rgba(78,192,196,.3); padding: 2px 8px; border-radius: 20px; margin-left: 4px; }
+    .nav__links { display: flex; align-items: center; gap: 28px; }
+    .nav__link { font-size: .82rem; color: rgba(255,255,255,.75); text-decoration: none; transition: color .15s; }
+    .nav__link:hover { color: #fff; }
+    .nav__cta { background: var(--turq); color: #fff; padding: 7px 16px; border-radius: 20px; font-size: .82rem; font-weight: 600; text-decoration: none; transition: background .15s; }
+    .nav__cta:hover { background: var(--turq-dark); }
+    .pd-dropdown { position: relative; }
+    .pd-dropdown-menu { position: absolute; top: calc(100% + 8px); left: 0; background: #1a1a2e; border: 1px solid rgba(78,192,196,.2); border-radius: 10px; min-width: 190px; padding: 6px 0; z-index: 100; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all .2s ease; pointer-events: none; }
+    /* Hover bridge — fills gap so menu stays open when moving cursor down */
+    .pd-dropdown-menu::before { content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 10px; }
+    .pd-dropdown:hover .pd-dropdown-menu, .pd-dropdown:focus-within .pd-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+    .pd-dropdown-link { display: block; padding: 9px 16px; font-size: .82rem; font-weight: 500; color: rgba(255,255,255,.8); text-decoration: none; transition: background .15s, color .15s; }
+    .pd-dropdown-link:hover { background: rgba(78,192,196,.1); color: #4EC0C4; }
+    .pd-dropdown-link.active { color: var(--turq); font-weight: 600; }
+    /* ── Mobile hamburger ── */
+    .nav__hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav__hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: all .25s; }
+    .nav__hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav__hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav__mobile-menu { display: none; position: fixed; top: 52px; left: 0; right: 0; background: rgba(10,10,20,.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(78,192,196,.15); padding: 12px 20px 20px; flex-direction: column; gap: 4px; z-index: 99; max-height: calc(100svh - 52px); overflow-y: auto; }
+    .nav__mobile-menu.is-open { display: flex; }
+    .nav__mobile-link { display: block; padding: 13px 16px; font-size: .9rem; color: rgba(255,255,255,.8); text-decoration: none; border-radius: 10px; transition: background .15s, color .15s; }
+    .nav__mobile-link:hover, .nav__mobile-link:active { background: rgba(255,255,255,.07); color: #fff; }
+    .nav__mobile-cta { display: block; margin-top: 8px; background: var(--turq); color: #fff; padding: 14px 16px; border-radius: 12px; font-size: .9rem; font-weight: 700; text-align: center; text-decoration: none; }
+
+    /* ── HERO ── */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 120% 80% at 50% 20%, #0d2a4a 0%, #000 70%); }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .35; animation: orb-float 8s ease-in-out infinite; }
+    .hero-orb-1 { width: 600px; height: 600px; background: var(--turq); top: -200px; left: -100px; animation-delay: 0s; }
+    .hero-orb-2 { width: 500px; height: 500px; background: var(--navy); top: 100px; right: -150px; animation-delay: -4s; }
+    .hero-orb-3 { width: 300px; height: 300px; background: var(--turq); bottom: -100px; left: 50%; animation-delay: -2s; }
+    @keyframes orb-float { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-40px) scale(1.05); } }
+    .hero-content { position: relative; z-index: 1; max-width: 960px; width: 100%; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(78,192,196,.15); border: 1px solid rgba(78,192,196,.4); border-radius: 20px; padding: 6px 16px; font-size: .78rem; font-weight: 600; color: var(--turq); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 28px; }
+    .hero-badge-dot { width: 6px; height: 6px; background: var(--turq); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.4; transform:scale(1.3); } }
+    .hero h1 { font-size: clamp(1.5rem, 3.8vw, 3.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -.03em; margin-bottom: 24px; }
+    .hero h1 em { font-style: normal; background: linear-gradient(135deg, var(--turq), #7edee0, var(--turq)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200%; animation: shimmer 4s linear infinite; }
+    @keyframes shimmer { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+    .hero-sub { font-size: clamp(1rem, 2.5vw, 1.25rem); color: rgba(255,255,255,.65); max-width: 600px; margin: 0 auto 48px; line-height: 1.6; font-weight: 400; }
+    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px; }
+    .btn-primary { background: var(--turq); color: #fff; padding: 16px 32px; border-radius: 50px; font-size: 1rem; font-weight: 700; text-decoration: none; transition: all .2s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { background: var(--turq-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(78,192,196,.4); }
+    .btn-secondary { background: rgba(255,255,255,.08); color: #fff; padding: 16px 32px; border-radius: 50px; font-size: 1rem; font-weight: 600; text-decoration: none; border: 1px solid rgba(255,255,255,.15); transition: all .2s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-secondary:hover { background: rgba(255,255,255,.14); transform: translateY(-2px); }
+    .hero-scroll { color: rgba(255,255,255,.3); font-size: .78rem; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .hero-scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(255,255,255,.3), transparent); animation: scroll-line 2s ease-in-out infinite; }
+    @keyframes scroll-line { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+    /* ── HERO COMPARE (screenshot style) ── */
+    .hero-compare-wrap { margin: 0 auto 64px; max-width: 580px; width: 100%; }
+    .hv-compare { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; padding: 10px; backdrop-filter: blur(12px); box-shadow: 0 24px 60px rgba(0,0,0,.4); }
+    .hv-compare__head { display: grid; grid-template-columns: 1fr 48px 1fr; padding: 16px 20px 14px; }
+    .hv-ch { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; }
+    .hv-ch--voor { color: var(--orange); }
+    .hv-ch--na { color: var(--green); text-align: right; }
+    .hv-row { display: grid; grid-template-columns: 1fr 48px 1fr; align-items: center; padding: 14px 20px; border-radius: 12px; margin-bottom: 4px; opacity: 0; transform: translateY(12px); animation: hv-rise 0.6s forwards; }
+    .hv-row:nth-child(2) { animation-delay: .1s; }
+    .hv-row:nth-child(3) { animation-delay: .25s; }
+    .hv-row:nth-child(4) { animation-delay: .4s; }
+    .hv-row:nth-child(5) { animation-delay: .55s; }
+    .hv-row:nth-child(6) { animation-delay: .7s; }
+    @keyframes hv-rise { to { opacity: 1; transform: translateY(0); } }
+    .hv-row:nth-child(even) { background: rgba(255,255,255,.03); }
+    .hv-row--highlight { background: rgba(29,158,117,.1) !important; border: 1px solid rgba(29,158,117,.25); }
+    .hv-side { display: flex; align-items: center; gap: 12px; }
+    .hv-side--na { justify-content: flex-end; }
+    .hv-icon { width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .hv-icon svg { width: 20px; height: 20px; }
+    .hv-icon--voor { background: rgba(232,137,107,.13); }
+    .hv-icon--voor svg { stroke: var(--orange); }
+    .hv-icon--na { background: rgba(29,158,117,.13); order: 2; }
+    .hv-icon--na svg { stroke: var(--green); }
+    .hv-val { line-height: 1; }
+    .hv-val--na { text-align: right; }
+    .hv-big { display: block; font-size: 22px; font-weight: 800; line-height: 1.1; }
+    .hv-big--voor { color: var(--orange); }
+    .hv-big--na { color: var(--green); }
+    .hv-row--highlight .hv-big--na { text-shadow: 0 0 16px rgba(29,158,117,.6); }
+    .hv-lbl { font-size: 11px; color: #97a4b5; display: block; margin-top: 3px; }
+    .hv-bar { height: 4px; border-radius: 2px; margin-top: 6px; background: rgba(255,255,255,.08); position: relative; overflow: hidden; }
+    .hv-bar span { position: absolute; top: 0; height: 100%; border-radius: 2px; background: var(--orange); left: 0; }
+    .hv-bar--na span { background: var(--green); right: 0; left: auto; }
+    .hv-arrow { display: flex; align-items: center; justify-content: center; }
+    .hv-arrow svg { width: 18px; height: 18px; stroke: var(--green); opacity: .6; }
+    .hv-compare__foot { margin: 10px 12px 12px; padding: 14px 16px; background: rgba(29,158,117,.14); border: 1px solid rgba(29,158,117,.3); border-radius: 12px; text-align: center; font-size: 13px; color: #c8f0e2; }
+    .hv-compare__foot strong { color: #fff; font-weight: 700; }
+    .hv-live { display: inline-flex; align-items: center; gap: 6px; }
+    .hv-live-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; flex-shrink: 0; }
+
+    /* ── STATEMENT ── */
+    .statement { background: #000; padding: 120px 24px; text-align: center; }
+    .statement-inner { max-width: 900px; margin: 0 auto; }
+    .statement h2 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; letter-spacing: -.03em; color: #fff; }
+    .statement h2 span { color: var(--turq); }
+    .statement p { font-size: clamp(1rem, 2vw, 1.25rem); color: rgba(255,255,255,.5); margin-top: 24px; line-height: 1.7; max-width: 620px; margin-left: auto; margin-right: auto; }
+
+    /* ── FEATURE SECTIONS ── */
+    .feature { min-height: 80vh; display: flex; align-items: center; padding: 100px 24px; }
+    .feature-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .feature-inner--reverse { direction: rtl; }
+    .feature-inner--reverse > * { direction: ltr; }
+    .feature-tag { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--turq); margin-bottom: 16px; }
+    .feature-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; color: #fff; margin-bottom: 20px; }
+    .feature-desc { font-size: 1.05rem; color: rgba(255,255,255,.55); line-height: 1.75; margin-bottom: 32px; }
+    .feature-points { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .feature-points li { display: flex; align-items: flex-start; gap: 12px; font-size: .95rem; color: rgba(255,255,255,.75); }
+    .feature-points li::before { content: ''; width: 20px; height: 20px; background: rgba(78,192,196,.15); border: 1px solid rgba(78,192,196,.4); border-radius: 50%; flex-shrink: 0; margin-top: 2px; background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12' stroke='%234EC0C4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; }
+
+    /* ── VISUAL CARDS ── */
+    .visual-card { background: linear-gradient(145deg, #0d1b2a, #1a2744); border: 1px solid rgba(255,255,255,.08); border-radius: 24px; padding: 32px; position: relative; overflow: hidden; }
+    .visual-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 70% 20%, rgba(78,192,196,.08), transparent 60%); }
+    .vc-label { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 24px; }
+    .vc-number { font-size: 4rem; font-weight: 800; letter-spacing: -.04em; line-height: 1; }
+    .vc-number span { color: var(--turq); }
+    .vc-sub { font-size: .9rem; color: rgba(255,255,255,.45); margin-top: 8px; }
+    .vc-bar-wrap { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
+    .vc-bar-row { display: flex; align-items: center; gap: 12px; }
+    .vc-bar-label { font-size: .75rem; color: rgba(255,255,255,.4); width: 110px; flex-shrink: 0; }
+    .vc-bar-track { flex: 1; height: 4px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden; }
+    .vc-bar-fill { height: 100%; border-radius: 2px; background: linear-gradient(to right, var(--navy), var(--turq)); transform-origin: left; transition: transform 1.5s ease; }
+    .vc-bar-val { font-size: .75rem; color: var(--turq); font-weight: 600; width: 44px; text-align: right; flex-shrink: 0; }
+
+    /* clock rows */
+    .clock-visual { display: flex; flex-direction: column; gap: 12px; }
+    .clock-row { display: flex; align-items: center; gap: 16px; padding: 14px 16px; background: rgba(255,255,255,.04); border-radius: 14px; border: 1px solid rgba(255,255,255,.06); transition: border-color .3s; }
+    .clock-row:hover { border-color: rgba(78,192,196,.3); }
+    .clock-row-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.2rem; }
+    .clock-row-icon--green { background: rgba(34,197,94,.12); }
+    .clock-row-icon--turq  { background: rgba(78,192,196,.12); }
+    .clock-row-icon--blue  { background: rgba(59,130,246,.12); }
+    .clock-row-icon--orange { background: rgba(232,137,107,.12); }
+    .clock-row-text { flex: 1; }
+    .clock-row-title { font-size: .88rem; font-weight: 600; color: #fff; }
+    .clock-row-sub { font-size: .73rem; color: rgba(255,255,255,.38); margin-top: 2px; }
+    .clock-row-badge { font-size: .68rem; font-weight: 700; padding: 3px 8px; border-radius: 20px; white-space: nowrap; }
+    .clock-row-badge--green  { background: rgba(34,197,94,.15); color: #4ade80; }
+    .clock-row-badge--turq   { background: rgba(78,192,196,.15); color: var(--turq); }
+    .clock-row-badge--blue   { background: rgba(59,130,246,.15); color: #60a5fa; }
+    .clock-row-badge--orange { background: rgba(232,137,107,.15); color: #fbb896; }
+
+    /* timeline */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .tl-item { display: flex; gap: 20px; padding-bottom: 32px; position: relative; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-left { display: flex; flex-direction: column; align-items: center; }
+    .tl-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .8rem; flex-shrink: 0; z-index: 1; }
+    .tl-dot--done   { background: var(--turq); color: #fff; }
+    .tl-dot--active { background: rgba(78,192,196,.2); border: 2px solid var(--turq); color: var(--turq); animation: tl-pulse 2s infinite; }
+    .tl-dot--next   { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.3); }
+    @keyframes tl-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(78,192,196,.4); } 50% { box-shadow: 0 0 0 8px rgba(78,192,196,0); } }
+    .tl-line { flex: 1; width: 1px; background: linear-gradient(to bottom, rgba(78,192,196,.4), rgba(255,255,255,.06)); margin: 4px 0; }
+    .tl-item:last-child .tl-line { display: none; }
+    .tl-body { padding-top: 6px; }
+    .tl-title { font-size: .92rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .tl-desc  { font-size: .8rem; color: rgba(255,255,255,.4); line-height: 1.5; }
+    .tl-time  { font-size: .7rem; color: var(--turq); font-weight: 600; margin-top: 4px; }
+
+    /* ── AVATAR DEMO WIDGET ── */
+    .widget-demo { background: linear-gradient(145deg, #0d1b2a, #1a2744); border: 1px solid rgba(255,255,255,.08); border-radius: 24px; padding: 20px; position: relative; overflow: hidden; max-width: 340px; }
+    .widget-demo::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 80%, rgba(78,192,196,.07), transparent 60%); }
+    .wd-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .wd-title { font-size: .82rem; font-weight: 700; color: #fff; }
+    .wd-badge { font-size: .62rem; font-weight: 700; background: rgba(78,192,196,.15); color: var(--turq); border: 1px solid rgba(78,192,196,.3); border-radius: 20px; padding: 2px 8px; }
+    .wd-avatar-frame { width: 100%; aspect-ratio: 3/4; max-height: 180px; background: linear-gradient(160deg,#0e1032,#07091c); border-radius: 14px; border: 1px solid rgba(255,61,32,.2); overflow: hidden; display: flex; align-items: flex-end; justify-content: center; margin-bottom: 12px; position: relative; }
+    .wd-avatar-chrome { position: absolute; top: 0; left: 0; right: 0; padding: 7px 10px; display: flex; align-items: center; gap: 5px; background: linear-gradient(to bottom, rgba(0,0,0,.75), transparent); }
+    .wd-live-dot { width: 5px; height: 5px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 5px rgba(239,68,68,.7); animation: pulse 1.4s ease-in-out infinite; }
+    .wd-live-text { font-size: .48rem; font-weight: 700; letter-spacing: .1em; color: rgba(255,255,255,.65); text-transform: uppercase; }
+    .wd-chat-row { display: flex; flex-direction: column; gap: 7px; margin-bottom: 10px; }
+    .wd-msg { max-width: 85%; padding: 8px 11px; border-radius: 11px; font-size: .75rem; line-height: 1.45; }
+    .wd-msg--bot  { background: rgba(255,255,255,.08); color: rgba(255,255,255,.85); border-bottom-left-radius: 3px; align-self: flex-start; }
+    .wd-msg--user { background: var(--turq); color: #fff; border-bottom-right-radius: 3px; align-self: flex-end; }
+    .wd-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 10px; padding: 10px 12px; margin-top: 4px; }
+    .wd-card-name { font-size: .78rem; font-weight: 700; color: #fff; margin-bottom: 2px; }
+    .wd-card-meta { font-size: .65rem; color: rgba(255,255,255,.4); }
+    .wd-card-btn { display: inline-block; margin-top: 8px; font-size: .68rem; font-weight: 700; color: #fff; background: #ff3d20; border-radius: 6px; padding: 4px 10px; }
+    .wd-tiers { display: flex; gap: 5px; margin-top: 10px; }
+    .wd-tier { flex: 1; text-align: center; font-size: .6rem; font-weight: 600; padding: 5px 3px; border-radius: 7px; border: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.4); cursor: default; transition: all .2s; }
+    .wd-tier.active { background: rgba(78,192,196,.12); border-color: rgba(78,192,196,.4); color: var(--turq); }
+
+    /* ── STATS ── */
+    .stats-section { background: #0a0a0a; padding: 120px 24px; text-align: center; }
+    .stats-label { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--turq); margin-bottom: 16px; }
+    .stats-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.02em; color: #fff; margin-bottom: 80px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; max-width: 1000px; margin: 0 auto; background: rgba(255,255,255,.06); border-radius: 24px; overflow: hidden; }
+    .stat-item { background: #0a0a0a; padding: 48px 24px; text-align: center; transition: background .3s; }
+    .stat-item:hover { background: #111; }
+    .stat-num { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -.04em; color: #fff; line-height: 1; }
+    .stat-num em { font-style: normal; color: var(--turq); }
+    .stat-desc { font-size: .82rem; color: rgba(255,255,255,.4); margin-top: 10px; line-height: 1.4; }
+    .stat-source { font-size: .68rem; color: rgba(255,255,255,.22); margin-top: 10px; letter-spacing: .02em; }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: #000; padding: 120px 24px; }
+    .how-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--turq); text-align: center; margin-bottom: 16px; }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.02em; color: #fff; text-align: center; margin-bottom: 80px; }
+    .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,.06); border-radius: 24px; overflow: hidden; }
+    .how-item { background: #000; padding: 40px 28px; transition: background .3s; }
+    .how-item:hover { background: #0d0d0d; }
+    .how-num { font-size: .72rem; font-weight: 700; letter-spacing: .08em; color: var(--turq); margin-bottom: 20px; }
+    .how-icon { width: 52px; height: 52px; background: rgba(78,192,196,.1); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .how-item h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .how-item p { font-size: .83rem; color: rgba(255,255,255,.45); line-height: 1.6; }
+
+    /* ── TIERS ── */
+    .tiers-section { background: #050505; padding: 120px 24px; }
+    .tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1000px; margin: 0 auto; }
+    .tier-card { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; padding: 32px; transition: border-color .25s, transform .25s; }
+    .tier-card:hover { border-color: rgba(78,192,196,.3); transform: translateY(-4px); }
+    .tier-card--featured { background: linear-gradient(145deg, rgba(78,192,196,.06), rgba(27,54,93,.3)); border-color: rgba(78,192,196,.35); position: relative; }
+    .tier-card--featured::before { content: 'Meest gekozen'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--turq); color: #fff; font-size: .65rem; font-weight: 700; letter-spacing: .06em; padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
+    .tier-name { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--turq); margin-bottom: 10px; }
+    .tier-price { font-size: 2rem; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 4px; }
+    .tier-price span { font-size: .85rem; font-weight: 400; color: rgba(255,255,255,.4); }
+    .tier-setup { font-size: .75rem; color: rgba(255,255,255,.28); margin-bottom: 6px; }
+    .tier-setup strong { color: rgba(255,255,255,.5); font-weight: 600; }
+    .tier-sub { font-size: .8rem; color: rgba(255,255,255,.35); margin-bottom: 24px; }
+    .tier-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .tier-features li { font-size: .85rem; color: rgba(255,255,255,.7); display: flex; align-items: center; gap: 8px; }
+    .tier-features li.off { color: rgba(255,255,255,.2); text-decoration: none; }
+    .tf-check { width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .tf-check--on  { background: rgba(78,192,196,.15); }
+    .tf-check--off { background: rgba(255,255,255,.05); }
+    .tf-check--on::after  { content:''; width:6px;height:6px;border-radius:50%;background:var(--turq); }
+    .tf-check--off::after { content:''; width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.15); }
+
+    /* ── SECTORS ── */
+    .sectors { background: #0a0a0a; padding: 120px 24px; }
+    .sectors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 900px; margin: 0 auto; }
+    .sector-chip { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 20px 24px; display: flex; align-items: center; gap: 14px; transition: all .2s; cursor: default; }
+    .sector-chip:hover { background: rgba(78,192,196,.06); border-color: rgba(78,192,196,.3); transform: translateY(-2px); }
+    .sector-chip-icon { font-size: 1.5rem; }
+    .sector-chip-text { font-size: .88rem; font-weight: 600; color: rgba(255,255,255,.75); }
+
+    /* ── CTA ── */
+    .cta-section { background: #000; padding: 160px 24px; text-align: center; position: relative; overflow: hidden; }
+    .cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(78,192,196,.08), transparent); }
+    .cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .cta-section h2 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -.03em; color: #fff; margin-bottom: 24px; }
+    .cta-section p { font-size: 1.1rem; color: rgba(255,255,255,.55); margin-bottom: 48px; line-height: 1.6; }
+    .cta-note { font-size: .8rem; color: rgba(255,255,255,.25); margin-top: 20px; }
+
+    /* ── FOOTER ── */
+    .footer { background: #000; border-top: 1px solid rgba(255,255,255,.06); padding: 40px 24px; text-align: center; }
+    .footer p { font-size: .8rem; color: rgba(255,255,255,.25); }
+    .footer a { color: rgba(255,255,255,.4); text-decoration: none; }
+
+    /* ── ANIMATIONS ── */
+    .reveal { opacity: 0; transform: translateY(48px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-left  { opacity: 0; transform: translateX(-48px); transition: opacity .9s ease, transform .9s ease; }
+    .reveal-left.visible  { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(48px); transition: opacity .9s ease, transform .9s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .feature--dark   { background: #050505; }
+    .feature--darker { background: #000; }
+
+    /* ── PRODUCT DEMO ── */
+    .pd-section { background: #000; padding: 120px 24px 80px; }
+    .pd-section .section-title { margin-bottom: 56px; }
+    .pd-browser { max-width: 1000px; margin: 0 auto; border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); box-shadow: 0 40px 120px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.05); }
+    .pd-bar { background: #1c1c1c; padding: 11px 16px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .pd-dots { display: flex; gap: 6px; }
+    .pd-dots span { width: 11px; height: 11px; border-radius: 50%; }
+    .pd-dots span:nth-child(1) { background: #ff5f57; }
+    .pd-dots span:nth-child(2) { background: #febc2e; }
+    .pd-dots span:nth-child(3) { background: #28c840; }
+    .pd-url { flex: 1; background: rgba(255,255,255,.07); border-radius: 6px; padding: 4px 12px; font-size: .72rem; color: rgba(255,255,255,.35); text-align: center; display: flex; align-items: center; justify-content: center; gap: 5px; }
+    .pd-screen { background: #0d1117; position: relative; min-height: 520px; display: flex; overflow: hidden; }
+    .pd-ghost-site { flex: 1; padding: 20px 24px; opacity: .25; pointer-events: none; user-select: none; }
+    .pd-ghost-nav { display: flex; align-items: center; gap: 24px; margin-bottom: 32px; }
+    .pd-ghost-logo { font-size: .85rem; font-weight: 800; color: #fff; }
+    .pd-ghost-links { display: flex; gap: 16px; }
+    .pd-ghost-links span { font-size: .72rem; color: rgba(255,255,255,.5); }
+    .pd-ghost-hero { margin-bottom: 28px; }
+    .pd-ghost-h1 { font-size: clamp(1.3rem,2.5vw,2rem); font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 10px; }
+    .pd-ghost-sub { font-size: .8rem; color: rgba(255,255,255,.4); }
+    .pd-ghost-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 24px; }
+    .pd-ghost-card { background: rgba(255,255,255,.05); border-radius: 10px; height: 72px; }
+    .pd-ghost-bar { height: 8px; background: rgba(255,255,255,.08); border-radius: 4px; margin-top: 10px; }
+    .pd-ghost-bar:nth-child(2) { width: 65%; }
+    .pd-ghost-bar:nth-child(3) { width: 45%; }
+    /* Widget */
+    .pd-widget { width: 300px; flex-shrink: 0; background: #0e1420; border-left: 1px solid rgba(255,255,255,.07); display: flex; flex-direction: column; }
+    .pd-wh { background: linear-gradient(135deg, #1B365D, #0e1a2e); padding: 14px 16px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .pd-wh-av { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: linear-gradient(160deg,#1e2556,#07091c); border: 1px solid rgba(78,192,196,.3); display: flex; align-items: flex-end; justify-content: center; flex-shrink: 0; }
+    .pd-wh-info { flex: 1; }
+    .pd-wh-name { font-size: .78rem; font-weight: 700; color: #fff; }
+    .pd-wh-status { font-size: .62rem; color: var(--turq); display: flex; align-items: center; gap: 4px; margin-top: 1px; }
+    .pd-wh-status::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--turq); box-shadow: 0 0 5px var(--turq); display: inline-block; }
+    .pd-messages { flex: 1; padding: 12px; display: flex; flex-direction: column; gap: 8px; overflow-y: auto; min-height: 280px; max-height: 320px; }
+    .pd-msg { max-width: 90%; padding: 8px 11px; border-radius: 12px; font-size: .75rem; line-height: 1.5; animation: pdMsgIn .25s ease; }
+    .pd-msg-bot { background: rgba(255,255,255,.08); color: rgba(255,255,255,.88); align-self: flex-start; border-bottom-left-radius: 3px; }
+    .pd-msg-user { background: var(--turq); color: #fff; align-self: flex-end; border-bottom-right-radius: 3px; }
+    .pd-typing { display: flex; gap: 4px; align-items: center; padding: 10px 12px; background: rgba(255,255,255,.06); border-radius: 12px; border-bottom-left-radius: 3px; align-self: flex-start; }
+    .pd-typing span { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,.4); animation: pdDot 1.2s ease-in-out infinite; }
+    .pd-typing span:nth-child(2) { animation-delay: .2s; }
+    .pd-typing span:nth-child(3) { animation-delay: .4s; }
+    .pd-ticket-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 10px; padding: 10px 12px; animation: pdCardIn .35s cubic-bezier(0.34,1.56,0.64,1); }
+    .pd-ticket-card.highlight { border-color: rgba(255,61,32,.4); }
+    .pd-card-name { font-size: .73rem; font-weight: 700; color: #fff; margin-bottom: 2px; }
+    .pd-card-meta { font-size: .62rem; color: rgba(255,255,255,.38); margin-bottom: 7px; }
+    .pd-card-cta { display: inline-block; font-size: .65rem; font-weight: 700; color: #fff; background: #ff3d20; border-radius: 5px; padding: 3px 9px; cursor: pointer; transition: transform .15s, box-shadow .15s; }
+    .pd-card-cta.pulse { animation: pdCtaPulse .6s ease; }
+    .pd-input-wrap { padding: 10px 12px; border-top: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; gap: 7px; }
+    .pd-input-fake { flex: 1; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.09); border-radius: 8px; padding: 7px 10px; font-size: .72rem; color: rgba(255,255,255,.7); min-height: 32px; display: flex; align-items: center; position: relative; }
+    .pd-input-fake::after { content: '|'; color: var(--turq); animation: pdCursor .7s step-end infinite; margin-left: 1px; }
+    .pd-input-fake.idle::after { opacity: 0; animation: none; }
+    .pd-send { width: 28px; height: 28px; border-radius: 7px; background: var(--turq); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    /* Funnel */
+    .pd-funnel { background: rgba(0,0,0,.5); border-top: 1px solid rgba(255,255,255,.05); padding: 12px 24px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .pd-fstage { font-size: .65rem; font-weight: 600; color: rgba(255,255,255,.25); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(255,255,255,.07); transition: all .4s ease; white-space: nowrap; }
+    .pd-fstage.active { color: var(--turq); border-color: rgba(78,192,196,.35); background: rgba(78,192,196,.08); }
+    .pd-fstage.done { color: rgba(255,255,255,.45); border-color: rgba(255,255,255,.15); }
+    .pd-farrow { color: rgba(255,255,255,.15); font-size: .65rem; }
+    @keyframes pdMsgIn { from { opacity:0; transform: translateY(6px); } to { opacity:1; transform: translateY(0); } }
+    @keyframes pdCardIn { from { opacity:0; transform: translateY(10px) scale(.97); } to { opacity:1; transform: translateY(0) scale(1); } }
+    @keyframes pdDot { 0%,80%,100% { transform: scale(.6); opacity:.4; } 40% { transform: scale(1); opacity:1; } }
+    @keyframes pdCtaPulse { 0%,100%{ box-shadow:0 0 0 0 rgba(255,61,32,0); } 50%{ box-shadow:0 0 0 6px rgba(255,61,32,.3); } }
+    @keyframes pdCursor { 0%,100% { opacity:1; } 50% { opacity:0; } }
+    @media (max-width: 720px) { .pd-ghost-site { display: none; } .pd-widget { width: 100%; } }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .feature-inner { grid-template-columns: 1fr; gap: 48px; }
+      .feature-inner--reverse { direction: ltr; }
+      .how-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .tiers-grid { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: 1fr 1fr; }
+      .nav__links { display: none; }
+      .nav__hamburger { display: flex; }
+      .feature { min-height: auto; padding: 80px 24px; }
+      .statement { padding: 80px 24px; }
+      .stats-section, .how, .tiers-section, .sectors, .pd-section { padding: 80px 24px; }
+      .cta-section { padding: 100px 24px; }
+      .section-title, .stats-title { margin-bottom: 48px; }
+      .stat-item { padding: 32px 20px; }
+      .how-item { padding: 28px 20px; }
+    }
+    @media (max-width: 560px) {
+      .how-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+      .hero-sub { font-size: .95rem; }
+      .btn-primary, .btn-secondary { padding: 13px 22px; font-size: .9rem; width: 100%; justify-content: center; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .feature { padding: 60px 20px; }
+      .statement { padding: 60px 20px; }
+      .statement h2 { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+      .stats-section, .how, .tiers-section, .sectors, .pd-section { padding: 60px 20px; }
+      .cta-section { padding: 80px 20px; }
+      .cta-section h2 { font-size: clamp(2rem, 8vw, 3rem); }
+      .section-title, .stats-title { margin-bottom: 36px; }
+      .stat-item { padding: 28px 16px; }
+      .pd-screen { min-height: 380px; }
+      .pd-funnel { flex-wrap: wrap; gap: 6px; padding: 10px 14px; }
+      .pd-fstage { font-size: .6rem; padding: 3px 8px; }
+      .feature-title { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+      .visual-card { padding: 24px 20px; }
+      .tier-card { padding: 24px 20px; }
+      .hero { padding: 90px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav__logo">
+    <img src="/images/logo-white.svg" alt="HartAI" />
+    <span class="nav__logo-text">HartAI</span>
+    <span class="nav__logo-product">Concierge</span>
+  </a>
+  <div class="nav__links">
+    <div class="pd-dropdown">
+      <a href="/oplossingen/" class="nav__link">Producten ▾</a>
+      <div class="pd-dropdown-menu">
+        <a href="/digitale-twin-medewerker/" class="pd-dropdown-link">Digitale Twin</a>
+        <a href="/concierge/" class="pd-dropdown-link active">AI Concierge</a>
+        <a href="/infrastructuur/" class="pd-dropdown-link">AI Infrastructuur</a>
+        <a href="/oplossingen/" class="pd-dropdown-link">Alle Oplossingen</a>
+      </div>
+    </div>
+    <a href="#functies" class="nav__link">Functies</a>
+    <a href="#hoe-het-werkt" class="nav__link">Hoe het werkt</a>
+    <a href="#tiers" class="nav__link">Pakketten</a>
+    <a href="/" class="nav__link">Over HartAI</a>
+    <a href="https://concierge.hartai.nl" target="_blank" rel="noopener" class="nav__cta">Bekijk demo →</a>
+  </div>
+  <!-- Mobile hamburger -->
+  <button class="nav__hamburger" id="concierge-nav-toggle" aria-label="Menu openen" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile nav menu -->
+<div class="nav__mobile-menu" id="concierge-nav-menu">
+  <a href="/concierge/" class="nav__mobile-link" style="color:var(--turq);font-weight:600;">AI Concierge</a>
+  <a href="#functies" class="nav__mobile-link">Functies</a>
+  <a href="#hoe-het-werkt" class="nav__mobile-link">Hoe het werkt</a>
+  <a href="#tiers" class="nav__mobile-link">Pakketten</a>
+  <a href="/digitale-twin-medewerker/" class="nav__mobile-link">Digitale Twin</a>
+  <a href="/oplossingen/" class="nav__mobile-link">Alle Oplossingen</a>
+  <a href="/" class="nav__mobile-link">Over HartAI</a>
+  <a href="https://concierge.hartai.nl" target="_blank" rel="noopener" class="nav__mobile-cta">Bekijk demo →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      AI Ticket &amp; Webshop Concierge
+    </div>
+    <h1>Van bezoeker naar koper.<br><em>In 3 klikken.</em></h1>
+    <p class="hero-sub">Geen zoekbalk. Geen frustratie. Een AI-assistent die bezoekers begeleidt, vragen beantwoordt en direct naar de kassa leidt — 24/7, met stem en avatar.</p>
+
+    <!-- COMPARISON WIDGET -->
+    <div class="hero-compare-wrap reveal">
+      <div class="hv-compare">
+        <div class="hv-compare__head">
+          <span class="hv-ch hv-ch--voor">Zonder concierge</span>
+          <span></span>
+          <span class="hv-ch hv-ch--na">Met HartAI</span>
+        </div>
+
+        <div class="hv-row">
+          <div class="hv-side">
+            <div class="hv-icon hv-icon--voor">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/></svg>
+            </div>
+            <div class="hv-val">
+              <span class="hv-big hv-big--voor">~30 sec</span>
+              <span class="hv-lbl">gem. sessieduur</span>
+              <div class="hv-bar"><span style="width:22%"></span></div>
+            </div>
+          </div>
+          <div class="hv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+          <div class="hv-side hv-side--na">
+            <div class="hv-val hv-val--na">
+              <span class="hv-big hv-big--na">+34%</span>
+              <span class="hv-lbl">langer op site</span>
+              <div class="hv-bar hv-bar--na"><span style="width:80%"></span></div>
+            </div>
+            <div class="hv-icon hv-icon--na">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="hv-row">
+          <div class="hv-side">
+            <div class="hv-icon hv-icon--voor">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div class="hv-val">
+              <span class="hv-big hv-big--voor">Gemist</span>
+              <span class="hv-lbl">zoekbalk frustreert</span>
+              <div class="hv-bar"><span style="width:80%"></span></div>
+            </div>
+          </div>
+          <div class="hv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+          <div class="hv-side hv-side--na">
+            <div class="hv-val hv-val--na">
+              <span class="hv-big hv-big--na">3 klikken</span>
+              <span class="hv-lbl">guided selling</span>
+              <div class="hv-bar hv-bar--na"><span style="width:95%"></span></div>
+            </div>
+            <div class="hv-icon hv-icon--na">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="hv-row">
+          <div class="hv-side">
+            <div class="hv-icon hv-icon--voor">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="hv-val">
+              <span class="hv-big hv-big--voor">Stilte</span>
+              <span class="hv-lbl">vragen 's avonds</span>
+              <div class="hv-bar"><span style="width:60%"></span></div>
+            </div>
+          </div>
+          <div class="hv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+          <div class="hv-side hv-side--na">
+            <div class="hv-val hv-val--na">
+              <span class="hv-big hv-big--na">24/7</span>
+              <span class="hv-lbl">bereikbaar</span>
+              <div class="hv-bar hv-bar--na"><span style="width:100%"></span></div>
+            </div>
+            <div class="hv-icon hv-icon--na">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="hv-row hv-row--highlight">
+          <div class="hv-side">
+            <div class="hv-icon hv-icon--voor">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="hv-val">
+              <span class="hv-big hv-big--voor">~2%</span>
+              <span class="hv-lbl">conversie</span>
+              <div class="hv-bar"><span style="width:10%"></span></div>
+            </div>
+          </div>
+          <div class="hv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+          <div class="hv-side hv-side--na">
+            <div class="hv-val hv-val--na">
+              <span class="hv-big hv-big--na">4× meer</span>
+              <span class="hv-lbl">conversie</span>
+              <div class="hv-bar hv-bar--na"><span style="width:85%"></span></div>
+            </div>
+            <div class="hv-icon hv-icon--na">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="hv-compare__foot">
+          <span class="hv-live"><span class="hv-live-dot"></span></span>
+          Gemiddeld <strong>4× meer conversie</strong> — en <strong>70% minder support-vragen</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="https://concierge.hartai.nl" target="_blank" rel="noopener" class="btn-primary">Bekijk live demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="#hoe-het-werkt" class="btn-secondary">Hoe het werkt</a>
+    </div>
+    <div class="hero-scroll"><div class="hero-scroll-line"></div></div>
+  </div>
+</section>
+
+<!-- PRODUCT DEMO -->
+<section class="pd-section" id="demo">
+  <div style="max-width:1100px;margin:0 auto;text-align:center">
+    <div class="section-label reveal">Zie het live</div>
+    <h2 class="section-title reveal reveal-delay-1">Van vraag naar ticket.<br><span style="color:var(--turq)">In één gesprek.</span></h2>
+  </div>
+  <div class="pd-browser reveal reveal-delay-2">
+    <!-- Browser bar -->
+    <div class="pd-bar">
+      <div class="pd-dots"><span></span><span></span><span></span></div>
+      <div class="pd-url">
+        <svg width="9" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        goticketshop.nl
+      </div>
+      <div style="width:60px"></div>
+    </div>
+    <!-- Screen -->
+    <div class="pd-screen">
+      <!-- Ghost site background -->
+      <div class="pd-ghost-site">
+        <div class="pd-ghost-nav">
+          <span class="pd-ghost-logo">🎟 GoTicketShop</span>
+          <div class="pd-ghost-links"><span>Concerten</span><span>Festivals</span><span>Theater</span></div>
+        </div>
+        <div class="pd-ghost-hero">
+          <div class="pd-ghost-h1">Alle tickets.<br>Eén platform.</div>
+          <div class="pd-ghost-sub">Ontdek honderden events door heel Nederland</div>
+          <div class="pd-ghost-bar"></div>
+          <div class="pd-ghost-bar"></div>
+        </div>
+        <div class="pd-ghost-cards">
+          <div class="pd-ghost-card"></div>
+          <div class="pd-ghost-card"></div>
+          <div class="pd-ghost-card"></div>
+          <div class="pd-ghost-card"></div>
+        </div>
+      </div>
+      <!-- Concierge Widget -->
+      <div class="pd-widget">
+        <div class="pd-wh">
+          <div class="pd-wh-av" id="pd-av">
+            <img src="/images/robin.png" alt="Robin" style="width:40px;height:53px;object-fit:cover;object-position:center 8%;display:block;">
+          </div>
+          <div class="pd-wh-info">
+            <div class="pd-wh-name">Ticket Concierge</div>
+            <div class="pd-wh-status">Online</div>
+          </div>
+        </div>
+        <div class="pd-messages" id="pd-messages"></div>
+        <div class="pd-input-wrap">
+          <div class="pd-input-fake idle" id="pd-input-text"></div>
+          <button class="pd-send">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Funnel indicator -->
+    <div class="pd-funnel">
+      <div class="pd-fstage" id="pdf-0">💬 Vraag</div>
+      <div class="pd-farrow">→</div>
+      <div class="pd-fstage" id="pdf-1">🧠 Intentie begrepen</div>
+      <div class="pd-farrow">→</div>
+      <div class="pd-fstage" id="pdf-2">🎟 Aanbeveling</div>
+      <div class="pd-farrow">→</div>
+      <div class="pd-fstage" id="pdf-3">✅ Naar de kassa</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement">
+  <div class="statement-inner">
+    <h2 class="reveal">Stop met zoeken.<br><span>Begin met kopen.</span></h2>
+    <p class="reveal reveal-delay-1">Bezoekers verlaten je webshop omdat ze het juiste product niet kunnen vinden. De HartAI Concierge stelt de juiste vragen, begrijpt elke intentie en leidt hen direct naar de kassa — met een eigen stem en gezicht als je dat wilt.</p>
+  </div>
+</section>
+
+<!-- FEATURE 1: Guided Selling -->
+<section class="feature feature--dark" id="functies">
+  <div class="feature-inner">
+    <div class="reveal-left">
+      <div class="feature-tag">Guided Selling</div>
+      <h2 class="feature-title">Elke bezoeker.<br>Altijd de juiste keuze.</h2>
+      <p class="feature-desc">De concierge begeleidt bezoekers van intentie naar ticket. Niet met een zoekbalk, maar met een gesprek. HartAi begrijpt elke vraag — ook de vage.</p>
+      <ul class="feature-points">
+        <li>Categoriefilters + chip-navigatie in 3 klikken</li>
+        <li>Vrije tekst: "iets met jazz in Rotterdam" werkt gewoon</li>
+        <li>Directe event-kaarten met ticket-link in het gesprek</li>
+        <li>Follow-up vragen met geheugen ("en in Amsterdam?")</li>
+      </ul>
+    </div>
+    <div class="reveal-right">
+      <div class="visual-card">
+        <div class="vc-label">Conversie per kanaal</div>
+        <div class="vc-number"><span class="count" data-target="4">0</span><span>×</span></div>
+        <div class="vc-sub">hogere conversie vs ongeassisteerde bezoeker</div>
+        <div class="vc-bar-wrap">
+          <div class="vc-bar-row">
+            <div class="vc-bar-label">Zoekbalk</div>
+            <div class="vc-bar-track"><div class="vc-bar-fill" style="width:18%"></div></div>
+            <div class="vc-bar-val">~2%</div>
+          </div>
+          <div class="vc-bar-row">
+            <div class="vc-bar-label">Tekstchat</div>
+            <div class="vc-bar-track"><div class="vc-bar-fill" style="width:45%"></div></div>
+            <div class="vc-bar-val">~5%</div>
+          </div>
+          <div class="vc-bar-row">
+            <div class="vc-bar-label">AI Concierge</div>
+            <div class="vc-bar-track"><div class="vc-bar-fill" style="width:78%"></div></div>
+            <div class="vc-bar-val">~8%</div>
+          </div>
+          <div class="vc-bar-row">
+            <div class="vc-bar-label">+ Avatar</div>
+            <div class="vc-bar-track"><div class="vc-bar-fill" style="width:100%"></div></div>
+            <div class="vc-bar-val">12%+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 2: Avatar & Stem -->
+<section class="feature feature--darker">
+  <div class="feature-inner feature-inner--reverse">
+    <div class="reveal-right">
+      <div class="feature-tag">Spraak &amp; Avatar</div>
+      <h2 class="feature-title">Jouw merk.<br>Spreekt terug.</h2>
+      <p class="feature-desc">Van een eenvoudige animatie tot een lip-sync AI-avatar met jouw stem. Kies het tier dat past bij jouw merkbeleving en budget.</p>
+      <ul class="feature-points">
+        <li>Essentials: €149/mnd — geanimeerd gezicht + browser-stem</li>
+        <li>Custom: €299/mnd — HartAi Methode stem op maat, vloeiend Nederlands</li>
+        <li>Enterprise: €499/mnd — volledig gezicht met lipsync</li>
+        <li>71% van mobiele gebruikers prefereert stem boven typen</li>
+      </ul>
+    </div>
+    <div class="reveal-left">
+      <div class="widget-demo" style="margin: 0 auto;">
+        <!-- Mini avatar frame -->
+        <div class="wd-header">
+          <span class="wd-title">Ticket Concierge</span>
+          <span class="wd-badge">AI AVATAR</span>
+        </div>
+        <div class="wd-avatar-frame">
+          <img src="/images/robin.png" alt="Robin AI Avatar" style="width:110px;height:147px;object-fit:cover;object-position:center 8%;display:block;border-radius:10px;">
+          <div class="wd-avatar-chrome">
+            <span class="wd-live-dot"></span>
+            <span class="wd-live-text">AI AVATAR</span>
+          </div>
+        </div>
+        <div class="wd-chat-row" id="wd-chat"></div>
+        <div class="wd-tiers">
+          <div class="wd-tier" id="wt-ess">Essentials</div>
+          <div class="wd-tier" id="wt-cus">Custom</div>
+          <div class="wd-tier active" id="wt-ent">Enterprise</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 3: HART Methode -->
+<section class="feature feature--dark">
+  <div class="feature-inner">
+    <div class="reveal-left">
+      <div class="feature-tag">HART Methode</div>
+      <h2 class="feature-title">Begrijpt alles.<br>Antwoordt slim.</h2>
+      <p class="feature-desc">Achter de concierge draait de HART Methode van HartAi. Het begrijpt context, onthoudt de conversatie en geeft altijd de juiste aanbeveling uit jouw catalogus.</p>
+      <ul class="feature-points">
+        <li>Volledig Nederlandstalig, begrijpt intentie én context</li>
+        <li>Geeft alleen events terug die in jouw database staan</li>
+        <li>Converstatiegeheugen: "en die in Rotterdam?" werkt</li>
+        <li>Geen hallucinations — gebonden aan jouw catalogus</li>
+      </ul>
+    </div>
+    <div class="reveal-right">
+      <div class="visual-card">
+        <div class="vc-label">Live gesprek — vandaag</div>
+        <div class="clock-visual">
+          <div class="clock-row">
+            <div class="clock-row-icon clock-row-icon--turq">💬</div>
+            <div class="clock-row-text">
+              <div class="clock-row-title">"iets romantisch voor twee"</div>
+              <div class="clock-row-sub">→ André Rieu + Harry Potter — 22:14</div>
+            </div>
+            <div class="clock-row-badge clock-row-badge--turq">Begrepen</div>
+          </div>
+          <div class="clock-row">
+            <div class="clock-row-icon clock-row-icon--green">🎵</div>
+            <div class="clock-row-text">
+              <div class="clock-row-title">"iets voor m'n zoontje van 8"</div>
+              <div class="clock-row-sub">→ Harry Potter musical — 20:47</div>
+            </div>
+            <div class="clock-row-badge clock-row-badge--green">Gescoord</div>
+          </div>
+          <div class="clock-row">
+            <div class="clock-row-icon clock-row-icon--orange">🎪</div>
+            <div class="clock-row-text">
+              <div class="clock-row-title">"en in Rotterdam?"</div>
+              <div class="clock-row-sub">→ Begrijpt context → North Sea Jazz — 19:02</div>
+            </div>
+            <div class="clock-row-badge clock-row-badge--orange">Context</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 4: Implementatie -->
+<section class="feature feature--darker">
+  <div class="feature-inner feature-inner--reverse">
+    <div class="reveal-right">
+      <div class="feature-tag">Implementatie</div>
+      <h2 class="feature-title">Live in<br>1 dag.</h2>
+      <p class="feature-desc">Geen maanden bouwen. Geen IT-afdeling nodig. Één script tag op je website en de concierge staat live — met jouw events, jouw stijl, jouw stem.</p>
+      <ul class="feature-points">
+        <li>Intake: jouw catalogus, merkkleur en taal instellen</li>
+        <li>Wij bouwen, jij test — één dag doorlooptijd</li>
+        <li>Eén &lt;script&gt; tag op je website — dat is alles</li>
+        <li>Maandelijkse optimalisatie op basis van echte gesprekken</li>
+      </ul>
+    </div>
+    <div class="reveal-left">
+      <div class="visual-card">
+        <div class="vc-label">Implementatietijdlijn</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot tl-dot--done">✓</div><div class="tl-line"></div></div>
+            <div class="tl-body">
+              <div class="tl-title">Intake &amp; catalogus</div>
+              <div class="tl-desc">Jouw events, stijl en merkpersoonlijkheid in kaart brengen</div>
+              <div class="tl-time">Ochtend — 60 minuten</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot tl-dot--done">✓</div><div class="tl-line"></div></div>
+            <div class="tl-body">
+              <div class="tl-title">Bouwen &amp; stem kiezen</div>
+              <div class="tl-desc">Concierge op maat, voice-tier instellen, avatar aanpassen</div>
+              <div class="tl-time">Middag — door ons team</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot tl-dot--active">→</div><div class="tl-line"></div></div>
+            <div class="tl-body">
+              <div class="tl-title">Live op jouw website</div>
+              <div class="tl-desc">Script geïnstalleerd, eerste gesprekken getest, live!</div>
+              <div class="tl-time">Avond — live!</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot tl-dot--next">4</div></div>
+            <div class="tl-body">
+              <div class="tl-title">Groeien &amp; optimaliseren</div>
+              <div class="tl-desc">Maandelijkse updates op basis van echte gesprekken</div>
+              <div class="tl-time">Doorlopend</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stats-label reveal">Bewezen resultaten</div>
+  <div class="stats-title reveal reveal-delay-1">Cijfers die voor zichzelf spreken.</div>
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-num"><span class="count" data-target="4">0</span><em>×</em></div>
+      <div class="stat-desc">hogere conversie<br>bij chat-assisted shoppers</div>
+      <div class="stat-source">Bron: Tidio Research, 2024</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-num"><span class="count" data-target="71">0</span><em>%</em></div>
+      <div class="stat-desc">van gebruikers prefereert<br>voice boven typen</div>
+      <div class="stat-source">Bron: PwC Consumer Intelligence</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-num"><span class="count" data-target="24">0</span><em>u</em></div>
+      <div class="stat-desc">van intake gesprek<br>tot live concierge</div>
+      <div class="stat-source">HartAi implementatiebelofte</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-num"><span class="count" data-target="72">0</span><em>%</em></div>
+      <div class="stat-desc">van support-vragen<br>automatisch opgelost</div>
+      <div class="stat-source">Bron: Zendesk CX Trends, 2024</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="hoe-het-werkt">
+  <div class="how-inner">
+    <div class="section-label reveal">Werkwijze</div>
+    <div class="section-title reveal reveal-delay-1">Zo werkt de<br>HartAI Concierge.</div>
+    <div class="how-grid">
+      <div class="how-item reveal">
+        <div class="how-num">01</div>
+        <div class="how-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3>Bezoeker stelt vraag</h3>
+        <p>Tekst of voice. "Iets met jazz" of "verras me". De concierge begrijpt elke formulering en stelt door als het vaag is.</p>
+      </div>
+      <div class="how-item reveal reveal-delay-1">
+        <div class="how-num">02</div>
+        <div class="how-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="1.8"><path d="M12 2a10 10 0 1010 10"/><path d="M12 6v6l4 2"/><circle cx="19" cy="5" r="3" fill="rgba(78,192,196,.3)" stroke="#4EC0C4"/></svg>
+        </div>
+        <h3>HART Methode verwerkt</h3>
+        <p>De HART Methode begrijpt de intentie, matcht met jouw catalogus en formuleert een persoonlijk antwoord.</p>
+      </div>
+      <div class="how-item reveal reveal-delay-2">
+        <div class="how-num">03</div>
+        <div class="how-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        </div>
+        <h3>Antwoord + kaarten</h3>
+        <p>Tekst met uitleg én event-kaarten met directe ticket-links. Avatar spreekt het antwoord uit (afhankelijk van tier).</p>
+      </div>
+      <div class="how-item reveal reveal-delay-3">
+        <div class="how-num">04</div>
+        <div class="how-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4EC0C4" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <h3>Naar de kassa</h3>
+        <p>Eén klik op "Bekijk tickets" stuurt de bezoeker direct naar de ticketpagina. Geen omwegen, geen afleiding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section class="tiers-section" id="tiers">
+  <div class="section-label reveal">Pakketten</div>
+  <div class="section-title reveal reveal-delay-1">Kies het tier dat past<br>bij jouw merk.</div>
+  <div class="tiers-grid">
+
+    <div class="tier-card reveal">
+      <div class="tier-name">Essentials</div>
+      <div class="tier-price">€149 <span>/ maand</span></div>
+      <div class="tier-setup"><strong>€699</strong> eenmalige setup</div>
+      <div class="tier-sub">Geïntegreerd in jouw platform</div>
+      <ul class="tier-features">
+        <li><span class="tf-check tf-check--on"></span>AI chat (HART Methode)</li>
+        <li><span class="tf-check tf-check--on"></span>Guided selling chips</li>
+        <li><span class="tf-check tf-check--on"></span>Event-kaarten met ticket-links</li>
+        <li><span class="tf-check tf-check--on"></span>Geanimeerd gezicht</li>
+        <li><span class="tf-check tf-check--on"></span>Browser-stem (Web Speech)</li>
+        <li class="off"><span class="tf-check tf-check--off"></span>AI-stem op maat</li>
+        <li class="off"><span class="tf-check tf-check--off"></span>Lip-sync avatar</li>
+      </ul>
+    </div>
+
+    <div class="tier-card tier-card--featured reveal reveal-delay-1">
+      <div class="tier-name">Custom</div>
+      <div class="tier-price">€299 <span>/ maand</span></div>
+      <div class="tier-setup"><strong>€699</strong> eenmalige setup</div>
+      <div class="tier-sub">HartAi Methode stem inbegrepen</div>
+      <ul class="tier-features">
+        <li><span class="tf-check tf-check--on"></span>Alles van Essentials</li>
+        <li><span class="tf-check tf-check--on"></span>HartAi Methode stem (Nederlands)</li>
+        <li><span class="tf-check tf-check--on"></span>Custom voice-karakter</li>
+        <li><span class="tf-check tf-check--on"></span>Geluidsvisualisatie</li>
+        <li><span class="tf-check tf-check--on"></span>Prioriteit support</li>
+        <li class="off"><span class="tf-check tf-check--off"></span>Lip-sync avatar</li>
+        <li class="off"><span class="tf-check tf-check--off"></span>Branded gezicht</li>
+      </ul>
+    </div>
+
+    <div class="tier-card reveal reveal-delay-2">
+      <div class="tier-name">Enterprise</div>
+      <div class="tier-price">€499 <span>/ maand</span></div>
+      <div class="tier-setup"><strong>€999</strong> eenmalige setup</div>
+      <div class="tier-sub">Volledig branded avatar</div>
+      <ul class="tier-features">
+        <li><span class="tf-check tf-check--on"></span>Alles van Custom</li>
+        <li><span class="tf-check tf-check--on"></span>Gezicht met lipsync</li>
+        <li><span class="tf-check tf-check--on"></span>Mond beweegt op audio-volume</li>
+        <li><span class="tf-check tf-check--on"></span>Hoofd- en ooganimaties</li>
+        <li><span class="tf-check tf-check--on"></span>Volledig branded (naam, kleur)</li>
+        <li><span class="tf-check tf-check--on"></span>Onbeperkt concurrent</li>
+        <li><span class="tf-check tf-check--on"></span>Geen per-sessie kosten</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="sectors">
+  <div class="section-label reveal">Geschikt voor</div>
+  <div class="section-title reveal reveal-delay-1">Voor elke webshop met een assortiment.</div>
+  <div class="sectors-grid">
+    <div class="sector-chip reveal"><span class="sector-chip-icon">🎟</span><span class="sector-chip-text">Ticketplatforms</span></div>
+    <div class="sector-chip reveal reveal-delay-1"><span class="sector-chip-icon">🎪</span><span class="sector-chip-text">Festivalen &amp; events</span></div>
+    <div class="sector-chip reveal reveal-delay-2"><span class="sector-chip-icon">🎭</span><span class="sector-chip-text">Theater &amp; musicals</span></div>
+    <div class="sector-chip reveal reveal-delay-1"><span class="sector-chip-icon">🛒</span><span class="sector-chip-text">E-commerce shops</span></div>
+    <div class="sector-chip reveal reveal-delay-2"><span class="sector-chip-icon">🏨</span><span class="sector-chip-text">Hotels &amp; horeca</span></div>
+    <div class="sector-chip reveal reveal-delay-3"><span class="sector-chip-icon">🎬</span><span class="sector-chip-text">Bioscopen &amp; media</span></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <h2 class="reveal">Klaar voor jouw<br>eigen concierge?</h2>
+    <p class="reveal reveal-delay-1">Bekijk de live demo op GoTicketShop — volledig werkend, met AI, stem en avatar. Zie in 5 minuten wat het voor jouw platform kan doen.</p>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+      <a href="https://concierge.hartai.nl" target="_blank" rel="noopener" class="btn-primary reveal reveal-delay-2" style="font-size:1.1rem;padding:18px 40px">
+        Bekijk live demo
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="/#contact" class="btn-secondary reveal reveal-delay-3" style="font-size:.95rem;padding:14px 28px">Gratis gesprek met HartAI</a>
+    </div>
+    <div class="cta-note reveal" style="transition-delay:.5s">Geen verplichtingen. Live demo, jouw naam erop, jouw catalogus erin.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 HartAI — <a href="/">hartai.nl</a> · <a href="/privacy/">Privacy</a> · Een product van HartAI B.V.</p>
+</footer>
+
+<script>
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// Bar fills
+const bars = document.querySelectorAll('.vc-bar-fill');
+const barObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.style.transform = 'scaleX(1)'; barObserver.unobserve(e.target); } });
+}, { threshold: 0.3 });
+bars.forEach(b => { b.style.transform = 'scaleX(0)'; barObserver.observe(b); });
+
+// Counter animation
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const duration = 1800;
+  const start = performance.now();
+  function update(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(ease * target);
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+const counters = document.querySelectorAll('.count');
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); counterObserver.unobserve(e.target); } });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObserver.observe(c));
+
+// ── PRODUCT DEMO ANIMATION ──────────────────────────────────────
+(function pdDemo() {
+  const msgs    = document.getElementById('pd-messages');
+  const inputEl = document.getElementById('pd-input-text');
+  const mouth   = document.getElementById('d-mouth');
+  const fStages = [0,1,2,3].map(i => document.getElementById('pdf-' + i));
+  if (!msgs) return;
+
+  let mouthRaf = null;
+  let mouthTarget = 0;
+  let mouthCurrent = 2.5;
+  function animMouth() {
+    mouthCurrent += (mouthTarget - mouthCurrent) * .18;
+    if (mouth) mouth.setAttribute('ry', mouthCurrent.toFixed(2));
+    mouthRaf = requestAnimationFrame(animMouth);
+  }
+  animMouth();
+
+  function setMouth(open) {
+    if (open) {
+      let t = 0;
+      const wave = setInterval(() => {
+        mouthTarget = 2.5 + Math.abs(Math.sin(t)) * 4.5;
+        t += 0.38;
+      }, 60);
+      return wave;
+    }
+  }
+  function stopMouth(wave) { clearInterval(wave); mouthTarget = 2.5; }
+
+  function setFunnel(stage) {
+    fStages.forEach((el, i) => {
+      el.classList.remove('active', 'done');
+      if (i < stage)  el.classList.add('done');
+      if (i === stage) el.classList.add('active');
+    });
+  }
+
+  function addBotMsg(text) {
+    const el = document.createElement('div');
+    el.className = 'pd-msg pd-msg-bot';
+    el.textContent = text;
+    msgs.appendChild(el);
+    msgs.scrollTop = msgs.scrollHeight;
+    return el;
+  }
+  function addUserMsg(text) {
+    const el = document.createElement('div');
+    el.className = 'pd-msg pd-msg-user';
+    el.textContent = text;
+    msgs.appendChild(el);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+  function addTyping() {
+    const el = document.createElement('div');
+    el.className = 'pd-typing';
+    el.innerHTML = '<span></span><span></span><span></span>';
+    msgs.appendChild(el);
+    msgs.scrollTop = msgs.scrollHeight;
+    return el;
+  }
+  function addCard(name, meta, highlight) {
+    const el = document.createElement('div');
+    el.className = 'pd-ticket-card' + (highlight ? ' highlight' : '');
+    el.innerHTML = `<div class="pd-card-name">${name}</div><div class="pd-card-meta">${meta}</div><div class="pd-card-cta" id="pd-cta-${Date.now()}">Bekijk tickets →</div>`;
+    msgs.appendChild(el);
+    msgs.scrollTop = msgs.scrollHeight;
+    return el;
+  }
+  function typeInInput(text, cb) {
+    inputEl.classList.remove('idle');
+    inputEl.textContent = '';
+    let i = 0;
+    const iv = setInterval(() => {
+      inputEl.textContent += text[i++];
+      if (i >= text.length) { clearInterval(iv); if (cb) setTimeout(cb, 300); }
+    }, 60);
+  }
+  function clearInput() {
+    inputEl.textContent = '';
+    inputEl.classList.add('idle');
+  }
+
+  const SCRIPT = [
+    { t:200,    fn: () => { setFunnel(0); clearInput(); } },
+    { t:400,    fn: () => { const w = setMouth(); setTimeout(() => stopMouth(w), 2200); addBotMsg('Hoi! Ik ben jouw Ticket Concierge. Wat zoek je vandaag? 🎟'); } },
+    { t:3200,   fn: () => typeInInput('iets met jazz') },
+    { t:4900,   fn: () => { addUserMsg('iets met jazz'); clearInput(); setFunnel(0); } },
+    { t:5100,   fn: () => { const ty = addTyping(); window._pdTy = ty; } },
+    { t:6400,   fn: () => { if(window._pdTy) window._pdTy.remove(); const w = setMouth(); setTimeout(() => stopMouth(w), 2000); addBotMsg('Perfect! Voor jazz heb ik deze toppers voor je:'); setFunnel(1); } },
+    { t:6800,   fn: () => { addCard('North Sea Jazz Festival 2026', 'Ahoy, Rotterdam · 3 datums · Jazz & Soul', false); setFunnel(2); } },
+    { t:9000,   fn: () => typeInInput('en iets voor het gezin?') },
+    { t:10600,  fn: () => { addUserMsg('en iets voor het gezin?'); clearInput(); } },
+    { t:10800,  fn: () => { const ty = addTyping(); window._pdTy2 = ty; } },
+    { t:12000,  fn: () => { if(window._pdTy2) window._pdTy2.remove(); const w = setMouth(); setTimeout(() => stopMouth(w), 2200); addBotMsg('Voor het gezin zijn deze toppers:'); setFunnel(1); } },
+    { t:12400,  fn: () => addCard('Harry Potter en het Vervloekte Kind', 'Meerdere locaties · Familie & Magie', true) },
+    { t:12900,  fn: () => { addCard('ABBA The Music', 'Meerdere locaties · Meezingen & Nostalgie', false); setFunnel(2); } },
+    { t:13400,  fn: () => {
+        setFunnel(3);
+        const ctas = msgs.querySelectorAll('.pd-card-cta');
+        ctas.forEach(c => c.classList.add('pulse'));
+      }
+    },
+    { t:16500,  fn: () => { msgs.innerHTML = ''; setFunnel(-1); } },
+  ];
+
+  function runScript() {
+    SCRIPT.forEach(s => setTimeout(s.fn, s.t));
+    setTimeout(runScript, 17500);
+  }
+  runScript();
+})();
+
+// Animated widget chat
+const wdMsgs = [
+  { side:'bot',  text:'Hoi! Wat zoek je vandaag? 🎟',                 delay:600 },
+  { side:'user', text:'iets met jazz in Rotterdam',                   delay:2000 },
+  { side:'bot',  text:'North Sea Jazz Festival past perfect! 🎷',     delay:3400 },
+  { side:'bot',  text:'card', card:{ name:'North Sea Jazz 2026', meta:'Ahoy, Rotterdam · 3 datums' }, delay:3500 },
+  { side:'user', text:'en iets voor kinderen?',                       delay:5200 },
+  { side:'bot',  text:'Harry Potter is ideaal voor kids 🪄',          delay:6600 },
+];
+const wdChat = document.getElementById('wd-chat');
+function addWdMsg(m) {
+  if (m.side === 'bot' && m.card) {
+    const c = document.createElement('div');
+    c.className = 'wd-card';
+    c.innerHTML = `<div class="wd-card-name">${m.card.name}</div><div class="wd-card-meta">${m.card.meta}</div><a class="wd-card-btn">Bekijk tickets →</a>`;
+    wdChat.appendChild(c);
+  } else {
+    const d = document.createElement('div');
+    d.className = `wd-msg wd-msg--${m.side}`;
+    d.textContent = m.text;
+    wdChat.appendChild(d);
+  }
+  wdChat.scrollTop = wdChat.scrollHeight;
+}
+wdMsgs.forEach(m => setTimeout(() => addWdMsg(m), m.delay));
+setTimeout(() => {
+  setInterval(() => { wdChat.innerHTML = ''; wdMsgs.forEach(m => setTimeout(() => addWdMsg(m), m.delay)); }, 10000);
+}, 8000);
+
+// Tier tab highlight in widget
+let tierIdx = 2;
+const tierBtns = [document.getElementById('wt-ess'), document.getElementById('wt-cus'), document.getElementById('wt-ent')];
+setInterval(() => {
+  tierBtns.forEach(b => b.classList.remove('active'));
+  tierIdx = (tierIdx + 1) % 3;
+  tierBtns[tierIdx].classList.add('active');
+}, 2500);
+
+// Mouth animation on avatar in widget
+let mouthOpen = false;
+setInterval(() => {
+  mouthOpen = !mouthOpen;
+  const m = document.getElementById('p-mouth');
+  if (m) m.setAttribute('ry', mouthOpen ? '5' : '2.5');
+}, 180);
+</script>
+<script src="/js/hartai-agent.js" defer></script>
+<script>
+(function(){
+  var toggle = document.getElementById('concierge-nav-toggle');
+  var mobileMenu = document.getElementById('concierge-nav-menu');
+  if (!toggle || !mobileMenu) return;
+
+  toggle.addEventListener('click', function(){
+    var open = mobileMenu.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+  });
+
+  // Close on link click
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileMenu.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('pointerdown', function(e){
+    if (!mobileMenu.contains(e.target) && !toggle.contains(e.target)) {
+      mobileMenu.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
+</body>
+</html>

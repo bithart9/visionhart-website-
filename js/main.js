@@ -101,10 +101,20 @@ modalForm?.addEventListener('submit', async (e) => {
 (function () {
   const btn  = document.getElementById('nav-products-toggle');
   const menu = document.getElementById('nav-products-menu');
+  const wrap = btn?.closest('.nav__dropdown');
   if (!btn || !menu) return;
+
   btn.addEventListener('click', () => {
     const open = menu.classList.toggle('is-open');
     btn.setAttribute('aria-expanded', String(open));
+  });
+
+  // Close dropdown when clicking outside (desktop)
+  document.addEventListener('pointerdown', (e) => {
+    if (wrap && !wrap.contains(e.target)) {
+      menu.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
   });
 }());
 

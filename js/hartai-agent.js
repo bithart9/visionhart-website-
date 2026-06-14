@@ -18,7 +18,7 @@
     { icon: '🗺️', label: 'Website begeleiding',    msg: 'Ja, geef me een rondleiding door de website. Laat me de belangrijkste onderdelen zien.' },
   ];
 
-  const WELCOME = 'Elke week besteed jij gemiddeld 15 uur aan dingen die geen omzet opleveren. E-mails, facturen, klantvragen, planning.\n\n147 MKB-ondernemers hebben die uren teruggekregen. Die stoppen ze nu in groei, in klanten — of gewoon in zichzelf.\n\nWat wil jij nooit meer zelf doen?';
+  const WELCOME = 'Welkom, ik ben de digitale versie van JP, oprichter van HartAI.\n\nIk help ondernemers ontdekken hoe AI tijd bespaart, processen automatiseert, kosten verlaagt en bedrijven schaalbaar maakt. Stel me gerust al je vragen over AI, digitale medewerkers, automatisering en de toekomst van jouw organisatie.\n\nWaar wil jij vandaag de meeste tijd of kosten besparen?';
 
   // ── State ────────────────────────────────────────────────────────────────────
   let isOpen = false;
